@@ -1,16 +1,31 @@
-# uni_finder
+🎓 Phnom Penh University Finder (Offline App)
+=============================================
 
-A new Flutter project.
+A **Flutter mobile application** that helps students — especially those living in **rural areas of Cambodia** — find **universities in Phnom Penh** based on their favorite **major**.  
+The app works **100% offline**, using only **local JSON files** without any backend or API.
 
-## Getting Started
+The goal of the project is to practice **Flutter development, offline data handling, UI design**, and team collaboration.
 
-This project is a starting point for a Flutter application.
+---
 
-A few resources to get you started if this is your first Flutter project:
+👥 Team Members
+---------------
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- Man Arafat  
+- Chey Rotana
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+---
+
+🛠️ Technologies Used
+---------------------
+
+- **Flutter**  
+- **Dart**  
+- **Local JSON**  
+- **Material Design 3**
+
+---
+
+📁 Project Structure
+-------------------
+
