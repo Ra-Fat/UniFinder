@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:uni_finder/ui/screens/dream-detail/dream_detail.dart';
-import 'package:uni_finder/ui/screens/home/home_screen.dart';
-import './screens/dream-detail/mock_data.dart';
+import 'package:uni_finder/ui/screens/dream/dream_screen.dart';
+import 'screens/dream/Domain/mock_data.dart';
+import 'screens/dream/Domain/Service/dream_service.dart';
 
 class App extends StatefulWidget {
   const App({super.key});
@@ -21,11 +21,18 @@ class _AppState extends State<App> {
         //   brightness: Brightness.dark,
         //   surface: const Color.fromARGB(255, 42, 51, 59),
         // ),
-       scaffoldBackgroundColor: Color(0xFF0f172a),
+        scaffoldBackgroundColor: Color(0xFF0f172a),
       ),
       // home: LogoSplashScreen(),
       // home: HomeScreen(),
-      home: DreamDetail(dream: dream, universityMajors: universityMajors,),
+      home: DreamDetail(
+        dream: dream,
+        dreamService: DreamService(
+          allCareers: careers,
+          allUniversityMajors: universityMajors,
+          allMajors: allMajors,
+        ),
+      ),
     );
   }
 }

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:uni_finder/ui/screens/dream-detail/dream_detail.dart';
+import 'package:uni_finder/ui/screens/dream/dream_screen.dart';
 import 'package:uni_finder/ui/screens/q&a/question_screen.dart';
-import '../dream-detail/mock_data.dart';
+import '../dream/Domain/mock_data.dart';
+import '../dream/Domain/Service/dream_service.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -147,7 +148,19 @@ class DreamCard extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(vertical: 16),
                 ),
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => DreamDetail(dream: dream, universityMajors: universityMajors,)));
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => DreamDetail(
+                        dream: dream,
+                        dreamService: DreamService(
+                          allCareers: careers,
+                          allUniversityMajors: universityMajors,
+                          allMajors: allMajors,
+                        ),
+                      ),
+                    ),
+                  );
                 },
                 child: Text(
                   'View Detail',
