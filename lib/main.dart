@@ -3,6 +3,5 @@ import './ui/app.dart';
 
 void main() {
   runApp(
-    const App(
-  ));
+    const App());
 }

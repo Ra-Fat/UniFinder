@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import './screens/welcomes/welcome_screen.dart';
-import './screens/utils/logo_splash_screen.dart';
+import 'package:uni_finder/ui/screens/dream-detail/dream_detail.dart';
+import 'package:uni_finder/ui/screens/home/home_screen.dart';
+import './screens/dream-detail/mock_data.dart';
 
 class App extends StatefulWidget {
   const App({super.key});
@@ -22,7 +23,9 @@ class _AppState extends State<App> {
         // ),
        scaffoldBackgroundColor: Color(0xFF0f172a),
       ),
-      home: LogoSplashScreen(),
+      // home: LogoSplashScreen(),
+      // home: HomeScreen(),
+      home: DreamDetail(dream: dream, universityMajors: universityMajors,),
     );
   }
 }
