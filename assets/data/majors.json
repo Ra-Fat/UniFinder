@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "name": "Computer Science",
+    "category_id": 1,
+    "description": "Study of algorithms, programming, data structures, and software development."
+  },
+  {
+    "id": 2,
+    "name": "Software Engineering",
+    "category_id": 1,
+    "description": "Focus on designing, developing, and maintaining software systems."
+  },
+  {
+    "id": 3,
+    "name": "Information Technology",
+    "category_id": 1,
+    "description": "Managing and implementing technology solutions for businesses."
+  },
+  {
+    "id": 4,
+    "name": "Business Administration",
+    "category_id": 2,
+    "description": "Learn management, finance, marketing, and organizational leadership."
+  },
+  {
+    "id": 5,
+    "name": "Economics",
+    "category_id": 2,
+    "description": "Study of economic theory, policy, and market analysis."
+  },
+  {
+    "id": 6,
+    "name": "Accounting",
+    "category_id": 2,
+    "description": "Financial reporting, auditing, and tax preparation."
+  },
+  {
+    "id": 7,
+    "name": "Graphic Design",
+    "category_id": 3,
+    "description": "Visual communication through art, typography, and digital media."
+  },
+  {
+    "id": 8,
+    "name": "Fine Arts",
+    "category_id": 3,
+    "description": "Painting, sculpture, and traditional artistic expression."
+  },
+  {
+    "id": 9,
+    "name": "Architecture",
+    "category_id": 3,
+    "description": "Design and planning of buildings and structures."
+  },
+  {
+    "id": 10,
+    "name": "Mathematics",
+    "category_id": 4,
+    "description": "Pure and applied mathematics, statistics, and analysis."
+  },
+  {
+    "id": 11,
+    "name": "Physics",
+    "category_id": 4,
+    "description": "Study of matter, energy, and the fundamental laws of nature."
+  },
+  {
+    "id": 12,
+    "name": "Chemistry",
+    "category_id": 4,
+    "description": "Chemical processes, reactions, and molecular structures."
+  },
+  {
+    "id": 13,
+    "name": "Medicine",
+    "category_id": 5,
+    "description": "Comprehensive medical training to become a physician."
+  },
+  {
+    "id": 14,
+    "name": "Nursing",
+    "category_id": 5,
+    "description": "Patient care, health assessment, and medical support."
+  },
+  {
+    "id": 15,
+    "name": "Pharmacy",
+    "category_id": 5,
+    "description": "Medication management, drug development, and patient counseling."
+  }
+]

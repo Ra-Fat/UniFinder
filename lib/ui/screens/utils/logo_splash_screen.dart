@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:go_router/go_router.dart';
 import 'package:flutter/material.dart';
 import '../welcomes/welcome_screen.dart';
 
@@ -11,7 +12,6 @@ class LogoSplashScreen extends StatefulWidget {
 
 class _LogoSplashScreenState extends State<LogoSplashScreen>
     with SingleTickerProviderStateMixin {
-
   late AnimationController _controller;
   late Animation<double> _scaleAnimation;
   late Animation<double> _fadeAnimation;
@@ -25,19 +25,22 @@ class _LogoSplashScreenState extends State<LogoSplashScreen>
       duration: const Duration(milliseconds: 1200),
     );
 
-    _scaleAnimation = Tween<double>(begin: 0.8, end: 1.0)
-        .animate(CurvedAnimation(parent: _controller, curve: Curves.easeOut));
+    _scaleAnimation = Tween<double>(
+      begin: 0.8,
+      end: 1.0,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOut));
 
-    _fadeAnimation = Tween<double>(begin: 0.0, end: 1.0)
-        .animate(CurvedAnimation(parent: _controller, curve: Curves.easeIn));
+    _fadeAnimation = Tween<double>(
+      begin: 0.0,
+      end: 1.0,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeIn));
 
     _controller.forward();
 
-    Timer(const Duration(seconds: 3), () {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (_) => const WelcomeScreen()),
-      );
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Timer(const Duration(seconds: 3), () {
+        GoRouter.of(context).go('/onboarding');
+      });
     });
   }
 
@@ -55,10 +58,7 @@ class _LogoSplashScreenState extends State<LogoSplashScreen>
           opacity: _fadeAnimation,
           child: ScaleTransition(
             scale: _scaleAnimation,
-            child: Image.asset(
-              'assets/logo/test.png',
-              width: 300,
-            ),
+            child: Image.asset('assets/logo/test.png', width: 300),
           ),
         ),
       ),

@@ -1,0 +1,77 @@
+[
+  {
+    "id": 1,
+    "name": "Software Developer",
+    "description": "Design, develop, and maintain software applications for various platforms."
+  },
+  {
+    "id": 2,
+    "name": "Web Developer",
+    "description": "Create and maintain websites and web applications."
+  },
+  {
+    "id": 3,
+    "name": "Data Scientist",
+    "description": "Analyze complex data to help organizations make better decisions."
+  },
+  {
+    "id": 4,
+    "name": "Business Analyst",
+    "description": "Bridge the gap between IT and business to improve processes."
+  },
+  {
+    "id": 5,
+    "name": "Marketing Manager",
+    "description": "Develop and implement marketing strategies to promote products."
+  },
+  {
+    "id": 6,
+    "name": "Financial Analyst",
+    "description": "Assess financial data and provide investment recommendations."
+  },
+  {
+    "id": 7,
+    "name": "Accountant",
+    "description": "Manage financial records, prepare reports, and ensure compliance."
+  },
+  {
+    "id": 8,
+    "name": "Graphic Designer",
+    "description": "Create visual content for print and digital media."
+  },
+  {
+    "id": 9,
+    "name": "UI/UX Designer",
+    "description": "Design user interfaces and enhance user experience for applications."
+  },
+  {
+    "id": 10,
+    "name": "Architect",
+    "description": "Design buildings and oversee construction projects."
+  },
+  {
+    "id": 11,
+    "name": "Research Scientist",
+    "description": "Conduct experiments and research in various scientific fields."
+  },
+  {
+    "id": 12,
+    "name": "Civil Engineer",
+    "description": "Design and supervise infrastructure projects like roads and bridges."
+  },
+  {
+    "id": 13,
+    "name": "Doctor",
+    "description": "Diagnose and treat medical conditions to improve patient health."
+  },
+  {
+    "id": 14,
+    "name": "Nurse",
+    "description": "Provide patient care and support in medical settings."
+  },
+  {
+    "id": 15,
+    "name": "Pharmacist",
+    "description": "Dispense medications and advise patients on proper usage."
+  }
+]
