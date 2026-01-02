@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:uni_finder/model/user_model.dart';
 import '../../widgets/widget.dart';
-
+import '../../../main.dart';
+import '../../../data/repository/data_repository.dart';
 
 class QuestionScreen extends StatefulWidget {
   const QuestionScreen({super.key});
@@ -13,6 +15,7 @@ class QuestionScreen extends StatefulWidget {
 class _QuestionScreenState extends State<QuestionScreen> {
   final _titleController = TextEditingController();
   bool _isNameValid = false;
+  late DataRepository _repository;
   final formKey = GlobalKey<FormState>();
 
   String? _onValidateName(String? value) {
@@ -22,9 +25,22 @@ class _QuestionScreenState extends State<QuestionScreen> {
     return null;
   }
 
-  void _onSubmitName() {
-    if(formKey.currentState!.validate()){
-      context.go('/questions');
+  Future<void> _onSubmitName() async {
+    if (formKey.currentState!.validate()) {
+      final user = User(name: _titleController.text.trim());
+      try {
+        print('🔵 Attempting to save user: ${user.name}');
+        await dataRepository.saveUser(user);
+        print('✅ User saved successfully!');
+
+        if (mounted) {
+          print('📍 Navigating to /questions');
+          context.go('/questions');
+        }
+      } catch (err) {
+        print('❌ Error saving user: $err');
+        debugPrint('Error saving user: $err');
+      }
     }
   }
 
@@ -74,8 +90,8 @@ class _QuestionScreenState extends State<QuestionScreen> {
                 SizedBox(height: 20),
                 SizedBox(
                   child: CustomizeButton(
-                    text: "Continue", 
-                    onPressed: _onSubmitName
+                    text: "Continue",
+                    onPressed: _onSubmitName,
                   ),
                 ),
               ],
@@ -86,4 +102,3 @@ class _QuestionScreenState extends State<QuestionScreen> {
     );
   }
 }
-

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
+import 'package:path_provider/path_provider.dart';
 import './ui/app.dart';
 import './data/storage/file_storage.dart';
 import './data/repository/data_repository.dart';
@@ -15,7 +16,9 @@ void main() async {
     final storage = FileStorage('');
     dataRepository = DataRepository(storage);
   } else {
-    final storage = FileStorage('data');
+    // Get app directory for Android/iOS/Desktop
+    final directory = await getApplicationDocumentsDirectory();
+    final storage = FileStorage('${directory.path}/data');
     dataRepository = DataRepository(storage);
   }
 

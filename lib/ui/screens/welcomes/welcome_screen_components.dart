@@ -22,16 +22,25 @@ class WelcomeScreenComponents extends StatelessWidget {
         children: [
           Image.asset(imagePath, height: 160,),
           SizedBox(height: 30,),
-          CustomPrimaryText(
-            text: title,
-            fontSize: 24,
+          Text(
+            title,
+            style: TextStyle(
+              fontSize: 24,
+              fontFamily: 'ArchivoBlack',
+              fontWeight: FontWeight.bold,
+              color: Colors.white
+            ),
           ),
           SizedBox(height: 20,),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 20),
-            child: CustomSecondaryText(
-              text: description,
-              fontSize: 14,
+            child: Text(
+              description,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 14,
+                color: Colors.grey[400]
+              ),
             ),
           )
         ],

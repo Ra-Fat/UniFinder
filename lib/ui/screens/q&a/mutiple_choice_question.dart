@@ -121,11 +121,13 @@ class _MutipleChoiceQuestionScreenState
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       CustomSecondaryText(
-                        text: 'Question ${currentIndex + 1} of ${questions.length}',
+                        text:
+                            'Question ${currentIndex + 1} of ${questions.length}',
                         fontSize: 14,
                       ),
                       CustomSecondaryText(
-                        text: '${((currentIndex + 1) / questions.length * 100).round()}%',
+                        text:
+                            '${((currentIndex + 1) / questions.length * 100).round()}%',
                         textColor: Colors.blue,
                         fontSize: 14,
                       ),
@@ -154,18 +156,12 @@ class _MutipleChoiceQuestionScreenState
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CustomPrimaryText(
-              text: currentQuestion.text,
-            ),
+            CustomPrimaryText(text: currentQuestion.text),
             SizedBox(height: 8),
-            CustomSecondaryText(
-              text: "Select one option"
-            ),
+            CustomSecondaryText(text: "Select one option"),
             SizedBox(height: 8),
             if (currentOptions.isEmpty)
-              CustomSecondaryText(
-                text: 'No options available'
-              )
+              CustomSecondaryText(text: 'No options available')
             else
               ...List.generate(currentOptions.length, (index) {
                 final option = currentOptions[index];
@@ -224,14 +220,18 @@ class _MutipleChoiceQuestionScreenState
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
           color: AppColors.darkBackground,
-          border: Border(top: BorderSide(color: AppColors.secondaryBackground, width: 1)),
+          border: Border(
+            top: BorderSide(color: AppColors.secondaryBackground, width: 1),
+          ),
         ),
         padding: EdgeInsets.all(15),
         child: SafeArea(
           child: currentIndex == questions.length - 1
               ? CustomizeButton(
                   text: 'Generate',
-                  onPressed: _goToRecommendationScreen,
+                  onPressed: selectedOptionIndex != -1
+                      ? _goToRecommendationScreen
+                      : null,
                 )
               : Row(
                   children: [
