@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import './welcome_screen_components.dart';
-import '../q&a/question_screen.dart';
+import '../../widgets/widget.dart';
 import '../../../data/onboarding_pages/onboarding_pages.dart';
 import 'package:go_router/go_router.dart';
-
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
@@ -62,85 +60,39 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             itemBuilder: (context, index) => onboardingPages[index],
           ),
           Positioned(
-            bottom: 40,
+            bottom: 20,
             left: 20,
-            child: TextButton(
-              onPressed: _currentIndex == onboardingPages.length -1 ? null : _onSkip,
-              child: Text(
-                "Skip",
-                style: TextStyle(
-                  color: _currentIndex == onboardingPages.length -1 ? Colors.grey : Colors.red  ,
-                  fontSize: 14,
-                  fontWeight: FontWeight.w600
-                ),
-              )
-            )
-          ),
-          Positioned(
-            bottom: 40,
             right: 20,
-            child: TextButton(
-              onPressed: _onNext,
-              child: Text(
-                _currentIndex == onboardingPages.length -1 ? "Finished" : "Next",
-                style: TextStyle(
-                  color: Colors.blue,
-                  fontSize: 14,
-                  fontWeight: FontWeight.w600
+            child: Column(
+              children: [
+                SmoothPageIndicator(
+                  controller: _pageController,
+                  count: onboardingPages.length,
+                  effect: ExpandingDotsEffect(
+                    dotHeight: 8,
+                    dotWidth: 8,
+                    activeDotColor: Colors.blue,
+                    dotColor: Colors.grey,
+                    expansionFactor: 2.5,
+                    spacing: 8,
+                  ),
                 ),
-              )
-            )
-          ),
-          Positioned(
-            bottom: 40,
-            right: 0,
-            left: 0,
-            child: Center(
-              child: SmoothPageIndicator(
-                controller: _pageController,
-                count: onboardingPages.length,
-                effect: WormEffect(
-                  dotHeight: 8,
-                  dotWidth: 8,
-                  dotColor: Colors.grey,
-                  activeDotColor: Colors.blue
+                SizedBox(height: 20),
+                CustomizeButton(
+                  text: _currentIndex == onboardingPages.length -1 ? "Get Started" : "Next", 
+                  onPressed: _onNext
                 ),
-              ),
+                if (_currentIndex != onboardingPages.length -1) ...[
+                  SizedBox(height: 12),
+                  CustomizeButton(
+                    text: "Skip",
+                    onPressed: _onSkip,
+                    isTextButton: true,
+                  ),
+                ],
+              ],
             ),
-          )
-          // Positioned(
-          //   bottom: 40,
-          //   left: 20,
-          //   right: 20,
-          //   child: Column(
-          //     children: [
-          //       // NEXT BUTTON
-          //       SizedBox(
-          //         width: double.infinity,
-          //         height: 52,
-          //         child: ElevatedButton(
-          //           onPressed: _onNext,
-          //           style: ElevatedButton.styleFrom(
-          //             backgroundColor: const Color.fromARGB(255, 17, 55, 144),
-          //             foregroundColor: Colors.white,
-          //             shape: RoundedRectangleBorder(
-          //               borderRadius: BorderRadius.circular(14),
-          //             ),
-          //             elevation: 0,
-          //           ),
-          //           child: Text(
-          //             _currentIndex == onboardingPages.length - 1 ? "Get Started" : "Next",
-          //             style: const TextStyle(
-          //               fontFamily: 'Roboto',
-          //               fontSize: 16,
-          //               fontWeight: FontWeight.w600,
-          //             ),
-          //           ),
-          //         ),
-          //       ),
-          //     ],
-          //   ),
-          // ),
+          ),
         ],
       ),
     );

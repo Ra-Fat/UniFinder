@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 // import '../ui/screens/q&a/question_screen.dart';
 // import './screens/utils/logo_splash_screen.dart';
 import '../routers/app_router.dart';
+import './theme/app_colors.dart';
 
 class App extends StatefulWidget {
   const App({super.key});
@@ -22,7 +23,7 @@ class _AppState extends State<App> {
         //   brightness: Brightness.dark,
         //   surface: const Color.fromARGB(255, 42, 51, 59),
         // ),
-       scaffoldBackgroundColor: Color(0xFF0f172a),
+       scaffoldBackgroundColor: AppColors.darkBackground,
       ),
       routerConfig: appRouter,
     );

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import '../../widgets/widget.dart';
 
 
 class QuestionScreen extends StatefulWidget {
@@ -24,8 +25,6 @@ class _QuestionScreenState extends State<QuestionScreen> {
   void _onSubmitName() {
     if(formKey.currentState!.validate()){
       context.go('/questions');
-    }else{
-
     }
   }
 
@@ -61,13 +60,12 @@ class _QuestionScreenState extends State<QuestionScreen> {
               children: [
                 Image.asset("assets/logo/test.png", height: 200),
                 TextFormField(
-                  // textAlign: TextAlign.center,
                   validator: _onValidateName,
                   controller: _titleController,
                   decoration: InputDecoration(
                     label: Text("Enter Your Name"),
                     prefixIcon: Icon(Icons.person_outline),
-                    contentPadding: const EdgeInsets.symmetric(vertical: 15),
+                    contentPadding: const EdgeInsets.symmetric(vertical: 18),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -75,24 +73,9 @@ class _QuestionScreenState extends State<QuestionScreen> {
                 ),
                 SizedBox(height: 20),
                 SizedBox(
-                  width: double.infinity,
-                  height: 45,
-                  child: ElevatedButton(
-                    onPressed: _onSubmitName,
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor:Color.fromARGB(255, 17, 55, 144),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadiusGeometry.circular(13),
-                      ),
-                    ),
-                    child: Text(
-                      "Continue",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16,
-                        color: Colors.white,
-                      ),
-                    ),
+                  child: CustomizeButton(
+                    text: "Continue", 
+                    onPressed: _onSubmitName
                   ),
                 ),
               ],

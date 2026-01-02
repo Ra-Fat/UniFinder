@@ -1,5 +1,6 @@
 import 'package:go_router/go_router.dart';
 import '../ui/screens/q&a/question_screen.dart';
+import '../ui/screens/recommendation/recommendation.dart';
 import '../ui/app.dart';
 import '../ui/screens/utils/logo_splash_screen.dart';
 import '../ui/screens/welcomes/welcome_screen.dart';
@@ -24,6 +25,10 @@ final GoRouter appRouter = GoRouter(
     GoRoute(
       path: '/questions',
       builder: (context, state) => const MutipleChoiceQuestionScreen(),
+    ),
+    GoRoute(
+      path: '/recommendation',
+      builder: (context, state) => const Recommendation(),
     ),
   ]
 );

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import '../../../model/question_model.dart';
 import '../../../model/option_model.dart';
 import '../../../main.dart';
+import '../../widgets/widget.dart';
+import '../../theme/app_colors.dart';
 
 class MutipleChoiceQuestionScreen extends StatefulWidget {
   const MutipleChoiceQuestionScreen({super.key});
@@ -79,6 +82,10 @@ class _MutipleChoiceQuestionScreenState
     }
   }
 
+  void _goToRecommendationScreen() {
+    context.go('/recommendation');
+  }
+
   @override
   Widget build(BuildContext context) {
     if (isLoading) {
@@ -102,7 +109,7 @@ class _MutipleChoiceQuestionScreenState
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF0f172a),
+        backgroundColor: AppColors.darkBackground,
         elevation: 0,
         title: Row(
           children: [
@@ -113,21 +120,14 @@ class _MutipleChoiceQuestionScreenState
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        'Question ${currentIndex + 1} of ${questions.length}',
-                        style: TextStyle(
-                          color: Colors.white70,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                        ),
+                      CustomSecondaryText(
+                        text: 'Question ${currentIndex + 1} of ${questions.length}',
+                        fontSize: 14,
                       ),
-                      Text(
-                        '${((currentIndex + 1) / questions.length * 100).round()}%',
-                        style: TextStyle(
-                          color: Colors.blue,
-                          fontSize: 14,
-                          fontWeight: FontWeight.bold,
-                        ),
+                      CustomSecondaryText(
+                        text: '${((currentIndex + 1) / questions.length * 100).round()}%',
+                        textColor: Colors.blue,
+                        fontSize: 14,
                       ),
                     ],
                   ),
@@ -136,7 +136,7 @@ class _MutipleChoiceQuestionScreenState
                     borderRadius: BorderRadius.circular(10),
                     child: LinearProgressIndicator(
                       value: (currentIndex + 1) / questions.length,
-                      backgroundColor: Color(0xFF1e293b),
+                      backgroundColor: AppColors.secondaryBackground,
                       valueColor: AlwaysStoppedAnimation<Color>(Colors.blue),
                       minHeight: 6,
                     ),
@@ -154,22 +154,18 @@ class _MutipleChoiceQuestionScreenState
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              currentQuestion.text,
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
-              ),
+            CustomPrimaryText(
+              text: currentQuestion.text,
             ),
             SizedBox(height: 8),
-            Text(
-              "Select one option",
-              style: TextStyle(fontSize: 13, color: Colors.grey),
+            CustomSecondaryText(
+              text: "Select one option"
             ),
             SizedBox(height: 8),
             if (currentOptions.isEmpty)
-              Text('No options available', style: TextStyle(color: Colors.grey))
+              CustomSecondaryText(
+                text: 'No options available'
+              )
             else
               ...List.generate(currentOptions.length, (index) {
                 final option = currentOptions[index];
@@ -188,13 +184,13 @@ class _MutipleChoiceQuestionScreenState
                       ),
                       decoration: BoxDecoration(
                         color: isSelected
-                            ? const Color(0xFF1e40af)
-                            : const Color(0xFF1e293b),
+                            ? AppColors.primaryBlue
+                            : AppColors.secondaryBackground,
                         borderRadius: BorderRadius.circular(14),
                         border: Border.all(
                           color: isSelected
-                              ? Colors.blue
-                              : const Color(0xFF334155),
+                              ? AppColors.accentBlue
+                              : AppColors.tertiaryBackground,
                           width: 1.5,
                         ),
                       ),
@@ -227,33 +223,15 @@ class _MutipleChoiceQuestionScreenState
       ),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
-          color: Color(0xFF0f172a),
-          border: Border(top: BorderSide(color: Color(0xFF1e293b), width: 1)),
+          color: AppColors.darkBackground,
+          border: Border(top: BorderSide(color: AppColors.secondaryBackground, width: 1)),
         ),
         padding: EdgeInsets.all(15),
         child: SafeArea(
           child: currentIndex == questions.length - 1
-              ? SizedBox(
-                  height: 50,
-                  width: double.infinity,
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Color.fromARGB(255, 17, 55, 144),
-                      shadowColor: Colors.transparent,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                    ),
-                    child: Text(
-                      'Generate',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
+              ? CustomizeButton(
+                  text: 'Generate',
+                  onPressed: _goToRecommendationScreen,
                 )
               : Row(
                   children: [
@@ -261,7 +239,7 @@ class _MutipleChoiceQuestionScreenState
                       width: 55,
                       height: 50,
                       decoration: BoxDecoration(
-                        color: Color(0xFF1e293b).withOpacity(0.5),
+                        color: AppColors.secondaryBackground.withOpacity(0.5),
                         borderRadius: BorderRadius.circular(16),
                       ),
                       child: IconButton(
@@ -275,42 +253,11 @@ class _MutipleChoiceQuestionScreenState
                     ),
                     SizedBox(width: 12),
                     Expanded(
-                      child: Container(
-                        height: 50,
-                        decoration: BoxDecoration(
-                          color: selectedOptionIndex != -1
-                              ? Color.fromARGB(255, 17, 55, 144)
-                              : Color(0xFF374151),
-                          borderRadius: BorderRadius.circular(16),
-                        ),
-                        child: ElevatedButton(
-                          onPressed: selectedOptionIndex != -1
-                              ? _goNextQuestion
-                              : null,
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.transparent,
-                            shadowColor: Colors.transparent,
-                            disabledBackgroundColor: Colors.transparent,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(16),
-                            ),
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'Next',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              SizedBox(width: 8),
-                              Icon(Icons.chevron_right, color: Colors.white),
-                            ],
-                          ),
-                        ),
+                      child: CustomizeButton(
+                        text: 'Next',
+                        onPressed: selectedOptionIndex != -1
+                            ? _goNextQuestion
+                            : null,
                       ),
                     ),
                   ],
