@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../dream/Domain/mock_data.dart';
+import '../../../../model/career_model.dart';
 
 class CareerHeader extends StatelessWidget {
   final Career career;
@@ -35,7 +35,7 @@ class CareerHeader extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           Text(
-            career.shortDescription,
+            career.shortDescription ?? '',
             style: textTheme.bodyMedium,
             textAlign: TextAlign.center,
           ),

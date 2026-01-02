@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import '../Domain/mock_data.dart';
+import '../../../../model/major_model.dart';
+import 'package:uni_finder/model/universityMajorDetail.dart';
 import '../../../common/widgets/university_tile.dart';
 
 class MajorCard extends StatefulWidget {
   final Major major;
-  final List<UniversityMajor> universityMajors;
+  final List<UniversityMajorDetail> universityMajors;
 
   const MajorCard({
     super.key,
@@ -96,7 +97,7 @@ class _MajorCardState extends State<MajorCard> {
 
 class RelatedMajorList extends StatelessWidget {
   final List<Major> majors;
-  final List<UniversityMajor> universityMajors;
+  final List<UniversityMajorDetail> universityMajors;
 
   const RelatedMajorList({
     super.key,

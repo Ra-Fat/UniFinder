@@ -1,175 +1,149 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
-import 'package:uni_finder/ui/screens/dream/dream_screen.dart';
-import 'package:uni_finder/ui/screens/q&a/question_screen.dart';
-import '../dream/Domain/mock_data.dart';
-import '../dream/Domain/Service/dream_service.dart';
+import 'package:go_router/go_router.dart';
+import 'package:uni_finder/model/dreams_model.dart';
+import 'package:uni_finder/service/dream_service.dart';
+import 'package:uni_finder/ui/common/constants/app_colors.dart';
+import 'package:uni_finder/ui/common/constants/app_spacing.dart';
+import 'package:uni_finder/ui/common/constants/app_text_styles.dart';
+import 'widget/dream_card.dart';
+import 'package:uni_finder/ui/common/widgets/compare_universities_bottom_sheet.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class HomeScreen extends StatefulWidget {
+  final DreamService dreamService;
+
+  const HomeScreen({super.key, required this.dreamService});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  List<Dream> _dreams = [];
+  String _userName = 'User';
+  bool _isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadData();
+  }
+
+  Future<void> _loadData() async {
+    final dreams = await widget.dreamService.getDreams();
+    final users = await widget.dreamService.getUsers();
+
+    setState(() {
+      _dreams = dreams;
+      // Use first user if available, otherwise default to 'User'
+      _userName = users.isNotEmpty ? users.first.name : 'User';
+      _isLoading = false;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
         children: [
-          Padding(
-            padding: const EdgeInsets.only(top: 50.0, left: 20.0, right: 20.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    Text(
-                      'Welcome,',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 28,
+          SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.only(
+                top: AppSpacing.paddingTop,
+                left: AppSpacing.paddingHorizontal,
+                right: AppSpacing.paddingHorizontal,
+                bottom: AppSpacing.xxl,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          const Text('Welcome,', style: AppTextStyles.h1White),
+                          const SizedBox(width: AppSpacing.sm),
+                          Text(
+                            _userName,
+                            style: AppTextStyles.h1.copyWith(
+                              color: AppColors.primary,
+                            ),
+                          ),
+                        ],
+                      ),
+                      IconButton(
+                        icon: const Icon(Icons.compare_arrows),
+                        tooltip: 'Compare',
+                        onPressed: () {
+                          CompareUniversitiesBottomSheet.show(
+                            context,
+                            widget.dreamService,
+                          );
+                        },
+                      ),
+                    ],
+                  ),
+                  Text(
+                    'Discover your dream here',
+                    style: AppTextStyles.bodySmall.copyWith(
+                      color: AppColors.white,
+                    ),
+                  ),
+                  const SizedBox(height: AppSpacing.xxl),
+                  TextField(
+                    decoration: InputDecoration(
+                      labelText: 'Search',
+                      prefixIcon: const Icon(Icons.search, size: 15),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(
+                          AppSpacing.radiusMd,
+                        ),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(
+                          AppSpacing.radiusXl,
+                        ),
+                        borderSide: const BorderSide(color: AppColors.primary),
                       ),
                     ),
-                    SizedBox(width: 8),
-                    Text(
-                      'Your name',
-                      style: TextStyle(
-                        color: Color(0xFF1500FE),
-                        fontWeight: FontWeight.bold,
-                        fontSize: 28,
-                      ),
-                    ),
-                  ],
-                ),
-                Text(
-                  'Discover your dream here',
-                  style: TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.normal,
-                    color: Colors.white70,
                   ),
-                ),
-                SizedBox(height: 40.0),
-                TextField(
-                  decoration: InputDecoration(
-                    labelText: 'Search',
-                    prefixIcon: Icon(Icons.search, size: 15),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30),
-                      borderSide: BorderSide(color: Color(0xFF1500FE)),
-                    ),
-                  ),
-                  // onChanged:,
-                ),
-                SizedBox(height: 10.0),
-                Text('Your Dream'),
-                SizedBox(height: 10.0),
-                Expanded(
-                  child: ListView.builder(
-                    itemCount:
-                        1, // Replace with your dreams list length in the future
-                    itemBuilder: (context, index) {
-                      // In the future, pass dream data to DreamCard
-                      return DreamCard();
-                    },
-                  ),
-                ),
-              ],
+                  const SizedBox(height: AppSpacing.md),
+                  const Text('Your Dream'),
+                  const SizedBox(height: AppSpacing.md),
+                  _isLoading
+                      ? const Center(child: CircularProgressIndicator())
+                      : _dreams.isEmpty
+                      ? const Center(
+                          child: Text(
+                            'No dreams yet. Add one!',
+                            style: AppTextStyles.bodySmall,
+                          ),
+                        )
+                      : ListView.builder(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount: _dreams.length,
+                          itemBuilder: (context, index) {
+                            return DreamCard(dream: _dreams[index]);
+                          },
+                        ),
+                ],
+              ),
             ),
           ),
           Positioned(
-            bottom: 24,
-            right: 24,
+            bottom: AppSpacing.lg,
+            right: AppSpacing.lg,
             child: FloatingActionButton(
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const QuestionScreen(),
-                  ),
-                );
+                context.push('/questions');
               },
-              backgroundColor: Color(0xFF1500FE),
-              shape: CircleBorder(),
-              child: Icon(Icons.add, color: Colors.white),
+              backgroundColor: AppColors.primary,
+              shape: const CircleBorder(),
+              child: const Icon(Icons.add, color: AppColors.white),
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class DreamCard extends StatelessWidget {
-  const DreamCard({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    final String formattedDate = DateFormat(
-      'MMM dd, yyyy',
-    ).format(DateTime.now());
-
-    return Card(
-      color: Colors.white,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(bottom: 2.0),
-              child: Text(
-                'Childhood Dream',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16,
-                  color: Colors.black,
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 10.0),
-              child: Text(
-                'Created: $formattedDate',
-                style: TextStyle(color: Colors.grey[600], fontSize: 12),
-              ),
-            ),
-            SizedBox(
-              width: double.infinity,
-              child: OutlinedButton(
-                style: OutlinedButton.styleFrom(
-                  foregroundColor: Colors.black, // Text color
-                  side: BorderSide(color: Colors.grey),
-                  backgroundColor: Colors.grey.shade100,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  padding: const EdgeInsets.symmetric(vertical: 16),
-                ),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => DreamDetail(
-                        dream: dream,
-                        dreamService: DreamService(
-                          allCareers: careers,
-                          allUniversityMajors: universityMajors,
-                          allMajors: allMajors,
-                        ),
-                      ),
-                    ),
-                  );
-                },
-                child: Text(
-                  'View Detail',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-              ),
-            ),
-          ],
-        ),
       ),
     );
   }

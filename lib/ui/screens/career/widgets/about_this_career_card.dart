@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../dream/Domain/mock_data.dart';
+import '../../../../model/career_model.dart';
 
 class AboutThisCareerCard extends StatefulWidget {
   final Career career;

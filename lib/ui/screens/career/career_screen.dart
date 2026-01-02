@@ -1,17 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:uni_finder/ui/common/constants/app_spacing.dart';
 import 'package:uni_finder/ui/screens/dream/widgets/career_card.dart';
-import '../dream/Domain/mock_data.dart';
+import '../../../model/career_model.dart';
+import '../../../model/major_model.dart';
+import '../../../service/dream_service.dart';
 
 class CareerScreen extends StatelessWidget {
   final List<Career> careers;
   final Major? major;
   final List<Major>? relatedMajors;
+  final DreamService dreamService;
 
   const CareerScreen({
     super.key,
     required this.careers,
     this.major,
     this.relatedMajors,
+    required this.dreamService,
   });
 
   @override
@@ -37,7 +42,7 @@ class CareerScreen extends StatelessWidget {
         ),
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(15.0),
+        padding: const EdgeInsets.all(AppSpacing.paddingHorizontal),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -54,6 +59,7 @@ class CareerScreen extends StatelessWidget {
                     width: (MediaQuery.of(context).size.width - 40) / 2 - 12,
                     major: major,
                     relatedMajors: relatedMajors,
+                    dreamService: dreamService,
                   ),
                 );
               }).toList(),

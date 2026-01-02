@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:uni_finder/ui/screens/dream/dream_screen.dart';
-import 'screens/dream/Domain/mock_data.dart';
-import 'screens/dream/Domain/Service/dream_service.dart';
 // import './screens/welcomes/welcome_screen.dart';
 // import '../ui/screens/q&a/question_screen.dart';
 // import './screens/utils/logo_splash_screen.dart';
@@ -26,16 +23,6 @@ class _AppState extends State<App> {
         //   surface: const Color.fromARGB(255, 42, 51, 59),
         // ),
         scaffoldBackgroundColor: Color(0xFF0f172a),
-      ),
-      // home: LogoSplashScreen(),
-      // home: HomeScreen(),
-      home: DreamDetail(
-        dream: dream,
-        dreamService: DreamService(
-          allCareers: careers,
-          allUniversityMajors: universityMajors,
-          allMajors: allMajors,
-        ),
       ),
       routerConfig: appRouter,
     );

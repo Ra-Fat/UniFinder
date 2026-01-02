@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import '../../dream/Domain/mock_data.dart';
+import 'package:uni_finder/model/universityMajorDetail.dart';
 import '../../../common/widgets/university_tile.dart';
 
 class UniversitiesCard extends StatefulWidget {
-  final List<UniversityMajor> universityMajors;
-  final String majorId;
+  final List<UniversityMajorDetail> universityMajors;
+  final int majorId;
 
   const UniversitiesCard({
     super.key,

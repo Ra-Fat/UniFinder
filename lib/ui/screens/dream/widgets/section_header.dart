@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:uni_finder/ui/screens/dream/Domain/mock_data.dart';
+import '../../../../model/career_model.dart';
 
 class SectionHeader extends StatelessWidget {
   final String title;

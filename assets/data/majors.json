@@ -3,90 +3,210 @@
     "id": 1,
     "name": "Computer Science",
     "category_id": 1,
-    "description": "Study of algorithms, programming, data structures, and software development."
+    "description": "Study of algorithms, programming, data structures, and software development. Covers theoretical foundations and practical applications of computing."
   },
   {
     "id": 2,
     "name": "Software Engineering",
     "category_id": 1,
-    "description": "Focus on designing, developing, and maintaining software systems."
+    "description": "Focus on designing, developing, and maintaining software systems using engineering principles and methodologies."
   },
   {
     "id": 3,
     "name": "Information Technology",
     "category_id": 1,
-    "description": "Managing and implementing technology solutions for businesses."
+    "description": "Managing and implementing technology solutions for businesses, including networks, databases, and cybersecurity."
   },
   {
     "id": 4,
-    "name": "Business Administration",
-    "category_id": 2,
-    "description": "Learn management, finance, marketing, and organizational leadership."
+    "name": "Data Science",
+    "category_id": 1,
+    "description": "Analysis of complex data sets using statistical methods, machine learning, and computational techniques."
   },
   {
     "id": 5,
-    "name": "Economics",
-    "category_id": 2,
-    "description": "Study of economic theory, policy, and market analysis."
+    "name": "Cybersecurity",
+    "category_id": 1,
+    "description": "Protection of digital systems, networks, and data from cyber threats and unauthorized access."
   },
   {
     "id": 6,
-    "name": "Accounting",
-    "category_id": 2,
-    "description": "Financial reporting, auditing, and tax preparation."
+    "name": "Artificial Intelligence",
+    "category_id": 1,
+    "description": "Development of intelligent systems that can perform tasks requiring human-like intelligence and learning."
   },
   {
     "id": 7,
-    "name": "Graphic Design",
-    "category_id": 3,
-    "description": "Visual communication through art, typography, and digital media."
+    "name": "Business Administration",
+    "category_id": 2,
+    "description": "Learn management, finance, marketing, and organizational leadership to run successful businesses."
   },
   {
     "id": 8,
-    "name": "Fine Arts",
-    "category_id": 3,
-    "description": "Painting, sculpture, and traditional artistic expression."
+    "name": "Economics",
+    "category_id": 2,
+    "description": "Study of economic theory, policy, market analysis, and resource allocation in society."
   },
   {
     "id": 9,
-    "name": "Architecture",
-    "category_id": 3,
-    "description": "Design and planning of buildings and structures."
+    "name": "Accounting",
+    "category_id": 2,
+    "description": "Financial reporting, auditing, tax preparation, and financial analysis for organizations."
   },
   {
     "id": 10,
-    "name": "Mathematics",
-    "category_id": 4,
-    "description": "Pure and applied mathematics, statistics, and analysis."
+    "name": "Finance",
+    "category_id": 2,
+    "description": "Management of money, investments, banking, and financial planning for individuals and organizations."
   },
   {
     "id": 11,
-    "name": "Physics",
-    "category_id": 4,
-    "description": "Study of matter, energy, and the fundamental laws of nature."
+    "name": "Marketing",
+    "category_id": 2,
+    "description": "Promotion of products and services through market research, advertising, and consumer behavior analysis."
   },
   {
     "id": 12,
-    "name": "Chemistry",
-    "category_id": 4,
-    "description": "Chemical processes, reactions, and molecular structures."
+    "name": "International Business",
+    "category_id": 2,
+    "description": "Global business operations, international trade, and cross-cultural management practices."
   },
   {
     "id": 13,
-    "name": "Medicine",
-    "category_id": 5,
-    "description": "Comprehensive medical training to become a physician."
+    "name": "Graphic Design",
+    "category_id": 3,
+    "description": "Visual communication through art, typography, digital media, and creative design solutions."
   },
   {
     "id": 14,
-    "name": "Nursing",
-    "category_id": 5,
-    "description": "Patient care, health assessment, and medical support."
+    "name": "Fine Arts",
+    "category_id": 3,
+    "description": "Traditional artistic expression through painting, sculpture, drawing, and studio art practices."
   },
   {
     "id": 15,
+    "name": "Architecture",
+    "category_id": 3,
+    "description": "Design and planning of buildings, structures, and urban environments with aesthetic and functional considerations."
+  },
+  {
+    "id": 16,
+    "name": "Digital Media",
+    "category_id": 3,
+    "description": "Creation and production of digital content including video, animation, and interactive media."
+  },
+  {
+    "id": 17,
+    "name": "Film and Media Studies",
+    "category_id": 3,
+    "description": "Analysis and production of film, television, and digital media content and storytelling."
+  },
+  {
+    "id": 18,
+    "name": "Music",
+    "category_id": 3,
+    "description": "Musical theory, composition, performance, and production across various genres and instruments."
+  },
+  {
+    "id": 19,
+    "name": "Mathematics",
+    "category_id": 4,
+    "description": "Pure and applied mathematics, including algebra, calculus, statistics, and mathematical modeling."
+  },
+  {
+    "id": 20,
+    "name": "Physics",
+    "category_id": 4,
+    "description": "Study of matter, energy, space, and time through theoretical and experimental physics."
+  },
+  {
+    "id": 21,
+    "name": "Chemistry",
+    "category_id": 4,
+    "description": "Chemical processes, reactions, molecular structures, and laboratory analysis techniques."
+  },
+  {
+    "id": 22,
+    "name": "Biology",
+    "category_id": 4,
+    "description": "Study of living organisms, ecosystems, genetics, and biological processes."
+  },
+  {
+    "id": 23,
+    "name": "Environmental Science",
+    "category_id": 4,
+    "description": "Study of environmental systems, sustainability, and solutions to environmental challenges."
+  },
+  {
+    "id": 24,
+    "name": "Statistics",
+    "category_id": 4,
+    "description": "Collection, analysis, interpretation, and presentation of data using statistical methods."
+  },
+  {
+    "id": 25,
+    "name": "Medicine",
+    "category_id": 5,
+    "description": "Comprehensive medical training to become a physician, including diagnosis, treatment, and patient care."
+  },
+  {
+    "id": 26,
+    "name": "Nursing",
+    "category_id": 5,
+    "description": "Patient care, health assessment, medical procedures, and healthcare support services."
+  },
+  {
+    "id": 27,
     "name": "Pharmacy",
     "category_id": 5,
-    "description": "Medication management, drug development, and patient counseling."
+    "description": "Medication management, drug development, pharmacology, and patient medication counseling."
+  },
+  {
+    "id": 28,
+    "name": "Public Health",
+    "category_id": 5,
+    "description": "Population health, disease prevention, health policy, and community health promotion."
+  },
+  {
+    "id": 29,
+    "name": "Dentistry",
+    "category_id": 5,
+    "description": "Oral health care, dental procedures, and treatment of dental and oral diseases."
+  },
+  {
+    "id": 30,
+    "name": "Psychology",
+    "category_id": 5,
+    "description": "Study of human behavior, mental processes, and psychological assessment and therapy."
+  },
+  {
+    "id": 31,
+    "name": "Civil Engineering",
+    "category_id": 1,
+    "description": "Design and construction of infrastructure including roads, bridges, buildings, and water systems."
+  },
+  {
+    "id": 32,
+    "name": "Mechanical Engineering",
+    "category_id": 1,
+    "description": "Design and manufacturing of mechanical systems, machines, and thermal devices."
+  },
+  {
+    "id": 33,
+    "name": "Electrical Engineering",
+    "category_id": 1,
+    "description": "Design and development of electrical systems, electronics, and power distribution."
+  },
+  {
+    "id": 34,
+    "name": "Education",
+    "category_id": 3,
+    "description": "Teaching methodologies, curriculum development, and educational psychology for various levels."
+  },
+  {
+    "id": 35,
+    "name": "Law",
+    "category_id": 2,
+    "description": "Legal principles, judicial processes, and preparation for legal practice and advocacy."
   }
 ]

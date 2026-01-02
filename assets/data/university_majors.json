@@ -1,0 +1,314 @@
+[
+  {
+    "id": 1,
+    "university_id": 1,
+    "major_id": 1,
+    "price_per_year": 500.0,
+    "duration_years": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "id": 2,
+    "university_id": 1,
+    "major_id": 2,
+    "price_per_year": 700.0,
+    "duration_years": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "id": 3,
+    "university_id": 1,
+    "major_id": 4,
+    "price_per_year": 600.0,
+    "duration_years": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "id": 4,
+    "university_id": 1,
+    "major_id": 7,
+    "price_per_year": 550.0,
+    "duration_years": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "id": 5,
+    "university_id": 1,
+    "major_id": 13,
+    "price_per_year": 800.0,
+    "duration_years": 6,
+    "degree": "Doctor of Medicine"
+  },
+  {
+    "id": 6,
+    "university_id": 2,
+    "major_id": 1,
+    "price_per_year": 800.0,
+    "duration_years": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "id": 7,
+    "university_id": 2,
+    "major_id": 2,
+    "price_per_year": 900.0,
+    "duration_years": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "id": 8,
+    "university_id": 2,
+    "major_id": 3,
+    "price_per_year": 750.0,
+    "duration_years": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "id": 9,
+    "university_id": 2,
+    "major_id": 4,
+    "price_per_year": 850.0,
+    "duration_years": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "id": 10,
+    "university_id": 2,
+    "major_id": 31,
+    "price_per_year": 700.0,
+    "duration_years": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "id": 11,
+    "university_id": 2,
+    "major_id": 32,
+    "price_per_year": 750.0,
+    "duration_years": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "id": 12,
+    "university_id": 2,
+    "major_id": 33,
+    "price_per_year": 800.0,
+    "duration_years": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "id": 13,
+    "university_id": 3,
+    "major_id": 7,
+    "price_per_year": 650.0,
+    "duration_years": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "id": 14,
+    "university_id": 3,
+    "major_id": 8,
+    "price_per_year": 600.0,
+    "duration_years": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "id": 15,
+    "university_id": 3,
+    "major_id": 9,
+    "price_per_year": 700.0,
+    "duration_years": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "id": 16,
+    "university_id": 3,
+    "major_id": 10,
+    "price_per_year": 650.0,
+    "duration_years": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "id": 17,
+    "university_id": 3,
+    "major_id": 35,
+    "price_per_year": 750.0,
+    "duration_years": 4,
+    "degree": "Bachelor of Laws"
+  },
+  {
+    "id": 18,
+    "university_id": 4,
+    "major_id": 25,
+    "price_per_year": 1000.0,
+    "duration_years": 6,
+    "degree": "Doctor of Medicine"
+  },
+  {
+    "id": 19,
+    "university_id": 4,
+    "major_id": 26,
+    "price_per_year": 600.0,
+    "duration_years": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "id": 20,
+    "university_id": 4,
+    "major_id": 27,
+    "price_per_year": 700.0,
+    "duration_years": 5,
+    "degree": "Bachelor"
+  },
+  {
+    "id": 21,
+    "university_id": 4,
+    "major_id": 28,
+    "price_per_year": 550.0,
+    "duration_years": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "id": 22,
+    "university_id": 5,
+    "major_id": 13,
+    "price_per_year": 500.0,
+    "duration_years": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "id": 23,
+    "university_id": 5,
+    "major_id": 14,
+    "price_per_year": 450.0,
+    "duration_years": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "id": 24,
+    "university_id": 5,
+    "major_id": 15,
+    "price_per_year": 550.0,
+    "duration_years": 3,
+    "degree": "Bachelor"
+  },
+  {
+    "id": 25,
+    "university_id": 5,
+    "major_id": 16,
+    "price_per_year": 600.0,
+    "duration_years": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "id": 26,
+    "university_id": 5,
+    "major_id": 18,
+    "price_per_year": 500.0,
+    "duration_years": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "id": 27,
+    "university_id": 6,
+    "major_id": 1,
+    "price_per_year": 1200.0,
+    "duration_years": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "id": 28,
+    "university_id": 6,
+    "major_id": 2,
+    "price_per_year": 1300.0,
+    "duration_years": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "id": 29,
+    "university_id": 6,
+    "major_id": 7,
+    "price_per_year": 1100.0,
+    "duration_years": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "id": 30,
+    "university_id": 6,
+    "major_id": 11,
+    "price_per_year": 1150.0,
+    "duration_years": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "id": 31,
+    "university_id": 7,
+    "major_id": 7,
+    "price_per_year": 1500.0,
+    "duration_years": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "id": 32,
+    "university_id": 7,
+    "major_id": 8,
+    "price_per_year": 1400.0,
+    "duration_years": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "id": 33,
+    "university_id": 7,
+    "major_id": 9,
+    "price_per_year": 1600.0,
+    "duration_years": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "id": 34,
+    "university_id": 7,
+    "major_id": 10,
+    "price_per_year": 1450.0,
+    "duration_years": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "id": 35,
+    "university_id": 8,
+    "major_id": 22,
+    "price_per_year": 400.0,
+    "duration_years": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "id": 36,
+    "university_id": 8,
+    "major_id": 23,
+    "price_per_year": 450.0,
+    "duration_years": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "id": 37,
+    "university_id": 9,
+    "major_id": 7,
+    "price_per_year": 550.0,
+    "duration_years": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "id": 38,
+    "university_id": 9,
+    "major_id": 8,
+    "price_per_year": 500.0,
+    "duration_years": 4,
+    "degree": "Bachelor"
+  },
+  {
+    "id": 39,
+    "university_id": 9,
+    "major_id": 11,
+    "price_per_year": 600.0,
+    "duration_years": 4,
+    "degree": "Bachelor"
+  }
+]

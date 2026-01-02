@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../dream/Domain/mock_data.dart';
+import '../../../../model/major_model.dart';
 
 class EducationPathCard extends StatefulWidget {
   final Major major;
