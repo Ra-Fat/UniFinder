@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import './welcome_screen_components.dart';
 import '../q&a/question_screen.dart';
+import '../../../data/onboarding_pages/onboarding_pages.dart';
+import 'package:go_router/go_router.dart';
+
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
@@ -14,66 +17,33 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   final PageController _pageController = PageController();
   int _currentIndex = 0;
 
-  final List<Widget> _pages = [
-    WelcomeScreenComponents(
-      title: "Welcome to UniFinder",
-      description:
-          "Find the university, major, and career path that fit you best.",
-      imagePath: "panels/student_panel3.png",
-    ),
-    WelcomeScreenComponents(
-      title: "Discover Your Path",
-      description:
-          "Answer questions about your interests and get personalized recommendations.",
-      imagePath: "panels/selection.png",
-    ),
-    WelcomeScreenComponents(
-      title: "Compare Universities",
-      description:
-          "Explore and compare Cambodian universities side-by-side.",
-      imagePath: "panels/compared.png",
-    ),
-    WelcomeScreenComponents(
-      title: "Plan Your Career",
-      description:"Connect your major choices with real career opportunities.",
-      imagePath: "panels/recommended.png",
-    ),
-  ];
-
   @override
   void dispose() {
     _pageController.dispose();
     super.dispose();
   }
 
-  void _onSkip(){
+  void _onSkip() {
     _pageController.animateToPage(
-      _pages.length-1, 
-      duration: Duration(milliseconds: 500), 
-      curve: Curves.easeInOut
+      onboardingPages.length - 1,
+      duration: Duration(milliseconds: 500),
+      curve: Curves.easeInOut,
     );
   }
 
-  void _onNext(){
-    if(_currentIndex < _pages.length-1){
+  void _onNext() {
+    if (_currentIndex < onboardingPages.length - 1) {
       _pageController.nextPage(
-        duration: Duration(milliseconds: 500), 
-        curve: Curves.easeInOut
+        duration: Duration(milliseconds: 500),
+        curve: Curves.easeInOut,
       );
-    }else{
+    } else {
       _onFinished();
     }
   }
 
-  void _onFinished(){
-    Navigator.pushReplacement(
-      context, 
-      PageRouteBuilder(
-        pageBuilder: (context, animation, secondaryAnimation) => QuestionScreen(),
-        transitionDuration: Duration.zero,
-        reverseTransitionDuration: Duration.zero,
-      )
-    );
+  void _onFinished() {
+    context.go('/name');
   }
 
   @override
@@ -88,18 +58,18 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 _currentIndex = index;
               });
             },
-            itemCount: _pages.length,
-            itemBuilder: (context, index) => _pages[index],
+            itemCount: onboardingPages.length,
+            itemBuilder: (context, index) => onboardingPages[index],
           ),
           Positioned(
             bottom: 40,
             left: 20,
             child: TextButton(
-              onPressed: _currentIndex == _pages.length -1 ? null : _onSkip, 
+              onPressed: _currentIndex == onboardingPages.length -1 ? null : _onSkip,
               child: Text(
                 "Skip",
                 style: TextStyle(
-                  color: _currentIndex == _pages.length -1 ? Colors.grey : Colors.red  ,
+                  color: _currentIndex == onboardingPages.length -1 ? Colors.grey : Colors.red  ,
                   fontSize: 14,
                   fontWeight: FontWeight.w600
                 ),
@@ -110,15 +80,14 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             bottom: 40,
             right: 20,
             child: TextButton(
-              onPressed: _onNext, 
+              onPressed: _onNext,
               child: Text(
-                _currentIndex == _pages.length -1 ? "Finish" : "Next",
+                _currentIndex == onboardingPages.length -1 ? "Finished" : "Next",
                 style: TextStyle(
                   color: Colors.blue,
                   fontSize: 14,
                   fontWeight: FontWeight.w600
                 ),
-
               )
             )
           ),
@@ -129,7 +98,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             child: Center(
               child: SmoothPageIndicator(
                 controller: _pageController,
-                count: _pages.length,
+                count: onboardingPages.length,
                 effect: WormEffect(
                   dotHeight: 8,
                   dotWidth: 8,
@@ -139,6 +108,39 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               ),
             ),
           )
+          // Positioned(
+          //   bottom: 40,
+          //   left: 20,
+          //   right: 20,
+          //   child: Column(
+          //     children: [
+          //       // NEXT BUTTON
+          //       SizedBox(
+          //         width: double.infinity,
+          //         height: 52,
+          //         child: ElevatedButton(
+          //           onPressed: _onNext,
+          //           style: ElevatedButton.styleFrom(
+          //             backgroundColor: const Color.fromARGB(255, 17, 55, 144),
+          //             foregroundColor: Colors.white,
+          //             shape: RoundedRectangleBorder(
+          //               borderRadius: BorderRadius.circular(14),
+          //             ),
+          //             elevation: 0,
+          //           ),
+          //           child: Text(
+          //             _currentIndex == onboardingPages.length - 1 ? "Get Started" : "Next",
+          //             style: const TextStyle(
+          //               fontFamily: 'Roboto',
+          //               fontSize: 16,
+          //               fontWeight: FontWeight.w600,
+          //             ),
+          //           ),
+          //         ),
+          //       ),
+          //     ],
+          //   ),
+          // ),
         ],
       ),
     );

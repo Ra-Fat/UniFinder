@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:uni_finder/ui/screens/dream/dream_screen.dart';
 import 'screens/dream/Domain/mock_data.dart';
 import 'screens/dream/Domain/Service/dream_service.dart';
+// import './screens/welcomes/welcome_screen.dart';
+// import '../ui/screens/q&a/question_screen.dart';
+// import './screens/utils/logo_splash_screen.dart';
+import '../routers/app_router.dart';
 
 class App extends StatefulWidget {
   const App({super.key});
@@ -13,7 +17,7 @@ class App extends StatefulWidget {
 class _AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark().copyWith(
         // colorScheme: ColorScheme.fromSeed(
@@ -33,6 +37,7 @@ class _AppState extends State<App> {
           allMajors: allMajors,
         ),
       ),
+      routerConfig: appRouter,
     );
   }
 }

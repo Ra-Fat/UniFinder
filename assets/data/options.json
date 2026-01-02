@@ -1,0 +1,142 @@
+[
+  {
+    "id": 1,
+    "question_id": 1,
+    "text": "Software Development & Programming",
+    "category_id": 1,
+    "score": 10
+  },
+  {
+    "id": 2,
+    "question_id": 1,
+    "text": "Business Management & Finance",
+    "category_id": 2,
+    "score": 8
+  },
+  {
+    "id": 3,
+    "question_id": 1,
+    "text": "Creative Arts & Design",
+    "category_id": 3,
+    "score": 9
+  },
+  {
+    "id": 4,
+    "question_id": 1,
+    "text": "Medical & Healthcare",
+    "category_id": 5,
+    "score": 10
+  },
+  {
+    "id": 5,
+    "question_id": 2,
+    "text": "Office environment with team collaboration",
+    "category_id": 2,
+    "score": 7
+  },
+  {
+    "id": 6,
+    "question_id": 2,
+    "text": "Laboratory or research facility",
+    "category_id": 4,
+    "score": 9
+  },
+  {
+    "id": 7,
+    "question_id": 2,
+    "text": "Remote work with flexible hours",
+    "category_id": 1,
+    "score": 8
+  },
+  {
+    "id": 8,
+    "question_id": 2,
+    "text": "Studio or creative workspace",
+    "category_id": 3,
+    "score": 10
+  },
+  {
+    "id": 9,
+    "question_id": 3,
+    "text": "Using logic and coding",
+    "category_id": 1,
+    "score": 10
+  },
+  {
+    "id": 10,
+    "question_id": 3,
+    "text": "Analyzing data and market trends",
+    "category_id": 2,
+    "score": 9
+  },
+  {
+    "id": 11,
+    "question_id": 3,
+    "text": "Through creative thinking and innovation",
+    "category_id": 3,
+    "score": 8
+  },
+  {
+    "id": 12,
+    "question_id": 3,
+    "text": "Through scientific research and experiments",
+    "category_id": 4,
+    "score": 10
+  },
+  {
+    "id": 13,
+    "question_id": 4,
+    "text": "Creating innovative technology",
+    "category_id": 1,
+    "score": 10
+  },
+  {
+    "id": 14,
+    "question_id": 4,
+    "text": "Building successful businesses",
+    "category_id": 2,
+    "score": 9
+  },
+  {
+    "id": 15,
+    "question_id": 4,
+    "text": "Expressing creativity and artistic vision",
+    "category_id": 3,
+    "score": 10
+  },
+  {
+    "id": 16,
+    "question_id": 4,
+    "text": "Helping people and improving health",
+    "category_id": 5,
+    "score": 10
+  },
+  {
+    "id": 17,
+    "question_id": 5,
+    "text": "Programming and software engineering",
+    "category_id": 1,
+    "score": 10
+  },
+  {
+    "id": 18,
+    "question_id": 5,
+    "text": "Leadership and strategic planning",
+    "category_id": 2,
+    "score": 9
+  },
+  {
+    "id": 19,
+    "question_id": 5,
+    "text": "Artistic and design skills",
+    "category_id": 3,
+    "score": 10
+  },
+  {
+    "id": 20,
+    "question_id": 5,
+    "text": "Research and analytical skills",
+    "category_id": 4,
+    "score": 9
+  }
+]

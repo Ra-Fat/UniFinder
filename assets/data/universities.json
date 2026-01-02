@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "name": "Royal University of Phnom Penh",
+    "short_name": "RUPP",
+    "description": "Cambodia's oldest and most prestigious university, offering programs in sciences, humanities, and social sciences.",
+    "location": "Phnom Penh",
+    "type": "Public",
+    "established_year": 1960,
+    "website": "https://rupp.edu.kh",
+    "phone": "+855 23 880 116",
+    "email": "info@rupp.edu.kh",
+    "logo_path": "assets/university/rupp_logo.png",
+    "cover_image_path": "assets/university/rupp_cover.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Institute of Technology of Cambodia",
+    "short_name": "ITC",
+    "description": "Leading engineering and technology university in Cambodia.",
+    "location": "Phnom Penh",
+    "type": "Public",
+    "established_year": 1964,
+    "website": "https://itc.edu.kh",
+    "phone": "+855 23 880 370",
+    "email": "contact@itc.edu.kh",
+    "logo_path": "assets/university/itc_logo.png",  
+    "cover_image_path": "assets/university/itc_cover.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Royal University of Law and Economics",
+    "short_name": "RULE",
+    "description": "Specializes in law, economics, and business administration.",
+    "location": "Phnom Penh",
+    "type": "Public",
+    "established_year": 2003,
+    "website": "https://rule.edu.kh",
+    "phone": "+855 23 987 654",
+    "email": "info@rule.edu.kh",
+    "logo_path": "assets/university/rule_logo.png",
+    "cover_image_path": "assets/university/rule_cover.jpg"
+  },
+  {
+    "id": 4,
+    "name": "University of Health Sciences",
+    "short_name": "UHS",
+    "description": "Premier medical and health sciences university in Cambodia.",
+    "location": "Phnom Penh",
+    "type": "Public",
+    "established_year": 1946,
+    "website": "https://uhs.edu.kh",
+    "phone": "+855 23 426 257",
+    "email": "info@uhs.edu.kh",
+    "logo_path": "assets/university/uhs_logo.png",
+    "cover_image_path": "assets/university/uhs_cover.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Royal University of Fine Arts",
+    "short_name": "RUFA",
+    "description": "Cambodia's leading institution for arts, music, and cultural studies.",
+    "location": "Phnom Penh",
+    "type": "Public",
+    "established_year": 1965,
+    "website": "https://rufa.edu.kh",
+    "phone": "+855 23 986 876",
+    "email": "info@rufa.edu.kh",
+    "logo_path": "assets/university/rufa_logo.png",
+    "cover_image_path": "assets/university/rufa_cover.jpg"
+  }
+]
