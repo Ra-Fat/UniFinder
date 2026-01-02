@@ -56,6 +56,20 @@ class DataRepository {
     }
   }
 
+  // get single user (for offline app with one user)
+  Future<User?> getUser() async {
+    try {
+      final data = await _storage.readJsonData('users.json');
+      if (data.isNotEmpty) {
+        return User.fromMap(data.first as Map<String, dynamic>);
+      }
+      return null;
+    } catch (err) {
+      print('Error loading user: $err');
+      return null;
+    }
+  }
+
   // get data from Categories
   Future<List<Category>> getCategories() async {
     try {

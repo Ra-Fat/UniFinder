@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import '../../../../model/major_model.dart';
+import '../../../common/constants/app_colors.dart';
+import '../../../common/constants/app_spacing.dart';
+import '../../../common/constants/app_text_styles.dart';
 
 class EducationPathCard extends StatefulWidget {
   final Major major;
@@ -26,17 +29,16 @@ class _EducationPathCardState extends State<EducationPathCard> {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
-    final colorScheme = Theme.of(context).colorScheme;
-
     return Card(
       elevation: 1,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(AppSpacing.radiusLg),
+      ),
       child: InkWell(
         onTap: widget.relatedMajors.isNotEmpty ? onExpanded : null,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(AppSpacing.radiusLg),
         child: Padding(
-          padding: const EdgeInsets.all(20),
+          padding: const EdgeInsets.all(AppSpacing.lg),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -48,13 +50,14 @@ class _EducationPathCardState extends State<EducationPathCard> {
                       Icon(
                         Icons.school_outlined,
                         size: 20,
-                        color: colorScheme.primary,
+                        color: AppColors.primary,
                       ),
-                      const SizedBox(width: 8),
+                      const SizedBox(width: AppSpacing.sm),
                       Text(
                         'Education Path',
-                        style: textTheme.titleMedium?.copyWith(
+                        style: AppTextStyles.h2.copyWith(
                           fontWeight: FontWeight.bold,
+                          color: AppColors.white
                         ),
                       ),
                     ],
@@ -62,28 +65,28 @@ class _EducationPathCardState extends State<EducationPathCard> {
                   if (widget.relatedMajors.isNotEmpty)
                     Icon(
                       isExpanded ? Icons.expand_less : Icons.expand_more,
-                      color: colorScheme.primary,
+                      color: AppColors.white,
                     ),
                 ],
               ),
-              const SizedBox(height: 12),
+              const SizedBox(height: AppSpacing.sm),
               // Primary Major
               Row(
                 children: [
-                  Icon(Icons.star, size: 16, color: colorScheme.primary),
-                  const SizedBox(width: 8),
+                  Icon(Icons.star, size: 16, color: AppColors.primary),
+                  const SizedBox(width: AppSpacing.sm),
                   Text(
                     'Primary: ',
-                    style: textTheme.bodyMedium?.copyWith(
-                      color: Colors.grey[600],
+                    style: AppTextStyles.bodyMedium.copyWith(
+                      color: AppColors.white,
                     ),
                   ),
                   Flexible(
                     child: Text(
                       widget.major.name,
-                      style: textTheme.bodyMedium?.copyWith(
+                      style: AppTextStyles.bodyMedium.copyWith(
                         fontWeight: FontWeight.bold,
-                        color: colorScheme.primary,
+                        color: AppColors.white,
                       ),
                     ),
                   ),
@@ -91,22 +94,27 @@ class _EducationPathCardState extends State<EducationPathCard> {
               ),
               // Related Majors
               if (isExpanded && widget.relatedMajors.isNotEmpty) ...[
-                const SizedBox(height: 12),
+                const SizedBox(height: AppSpacing.sm),
                 Text(
                   'Also consider:',
-                  style: textTheme.bodySmall?.copyWith(color: Colors.grey[600]),
+                  style: AppTextStyles.bodySmall.copyWith(
+                    color: AppColors.white,
+                  ),
                 ),
-                const SizedBox(height: 8),
+                const SizedBox(height: AppSpacing.sm),
                 Wrap(
-                  spacing: 8,
-                  runSpacing: 8,
+                  spacing: AppSpacing.sm,
+                  runSpacing: AppSpacing.sm,
                   children: widget.relatedMajors.map((relatedMajor) {
                     return Chip(
-                      label: Text(relatedMajor.name),
-                      labelStyle: textTheme.bodySmall,
+                      label: Text(
+                        relatedMajor.name,
+                        style: AppTextStyles.bodySmall.copyWith(color: AppColors.black),
+                      ),
+                      labelStyle: AppTextStyles.bodySmall,
                       visualDensity: VisualDensity.compact,
-                      side: BorderSide(color: Colors.grey.shade300),
-                      backgroundColor: colorScheme.surfaceContainerHighest,
+                      side: BorderSide(color: AppColors.border),
+                      backgroundColor: Colors.white,
                     );
                   }).toList(),
                 ),

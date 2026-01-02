@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import '../../../../model/career_model.dart';
+import '../../../common/constants/app_colors.dart';
+import '../../../common/constants/app_spacing.dart';
+import '../../../common/constants/app_text_styles.dart';
 
 class CareerHeader extends StatelessWidget {
   final Career career;
@@ -8,35 +11,31 @@ class CareerHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
-    final colorScheme = Theme.of(context).colorScheme;
-
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.all(24),
+      padding: const EdgeInsets.all(AppSpacing.xl),
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [
-            colorScheme.primaryContainer,
-            colorScheme.secondaryContainer,
+            AppColors.primaryLight,
+            // ignore: deprecated_member_use
+            AppColors.primary.withOpacity(0.8),
           ],
         ),
       ),
       child: Column(
         children: [
-          Icon(Icons.work_outline, size: 48, color: colorScheme.primary),
-          const SizedBox(height: 12),
+          Icon(Icons.work_outline, size: 48, color: AppColors.white),
+          const SizedBox(height: AppSpacing.sm),
           Text(
             career.name,
-            style: textTheme.headlineSmall?.copyWith(
-              fontWeight: FontWeight.bold,
-            ),
+            style: AppTextStyles.h1White,
             textAlign: TextAlign.center,
           ),
-          const SizedBox(height: 8),
+          const SizedBox(height: AppSpacing.xs),
           Text(
             career.shortDescription ?? '',
-            style: textTheme.bodyMedium,
+            style: AppTextStyles.bodyMedium.copyWith(color: AppColors.white),
             textAlign: TextAlign.center,
           ),
         ],

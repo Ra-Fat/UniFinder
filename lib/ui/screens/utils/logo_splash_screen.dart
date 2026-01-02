@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'package:go_router/go_router.dart';
 import 'package:flutter/material.dart';
-import '../welcomes/welcome_screen.dart';
 
 class LogoSplashScreen extends StatefulWidget {
   const LogoSplashScreen({super.key});

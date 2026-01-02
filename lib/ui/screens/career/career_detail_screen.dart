@@ -5,7 +5,7 @@ import '../../../model/major_model.dart';
 import '../../../service/dream_service.dart';
 import 'widgets/career_header.dart';
 import 'widgets/about_this_career_card.dart';
-import 'widgets/why_fits_you_card.dart';
+// import 'widgets/why_fits_you_card.dart';
 import 'widgets/salary_card.dart';
 import 'widgets/skills_card.dart';
 import 'widgets/education_path_card.dart';
@@ -100,7 +100,7 @@ class _CareerDetailScreenState extends State<CareerDetailScreen> {
 
                       const SizedBox(height: AppSpacing.md),
 
-                      const WhyFitsYouCard(),
+                      // const WhyFitsYouCard(),
 
                       const SizedBox(height: AppSpacing.md),
 

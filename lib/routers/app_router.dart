@@ -11,7 +11,7 @@ import '../data/repository/data_repository.dart';
 import '../data/storage/file_storage.dart';
 
 final GoRouter appRouter = GoRouter(
-  initialLocation: '/home', // Start directly at dream screen for testing
+  initialLocation: '/', 
   routes: [
     GoRoute(path: '/', builder: (context, state) => const LogoSplashScreen()),
     GoRoute(

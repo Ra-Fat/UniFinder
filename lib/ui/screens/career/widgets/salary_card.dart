@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import '../../../common/widgets/info_card.dart';
+import '../../../common/constants/app_colors.dart';
+import '../../../common/constants/app_spacing.dart';
+import '../../../common/constants/app_text_styles.dart';
 
 class SalaryCard extends StatelessWidget {
   final String salaryRange;
@@ -8,9 +11,6 @@ class SalaryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
-    final colorScheme = Theme.of(context).colorScheme;
-
     return InfoCard(
       title: 'Estimated Salary Range',
       icon: Icons.attach_money,
@@ -19,15 +19,15 @@ class SalaryCard extends StatelessWidget {
         children: [
           Text(
             salaryRange,
-            style: textTheme.titleMedium?.copyWith(
-              color: colorScheme.primary,
+            style: AppTextStyles.h2.copyWith(
+              color: AppColors.white,
               fontWeight: FontWeight.bold,
             ),
           ),
-          const SizedBox(height: 4),
+          const SizedBox(height: AppSpacing.xs),
           Text(
             'Varies by experience, company, and location',
-            style: textTheme.bodySmall?.copyWith(color: Colors.grey),
+            style: AppTextStyles.bodySmall.copyWith(color: AppColors.textSecondary),
           ),
         ],
       ),

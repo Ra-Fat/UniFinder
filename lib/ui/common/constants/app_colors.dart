@@ -17,7 +17,7 @@ class AppColors {
   static const Color textHint = Color(0xFFBDBDBD);
 
   // Background Colors
-  static const Color background = Colors.white;
+  static const Color background = Color(0xFF0f172a);
   static const Color cardBackground = Colors.white;
 
   // Border Colors

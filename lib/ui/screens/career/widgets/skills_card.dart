@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import '../../../common/widgets/skill_chip.dart';
+import '../../../common/constants/app_colors.dart';
+import '../../../common/constants/app_spacing.dart';
+import '../../../common/constants/app_text_styles.dart';
 
 class SkillsCard extends StatefulWidget {
   final List<String> skills;
@@ -21,17 +24,14 @@ class _SkillsCardState extends State<SkillsCard> {
 
   @override
   Widget build(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
-    final textTheme = Theme.of(context).textTheme;
-
     return Card(
       elevation: 1,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppSpacing.radiusLg)),
       child: InkWell(
         onTap: onExpanded,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(AppSpacing.radiusLg),
         child: Padding(
-          padding: const EdgeInsets.all(20),
+          padding: const EdgeInsets.all(AppSpacing.lg),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -43,13 +43,14 @@ class _SkillsCardState extends State<SkillsCard> {
                       Icon(
                         Icons.lightbulb_outline,
                         size: 20,
-                        color: colorScheme.primary,
+                        color: AppColors.primary,
                       ),
-                      const SizedBox(width: 8),
+                      const SizedBox(width: AppSpacing.sm),
                       Text(
                         'Required Skills',
-                        style: textTheme.titleMedium?.copyWith(
+                        style: AppTextStyles.h2.copyWith(
                           fontWeight: FontWeight.bold,
+                          color: AppColors.white
                         ),
                       ),
                     ],
@@ -60,21 +61,21 @@ class _SkillsCardState extends State<SkillsCard> {
                       if (widget.skills.length > 3)
                         Text(
                           '${widget.skills.length}',
-                          style: textTheme.bodySmall?.copyWith(
-                            color: Colors.grey[600],
+                          style: AppTextStyles.bodySmall.copyWith(
+                            color: AppColors.white,
                           ),
                         ),
-                      if (widget.skills.length > 3) const SizedBox(width: 8),
+                      if (widget.skills.length > 3) const SizedBox(width: AppSpacing.sm),
                       if (widget.skills.length > 3)
                         Icon(
                           isExpanded ? Icons.expand_less : Icons.expand_more,
-                          color: colorScheme.primary,
+                          color: AppColors.white,
                         ),
                     ],
                   ),
                 ],
               ),
-              const SizedBox(height: 12),
+              const SizedBox(height: AppSpacing.sm),
               SkillChips(
                 skills: widget.skills,
                 maxSkillDisplay: isExpanded ? null : 2,

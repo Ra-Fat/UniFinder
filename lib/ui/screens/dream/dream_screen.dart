@@ -8,7 +8,7 @@ import '../../../service/dream_service.dart';
 import 'widgets/career_card.dart';
 import 'widgets/major_card.dart';
 import 'widgets/section_header.dart';
-import 'package:uni_finder/ui/common/widgets/compare_universities_bottom_sheet.dart';
+import 'package:uni_finder/ui/common/widgets/compare_modal/compare_modal.dart';
 
 class DreamDetail extends StatefulWidget {
   final int majorId;

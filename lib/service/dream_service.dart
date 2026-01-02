@@ -22,6 +22,11 @@ class DreamService {
     return await _repository.getUsers();
   }
 
+  // Get single user (for offline app with one user)
+  Future<User?> getUser() async {
+    return await _repository.getUser();
+  }
+
   // Get all careers related to a specific major
   Future<List<Career>> getCareersForMajor(int majorId) async {
     return await _repository.getCareersByMajor(majorId);
@@ -94,6 +99,11 @@ class DreamService {
   // Get university-major relationships
   Future<List<UniversityMajor>> getUniversityMajorsData() async {
     return await _repository.getUniversityMajorsData();
+  }
+
+  // Get all careers data
+  Future<List<Career>> getCareersData() async {
+    return await _repository.getCareerData();
   }
 
   // Get universities offering a specific major

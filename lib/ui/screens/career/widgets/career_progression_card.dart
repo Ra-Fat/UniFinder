@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:uni_finder/ui/common/constants/app_colors.dart';
+import '../../../common/constants/app_spacing.dart';
+import '../../../common/constants/app_text_styles.dart';
 
 class CareerProgressionCard extends StatefulWidget {
   final Map<String, String> progression;
@@ -20,18 +23,18 @@ class _CareerProgressionCardState extends State<CareerProgressionCard> {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
-    final colorScheme = Theme.of(context).colorScheme;
     final entries = widget.progression.entries.toList();
 
     return Card(
       elevation: 1,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(AppSpacing.radiusLg),
+      ),
       child: InkWell(
         onTap: onExpanded,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(AppSpacing.radiusLg),
         child: Padding(
-          padding: const EdgeInsets.all(20),
+          padding: const EdgeInsets.all(AppSpacing.lg),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -40,16 +43,13 @@ class _CareerProgressionCardState extends State<CareerProgressionCard> {
                 children: [
                   Row(
                     children: [
-                      Icon(
-                        Icons.trending_up,
-                        size: 20,
-                        color: colorScheme.primary,
-                      ),
-                      const SizedBox(width: 8),
+                      Icon(Icons.trending_up, size: 20, color: AppColors.primary),
+                      const SizedBox(width: AppSpacing.sm),
                       Text(
                         'Career Progression',
-                        style: textTheme.titleMedium?.copyWith(
+                        style: AppTextStyles.h2.copyWith(
                           fontWeight: FontWeight.bold,
+                          color: Colors.white,
                         ),
                       ),
                     ],
@@ -59,21 +59,21 @@ class _CareerProgressionCardState extends State<CareerProgressionCard> {
                     children: [
                       Text(
                         '${entries.length}',
-                        style: textTheme.bodySmall?.copyWith(
-                          color: Colors.grey[600],
+                        style: AppTextStyles.bodySmall.copyWith(
+                          color: Colors.white,
                         ),
                       ),
-                      const SizedBox(width: 8),
+                      const SizedBox(width: AppSpacing.sm),
                       Icon(
                         isExpanded ? Icons.expand_less : Icons.expand_more,
-                        color: colorScheme.primary,
+                        color: Colors.white,
                       ),
                     ],
                   ),
                 ],
               ),
               if (isExpanded) ...[
-                const SizedBox(height: 12),
+                const SizedBox(height: AppSpacing.sm),
                 Column(
                   children: entries.map((entry) {
                     return ListTile(
@@ -81,8 +81,9 @@ class _CareerProgressionCardState extends State<CareerProgressionCard> {
                       contentPadding: EdgeInsets.zero,
                       title: Text(
                         entry.key,
-                        style: textTheme.bodyMedium?.copyWith(
+                        style: AppTextStyles.bodyMedium.copyWith(
                           fontWeight: FontWeight.bold,
+                          color: AppColors.white
                         ),
                       ),
                       subtitle: Text(entry.value),
