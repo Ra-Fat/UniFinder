@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:uni_finder/model/dreams_model.dart';
 import 'package:uni_finder/service/dream_service.dart';
-import 'package:uni_finder/ui/common/constants/app_colors.dart';
 import 'package:uni_finder/ui/common/constants/app_spacing.dart';
-import 'package:uni_finder/ui/common/constants/app_text_styles.dart';
+// import 'package:uni_finder/ui/common/constants/app_text_styles.dart';
 import 'widget/welcome_header.dart';
 import 'widget/search_field.dart';
+// import '../';
 import 'widget/dreams_list.dart';
+import '../../theme/app_colors.dart';
 
 class HomeScreen extends StatefulWidget {
   final DreamService dreamService;
@@ -67,28 +68,30 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: WelcomeHeader(
+          userName: _userName,
+          dreamService: widget.dreamService,
+          searchController: _searchController,
+          onSearchChanged: onSearch,
+        ),
+        backgroundColor: AppColors.darkBackground,
+        elevation: 0,
+        scrolledUnderElevation: 0,
+        toolbarHeight: 145,
+        surfaceTintColor: Colors.transparent,
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.only(
-            top: AppSpacing.paddingTop,
-            left: AppSpacing.paddingHorizontal,
-            right: AppSpacing.paddingHorizontal,
-            bottom: AppSpacing.xxl,
+            top: 0,
+            left: 15,
+            right: 15,
+            bottom: 15,
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              WelcomeHeader(
-                userName: _userName,
-                dreamService: widget.dreamService,
-              ),
-              Text(
-                'Discover your dream here',
-                style: AppTextStyles.bodySmall.copyWith(color: AppColors.white),
-              ),
-              const SizedBox(height: AppSpacing.xxl),
-              SearchField(controller: _searchController, onChanged: onSearch),
-              const SizedBox(height: AppSpacing.md),
               DreamsList(
                 dreams: _filteredDreams,
                 isLoading: _isLoading,
@@ -102,9 +105,9 @@ class _HomeScreenState extends State<HomeScreen> {
         onPressed: () {
           context.push('/questions');
         },
-        backgroundColor: AppColors.primary,
+        backgroundColor: AppColors.darkBackground,
         shape: const CircleBorder(),
-        child: const Icon(Icons.add, color: AppColors.white),
+        child: const Icon(Icons.add, color: AppColors.textPrimary),
       ),
     );
   }

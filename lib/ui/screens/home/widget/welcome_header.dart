@@ -3,22 +3,27 @@ import 'package:uni_finder/service/dream_service.dart';
 import 'package:uni_finder/ui/common/constants/app_colors.dart';
 import 'package:uni_finder/ui/common/constants/app_spacing.dart';
 import 'package:uni_finder/ui/common/constants/app_text_styles.dart';
-import 'package:uni_finder/ui/common/widgets/compare_modal/compare_modal.dart';
+import '../../../common/widgets/widget.dart';
+import './search_field.dart';
 
 class WelcomeHeader extends StatelessWidget {
   final String userName;
   final DreamService dreamService;
+  final TextEditingController searchController;
+  final Function(String) onSearchChanged;
 
   const WelcomeHeader({
     super.key,
     required this.userName,
     required this.dreamService,
+    required this.searchController,
+    required this.onSearchChanged,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
           children: [
@@ -30,13 +35,12 @@ class WelcomeHeader extends StatelessWidget {
             ),
           ],
         ),
-        IconButton(
-          icon: const Icon(Icons.compare_arrows),
-          tooltip: 'Compare',
-          onPressed: () {
-            CompareUniversitiesBottomSheet.show(context, dreamService);
-          },
+        SizedBox(height: 8),
+        CustomSecondaryText(
+          text: 'Discover your dream here',
         ),
+        SizedBox(height: 12),
+        SearchField(controller: searchController, onChanged: onSearchChanged),
       ],
     );
   }

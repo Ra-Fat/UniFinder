@@ -40,7 +40,10 @@ class DreamsList extends StatelessWidget {
                 physics: const NeverScrollableScrollPhysics(),
                 itemCount: dreams.length,
                 itemBuilder: (context, index) {
-                  return DreamCard(dream: dreams[index]);
+                  return Padding(
+                    padding: const EdgeInsets.only(bottom: AppSpacing.sm),
+                    child: DreamCard(dream: dreams[index]),
+                  );
                 },
               ),
       ],

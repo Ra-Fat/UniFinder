@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../common/widgets/widget.dart';
 import '../../theme/app_colors.dart';
+import '../../../model/dreams_model.dart';
 import './major_card.dart';
 
 class Recommendation extends StatefulWidget {
@@ -31,6 +32,11 @@ class _RecommendationState extends State<Recommendation> {
   void _handleSaveDream() {
     if (_formKey.currentState!.validate()) {
       String dreamName = _dreamNameController.text.trim();
+      // final newDream = Dream(
+      //   title: dreamName,
+      //   userId: userId, 
+      //   majorId: 
+      // );
       Navigator.of(context).pop();
       _dreamNameController.clear();
       context.go('/home');
@@ -92,8 +98,7 @@ class _RecommendationState extends State<Recommendation> {
                     children: [
                       Expanded(
                         child: CustomizeButton(
-                          text: "Cancel",
-                          
+                          text: "Cancel",                         
                           backgroundColor: AppColors.disabled,
                           onPressed: () {
                             _dreamNameController.clear();

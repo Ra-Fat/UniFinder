@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:uni_finder/model/user_model.dart';
 import '../../common/widgets/widget.dart';
+import '../../../service/user_service.dart';
 import '../../../main.dart';
 import '../../../data/repository/data_repository.dart';
 
@@ -30,6 +31,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
       final user = User(name: _titleController.text.trim());
       try {
         await dataRepository.saveUser(user);
+        debugPrint('User saved successfully: ${user.name}');
 
         if (mounted) {
           context.go('/questions');

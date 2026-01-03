@@ -10,6 +10,7 @@ import '../ui/screens/q&a/mutiple_choice_question.dart';
 import '../ui/screens/dream/dream_screen.dart';
 import '../data/repository/data_repository.dart';
 import '../data/storage/file_storage.dart';
+import '../data/storage/shared_preferences_storage.dart';
 
 final GoRouter appRouter = GoRouter(
   initialLocation: '/', 
@@ -28,7 +29,8 @@ final GoRouter appRouter = GoRouter(
       path: '/dream',
       builder: (context, state) {
         final repository = DataRepository(
-          FileStorage('lib/data/storage/file_storage.dart'),
+          FileStorage('assets/data'),
+          SharedPreferencesStorage(),
         );
         final dreamService = DreamService(repository);
 
@@ -47,7 +49,8 @@ final GoRouter appRouter = GoRouter(
       path: '/home',
       builder: (context, state) {
         final repository = DataRepository(
-          FileStorage('lib/data/storage/file_storage.dart'),
+          FileStorage('assets/data'),
+          SharedPreferencesStorage(),
         );
         final dreamService = DreamService(repository);
         return HomeScreen(dreamService: dreamService);

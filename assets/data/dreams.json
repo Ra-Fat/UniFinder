@@ -6,37 +6,5 @@
     "title": "Software Engineer",
     "note": "Building innovative apps and solving complex problems",
     "created_at": "2024-12-15T00:00:00.000"
-  },
-  {
-    "id": 2,
-    "user_id": 1,
-    "major_id": 2,
-    "title": "Data Scientist",
-    "note": "Analyzing data to uncover insights and drive decisions",
-    "created_at": "2024-11-20T00:00:00.000"
-  },
-  {
-    "id": 3,
-    "user_id": 1,
-    "major_id": 3,
-    "title": "UX Designer",
-    "note": "Creating beautiful and intuitive user experiences",
-    "created_at": "2024-10-10T00:00:00.000"
-  },
-  {
-    "id": 4,
-    "user_id": 1,
-    "major_id": 4,
-    "title": "Product Manager",
-    "note": "Leading product development and strategy",
-    "created_at": "2024-09-05T00:00:00.000"
-  },
-  {
-    "id": 5,
-    "user_id": 1,
-    "major_id": 5,
-    "title": "AI Researcher",
-    "note": "Advancing artificial intelligence for the future",
-    "created_at": "2024-08-12T00:00:00.000"
   }
 ]

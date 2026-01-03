@@ -11,6 +11,9 @@ class CustomizeButton extends StatelessWidget {
   final double? width;
   final IconData? icon;
   final bool isTextButton;
+  final double? borderRadius;
+  final Color? borderColor;
+  final double? borderWidth;
   const CustomizeButton({
     super.key,
     required this.text,
@@ -22,6 +25,9 @@ class CustomizeButton extends StatelessWidget {
     this.height = 50,
     this.width,
     this.icon,
+    this.borderRadius = 15,
+    this.borderColor,
+    this.borderWidth = 0,
   });
 
   @override
@@ -54,15 +60,21 @@ class CustomizeButton extends StatelessWidget {
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
           backgroundColor: backgroundColor ?? AppColors.primaryBlue,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(borderRadius ?? 8),
+            side: borderWidth != null && borderWidth! > 0
+                ? BorderSide(
+                    color: borderColor ?? AppColors.textPrimary,
+                    width: 1,
+                  )
+                : BorderSide.none,
+          ),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
           children: [
-            if (icon != null) ...[
-              Icon(icon, color: textColor ?? AppColors.textPrimary),
-              SizedBox(width: 8),
-            ],
+            
             Text(
               text,
               style: TextStyle(
@@ -71,6 +83,11 @@ class CustomizeButton extends StatelessWidget {
                 color: textColor ?? AppColors.textPrimary,
               ),
             ),
+            SizedBox(width: 10,),
+            if (icon != null) ...[
+              Icon(icon, color: textColor ?? AppColors.textPrimary),
+              SizedBox(width: 8),
+            ],
           ],
         ),
       ),

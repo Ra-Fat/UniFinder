@@ -1,3 +1,5 @@
+import 'package:flutter/widgets.dart';
+
 import '../storage/file_storage.dart';
 import '../../model/university_major.dart';
 import '../../model/career_major.dart';
@@ -11,11 +13,13 @@ import '../../model/recommendation_model.dart';
 import '../../model/submission_model.dart';
 import '../../model/university_model.dart';
 import '../../model/user_model.dart';
+import '../storage/shared_preferences_storage.dart';
 
 class DataRepository {
   final FileStorage _storage;
+  final SharedPreferencesStorage _prefsStorage;
 
-  DataRepository(this._storage);
+  DataRepository(this._storage, this._prefsStorage);
 
   // get data from universities
   Future<List<University>> getUniversitiesData() async {
@@ -26,19 +30,6 @@ class DataRepository {
           .toList();
     } catch (err) {
       print('Error loading universities: $err');
-      return [];
-    }
-  }
-
-  // get dreams data
-  Future<List<Dream>> getDreams() async {
-    try {
-      final data = await _storage.readJsonData('dreams.json');
-      return data
-          .map((item) => Dream.fromMap(item as Map<String, dynamic>))
-          .toList();
-    } catch (err) {
-      print('Error loading dreams: $err');
       return [];
     }
   }
@@ -58,16 +49,7 @@ class DataRepository {
 
   // get single user (for offline app with one user)
   Future<User?> getUser() async {
-    try {
-      final data = await _storage.readJsonData('users.json');
-      if (data.isNotEmpty) {
-        return User.fromMap(data.first as Map<String, dynamic>);
-      }
-      return null;
-    } catch (err) {
-      print('Error loading user: $err');
-      return null;
-    }
+    return await _prefsStorage.getUser();
   }
 
   // get data from Categories
@@ -182,16 +164,7 @@ class DataRepository {
 
   // save user data
   Future<void> saveUser(User user) async {
-    try {
-      final users = await getUserData();
-      print('Current users count: ${users.length}');
-      users.add(user);
-      final jsonList = users.map((user) => user.toMap()).toList();
-      await _storage.writeJson('user.json', jsonList);
-    } catch (err) {
-      print('Error saving user: $err');
-      rethrow;
-    }
+    await _prefsStorage.saveUser(user);
   }
 
   // get Submission data
@@ -202,7 +175,7 @@ class DataRepository {
           .map((item) => Submission.fromMap(item as Map<String, dynamic>))
           .toList();
     } catch (err) {
-      print('Error loading Submission: $err');
+      debugPrint('Error loading Submission: $err');
       return [];
     }
   }
@@ -215,7 +188,7 @@ class DataRepository {
       final jsonList = submissions.map((sub) => sub.toMap()).toList();
       await _storage.writeJson('submission.json', jsonList);
     } catch (err) {
-      print('Error saving submission: $err');
+      debugPrint('Error saving submission: $err');
       rethrow;
     }
   }
@@ -227,7 +200,7 @@ class DataRepository {
           .map((item) => Recommendation.fromMap(item as Map<String, dynamic>))
           .toList();
     } catch (err) {
-      print('Error loading recommendations: $err');
+      debugPrint('Error loading recommendations: $err');
       return [];
     }
   }
@@ -239,7 +212,7 @@ class DataRepository {
       final jsonList = recommendations.map((r) => r.toMap()).toList();
       await _storage.writeJson('recommendations.json', jsonList);
     } catch (err) {
-      print('Error saving recommendation: $err');
+      debugPrint('Error saving recommendation: $err');
       rethrow;
     }
   }
@@ -252,7 +225,7 @@ class DataRepository {
           .map((item) => CareerMajor.fromMap(item as Map<String, dynamic>))
           .toList();
     } catch (err) {
-      print('Error loading career majors: $err');
+      debugPrint('Error loading career majors: $err');
       return [];
     }
   }
@@ -265,7 +238,7 @@ class DataRepository {
           .map((item) => UniversityMajor.fromMap(item as Map<String, dynamic>))
           .toList();
     } catch (err) {
-      print('Error loading university majors: $err');
+      debugPrint('Error loading university majors: $err');
       return [];
     }
   }
@@ -285,7 +258,7 @@ class DataRepository {
 
       return relationships;
     } catch (err) {
-      print('Error loading major relationships: $err');
+      debugPrint('Error loading major relationships: $err');
       return {};
     }
   }
@@ -303,7 +276,7 @@ class DataRepository {
 
       return careers.where((c) => careerIds.contains(c.id)).toList();
     } catch (err) {
-      print('Error getting careers by major: $err');
+      debugPrint('Error getting careers by major: $err');
       return [];
     }
   }
@@ -314,7 +287,7 @@ class DataRepository {
       final universityMajors = await getUniversityMajorsData();
       return universityMajors.where((um) => um.majorId == majorId).toList();
     } catch (err) {
-      print('Error getting universities for major: $err');
+      debugPrint('Error getting universities for major: $err');
       return [];
     }
   }
@@ -328,7 +301,7 @@ class DataRepository {
       final relatedIds = relationships[majorId] ?? [];
       return majors.where((m) => relatedIds.contains(m.id)).toList();
     } catch (err) {
-      print('Error getting related majors: $err');
+      debugPrint('Error getting related majors: $err');
       return [];
     }
   }
@@ -342,7 +315,7 @@ class DataRepository {
         orElse: () => throw Exception('Major not found: $majorId'),
       );
     } catch (err) {
-      print('Error getting major by ID: $err');
+      debugPrint('Error getting major by ID: $err');
       return null;
     }
   }
@@ -356,7 +329,7 @@ class DataRepository {
         orElse: () => throw Exception('Career not found: $careerId'),
       );
     } catch (err) {
-      print('Error getting career by ID: $err');
+      debugPrint('Error getting career by ID: $err');
       return null;
     }
   }
@@ -370,7 +343,7 @@ class DataRepository {
         orElse: () => throw Exception('University not found: $universityId'),
       );
     } catch (err) {
-      print('Error getting university by ID: $err');
+      debugPrint('Error getting university by ID: $err');
       return null;
     }
   }
@@ -423,5 +396,29 @@ class DataRepository {
       print('Error searching universities: $err');
       return [];
     }
+  }
+
+  Future<List<Dream>> getDreams() async {
+    try {
+      final defaultDreams = await _storage.readJsonData('dreams.json');
+      final jsonDreams = defaultDreams
+          .map((item) => Dream.fromMap(item as Map<String, dynamic>))
+          .toList();
+
+      // Get user-created dreams from SharedPreferences
+      final userDreams = await _prefsStorage.getUserDreams();
+
+      // Combine both lists
+      return [...jsonDreams, ...userDreams];
+    } catch (err) {
+      debugPrint('Error loading dreams: $err');
+      return [];
+    }
+  }
+
+  Future<void> saveDream(Dream dream) async {
+    final currentUserDreams = await _prefsStorage.getUserDreams();
+    currentUserDreams.add(dream);
+    await _prefsStorage.saveDreams(currentUserDreams);
   }
 }
