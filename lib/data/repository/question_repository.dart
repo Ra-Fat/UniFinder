@@ -23,7 +23,7 @@ class QuestionRepository {
           .map((item) => Category.fromMap(item as Map<String, dynamic>))
           .toList();
     } catch (err) {
-      print('Error loading categories: $err');
+      debugPrint('Error loading categories: $err');
       return [];
     }
   }
@@ -36,7 +36,7 @@ class QuestionRepository {
           .map((item) => Question.fromMap(item as Map<String, dynamic>))
           .toList();
     } catch (err) {
-      print('Error loading Question: $err');
+      debugPrint('Error loading Question: $err');
       return [];
     }
   }
@@ -49,7 +49,7 @@ class QuestionRepository {
           .map((item) => Option.fromMap(item as Map<String, dynamic>))
           .toList();
     } catch (err) {
-      print('Error loading Option: $err');
+      debugPrint('Error loading Option: $err');
       return [];
     }
   }
@@ -68,7 +68,7 @@ class QuestionRepository {
       }
       return grouped;
     } catch (e) {
-      print('Error loading options: $e');
+      debugPrint('Error loading options: $e');
       return {};
     }
   }

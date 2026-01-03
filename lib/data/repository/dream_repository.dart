@@ -1,5 +1,4 @@
 import 'package:flutter/rendering.dart';
-
 import '../storage/file_storage.dart';
 import '../storage/shared_preferences_storage.dart';
 import '../../model/dreams_model.dart';
@@ -23,7 +22,7 @@ class DreamRepository {
       // Combine both lists
       return [...jsonDreams, ...userDreams];
     } catch (err) {
-      print('Error loading dreams: $err');
+      debugPrint('Error loading dreams: $err');
       return [];
     }
   }

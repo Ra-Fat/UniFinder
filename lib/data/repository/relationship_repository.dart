@@ -2,6 +2,7 @@ import '../storage/file_storage.dart';
 import '../../model/career_major.dart';
 import '../../model/university_major.dart';
 import '../../model/career_model.dart';
+import 'package:flutter/foundation.dart';
 
 class RelationshipRepository {
   final FileStorage _fileStorage;
@@ -16,7 +17,7 @@ class RelationshipRepository {
           .map((item) => CareerMajor.fromMap(item as Map<String, dynamic>))
           .toList();
     } catch (err) {
-      print('Error loading career majors: $err');
+      debugPrint('Error loading career majors: $err');
       return [];
     }
   }
@@ -29,7 +30,7 @@ class RelationshipRepository {
           .map((item) => UniversityMajor.fromMap(item as Map<String, dynamic>))
           .toList();
     } catch (err) {
-      print('Error loading university majors: $err');
+      debugPrint('Error loading university majors: $err');
       return [];
     }
   }
@@ -49,7 +50,7 @@ class RelationshipRepository {
 
       return allCareers.where((c) => careerIds.contains(c.id)).toList();
     } catch (err) {
-      print('Error getting careers by major: $err');
+      debugPrint('Error getting careers by major: $err');
       return [];
     }
   }
@@ -60,7 +61,7 @@ class RelationshipRepository {
       final universityMajors = await getUniversityMajorsData();
       return universityMajors.where((um) => um.majorId == majorId).toList();
     } catch (err) {
-      print('Error getting universities for major: $err');
+      debugPrint('Error getting universities for major: $err');
       return [];
     }
   }

@@ -1,5 +1,6 @@
 import '../storage/file_storage.dart';
 import '../../model/university_model.dart';
+import 'package:flutter/foundation.dart';
 
 class UniversityRepository {
   final FileStorage _fileStorage;
@@ -14,7 +15,7 @@ class UniversityRepository {
           .map((item) => University.fromMap(item as Map<String, dynamic>))
           .toList();
     } catch (err) {
-      print('Error loading universities: $err');
+      debugPrint('Error loading universities: $err');
       return [];
     }
   }
@@ -28,7 +29,7 @@ class UniversityRepository {
         orElse: () => throw Exception('University not found: $universityId'),
       );
     } catch (err) {
-      print('Error getting university by ID: $err');
+      debugPrint('Error getting university by ID: $err');
       return null;
     }
   }
@@ -41,7 +42,7 @@ class UniversityRepository {
           .where((u) => u.name.toLowerCase().contains(query.toLowerCase()))
           .toList();
     } catch (err) {
-      print('Error searching universities: $err');
+      debugPrint('Error searching universities: $err');
       return [];
     }
   }

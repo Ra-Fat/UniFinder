@@ -1,6 +1,6 @@
 import '../storage/file_storage.dart';
 import '../../model/career_model.dart';
-
+import 'package:flutter/foundation.dart';
 class CareerRepository {
   final FileStorage _fileStorage;
 
@@ -14,7 +14,7 @@ class CareerRepository {
           .map((item) => Career.fromMap(item as Map<String, dynamic>))
           .toList();
     } catch (err) {
-      print('Error loading Careers: $err');
+      debugPrint('Error loading Careers: $err');
       return [];
     }
   }
@@ -28,7 +28,7 @@ class CareerRepository {
         orElse: () => throw Exception('Career not found: $careerId'),
       );
     } catch (err) {
-      print('Error getting career by ID: $err');
+      debugPrint('Error getting career by ID: $err');
       return null;
     }
   }
@@ -41,7 +41,7 @@ class CareerRepository {
           .where((c) => c.name.toLowerCase().contains(query.toLowerCase()))
           .toList();
     } catch (err) {
-      print('Error searching careers: $err');
+      debugPrint('Error searching careers: $err');
       return [];
     }
   }
