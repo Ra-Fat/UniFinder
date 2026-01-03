@@ -29,16 +29,12 @@ class _QuestionScreenState extends State<QuestionScreen> {
     if (formKey.currentState!.validate()) {
       final user = User(name: _titleController.text.trim());
       try {
-        print('🔵 Attempting to save user: ${user.name}');
         await dataRepository.saveUser(user);
-        print('✅ User saved successfully!');
 
         if (mounted) {
-          print('📍 Navigating to /questions');
           context.go('/questions');
         }
       } catch (err) {
-        print('❌ Error saving user: $err');
         debugPrint('Error saving user: $err');
       }
     }

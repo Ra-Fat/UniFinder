@@ -38,8 +38,20 @@ class FileStorage {
       return;
     }
     
+    debugPrint('Writing to: $directoryPath/$filename');
+    
+    // Create directory if it doesn't exist
+    final dir = Directory(directoryPath);
+    if (!await dir.exists()) {
+      debugPrint('Directory does not exist, creating: $directoryPath');
+      await dir.create(recursive: true);
+      debugPrint('Directory created successfully');
+    }
+    
     final file = File('$directoryPath/$filename');
     final contents = jsonEncode(jsonList);
+    debugPrint('Writing content: $contents');
     await file.writeAsString(contents);
+    debugPrint('File written successfully to ${file.path}');
   }
 }

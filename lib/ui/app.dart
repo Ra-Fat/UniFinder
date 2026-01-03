@@ -18,12 +18,12 @@ class _AppState extends State<App> {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark().copyWith(
-        // colorScheme: ColorScheme.fromSeed(
-        //   seedColor: const Color.fromARGB(255, 147, 229, 250),
-        //   brightness: Brightness.dark,
-        //   surface: const Color.fromARGB(255, 42, 51, 59),
-        // ),
-       scaffoldBackgroundColor: AppColors.darkBackground,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color.fromARGB(255, 147, 229, 250),
+          brightness: Brightness.dark,
+          surface: AppColors.darkBackground,
+        ),
+        scaffoldBackgroundColor: AppColors.darkBackground,
       ),
       routerConfig: appRouter,
     );

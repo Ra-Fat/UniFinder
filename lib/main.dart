@@ -22,5 +22,7 @@ void main() async {
     dataRepository = DataRepository(storage);
   }
 
-  runApp(const App());
+  runApp(
+    const App()
+  );
 }

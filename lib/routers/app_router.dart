@@ -1,7 +1,6 @@
 import 'package:go_router/go_router.dart';
 import '../ui/screens/q&a/question_screen.dart';
 import '../ui/screens/recommendation/recommendation.dart';
-import '../ui/app.dart';
 import '../ui/screens/utils/logo_splash_screen.dart';
 import '../ui/screens/welcomes/welcome_screen.dart';
 import '../ui/screens/q&a/mutiple_choice_question.dart';

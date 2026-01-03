@@ -128,10 +128,14 @@ class DataRepository {
   // save user data 
   Future<void> saveUser(User user) async{
     try{
+      print('Starting to save user: ${user.name}');
       final users = await getUserData();
+      print('Current users count: ${users.length}');
       users.add(user);
       final jsonList = users.map((user)=> user.toMap()).toList();
+      print('Saving ${jsonList.length} users to user.json');
       await _storage.writeJson('user.json', jsonList);
+      print('User saved successfully!');
     }catch(err){
       print('Error saving user: $err');
       rethrow;

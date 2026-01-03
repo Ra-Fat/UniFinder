@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:uni_finder/ui/app.dart';
 import '../../widgets/widget.dart';
 import '../../theme/app_colors.dart';
-import '../../widgets/widget.dart';
 import './major_card.dart';
 
 class Recommendation extends StatefulWidget {
