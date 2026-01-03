@@ -6,7 +6,6 @@ import '../../../main.dart';
 import '../../theme/app_colors.dart';
 import '../../common/widgets/widget.dart';
 
-
 class MutipleChoiceQuestionScreen extends StatefulWidget {
   const MutipleChoiceQuestionScreen({super.key});
 
@@ -34,8 +33,8 @@ class _MutipleChoiceQuestionScreenState
   // Get Question data
   Future<void> _loadQuestions() async {
     try {
-      final fetchQuestions = await dataRepository.getQuestionData();
-      final optionsPerQuestion = await dataRepository.getOptionsByQuestion();
+      final fetchQuestions = await questionService.getQuestionData();
+      final optionsPerQuestion = await questionService.getOptionsByQuestion();
 
       // need more checked on it
       if (!mounted) return;

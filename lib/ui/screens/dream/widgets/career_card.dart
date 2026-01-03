@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:uni_finder/service/dream_service.dart';
+import 'package:uni_finder/service/major_service.dart';
+import 'package:uni_finder/service/university_service.dart';
 import 'package:uni_finder/ui/common/constants/app_spacing.dart';
 import 'package:uni_finder/ui/common/widgets/skill_chip.dart';
 import 'package:uni_finder/ui/screens/career/career_detail_screen.dart';
@@ -11,6 +13,8 @@ class CareerCardsList extends StatelessWidget {
   final Major? major;
   final List<Major>? relatedMajors;
   final DreamService dreamService;
+  final MajorService majorService;
+  final UniversityService universityService;
 
   const CareerCardsList({
     super.key,
@@ -18,6 +22,8 @@ class CareerCardsList extends StatelessWidget {
     this.major,
     this.relatedMajors,
     required this.dreamService,
+    required this.majorService,
+    required this.universityService,
   });
 
   @override
@@ -34,6 +40,8 @@ class CareerCardsList extends StatelessWidget {
             major: major,
             relatedMajors: relatedMajors,
             dreamService: dreamService,
+            majorService: majorService,
+            universityService: universityService,
           );
         },
       ),
@@ -50,6 +58,8 @@ class CareerCard extends StatelessWidget {
     this.major,
     this.relatedMajors,
     required this.dreamService,
+    required this.majorService,
+    required this.universityService,
   });
 
   final Career career;
@@ -58,6 +68,8 @@ class CareerCard extends StatelessWidget {
   final Major? major;
   final List<Major>? relatedMajors;
   final DreamService dreamService;
+  final MajorService majorService;
+  final UniversityService universityService;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -71,7 +83,6 @@ class CareerCard extends StatelessWidget {
         ),
         child: InkWell(
           onTap: () {
-            // TODO: Update router to handle career detail with parameters
             Navigator.push(
               context,
               MaterialPageRoute(
@@ -80,6 +91,8 @@ class CareerCard extends StatelessWidget {
                   major: major,
                   relatedMajors: relatedMajors,
                   dreamService: dreamService,
+                  majorService: majorService,
+                  universityService: universityService,
                 ),
               ),
             );

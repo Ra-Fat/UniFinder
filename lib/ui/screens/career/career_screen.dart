@@ -4,12 +4,16 @@ import 'package:uni_finder/ui/screens/dream/widgets/career_card.dart';
 import '../../../model/career_model.dart';
 import '../../../model/major_model.dart';
 import '../../../service/dream_service.dart';
+import '../../../service/major_service.dart';
+import '../../../service/university_service.dart';
 
 class CareerScreen extends StatelessWidget {
   final List<Career> careers;
   final Major? major;
   final List<Major>? relatedMajors;
   final DreamService dreamService;
+  final MajorService majorService;
+  final UniversityService universityService;
 
   const CareerScreen({
     super.key,
@@ -17,6 +21,8 @@ class CareerScreen extends StatelessWidget {
     this.major,
     this.relatedMajors,
     required this.dreamService,
+    required this.majorService,
+    required this.universityService,
   });
 
   @override
@@ -47,19 +53,23 @@ class CareerScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Wrap(
-              spacing: 5,
-              runSpacing: 5,
+              spacing: 12,
+              runSpacing: 12,
               children: careers.map((career) {
-                return ConstrainedBox(
-                  constraints: BoxConstraints(
-                    maxWidth: (MediaQuery.of(context).size.width - 40) / 2,
-                  ),
+                final screenWidth = MediaQuery.of(context).size.width;
+                final cardWidth =
+                    (screenWidth - (AppSpacing.paddingHorizontal * 2) - 12) / 2;
+
+                return SizedBox(
+                  width: cardWidth,
                   child: CareerCard(
                     career: career,
-                    width: (MediaQuery.of(context).size.width - 40) / 2 - 12,
+                    width: cardWidth,
                     major: major,
                     relatedMajors: relatedMajors,
                     dreamService: dreamService,
+                    majorService: majorService,
+                    universityService: universityService,
                   ),
                 );
               }).toList(),

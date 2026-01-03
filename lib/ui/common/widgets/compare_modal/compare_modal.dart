@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:uni_finder/ui/common/constants/app_colors.dart';
 import '../../../../service/dream_service.dart';
+import '../../../../service/major_service.dart';
+import '../../../../service/university_service.dart';
 import '../../../../model/major_model.dart';
 import '../../../../model/university_model.dart';
 import '../../../../model/university_major.dart';
@@ -13,16 +15,33 @@ import 'compare_modal_widget/compare_buttons_section.dart';
 
 class CompareUniversitiesBottomSheet extends StatefulWidget {
   final DreamService dreamService;
+  final MajorService majorService;
+  final UniversityService universityService;
 
-  const CompareUniversitiesBottomSheet({super.key, required this.dreamService});
+  const CompareUniversitiesBottomSheet({
+    super.key,
+    required this.dreamService,
+    required this.majorService,
+    required this.universityService,
+  });
 
-  static Future<void> show(BuildContext context, DreamService dreamService) {
+  // Shows the comparison modal as a bottom sheet
+  // Requires all three services to load majors, universities, and relationships
+  static Future<void> show(
+    BuildContext context,
+    DreamService dreamService,
+    MajorService majorService,
+    UniversityService universityService,
+  ) {
     return showModalBottomSheet(
       context: context,
       isScrollControlled: true,
       backgroundColor: Colors.transparent,
-      builder: (context) =>
-          CompareUniversitiesBottomSheet(dreamService: dreamService),
+      builder: (context) => CompareUniversitiesBottomSheet(
+        dreamService: dreamService,
+        majorService: majorService,
+        universityService: universityService,
+      ),
     );
   }
 
@@ -33,15 +52,18 @@ class CompareUniversitiesBottomSheet extends StatefulWidget {
 
 class _CompareUniversitiesBottomSheetState
     extends State<CompareUniversitiesBottomSheet> {
+  // Selected IDs for the comparison
   int? selectedMajorId;
   int? university1Id;
   int? university2Id;
 
+  // Data lists loaded from services
   List<Major> majors = [];
   List<Major> filteredMajors = [];
   List<University> availableUniversities = [];
   List<UniversityMajor> universityMajorRelations = [];
 
+  // UI state
   final TextEditingController _searchController = TextEditingController();
   bool isLoading = true;
   bool showMajorResults = false;
@@ -49,7 +71,7 @@ class _CompareUniversitiesBottomSheetState
   @override
   void initState() {
     super.initState();
-    loadData();
+    loadData(); // Load all required data when modal opens
   }
 
   @override
@@ -58,6 +80,8 @@ class _CompareUniversitiesBottomSheetState
     super.dispose();
   }
 
+  // Shows search results when user types, hides when search is empty
+  // Handles search input changes and filters majors accordingly
   void onSearchChanged() {
     setState(() {
       if (_searchController.text.isEmpty) {
@@ -76,10 +100,12 @@ class _CompareUniversitiesBottomSheetState
     });
   }
 
+  /// Loads all necessary data for the comparison
   Future<void> loadData() async {
-    final loadedMajors = await widget.dreamService.getMajorsData();
-    final allUniversities = await widget.dreamService.getUniversitiesData();
-    final relations = await widget.dreamService.getUniversityMajorsData();
+    final loadedMajors = await widget.majorService.getMajorsData();
+    final allUniversities = await widget.universityService
+        .getUniversitiesData();
+    final relations = await widget.universityService.getUniversityMajorsData();
 
     setState(() {
       majors = loadedMajors;
@@ -92,6 +118,9 @@ class _CompareUniversitiesBottomSheetState
     });
   }
 
+  // Processes the comparison when user clicks compare button
+  // Finds the selected universities and major, gets their relationship data,
+  // then navigates to the detailed comparison screen
   void handleCompare() async {
     if (selectedMajorId != null &&
         university1Id != null &&
@@ -107,7 +136,7 @@ class _CompareUniversitiesBottomSheetState
       // Get the major
       final major = majors.firstWhere((m) => m.id == selectedMajorId);
 
-      // Get the university-major relations
+      // Get the university-major relations (contains tuition, requirements, etc.)
       final uniMajor1 = universityMajorRelations.firstWhere(
         (um) =>
             um.universityId == university1Id && um.majorId == selectedMajorId,
@@ -117,8 +146,9 @@ class _CompareUniversitiesBottomSheetState
             um.universityId == university2Id && um.majorId == selectedMajorId,
       );
 
-      Navigator.pop(context);
+      Navigator.pop(context); // Close the modal
 
+      // Navigate to comparison screen with all selected data
       Navigator.push(
         context,
         MaterialPageRoute(
@@ -136,32 +166,38 @@ class _CompareUniversitiesBottomSheetState
 
   List<University> filteredUniversities = [];
 
+  // Called when user selects a major from search results
+  // Filters universities to only show those that offer the selected major
+  // Resets university selections since major changed
   void selectMajor(Major major) async {
-    final universities = await widget.dreamService.getUniversitiesForMajor(
+    final universities = await widget.universityService.getUniversitiesForMajor(
       major.id!,
     );
     setState(() {
       selectedMajorId = major.id;
       _searchController.text = major.name;
-      university1Id = null;
+      university1Id = null; // Reset selections
       university2Id = null;
       filteredUniversities = universities;
       showMajorResults = false;
     });
   }
 
+  // Selects the first university for comparison
   void selectFirstUniversity(int universityId) {
     setState(() {
       university1Id = universityId;
     });
   }
 
+  // Selects the second university for comparison
   void selectSecondUniversity(int universityId) {
     setState(() {
       university2Id = universityId;
     });
   }
 
+  // Resets all selections back to initial state
   void resetSelections() {
     setState(() {
       selectedMajorId = null;
@@ -187,9 +223,9 @@ class _CompareUniversitiesBottomSheetState
   @override
   Widget build(BuildContext context) {
     return DraggableScrollableSheet(
-      initialChildSize: 0.9,
-      minChildSize: 0.5,
-      maxChildSize: 0.95,
+      initialChildSize: 0.9, // Modal takes 90% of screen height initially
+      minChildSize: 0.5, // Can be dragged down to 50%
+      maxChildSize: 0.95, // Can be dragged up to 95%
       builder: (context, scrollController) {
         return Container(
           decoration: BoxDecoration(
@@ -198,7 +234,7 @@ class _CompareUniversitiesBottomSheetState
           ),
           child: Column(
             children: [
-              // Drag Handle
+              // Drag Handle 
               Container(
                 width: 40,
                 height: 4,
@@ -209,7 +245,7 @@ class _CompareUniversitiesBottomSheetState
                 ),
               ),
 
-              // Header
+              // Header with title and close button
               Padding(
                 padding: const EdgeInsets.symmetric(
                   horizontal: AppSpacing.lg,
@@ -222,7 +258,7 @@ class _CompareUniversitiesBottomSheetState
                       'Compare Universities',
                       style: AppTextStyles.h2.copyWith(
                         fontWeight: FontWeight.bold,
-                        color: Colors.white
+                        color: Colors.white,
                       ),
                     ),
                     IconButton(
@@ -235,7 +271,7 @@ class _CompareUniversitiesBottomSheetState
                 ),
               ),
 
-              // Content
+              // Main content area
               Expanded(
                 child: isLoading
                     ? const Center(child: CircularProgressIndicator())
@@ -245,8 +281,7 @@ class _CompareUniversitiesBottomSheetState
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            
-                            // Search Major Section
+                            // Search section for selecting a major
                             MajorSearchSection(
                               searchController: _searchController,
                               filteredMajors: filteredMajors,
@@ -258,24 +293,26 @@ class _CompareUniversitiesBottomSheetState
 
                             const SizedBox(height: AppSpacing.xl),
 
-                            // First University Section
+                            // First university selection section
                             UniversitySelectionSection(
                               title: 'First University',
                               universities: filteredUniversities,
                               selectedUniversityId: university1Id,
-                              disabledUniversityId: university2Id,
+                              disabledUniversityId:
+                                  university2Id, // Can't select same as second
                               isMajorSelected: selectedMajorId != null,
                               onUniversitySelected: selectFirstUniversity,
                             ),
 
                             const SizedBox(height: AppSpacing.xl),
 
-                            // Second University Section
+                            // Second university selection section
                             UniversitySelectionSection(
                               title: 'Second University',
                               universities: filteredUniversities,
                               selectedUniversityId: university2Id,
-                              disabledUniversityId: university1Id,
+                              disabledUniversityId:
+                                  university1Id, // Can't select same as first
                               isMajorSelected: selectedMajorId != null,
                               onUniversitySelected: selectSecondUniversity,
                             ),
@@ -286,12 +323,12 @@ class _CompareUniversitiesBottomSheetState
                       ),
               ),
 
-              // Buttons
+              // Bottom action buttons (Reset and Compare)
               CompareButtonsSection(
                 onReset: handleReset,
                 onCompare: handleCompare,
                 canCompare:
-                    selectedMajorId != null &&
+                    selectedMajorId != null && // All three must be selected
                     university1Id != null &&
                     university2Id != null,
               ),

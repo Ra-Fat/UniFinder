@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../common/widgets/widget.dart';
 import '../../theme/app_colors.dart';
-import '../../../model/dreams_model.dart';
 import './major_card.dart';
 
 class Recommendation extends StatefulWidget {

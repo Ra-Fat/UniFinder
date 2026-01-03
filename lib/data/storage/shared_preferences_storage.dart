@@ -15,7 +15,12 @@ class SharedPreferencesStorage {
     try {
       final prefs = await _getPrefs();
       final userJson = jsonEncode(user.toMap());
-      await prefs.setString('user', userJson);
+      final success = await prefs.setString('user', userJson);
+      debugPrint('User save result: $success, JSON: $userJson');
+
+      // Verify it was saved
+      final verify = prefs.getString('user');
+      debugPrint('Verification read: $verify');
     } catch (e) {
       debugPrint('Error saving user: $e');
       rethrow;
@@ -25,7 +30,14 @@ class SharedPreferencesStorage {
   Future<User?> getUser() async {
     try {
       final prefs = await _getPrefs();
+
+      // Debug: List all keys in SharedPreferences
+      final allKeys = prefs.getKeys();
+      debugPrint(' All SharedPreferences keys: $allKeys');
+
       final userJson = prefs.getString('user');
+      debugPrint(' Reading key "user": $userJson');
+
       if (userJson != null) {
         return User.fromMap(jsonDecode(userJson));
       }
@@ -70,6 +82,26 @@ class SharedPreferencesStorage {
       await prefs.clear();
     } catch (e) {
       debugPrint('Error clearing preferences: $e');
+      rethrow;
+    }
+  }
+
+  Future<String?> getString(String key) async {
+    try {
+      final prefs = await _getPrefs();
+      return prefs.getString(key);
+    } catch (e) {
+      debugPrint('Error getting string for key $key: $e');
+      return null;
+    }
+  }
+
+  Future<void> setString(String key, String value) async {
+    try {
+      final prefs = await _getPrefs();
+      await prefs.setString(key, value);
+    } catch (e) {
+      debugPrint('Error setting string for key $key: $e');
       rethrow;
     }
   }

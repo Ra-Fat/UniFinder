@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:go_router/go_router.dart';
 import 'package:flutter/material.dart';
+import '../../../main.dart';
 
 class LogoSplashScreen extends StatefulWidget {
   const LogoSplashScreen({super.key});
@@ -37,8 +38,23 @@ class _LogoSplashScreenState extends State<LogoSplashScreen>
     _controller.forward();
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      Timer(const Duration(seconds: 3), () {
-        GoRouter.of(context).go('/onboarding');
+      Timer(const Duration(seconds: 3), () async {
+        // Check if user exists in SharedPreferences
+        debugPrint(' Checking for existing user...');
+        final user = await userService.getUser();
+        debugPrint(' User found: ${user?.name ?? "NULL"}');
+
+        if (!mounted) return;
+
+        if (user != null) {
+          // User exists, skip onboarding and go straight to home
+          debugPrint(' Navigating to /home');
+          GoRouter.of(context).go('/home');
+        } else {
+          // No user found, show onboarding flow
+          debugPrint(' No user found, navigating to /onboarding');
+          GoRouter.of(context).go('/onboarding');
+        }
       });
     });
   }
