@@ -69,73 +69,105 @@ class CareerCard extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(AppSpacing.radiusLg),
         ),
-        child: InkWell(
-          onTap: () {
-            // TODO: Update router to handle career detail with parameters
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => CareerDetailScreen(
-                  career: career,
-                  major: major,
-                  relatedMajors: relatedMajors,
-                  dreamService: dreamService,
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(AppSpacing.radiusLg),
+          child: Stack(
+            children: [
+              // Background Image
+              Positioned.fill(
+                child: Image.asset(
+                  'panels/career.jpg', // Sample image
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) {
+                    // Fallback if image not found
+                    return Container(
+                      color: Theme.of(context).colorScheme.primaryContainer,
+                    );
+                  },
                 ),
               ),
-            );
-          },
-          borderRadius: BorderRadius.circular(AppSpacing.radiusLg),
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // Icon and Career Name
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Container(
-                      padding: EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                        color: Theme.of(context).colorScheme.primaryContainer,
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: Icon(
-                        Icons.work_outline,
-                        color: Theme.of(context).colorScheme.onPrimaryContainer,
-                        size: 24,
-                      ),
-                    ),
-                    SizedBox(width: 12),
-                    Expanded(
-                      child: Text(
-                        career.name,
-                        style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ],
+              // Dark overlay
+              Positioned.fill(
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.black.withOpacity(0.5),
+                  ),
                 ),
-                SizedBox(height: 12),
-
-                // Description
-                Text(
-                  career.shortDescription ?? '',
-                  style: Theme.of(
+              ),
+              // Content on top
+              InkWell(
+                onTap: () {
+                  Navigator.push(
                     context,
-                  ).textTheme.bodySmall?.copyWith(color: Colors.grey[600]),
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
+                    MaterialPageRoute(
+                      builder: (context) => CareerDetailScreen(
+                        career: career,
+                        major: major,
+                        relatedMajors: relatedMajors,
+                        dreamService: dreamService,
+                      ),
+                    ),
+                  );
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      // Icon and Career Name
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Container(
+                            padding: EdgeInsets.all(10),
+                            decoration: BoxDecoration(
+                              color: Colors.white.withOpacity(0.2),
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: Icon(
+                              Icons.work_outline,
+                              color: Colors.white,
+                              size: 24,
+                            ),
+                          ),
+                          SizedBox(width: 12),
+                          Expanded(
+                            child: Text(
+                              career.name,
+                              style: Theme.of(context).textTheme.titleSmall
+                                  ?.copyWith(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                  ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 12),
+
+                      // Description
+                      Text(
+                        career.shortDescription ?? '',
+                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                          color: Colors.white.withOpacity(0.9),
+                        ),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+
+                      SizedBox(height: 8),
+
+                      // Skills Chips
+                      SkillChips(
+                        skills: career.skills ?? [],
+                        maxSkillDisplay: 2,
+                      ),
+                    ],
+                  ),
                 ),
-
-                SizedBox(height: 8),
-
-                // Skills Chips
-                SkillChips(skills: career.skills ?? [], maxSkillDisplay: 2),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

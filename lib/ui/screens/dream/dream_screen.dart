@@ -7,6 +7,7 @@ import '../../../model/major_model.dart';
 import '../../../service/dream_service.dart';
 import 'widgets/career_card.dart';
 import 'widgets/major_card.dart';
+import '../../theme/app_colors.dart';
 import 'widgets/section_header.dart';
 import 'package:uni_finder/ui/common/widgets/compare_modal/compare_modal.dart';
 
@@ -73,20 +74,43 @@ class _DreamDetailState extends State<DreamDetail> {
     final textTheme = Theme.of(context).textTheme;
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          widget.dreamName ?? 'Dream Details',
-          style: textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold),
-        ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.compare_arrows),
-            tooltip: 'Compare',
-            onPressed: () {
-              CompareUniversitiesBottomSheet.show(context, widget.dreamService);
-            },
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(kToolbarHeight),
+        child: Container(
+          decoration: BoxDecoration(
+            color: AppColors.darkBackground,
+            border: Border(
+              bottom: BorderSide(
+                color: Colors.white.withOpacity(0.1), // Subtle border color
+                width: 1.0,
+              ),
+            ),
           ),
-        ],
+          child: AppBar(
+            title: Text(
+              widget.dreamName ?? 'Dream Details',
+              style: textTheme.headlineSmall?.copyWith(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            actions: [
+              IconButton(
+                icon: const Icon(Icons.filter_list),
+                tooltip: 'Compare',
+                onPressed: () {
+                  CompareUniversitiesBottomSheet.show(
+                    context,
+                    widget.dreamService,
+                  );
+                },
+              ),
+            ],
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+            scrolledUnderElevation: 0,
+            surfaceTintColor: Colors.transparent,
+          ),
+        ),
       ),
       body:
           FutureBuilder<
@@ -114,11 +138,7 @@ class _DreamDetailState extends State<DreamDetail> {
                   snapshot.data!;
 
               return SingleChildScrollView(
-                padding: const EdgeInsets.only(
-                  top: AppSpacing.paddingHorizontal,
-                  left: AppSpacing.paddingHorizontal,
-                  right: AppSpacing.paddingHorizontal,
-                ),
+                padding: EdgeInsets.all(15),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -146,7 +166,7 @@ class _DreamDetailState extends State<DreamDetail> {
                       relatedMajors: relatedMajors,
                       dreamService: widget.dreamService,
                     ),
-                    const SizedBox(height: AppSpacing.md),
+                    const SizedBox(height: AppSpacing.sm),
                     Text(
                       'Primary Major',
                       style: textTheme.labelLarge?.copyWith(

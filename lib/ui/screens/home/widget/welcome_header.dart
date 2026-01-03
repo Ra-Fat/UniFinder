@@ -39,7 +39,7 @@ class WelcomeHeader extends StatelessWidget {
         CustomSecondaryText(
           text: 'Discover your dream here',
         ),
-        SizedBox(height: 12),
+        SizedBox(height: 15),
         SearchField(controller: searchController, onChanged: onSearchChanged),
       ],
     );

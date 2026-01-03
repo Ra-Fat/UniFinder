@@ -78,7 +78,7 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: AppColors.darkBackground,
         elevation: 0,
         scrolledUnderElevation: 0,
-        toolbarHeight: 145,
+        toolbarHeight: 150,
         surfaceTintColor: Colors.transparent,
       ),
       body: SingleChildScrollView(

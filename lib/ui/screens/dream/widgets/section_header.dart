@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../../model/career_model.dart';
+import '../../../theme/app_colors.dart';
+import '../../../common/widgets/widget.dart';
 
 class SectionHeader extends StatelessWidget {
   final String title;
@@ -26,11 +28,9 @@ class SectionHeader extends StatelessWidget {
         ),
         GestureDetector(
           onTap: onSeeAll,
-          child: Text(
-            'See All (${careers.length})',
-            style: textTheme.labelLarge?.copyWith(
-              color: Theme.of(context).colorScheme.primary,
-            ),
+          child: CustomSecondaryText(
+            text: 'See All (${careers.length})',
+            textColor: Theme.of(context).colorScheme.primary,
           ),
         ),
       ],
