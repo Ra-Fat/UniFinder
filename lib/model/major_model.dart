@@ -1,7 +1,7 @@
 class Major {
-  final int? id;
+  final String? id;
   final String name;
-  final int categoryId;
+  final String categoryId;
   final String description;
 
   Major({

@@ -26,19 +26,26 @@ class WelcomeHeader extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Text('Welcome,', style: AppTextStyles.h1White),
-            const SizedBox(width: AppSpacing.sm),
-            Text(
-              userName,
-              style: AppTextStyles.h1.copyWith(color: AppColors.primary),
+            Row(
+              children: [
+                const Text('Welcome,', style: AppTextStyles.h1White),
+                const SizedBox(width: AppSpacing.sm),
+                Text(
+                  userName,
+                  style: AppTextStyles.h1.copyWith(color: AppColors.primary),
+                ),
+              ],
             ),
+            IconButton(
+              onPressed: (){}, 
+              icon: Icon(Icons.more_vert),
+            )
           ],
         ),
         SizedBox(height: 8),
-        CustomSecondaryText(
-          text: 'Discover your dream here',
-        ),
+        CustomSecondaryText(text: 'Discover your dream here'),
         SizedBox(height: 15),
         SearchField(controller: searchController, onChanged: onSearchChanged),
       ],

@@ -7,7 +7,7 @@ import '../../../common/constants/app_text_styles.dart';
 
 class UniversitiesCard extends StatefulWidget {
   final List<UniversityMajorDetail> universityMajors;
-  final int majorId;
+  final String majorId;
 
   const UniversitiesCard({
     super.key,

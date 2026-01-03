@@ -1,5 +1,5 @@
 class University{
-  final int? id;       
+  final String? id;       
   final String name; 
   final String? shortName;
   final String location;

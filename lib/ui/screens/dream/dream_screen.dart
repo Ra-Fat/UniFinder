@@ -5,6 +5,9 @@ import 'package:uni_finder/model/universityMajorDetail.dart';
 import '../../../model/career_model.dart';
 import '../../../model/major_model.dart';
 import '../../../service/dream_service.dart';
+import '../../../service/major_service.dart';
+import '../../../service/career_service.dart';
+import '../../../service/university_service.dart';
 import 'widgets/career_card.dart';
 import 'widgets/major_card.dart';
 import '../../theme/app_colors.dart';
@@ -12,15 +15,21 @@ import 'widgets/section_header.dart';
 import 'package:uni_finder/ui/common/widgets/compare_modal/compare_modal.dart';
 
 class DreamDetail extends StatefulWidget {
-  final int majorId;
+  final String majorId;
   final String? dreamName;
   final DreamService dreamService;
+  final MajorService majorService;
+  final CareerService careerService;
+  final UniversityService universityService;
 
   const DreamDetail({
     super.key,
     required this.majorId,
     this.dreamName,
     required this.dreamService,
+    required this.majorService,
+    required this.careerService,
+    required this.universityService,
   });
 
   @override
@@ -40,31 +49,30 @@ class _DreamDetailState extends State<DreamDetail> {
   Future<(Major, List<Career>, List<UniversityMajorDetail>, List<Major>)>
   _loadDreamData() async {
     // Fetch the primary major details
-    final major = await widget.dreamService.getMajorById(widget.majorId);
+    final major = await widget.majorService.getMajorById(widget.majorId);
     if (major == null) {
       throw Exception('Major not found');
     }
 
     // Get career opportunities for this major
-    final careers = await widget.dreamService.getCareersForMajor(
+    final careers = await widget.careerService.getCareersForMajor(
       widget.majorId,
     );
 
     // Find majors related to the primary major
-    final relatedMajors = await widget.dreamService.getRelatedMajorsForPrimary(
+    final relatedMajors = await widget.majorService.getRelatedMajorsForPrimary(
       widget.majorId,
     );
 
     // Collect all major IDs (primary + related) for university lookup
-    final allMajorIds = <int>{
+    final allMajorIds = <String>{
       widget.majorId,
-      ...relatedMajors.map((m) => m.id).whereType<int>(),
+      ...relatedMajors.map((m) => m.id).whereType<String>(),
     }.toList();
 
     // Fetch universities offering any of these majors
-    final universityMajors = await widget.dreamService.getUniversitiesForMajors(
-      allMajorIds,
-    );
+    final universityMajors = await widget.universityService
+        .getUniversitiesForMajors(allMajorIds);
 
     return (major, careers, universityMajors, relatedMajors);
   }
@@ -94,15 +102,20 @@ class _DreamDetailState extends State<DreamDetail> {
               ),
             ),
             actions: [
-              IconButton(
-                icon: const Icon(Icons.filter_list),
-                tooltip: 'Compare',
-                onPressed: () {
-                  CompareUniversitiesBottomSheet.show(
-                    context,
-                    widget.dreamService,
-                  );
-                },
+              Padding(
+                padding: const EdgeInsets.only(right: 8.0),
+                child: IconButton(
+                  icon: const Icon(Icons.filter_list),
+                  tooltip: 'Compare',
+                  onPressed: () {
+                    CompareUniversitiesBottomSheet.show(
+                      context,
+                      widget.dreamService,
+                      widget.majorService,
+                      widget.universityService,
+                    );
+                  },
+                ),
               ),
             ],
             backgroundColor: Colors.transparent,
@@ -153,6 +166,8 @@ class _DreamDetailState extends State<DreamDetail> {
                               major: major,
                               relatedMajors: relatedMajors,
                               dreamService: widget.dreamService,
+                              majorService: widget.majorService,
+                              universityService: widget.universityService,
                             ),
                           ),
                         );
@@ -165,6 +180,8 @@ class _DreamDetailState extends State<DreamDetail> {
                       major: major,
                       relatedMajors: relatedMajors,
                       dreamService: widget.dreamService,
+                      majorService: widget.majorService,
+                      universityService: widget.universityService,
                     ),
                     const SizedBox(height: AppSpacing.sm),
                     Text(

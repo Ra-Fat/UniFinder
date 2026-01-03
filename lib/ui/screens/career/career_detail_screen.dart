@@ -3,6 +3,8 @@ import 'package:uni_finder/ui/common/constants/app_spacing.dart';
 import '../../../model/career_model.dart';
 import '../../../model/major_model.dart';
 import '../../../service/dream_service.dart';
+import '../../../service/major_service.dart';
+import '../../../service/university_service.dart';
 import 'widgets/career_header.dart';
 import 'widgets/about_this_career_card.dart';
 // import 'widgets/why_fits_you_card.dart';
@@ -13,12 +15,13 @@ import 'widgets/career_progression_card.dart';
 import 'widgets/universities_card.dart';
 import 'package:uni_finder/model/universityMajorDetail.dart';
 
-
 class CareerDetailScreen extends StatefulWidget {
   final Career career;
   final Major? major;
   final List<Major>? relatedMajors;
   final DreamService dreamService;
+  final MajorService majorService;
+  final UniversityService universityService;
 
   const CareerDetailScreen({
     super.key,
@@ -26,6 +29,8 @@ class CareerDetailScreen extends StatefulWidget {
     this.major,
     this.relatedMajors,
     required this.dreamService,
+    required this.majorService,
+    required this.universityService,
   });
 
   @override
@@ -51,16 +56,16 @@ class _CareerDetailScreenState extends State<CareerDetailScreen> {
 
     // If we have a major with an ID, fetch related data
     if (major != null && major.id != null) {
-      relatedMajors ??= await widget.dreamService.getRelatedMajorsForPrimary(
+      relatedMajors ??= await widget.majorService.getRelatedMajorsForPrimary(
         major.id!,
       );
 
       // Fetch universities for primary major + all related majors
-      final allMajorIds = <int>{
+      final allMajorIds = <String>{
         major.id!,
-        ...relatedMajors.map((m) => m.id).whereType<int>(),
+        ...relatedMajors.map((m) => m.id!).whereType<String>(),
       }.toList();
-      universities = await widget.dreamService.getUniversitiesForMajors(
+      universities = await widget.universityService.getUniversitiesForMajors(
         allMajorIds,
       );
     }
@@ -99,8 +104,6 @@ class _CareerDetailScreenState extends State<CareerDetailScreen> {
                       AboutThisCareerCard(career: widget.career),
 
                       const SizedBox(height: AppSpacing.md),
-
-                      // const WhyFitsYouCard(),
 
                       const SizedBox(height: AppSpacing.md),
 

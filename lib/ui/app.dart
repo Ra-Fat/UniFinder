@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 // import '../ui/screens/q&a/question_screen.dart';
 // import './screens/utils/logo_splash_screen.dart';
 import '../routers/app_router.dart';
-import './theme/app_colors.dart';
 
 class App extends StatefulWidget {
   const App({super.key});

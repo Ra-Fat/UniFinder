@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:uni_finder/model/user_model.dart';
 import '../../common/widgets/widget.dart';
-import '../../../service/user_service.dart';
 import '../../../main.dart';
-import '../../../data/repository/data_repository.dart';
 
 class QuestionScreen extends StatefulWidget {
   const QuestionScreen({super.key});
@@ -16,7 +14,6 @@ class QuestionScreen extends StatefulWidget {
 class _QuestionScreenState extends State<QuestionScreen> {
   final _titleController = TextEditingController();
   bool _isNameValid = false;
-  late DataRepository _repository;
   final formKey = GlobalKey<FormState>();
 
   String? _onValidateName(String? value) {
@@ -30,7 +27,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
     if (formKey.currentState!.validate()) {
       final user = User(name: _titleController.text.trim());
       try {
-        await dataRepository.saveUser(user);
+        await userService.saveUser(user);
         debugPrint('User saved successfully: ${user.name}');
 
         if (mounted) {
@@ -89,7 +86,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
                 SizedBox(
                   child: CustomizeButton(
                     text: "Continue",
-                    onPressed: _onSubmitName,
+                    onPressed: _isNameValid ? _onSubmitName : null,
                   ),
                 ),
               ],

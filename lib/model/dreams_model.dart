@@ -1,7 +1,7 @@
 class Dream {
-  final int? id;
-  final int userId;
-  final int majorId;
+  final String? id;
+  final String userId;
+  final String majorId;
   final String? note;
   final DateTime createdAt;
   final String? title;

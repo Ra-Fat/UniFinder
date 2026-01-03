@@ -1,6 +1,6 @@
 class CareerMajor {
-  final int careerId;
-  final int majorId;
+  final String careerId;
+  final String majorId;
 
   CareerMajor({required this.careerId, required this.majorId});
 

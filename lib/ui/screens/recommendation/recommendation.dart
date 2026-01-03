@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:uni_finder/main.dart';
 import '../../common/widgets/widget.dart';
 import '../../theme/app_colors.dart';
 import '../../../model/dreams_model.dart';
 import './major_card.dart';
+import 'package:uuid/uuid.dart';
 
 class Recommendation extends StatefulWidget {
   const Recommendation({super.key});
@@ -16,10 +18,13 @@ class _RecommendationState extends State<Recommendation> {
   int? selectedCardIndex;
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _dreamNameController = TextEditingController();
+  String? selectedMajorId;
 
-  void _selectedDream(int index) {
+  void _selectedDream(int index, String majorId) {
     setState(() {
-      selectedCardIndex = selectedCardIndex == index ? null : index;
+      final isCurrentlySelected = selectedCardIndex == index;
+      selectedCardIndex = isCurrentlySelected ? null : index;
+      selectedMajorId = isCurrentlySelected ? null : majorId;
     });
   }
 
@@ -29,17 +34,32 @@ class _RecommendationState extends State<Recommendation> {
     super.dispose();
   }
 
-  void _handleSaveDream() {
+  Future<void> _handleSaveDream() async {
     if (_formKey.currentState!.validate()) {
-      String dreamName = _dreamNameController.text.trim();
-      // final newDream = Dream(
-      //   title: dreamName,
-      //   userId: userId, 
-      //   majorId: 
-      // );
-      Navigator.of(context).pop();
-      _dreamNameController.clear();
-      context.go('/home');
+      final dreamName = _dreamNameController.text.trim();
+
+      // get current user
+      final user = await userService.getUser();
+
+      final newDream = Dream(
+        id: const Uuid().v4(), // Generate unique ID
+        title: dreamName,
+        userId: user?.id ?? 'User',
+        majorId: selectedMajorId!,
+      );
+
+      try {
+        await dreamService.saveDream(newDream);
+        debugPrint('✅ Dream saved successfully: ${newDream.title} (ID: ${newDream.id})');
+
+        if (mounted) {
+          Navigator.of(context).pop();
+          _dreamNameController.clear();
+          context.go('/home');
+        }
+      } catch (err) {
+        debugPrint('Error saving dream: $err');
+      }
     }
   }
 
@@ -86,8 +106,14 @@ class _RecommendationState extends State<Recommendation> {
                     validator: _validateDreamName,
 
                     decoration: InputDecoration(
-                      label: Text("e.g., My Childhood dream" , style: TextStyle(fontSize: 14),),
-                      contentPadding: const EdgeInsets.symmetric(vertical: 13 , horizontal: 8),
+                      label: Text(
+                        "e.g., My Childhood dream",
+                        style: TextStyle(fontSize: 14),
+                      ),
+                      contentPadding: const EdgeInsets.symmetric(
+                        vertical: 13,
+                        horizontal: 8,
+                      ),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
@@ -98,7 +124,7 @@ class _RecommendationState extends State<Recommendation> {
                     children: [
                       Expanded(
                         child: CustomizeButton(
-                          text: "Cancel",                         
+                          text: "Cancel",
                           backgroundColor: AppColors.disabled,
                           onPressed: () {
                             _dreamNameController.clear();
@@ -169,7 +195,7 @@ class _RecommendationState extends State<Recommendation> {
                   'Collaboration',
                 ],
                 universitiesOffer: 10,
-                onTab: () => _selectedDream(0),
+                onTab: () => _selectedDream(0, '2'),
               ),
             ],
           ),

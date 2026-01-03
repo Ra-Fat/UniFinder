@@ -1,7 +1,7 @@
 class UniversityMajor {
-  final int? id;
-  final int universityId;
-  final int majorId;
+  final String? id;
+  final String universityId;
+  final String majorId;
   final double pricePerYear;
   final int durationYears;
   final String degree;

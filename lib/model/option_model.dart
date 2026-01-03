@@ -1,8 +1,8 @@
 class Option {
-  final int id;
-  final int questionId;
+  final String id;
+  final String questionId;
   final String text;
-  final int categoryId;
+  final String categoryId;
   final int score;
 
   Option({

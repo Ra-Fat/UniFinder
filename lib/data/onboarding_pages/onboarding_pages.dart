@@ -3,7 +3,7 @@ import '../../ui/screens/welcomes/welcome_screen_components.dart';
 
 final List<Widget> onboardingPages  = [
     WelcomeScreenComponents(
-      title: "Welcome to UniFinderr",
+      title: "Welcome to UniFinder",
       description:
           "Find the university, major, and career path that fit you best.",
       imagePath: "assets/panels/student.png",

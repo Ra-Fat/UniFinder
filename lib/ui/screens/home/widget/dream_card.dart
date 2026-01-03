@@ -5,7 +5,6 @@ import 'package:uni_finder/model/dreams_model.dart';
 // import 'package:uni_finder/ui/common/constants/app_colors.dart';
 import '../../../theme/app_colors.dart';
 import 'package:uni_finder/ui/common/constants/app_spacing.dart';
-import 'package:uni_finder/ui/common/constants/app_text_styles.dart';
 import '../../../common/widgets/widget.dart';
 
 class DreamCard extends StatelessWidget {

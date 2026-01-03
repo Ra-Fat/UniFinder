@@ -1,6 +1,6 @@
 class Answer {
-  final int userId;
-  final int optionId;
+  final String userId;
+  final String optionId;
 
   Answer({required this.userId, required this.optionId});
 

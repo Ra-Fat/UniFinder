@@ -2,18 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:uni_finder/model/dreams_model.dart';
 import 'package:uni_finder/service/dream_service.dart';
-import 'package:uni_finder/ui/common/constants/app_spacing.dart';
+import 'package:uni_finder/service/user_service.dart';
 // import 'package:uni_finder/ui/common/constants/app_text_styles.dart';
 import 'widget/welcome_header.dart';
-import 'widget/search_field.dart';
 // import '../';
 import 'widget/dreams_list.dart';
 import '../../theme/app_colors.dart';
 
 class HomeScreen extends StatefulWidget {
   final DreamService dreamService;
+  final UserService userService;
 
-  const HomeScreen({super.key, required this.dreamService});
+  const HomeScreen({
+    super.key,
+    required this.dreamService,
+    required this.userService,
+  });
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -21,7 +25,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   List<Dream> _dreams = [];
-  String _userName = 'User';
+  String _userName = '';
   bool _isLoading = true;
   final TextEditingController _searchController = TextEditingController();
   String _searchQuery = '';
@@ -34,7 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Future<void> _loadData() async {
     final dreams = await widget.dreamService.getDreams();
-    final user = await widget.dreamService.getUser();
+    final user = await widget.userService.getUser();
 
     setState(() {
       _dreams = dreams;
@@ -105,7 +109,7 @@ class _HomeScreenState extends State<HomeScreen> {
         onPressed: () {
           context.push('/questions');
         },
-        backgroundColor: AppColors.darkBackground,
+        backgroundColor: AppColors.primaryBlue,
         shape: const CircleBorder(),
         child: const Icon(Icons.add, color: AppColors.textPrimary),
       ),

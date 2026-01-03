@@ -6,10 +6,10 @@ import '../../../constants/app_colors.dart';
 class UniversitySelectionSection extends StatelessWidget {
   final String title;
   final List<University> universities;
-  final int? selectedUniversityId;
-  final int? disabledUniversityId;
+  final String? selectedUniversityId;
+  final String? disabledUniversityId;
   final bool isMajorSelected;
-  final Function(int) onUniversitySelected;
+  final Function(String) onUniversitySelected;
 
   const UniversitySelectionSection({
     super.key,

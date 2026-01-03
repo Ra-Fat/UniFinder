@@ -1,9 +1,9 @@
 [
   {
-    "id": 1,
+    "id": "1",
     "name": "Software Developer",
     "description": "Design, develop, and maintain software applications for various platforms including web, mobile, and desktop. Work with programming languages, frameworks, and tools to create efficient and scalable solutions.",
-    "short_description": "Build software applications and systems.",
+    "short_description": "Build software applications.",
     "salary_range": "$70,000 - $150,000 / year",
     "skills": [
       "Programming",
@@ -19,7 +19,7 @@
     }
   },
   {
-    "id": 2,
+    "id": "2",
     "name": "Web Developer",
     "description": "Create and maintain websites and web applications using modern technologies. Work on both frontend and backend development, ensuring responsive design and optimal user experience.",
     "short_description": "Build and maintain web applications.",
@@ -39,7 +39,7 @@
     }
   },
   {
-    "id": 3,
+    "id": "3",
     "name": "Data Scientist",
     "description": "Analyze complex data sets to help organizations make data-driven decisions. Use statistical methods, machine learning algorithms, and data visualization to extract meaningful insights.",
     "short_description": "Extract insights from data.",
@@ -59,7 +59,7 @@
     }
   },
   {
-    "id": 4,
+    "id": "4",
     "name": "Mobile App Developer",
     "description": "Develop applications for mobile devices including iOS and Android platforms. Create user-friendly interfaces and ensure optimal performance across different devices.",
     "short_description": "Build mobile applications.",
@@ -72,7 +72,7 @@
     }
   },
   {
-    "id": 5,
+    "id": "5",
     "name": "Cybersecurity Analyst",
     "description": "Protect organizations from digital threats by implementing security measures, monitoring systems, and responding to security incidents.",
     "short_description": "Protect systems from cyber threats.",
@@ -90,7 +90,7 @@
     }
   },
   {
-    "id": 6,
+    "id": "6",
     "name": "Database Administrator",
     "description": "Manage and maintain database systems, ensuring data integrity, security, and optimal performance. Design database structures and optimize queries.",
     "short_description": "Manage database systems.",
@@ -108,7 +108,7 @@
     }
   },
   {
-    "id": 7,
+    "id": "7",
     "name": "DevOps Engineer",
     "description": "Bridge the gap between development and operations teams by automating deployment processes, managing infrastructure, and ensuring reliable software delivery.",
     "short_description": "Automate software deployment and infrastructure.",
@@ -121,7 +121,7 @@
     }
   },
   {
-    "id": 8,
+    "id": "8",
     "name": "AI/ML Engineer",
     "description": "Design and implement artificial intelligence and machine learning systems. Work on developing algorithms, training models, and deploying AI solutions.",
     "short_description": "Build AI and machine learning systems.",
@@ -140,7 +140,7 @@
     }
   },
   {
-    "id": 9,
+    "id": "9",
     "name": "UI/UX Designer",
     "description": "Design user interfaces and enhance user experience for digital products. Conduct user research, create wireframes, and ensure intuitive design solutions.",
     "short_description": "Create intuitive user experiences.",
@@ -159,7 +159,7 @@
     }
   },
   {
-    "id": 10,
+    "id": "10",
     "name": "Business Analyst",
     "description": "Analyze business needs and translate them into technical requirements. Bridge communication between business stakeholders and technical teams.",
     "short_description": "Analyze business requirements.",
@@ -177,7 +177,7 @@
     }
   },
   {
-    "id": 11,
+    "id": "11",
     "name": "Research Scientist",
     "description": "Conduct scientific research and experiments in various fields including physics, chemistry, biology, and computer science. Publish findings and advance knowledge.",
     "short_description": "Conduct scientific research.",
@@ -195,7 +195,7 @@
     }
   },
   {
-    "id": 12,
+    "id": "12",
     "name": "Civil Engineer",
     "description": "Design, plan, and supervise construction projects including roads, bridges, buildings, and infrastructure. Ensure safety and compliance with regulations.",
     "short_description": "Design infrastructure projects.",
@@ -213,7 +213,7 @@
     }
   },
   {
-    "id": 13,
+    "id": "13",
     "name": "Doctor",
     "description": "Diagnose and treat medical conditions, provide preventive care, and promote overall health and wellness for patients across all age groups.",
     "short_description": "Provide medical care and treatment.",
@@ -231,7 +231,7 @@
     }
   },
   {
-    "id": 14,
+    "id": "14",
     "name": "Nurse",
     "description": "Provide comprehensive patient care in various healthcare settings. Administer medications, monitor patient conditions, and support recovery processes.",
     "short_description": "Provide patient care and support.",
@@ -249,7 +249,7 @@
     }
   },
   {
-    "id": 15,
+    "id": "15",
     "name": "Pharmacist",
     "description": "Dispense medications, counsel patients on proper usage, and ensure safe and effective drug therapy. Manage pharmacy operations and inventory.",
     "short_description": "Manage medications and patient counseling.",
@@ -267,7 +267,7 @@
     }
   },
   {
-    "id": 16,
+    "id": "16",
     "name": "Marketing Manager",
     "description": "Develop and execute marketing strategies to promote products and services. Manage campaigns, analyze market trends, and drive brand growth.",
     "short_description": "Develop marketing strategies.",
@@ -285,7 +285,7 @@
     }
   },
   {
-    "id": 17,
+    "id": "17",
     "name": "Financial Analyst",
     "description": "Analyze financial data to help organizations make investment decisions. Prepare reports, forecast trends, and evaluate financial performance.",
     "short_description": "Analyze financial data and investments.",
@@ -303,7 +303,7 @@
     }
   },
   {
-    "id": 18,
+    "id": "18",
     "name": "Teacher/Educator",
     "description": "Educate and inspire students at various levels. Develop curriculum, assess learning, and create engaging learning environments.",
     "short_description": "Educate and mentor students.",
@@ -321,7 +321,7 @@
     }
   },
   {
-    "id": 19,
+    "id": "19",
     "name": "Graphic Designer",
     "description": "Create visual content for print and digital media. Design logos, websites, advertisements, and marketing materials using creative software tools.",
     "short_description": "Create visual designs and graphics.",
@@ -339,7 +339,7 @@
     }
   },
   {
-    "id": 20,
+    "id": "20",
     "name": "Project Manager",
     "description": "Plan, execute, and oversee projects from initiation to completion. Coordinate teams, manage resources, and ensure project success within budget and timeline.",
     "short_description": "Manage project execution and delivery.",

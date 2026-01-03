@@ -1,6 +1,6 @@
 [
   {
-    "id": 1,
+    "id": "1",
     "name": "Royal University of Phnom Penh",
     "short_name": "RUPP",
     "description": "Cambodia's oldest and most prestigious university, offering comprehensive programs in sciences, humanities, social sciences, and technology.",
@@ -14,7 +14,7 @@
     "cover_image_path": "assets/university/rupp_cover.jpg"
   },
   {
-    "id": 2,
+    "id": "2",
     "name": "Institute of Technology of Cambodia",
     "short_name": "ITC",
     "description": "Leading engineering and technology university in Cambodia, specializing in STEM fields and technological innovation.",
@@ -28,7 +28,7 @@
     "cover_image_path": "assets/university/itc_cover.jpg"
   },
   {
-    "id": 3,
+    "id": "3",
     "name": "Royal University of Law and Economics",
     "short_name": "RULE",
     "description": "Specializes in law, economics, business administration, and social sciences with a focus on Cambodia's legal and economic development.",
@@ -42,7 +42,7 @@
     "cover_image_path": "assets/university/rule_cover.jpg"
   },
   {
-    "id": 4,
+    "id": "4",
     "name": "University of Health Sciences",
     "short_name": "UHS",
     "description": "Premier medical and health sciences university in Cambodia, training healthcare professionals for the nation.",
@@ -56,7 +56,7 @@
     "cover_image_path": "assets/university/uhs_cover.jpg"
   },
   {
-    "id": 5,
+    "id": "5",
     "name": "Royal University of Fine Arts",
     "short_name": "RUFA",
     "description": "Cambodia's leading institution for arts, music, cultural studies, and preserving traditional Khmer arts.",
@@ -70,7 +70,7 @@
     "cover_image_path": "assets/university/rufa_cover.jpg"
   },
   {
-    "id": 6,
+    "id": "6",
     "name": "Cambodian University of Specialties",
     "short_name": "CUS",
     "description": "Modern private university offering specialized programs in technology, business, and international studies.",
@@ -84,7 +84,7 @@
     "cover_image_path": "assets/university/cus_cover.jpg"
   },
   {
-    "id": 7,
+    "id": "7",
     "name": "University of Cambodia",
     "short_name": "UC",
     "description": "Private university focused on business, economics, and social sciences with international partnerships.",
@@ -98,7 +98,7 @@
     "cover_image_path": "assets/university/uc_cover.jpg"
   },
   {
-    "id": 8,
+    "id": "8",
     "name": "Royal University of Agriculture",
     "short_name": "RUA",
     "description": "Specialized in agricultural sciences, environmental studies, and rural development.",
@@ -112,7 +112,7 @@
     "cover_image_path": "assets/university/rua_cover.jpg"
   },
   {
-    "id": 9,
+    "id": "9",
     "name": "National University of Management",
     "short_name": "NUM",
     "description": "Focuses on management, business administration, and economic development.",
@@ -126,7 +126,7 @@
     "cover_image_path": "assets/university/num_cover.jpg"
   },
   {
-    "id": 2,
+    "id": "2",
     "name": "Institute of Technology of Cambodia",
     "short_name": "ITC",
     "description": "Leading engineering and technology university in Cambodia, specializing in STEM fields and technological innovation.",
@@ -140,7 +140,7 @@
     "cover_image_path": "assets/university/itc_cover.jpg"
   },
   {
-    "id": 3,
+    "id": "3",
     "name": "Royal University of Law and Economics",
     "short_name": "RULE",
     "description": "Specializes in law, economics, business administration, and social sciences with a focus on Cambodia's legal and economic development.",
@@ -154,7 +154,7 @@
     "cover_image_path": "assets/university/rule_cover.jpg"
   },
   {
-    "id": 4,
+    "id": "4",
     "name": "University of Health Sciences",
     "short_name": "UHS",
     "description": "Premier medical and health sciences university in Cambodia, training healthcare professionals for the nation.",
@@ -168,7 +168,7 @@
     "cover_image_path": "assets/university/uhs_cover.jpg"
   },
   {
-    "id": 5,
+    "id": "5",
     "name": "Royal University of Fine Arts",
     "short_name": "RUFA",
     "description": "Cambodia's leading institution for arts, music, cultural studies, and preserving traditional Khmer arts.",
@@ -182,7 +182,7 @@
     "cover_image_path": "assets/university/rufa_cover.jpg"
   },
   {
-    "id": 6,
+    "id": "6",
     "name": "Cambodian University of Specialties",
     "short_name": "CUS",
     "description": "Modern private university offering specialized programs in technology, business, and international studies.",
@@ -196,7 +196,7 @@
     "cover_image_path": "assets/university/cus_cover.jpg"
   },
   {
-    "id": 7,
+    "id": "7",
     "name": "University of Cambodia",
     "short_name": "UC",
     "description": "Private university focused on business, economics, and social sciences with international partnerships.",
@@ -210,7 +210,7 @@
     "cover_image_path": "assets/university/uc_cover.jpg"
   },
   {
-    "id": 8,
+    "id": "8",
     "name": "Royal University of Agriculture",
     "short_name": "RUA",
     "description": "Specialized in agricultural sciences, environmental studies, and rural development.",
@@ -224,7 +224,7 @@
     "cover_image_path": "assets/university/rua_cover.jpg"
   },
   {
-    "id": 9,
+    "id": "9",
     "name": "National University of Management",
     "short_name": "NUM",
     "description": "Focuses on management, business administration, and economic development.",
@@ -238,7 +238,7 @@
     "cover_image_path": "assets/university/num_cover.jpg"
   },
   {
-    "id": 10,
+    "id": "10",
     "name": "Paññāsāstra University of Cambodia",
     "short_name": "PUC",
     "description": "Buddhist university offering programs in Buddhist studies, philosophy, and traditional arts.",

@@ -6,7 +6,6 @@ import '../../../main.dart';
 import '../../theme/app_colors.dart';
 import '../../common/widgets/widget.dart';
 
-
 class MutipleChoiceQuestionScreen extends StatefulWidget {
   const MutipleChoiceQuestionScreen({super.key});
 
@@ -23,7 +22,7 @@ class _MutipleChoiceQuestionScreenState
   // keep track of current question show in the screen
   int currentIndex = 0;
   bool isLoading = true;
-  Map<int, int> selectedOptions = {};
+  Map<String, int> selectedOptions = {};
 
   @override
   void initState() {
@@ -34,8 +33,8 @@ class _MutipleChoiceQuestionScreenState
   // Get Question data
   Future<void> _loadQuestions() async {
     try {
-      final fetchQuestions = await dataRepository.getQuestionData();
-      final optionsPerQuestion = await dataRepository.getOptionsByQuestion();
+      final fetchQuestions = await questionService.getQuestionData();
+      final optionsPerQuestion = await questionService.getOptionsByQuestion();
 
       // need more checked on it
       if (!mounted) return;
@@ -105,7 +104,8 @@ class _MutipleChoiceQuestionScreenState
     }
 
     final currentQuestion = questions[currentIndex];
-    final currentOptions = allOptionsPerQuestion[currentQuestion.id] ?? [];
+    final questionIdInt = int.parse(currentQuestion.id);
+    final currentOptions = allOptionsPerQuestion[questionIdInt] ?? [];
     final selectedOptionIndex = selectedOptions[currentQuestion.id] ?? -1;
 
     return Scaffold(
