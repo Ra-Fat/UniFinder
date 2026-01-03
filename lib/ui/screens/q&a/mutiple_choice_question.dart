@@ -3,8 +3,9 @@ import 'package:go_router/go_router.dart';
 import '../../../model/question_model.dart';
 import '../../../model/option_model.dart';
 import '../../../main.dart';
-import '../../widgets/widget.dart';
 import '../../theme/app_colors.dart';
+import '../../common/widgets/widget.dart';
+
 
 class MutipleChoiceQuestionScreen extends StatefulWidget {
   const MutipleChoiceQuestionScreen({super.key});

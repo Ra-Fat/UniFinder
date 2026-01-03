@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:uni_finder/model/user_model.dart';
-import '../../widgets/widget.dart';
+import '../../common/widgets/widget.dart';
 import '../../../main.dart';
 import '../../../data/repository/data_repository.dart';
 

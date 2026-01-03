@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../theme/app_colors.dart';
-import '../../widgets/widget.dart';
+import '../../common/widgets/widget.dart';
 
 class MajorCard extends StatelessWidget {
   final String majorName;

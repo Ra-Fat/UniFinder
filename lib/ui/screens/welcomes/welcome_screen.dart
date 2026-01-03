@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import '../../widgets/widget.dart';
+import '../../common/widgets/widget.dart';
 import '../../../data/onboarding_pages/onboarding_pages.dart';
 import 'package:go_router/go_router.dart';
 
