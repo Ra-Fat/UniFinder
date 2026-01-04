@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:uni_finder/service/dream_service.dart';
 import 'package:uni_finder/service/major_service.dart';
 import 'package:uni_finder/service/university_service.dart';
 import 'package:uni_finder/ui/common/constants/app_spacing.dart';
 import 'package:uni_finder/ui/common/widgets/skill_chip.dart';
-import 'package:uni_finder/ui/screens/career/career_detail_screen.dart';
 import '../../../../model/career_model.dart';
 import '../../../../model/major_model.dart';
 
@@ -88,10 +88,9 @@ class CareerCard extends StatelessWidget {
               // Background Image
               Positioned.fill(
                 child: Image.asset(
-                  'panels/career.jpg', // Sample image
+                  career.imagePath ?? 'career/data.jpg',
                   fit: BoxFit.cover,
                   errorBuilder: (context, error, stackTrace) {
-                    // Fallback if image not found
                     return Container(
                       color: Theme.of(context).colorScheme.primaryContainer,
                     );
@@ -109,18 +108,13 @@ class CareerCard extends StatelessWidget {
               // Content on top
               InkWell(
                 onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => CareerDetailScreen(
-                        career: career,
-                        major: major,
-                        relatedMajors: relatedMajors,
-                        dreamService: dreamService,
-                        majorService: majorService,
-                        universityService: universityService,
-                      ),
-                    ),
+                  context.push(
+                    '/career',
+                    extra: {
+                      'career': career,
+                      'major': major,
+                      'relatedMajors': relatedMajors,
+                    },
                   );
                 },
                 child: Padding(
@@ -129,7 +123,6 @@ class CareerCard extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // Icon and Career Name
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [

@@ -1,5 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:uni_finder/model/dreams_model.dart';
+import 'package:uni_finder/model/career_model.dart';
+import 'package:uni_finder/model/major_model.dart';
 import 'package:uni_finder/service/dream_service.dart';
 import 'package:uni_finder/service/user_service.dart';
 import 'package:uni_finder/service/career_service.dart';
@@ -12,6 +14,7 @@ import '../ui/screens/utils/logo_splash_screen.dart';
 import '../ui/screens/welcomes/welcome_screen.dart';
 import '../ui/screens/q&a/mutiple_choice_question.dart';
 import '../ui/screens/dream/dream_screen.dart';
+import '../ui/screens/career/career_detail_screen.dart';
 import '../data/repository/dream_repository.dart';
 import '../data/repository/user_repository.dart';
 import '../data/repository/career_repository.dart';
@@ -35,50 +38,6 @@ final GoRouter appRouter = GoRouter(
       builder: (context, state) => const MutipleChoiceQuestionScreen(),
     ),
     GoRoute(
-      path: '/dream',
-      builder: (context, state) {
-        final fileStorage = FileStorage('assets/data');
-        final prefsStorage = SharedPreferencesStorage();
-
-        final dreamRepository = DreamRepository(fileStorage, prefsStorage);
-        final careerRepository = CareerRepository(fileStorage);
-        final majorRepository = MajorRepository(fileStorage);
-        final universityRepository = UniversityRepository(fileStorage);
-        final relationshipRepository = RelationshipRepository(fileStorage);
-
-        final careerService = CareerService(
-          careerRepository,
-          relationshipRepository,
-        );
-        final majorService = MajorService(majorRepository);
-        final universityService = UniversityService(
-          universityRepository,
-          relationshipRepository,
-          majorRepository,
-        );
-        final dreamService = DreamService(dreamRepository);
-
-        // Get majorId and dreamName from extra parameter if available
-        final extra = state.extra;
-        String majorId = '1'; // Default value
-        String? dreamName;
-
-        if (extra != null && extra is Dream) {
-          majorId = extra.majorId;
-          dreamName = extra.title;
-        }
-
-        return DreamDetail(
-          majorId: majorId,
-          dreamName: dreamName,
-          dreamService: dreamService,
-          majorService: majorService,
-          careerService: careerService,
-          universityService: universityService,
-        );
-      },
-    ),
-    GoRoute(
       path: '/home',
       builder: (context, state) {
         final fileStorage = FileStorage('assets/data');
@@ -90,6 +49,86 @@ final GoRouter appRouter = GoRouter(
         final userService = UserService(userRepository);
         final dreamService = DreamService(dreamRepository);
         return HomeScreen(dreamService: dreamService, userService: userService);
+      },
+      routes: [
+        GoRoute(
+          path: ':dreamId',
+          builder: (context, state) {
+            final fileStorage = FileStorage('assets/data');
+            final prefsStorage = SharedPreferencesStorage();
+
+            final dreamRepository = DreamRepository(fileStorage, prefsStorage);
+            final careerRepository = CareerRepository(fileStorage);
+            final majorRepository = MajorRepository(fileStorage);
+            final universityRepository = UniversityRepository(fileStorage);
+            final relationshipRepository = RelationshipRepository(fileStorage);
+
+            final careerService = CareerService(
+              careerRepository,
+              relationshipRepository,
+            );
+            final majorService = MajorService(majorRepository);
+            final universityService = UniversityService(
+              universityRepository,
+              relationshipRepository,
+              majorRepository,
+            );
+            final dreamService = DreamService(dreamRepository);
+
+            // Get dreamId from path parameter
+            final dreamId = state.pathParameters['dreamId'] ?? '1';
+            
+            // Get majorId and dreamName from extra parameter if available
+            final extra = state.extra;
+            String majorId = dreamId;
+            String? dreamName;
+
+            if (extra != null && extra is Dream) {
+              majorId = extra.majorId;
+              dreamName = extra.title;
+            }
+
+            return DreamDetail(
+              majorId: majorId,
+              dreamName: dreamName,
+              dreamService: dreamService,
+              majorService: majorService,
+              careerService: careerService,
+              universityService: universityService,
+            );
+          },
+        ),
+      ],
+    ),
+    GoRoute(
+      path: '/career',
+      builder: (context, state) {
+        final fileStorage = FileStorage('assets/data');
+        final prefsStorage = SharedPreferencesStorage();
+
+        final dreamRepository = DreamRepository(fileStorage, prefsStorage);
+        final majorRepository = MajorRepository(fileStorage);
+        final universityRepository = UniversityRepository(fileStorage);
+        final relationshipRepository = RelationshipRepository(fileStorage);
+
+        final dreamService = DreamService(dreamRepository);
+        final majorService = MajorService(majorRepository);
+        final universityService = UniversityService(
+          universityRepository,
+          relationshipRepository,
+          majorRepository,
+        );
+
+        final extra = state.extra as Map<String, dynamic>;
+        
+        return CareerDetailScreen(
+          career: extra['career'] as Career,
+          major: extra['major'] as Major?,
+          relatedMajors: extra['relatedMajors'] as List<Major>?,
+          dreamService: dreamService,
+          majorService: majorService,
+          universityService: universityService,
+        );
       },
     ),
     GoRoute(

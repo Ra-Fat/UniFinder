@@ -1,5 +1,5 @@
+import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:uni_finder/ui/common/constants/app_spacing.dart';
 import '../../../model/career_model.dart';
 import '../../../model/major_model.dart';
 import '../../../service/dream_service.dart';
@@ -7,7 +7,8 @@ import '../../../service/major_service.dart';
 import '../../../service/university_service.dart';
 import 'widgets/career_header.dart';
 import 'widgets/about_this_career_card.dart';
-// import 'widgets/why_fits_you_card.dart';
+import '../../theme/app_colors.dart';
+import '../../common/widgets/widget.dart';
 import 'widgets/salary_card.dart';
 import 'widgets/skills_card.dart';
 import 'widgets/education_path_card.dart';
@@ -76,7 +77,33 @@ class _CareerDetailScreenState extends State<CareerDetailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Career Details')),
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(kToolbarHeight),
+        child: ClipRRect(
+          child: BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+            child: Container(
+              decoration: BoxDecoration(
+                color: AppColors.darkBackground.withOpacity(0.7),
+                border: Border(
+                  bottom: BorderSide(
+                    color: Colors.white.withOpacity(0.1),
+                    width: 1.0,
+                  ),
+                ),
+              ),
+              child: AppBar(
+                title: CustomPrimaryText(text: widget.career.name),
+                backgroundColor: Colors.transparent,
+                elevation: 0,
+                scrolledUnderElevation: 0,
+                surfaceTintColor: Colors.transparent,
+              ),
+            ),
+          ),
+        ),
+      ),
+
       body: FutureBuilder<(Major?, List<Major>, List<UniversityMajorDetail>)>(
         future: _careerDataFuture,
         builder: (context, snapshot) {
@@ -98,24 +125,17 @@ class _CareerDetailScreenState extends State<CareerDetailScreen> {
               children: [
                 CareerHeader(career: widget.career),
                 Padding(
-                  padding: const EdgeInsets.all(AppSpacing.paddingHorizontal),
+                  // padding: const EdgeInsets.all(AppSpacing.paddingHorizontal),
+                  padding: EdgeInsets.all(15),
                   child: Column(
                     children: [
                       AboutThisCareerCard(career: widget.career),
-
-                      const SizedBox(height: AppSpacing.md),
-
-                      const SizedBox(height: AppSpacing.md),
 
                       SalaryCard(
                         salaryRange: widget.career.salaryRange ?? 'N/A',
                       ),
 
-                      const SizedBox(height: AppSpacing.md),
-
                       SkillsCard(skills: widget.career.skills ?? []),
-
-                      const SizedBox(height: AppSpacing.md),
 
                       if (major != null && relatedMajors.isNotEmpty)
                         EducationPathCard(
@@ -123,14 +143,10 @@ class _CareerDetailScreenState extends State<CareerDetailScreen> {
                           relatedMajors: relatedMajors,
                         ),
 
-                      const SizedBox(height: AppSpacing.md),
-
                       if (widget.career.careerProgression != null)
                         CareerProgressionCard(
                           progression: widget.career.careerProgression!,
                         ),
-
-                      const SizedBox(height: AppSpacing.md),
 
                       if (universities.isNotEmpty &&
                           major != null &&

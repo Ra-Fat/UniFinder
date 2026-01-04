@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import '../../../../model/career_model.dart';
-import '../../../common/constants/app_colors.dart';
+// import '../../../common/constants/app_colors.dart';
 import '../../../common/constants/app_spacing.dart';
+import '../../../theme/app_colors.dart';
+import '../../../common/widgets/widget.dart';
 import '../../../common/constants/app_text_styles.dart';
 
 class AboutThisCareerCard extends StatefulWidget {
@@ -28,15 +30,20 @@ class _AboutThisCareerCardState extends State<AboutThisCareerCard> {
     final maxLines = 2;
 
     return Card(
+      color: AppColors.cardBackground,
       elevation: 1,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(AppSpacing.radiusLg),
+        borderRadius: BorderRadius.circular(10),
+        side: BorderSide(
+          color: AppColors.cardBorder,
+          width: 1,
+        ),
       ),
       child: InkWell(
         onTap: onExpanded,
         borderRadius: BorderRadius.circular(AppSpacing.radiusLg),
         child: Padding(
-          padding: const EdgeInsets.all(AppSpacing.lg),
+          padding: const EdgeInsets.all(AppSpacing.md),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -48,28 +55,23 @@ class _AboutThisCareerCardState extends State<AboutThisCareerCard> {
                       Icon(
                         Icons.info_outline,
                         size: 20,
-                        color: AppColors.primary,
+                        color: AppColors.accentBlue,
                       ),
                       const SizedBox(width: AppSpacing.sm),
-                      Text(
-                        'About This Career',
-                        style: AppTextStyles.h2.copyWith(
-                          fontWeight: FontWeight.bold,
-                          color: AppColors.white
-                        ),
+                      CustomPrimaryText(
+                        text: 'About This Career'
                       ),
                     ],
                   ),
                   Icon(
                     isExpanded ? Icons.expand_less : Icons.expand_more,
-                    color: AppColors.white,
                   ),
                 ],
               ),
               const SizedBox(height: AppSpacing.sm),
               Text(
                 description,
-                style: AppTextStyles.bodyMedium.copyWith(height: 1.5, color: AppColors.white),
+                style: AppTextStyles.bodyMedium.copyWith(height: 1.5, color: AppColors.textSecondary),
                 maxLines: isExpanded ? null : maxLines,
                 overflow: isExpanded ? null : TextOverflow.ellipsis,
               ),
