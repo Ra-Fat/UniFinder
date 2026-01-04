@@ -7,10 +7,10 @@ import 'Domain/data/storage/shared_preferences_storage.dart';
 import 'Domain/data/repository/question_repository.dart';
 import 'Domain/data/repository/dream_repository.dart';
 import 'Domain/data/repository/user_repository.dart';
-import './service/question_service.dart';
-import './service/user_service.dart';
-import './service/dream_service.dart';
-import 'package:uni_finder/service/recommendation_service.dart';
+import 'Domain/service/question_service.dart';
+import 'Domain/service/user_service.dart';
+import 'Domain/service/dream_service.dart';
+import 'package:uni_finder/Domain/service/recommendation_service.dart';
 import 'package:uni_finder/Domain/data/repository/major_repository.dart';
 
 // Global service instances

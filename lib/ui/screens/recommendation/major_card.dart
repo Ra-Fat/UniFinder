@@ -8,9 +8,7 @@ class MajorCard extends StatelessWidget {
   final IconData? icon;
   final String description;
   final double matchScore;
-  // final int studyDuration;
   final bool isSelected;
-  // final int universitiesOffer;
   final List<String> keySkills;
   final VoidCallback onTab;
 
@@ -20,9 +18,7 @@ class MajorCard extends StatelessWidget {
     required this.isSelected,
     required this.description,
     required this.matchScore,
-    // required this.studyDuration,
     required this.keySkills,
-    // required this.universitiesOffer,
     required this.onTab,
     this.icon,
   });

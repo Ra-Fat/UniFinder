@@ -1,6 +1,6 @@
-import '../Domain/data/repository/career_repository.dart';
-import '../Domain/data/repository/relationship_repository.dart';
-import '../Domain/model/Career/career_model.dart';
+import '../data/repository/career_repository.dart';
+import '../data/repository/relationship_repository.dart';
+import '../model/Career/career_model.dart';
 
 class CareerService {
   final CareerRepository _careerRepository;

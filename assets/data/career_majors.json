@@ -9,10 +9,6 @@
   },
   {
     "career_id": "1",
-    "major_id": "3"
-  },
-  {
-    "career_id": "1",
     "major_id": "6"
   },
   {
@@ -22,10 +18,6 @@
   {
     "career_id": "2",
     "major_id": "2"
-  },
-  {
-    "career_id": "2",
-    "major_id": "3"
   },
   {
     "career_id": "3",
@@ -44,16 +36,8 @@
     "major_id": "2"
   },
   {
-    "career_id": "4",
-    "major_id": "3"
-  },
-  {
     "career_id": "5",
     "major_id": "1"
-  },
-  {
-    "career_id": "5",
-    "major_id": "3"
   },
   {
     "career_id": "5",
@@ -64,20 +48,12 @@
     "major_id": "1"
   },
   {
-    "career_id": "6",
-    "major_id": "3"
-  },
-  {
     "career_id": "7",
     "major_id": "1"
   },
   {
     "career_id": "7",
     "major_id": "2"
-  },
-  {
-    "career_id": "7",
-    "major_id": "3"
   },
   {
     "career_id": "8",
@@ -154,5 +130,9 @@
   {
     "career_id": "20",
     "major_id": "9"
+  },
+  {
+    "career_id": "10",
+    "major_id": "3"
   }
 ]

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:uni_finder/service/dream_service.dart';
+import 'package:uni_finder/Domain/service/dream_service.dart';
 import 'package:uni_finder/ui/common/constants/app_colors.dart';
 import 'package:uni_finder/ui/common/constants/app_spacing.dart';
 import 'package:uni_finder/ui/common/constants/app_text_styles.dart';

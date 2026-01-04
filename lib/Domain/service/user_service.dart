@@ -1,5 +1,5 @@
-import '../Domain/model/User/user_model.dart';
-import '../Domain/data/repository/user_repository.dart';
+import '../model/User/user_model.dart';
+import '../data/repository/user_repository.dart';
 
 class UserService {
   final UserRepository _userRepository;

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:uni_finder/ui/common/constants/app_colors.dart';
-import '../../../../service/dream_service.dart';
-import '../../../../service/major_service.dart';
-import '../../../../service/university_service.dart';
+import '../../../../Domain/service/dream_service.dart';
+import '../../../../Domain/service/major_service.dart';
+import '../../../../Domain/service/university_service.dart';
 import '../../../../Domain/model/Major/major_model.dart';
 import '../../../../Domain/model/University/university_model.dart';
 import '../../../../Domain/model/University/university_major.dart';

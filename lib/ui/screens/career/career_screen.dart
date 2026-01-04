@@ -3,9 +3,9 @@ import 'package:uni_finder/ui/common/constants/app_spacing.dart';
 import 'package:uni_finder/ui/screens/dream/widgets/career_card.dart';
 import '../../../Domain/model/Career/career_model.dart';
 import '../../../Domain/model/Major/major_model.dart';
-import '../../../service/dream_service.dart';
-import '../../../service/major_service.dart';
-import '../../../service/university_service.dart';
+import '../../../Domain/service/dream_service.dart';
+import '../../../Domain/service/major_service.dart';
+import '../../../Domain/service/university_service.dart';
 
 class CareerScreen extends StatelessWidget {
   final List<Career> careers;

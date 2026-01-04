@@ -2,11 +2,11 @@ import 'package:go_router/go_router.dart';
 import 'package:uni_finder/Domain/model/Dream/dreams_model.dart';
 import 'package:uni_finder/Domain/model/Career/career_model.dart';
 import 'package:uni_finder/Domain/model/Major/major_model.dart';
-import 'package:uni_finder/service/dream_service.dart';
-import 'package:uni_finder/service/user_service.dart';
-import 'package:uni_finder/service/career_service.dart';
-import 'package:uni_finder/service/major_service.dart';
-import 'package:uni_finder/service/university_service.dart';
+import 'package:uni_finder/Domain/service/dream_service.dart';
+import 'package:uni_finder/Domain/service/user_service.dart';
+import 'package:uni_finder/Domain/service/career_service.dart';
+import 'package:uni_finder/Domain/service/major_service.dart';
+import 'package:uni_finder/Domain/service/university_service.dart';
 import 'package:uni_finder/ui/screens/home/home_screen.dart';
 import '../ui/screens/q&a/question_screen.dart';
 import '../ui/screens/recommendation/recommendation.dart';
@@ -24,7 +24,7 @@ import '../Domain/data/repository/relationship_repository.dart';
 import '../Domain/data/repository/question_repository.dart';
 import '../Domain/data/storage/file_storage.dart';
 import '../Domain/data/storage/shared_preferences_storage.dart';
-import '../service/recommendation_service.dart';
+import '../Domain/service/recommendation_service.dart';
 
 final GoRouter appRouter = GoRouter(
   initialLocation: '/',

@@ -1,8 +1,8 @@
-import '../Domain/data/repository/question_repository.dart';
-import '../Domain/model/Category/category_model.dart';
-import '../Domain/model/Quiz/question_model.dart';
-import '../Domain/model/Quiz/option_model.dart';
-import '../Domain/model/Quiz/submission_model.dart';
+import '../data/repository/question_repository.dart';
+import '../model/Category/category_model.dart';
+import '../model/Quiz/question_model.dart';
+import '../model/Quiz/option_model.dart';
+import '../model/Quiz/submission_model.dart';
 
 class QuestionService {
   final QuestionRepository _questionRepository;

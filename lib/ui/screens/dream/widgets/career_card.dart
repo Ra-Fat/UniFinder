@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:uni_finder/service/dream_service.dart';
-import 'package:uni_finder/service/major_service.dart';
-import 'package:uni_finder/service/university_service.dart';
+import 'package:uni_finder/Domain/service/dream_service.dart';
+import 'package:uni_finder/Domain/service/major_service.dart';
+import 'package:uni_finder/Domain/service/university_service.dart';
 import 'package:uni_finder/ui/common/constants/app_spacing.dart';
 import 'package:uni_finder/ui/common/widgets/skill_chip.dart';
 import '../../../../Domain/model/Career/career_model.dart';

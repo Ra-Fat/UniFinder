@@ -6,9 +6,9 @@ import '../../../Domain/model/Dream/dreams_model.dart';
 import './major_card.dart';
 import 'package:uuid/uuid.dart';
 import 'package:uni_finder/Domain/model/Major/major_recommendation_model.dart';
-import '../../../service/recommendation_service.dart';
-import '../../../service/user_service.dart';
-import '../../../service/dream_service.dart';
+import '../../../Domain/service/recommendation_service.dart';
+import '../../../Domain/service/user_service.dart';
+import '../../../Domain/service/dream_service.dart';
 
 class Recommendation extends StatefulWidget {
   final RecommendationService recommendationService;
