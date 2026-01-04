@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import '../../common/widgets/widget.dart';
 import 'dart:ui';
+import '../../theme/app_colors.dart';
 
 class SkillChips extends StatelessWidget {
   const SkillChips({super.key, required this.skills, this.maxSkillDisplay});
@@ -17,28 +19,18 @@ class SkillChips extends StatelessWidget {
       spacing: 6,
       runSpacing: 6,
       children: displayedSkills.map((skill) {
-        return ClipRRect(
-          borderRadius: BorderRadius.circular(8),
-          child: BackdropFilter(
-            filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-            child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-              decoration: BoxDecoration(
-                // Semi-transparent background with blur
-                color: Theme.of(context).colorScheme.secondaryContainer.withOpacity(0.3),
-                borderRadius: BorderRadius.circular(8),
-                border: Border.all(
-                  color: Theme.of(context).colorScheme.secondary.withOpacity(0.5),
-                ),
-              ),
-              child: Text(
-                skill,
-                style: TextStyle(
-                  fontSize: 12,
-                  color: Theme.of(context).colorScheme.onSecondaryContainer,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
+        return Container(
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+          decoration: BoxDecoration(
+            color: AppColors.buttonBackground,
+            borderRadius: BorderRadius.circular(20),
+          ),
+          child: Text(
+            skill,
+            style: TextStyle(
+              fontSize: 11,
+              color: Colors.grey[300],
+              fontWeight: FontWeight.w500,
             ),
           ),
         );
@@ -47,9 +39,12 @@ class SkillChips extends StatelessWidget {
   }
 }
 
-// Alternative version with more pronounced glassmorphism effect
 class SkillChipsGlass extends StatelessWidget {
-  const SkillChipsGlass({super.key, required this.skills, this.maxSkillDisplay});
+  const SkillChipsGlass({
+    super.key,
+    required this.skills,
+    this.maxSkillDisplay,
+  });
 
   final List<String> skills;
   final int? maxSkillDisplay;

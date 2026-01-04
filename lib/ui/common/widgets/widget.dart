@@ -139,6 +139,7 @@ class CustomPrimaryText extends StatelessWidget {
       text,
       style: TextStyle(
         fontSize: fontSize,
+        fontWeight: FontWeight.bold,
         color: textColor ?? AppColors.textPrimary
       ),
     );

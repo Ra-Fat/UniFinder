@@ -17,20 +17,37 @@ class SectionHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
-
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(
-          title,
-          style: textTheme.labelLarge?.copyWith(fontWeight: FontWeight.bold),
+        // Icon Container
+        Container(
+          padding: const EdgeInsets.all(8),
+          decoration: BoxDecoration(
+            color: AppColors.buttonBackground,
+            borderRadius: BorderRadius.circular(8),
+          ),
+          child: Icon(
+            Icons.work_outline,
+            color: AppColors.accentBlue,
+            size: 22,
+          ),
         ),
-        GestureDetector(
-          onTap: onSeeAll,
+        const SizedBox(width: 12),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CustomPrimaryText(text: title),
+              const SizedBox(height: 3),
+              CustomSecondaryText(text: 'Explore potential career paths'),
+            ],
+          ),
+        ),
+        TextButton(
+          onPressed: onSeeAll,
           child: CustomSecondaryText(
             text: 'See All (${careers.length})',
-            textColor: Theme.of(context).colorScheme.primary,
+            textColor: AppColors.accentBlue,
           ),
         ),
       ],

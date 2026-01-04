@@ -11,6 +11,8 @@ import '../../../service/university_service.dart';
 import 'widgets/career_card.dart';
 import 'widgets/major_card.dart';
 import '../../theme/app_colors.dart';
+import '../../common/widgets/widget.dart';
+import '../../theme/app_colors.dart';
 import 'widgets/section_header.dart';
 import 'package:uni_finder/ui/common/widgets/compare_modal/compare_modal.dart';
 
@@ -89,7 +91,7 @@ class _DreamDetailState extends State<DreamDetail> {
             color: AppColors.darkBackground,
             border: Border(
               bottom: BorderSide(
-                color: Colors.white.withOpacity(0.1), // Subtle border color
+                color: Colors.white.withOpacity(0.1),
                 width: 1.0,
               ),
             ),
@@ -183,15 +185,38 @@ class _DreamDetailState extends State<DreamDetail> {
                       majorService: widget.majorService,
                       universityService: widget.universityService,
                     ),
-                    const SizedBox(height: AppSpacing.sm),
-                    Text(
-                      'Primary Major',
-                      style: textTheme.labelLarge?.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
+                    const SizedBox(height: AppSpacing.xl),
+                    Row(
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.all(8),
+                          decoration: BoxDecoration(
+                            color: AppColors.buttonBackground,
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Icon(
+                            Icons.school_outlined,
+                            color: AppColors.accentBlue,
+                            size: 22,
+                          ),
+                        ),
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              CustomPrimaryText(text: "Universities & Program"),
+                              const SizedBox(height: 3),
+                              CustomSecondaryText(
+                                text: 'Institution offering this major',
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
                     ),
                     const SizedBox(height: AppSpacing.md),
-                    MajorCard(major: major, universityMajors: universityMajors),
+                    MajorCard(major: major, universityMajors: universityMajors, isPrimary: true,),
                     const SizedBox(height: AppSpacing.paddingHorizontal),
                     Text(
                       'Related Majors',

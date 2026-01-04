@@ -10,8 +10,8 @@
     "website": "https://rupp.edu.kh",
     "phone": "+855 23 880 116",
     "email": "info@rupp.edu.kh",
-    "logo_path": "assets/university/rupp_logo.png",
-    "cover_image_path": "assets/university/rupp_cover.jpg"
+    "logo_path": "university/rupp_logo.png",
+    "cover_image_path": "university/rupp_cover.jpg"
   },
   {
     "id": "2",
@@ -24,8 +24,8 @@
     "website": "https://itc.edu.kh",
     "phone": "+855 23 880 370",
     "email": "contact@itc.edu.kh",
-    "logo_path": "assets/university/itc_logo.png",
-    "cover_image_path": "assets/university/itc_cover.jpg"
+    "logo_path": "university/itc_logo.png",
+    "cover_image_path": "university/itc_cover.jpg"
   },
   {
     "id": "3",
@@ -38,8 +38,8 @@
     "website": "https://rule.edu.kh",
     "phone": "+855 23 987 654",
     "email": "info@rule.edu.kh",
-    "logo_path": "assets/university/rule_logo.png",
-    "cover_image_path": "assets/university/rule_cover.jpg"
+    "logo_path": "university/rule_logo.png",
+    "cover_image_path": "university/rule_cover.jpg"
   },
   {
     "id": "4",
@@ -52,8 +52,8 @@
     "website": "https://uhs.edu.kh",
     "phone": "+855 23 426 257",
     "email": "info@uhs.edu.kh",
-    "logo_path": "assets/university/uhs_logo.png",
-    "cover_image_path": "assets/university/uhs_cover.jpg"
+    "logo_path": "university/uhs_logo.png",
+    "cover_image_path": "university/uhs_cover.jpg"
   },
   {
     "id": "5",
@@ -66,8 +66,8 @@
     "website": "https://rufa.edu.kh",
     "phone": "+855 23 986 876",
     "email": "info@rufa.edu.kh",
-    "logo_path": "assets/university/rufa_logo.png",
-    "cover_image_path": "assets/university/rufa_cover.jpg"
+    "logo_path": "university/rufa_logo.png",
+    "cover_image_path": "university/rufa_cover.jpg"
   },
   {
     "id": "6",
@@ -80,8 +80,8 @@
     "website": "https://cus.edu.kh",
     "phone": "+855 23 987 123",
     "email": "info@cus.edu.kh",
-    "logo_path": "assets/university/cus_logo.png",
-    "cover_image_path": "assets/university/cus_cover.jpg"
+    "logo_path": "university/cus_logo.png",
+    "cover_image_path": "university/cus_cover.jpg"
   },
   {
     "id": "7",
@@ -94,8 +94,8 @@
     "website": "https://uc.edu.kh",
     "phone": "+855 23 986 555",
     "email": "info@uc.edu.kh",
-    "logo_path": "assets/university/uc_logo.png",
-    "cover_image_path": "assets/university/uc_cover.jpg"
+    "logo_path": "university/uc_logo.png",
+    "cover_image_path": "university/uc_cover.jpg"
   },
   {
     "id": "8",
@@ -108,8 +108,8 @@
     "website": "https://rua.edu.kh",
     "phone": "+855 23 219 476",
     "email": "info@rua.edu.kh",
-    "logo_path": "assets/university/rua_logo.png",
-    "cover_image_path": "assets/university/rua_cover.jpg"
+    "logo_path": "university/rua_logo.png",
+    "cover_image_path": "university/rua_cover.jpg"
   },
   {
     "id": "9",
@@ -122,123 +122,123 @@
     "website": "https://num.edu.kh",
     "phone": "+855 23 428 555",
     "email": "info@num.edu.kh",
-    "logo_path": "assets/university/num_logo.png",
-    "cover_image_path": "assets/university/num_cover.jpg"
-  },
-  {
-    "id": "2",
-    "name": "Institute of Technology of Cambodia",
-    "short_name": "ITC",
-    "description": "Leading engineering and technology university in Cambodia, specializing in STEM fields and technological innovation.",
-    "location": "Phnom Penh",
-    "type": "Public",
-    "established_year": 1964,
-    "website": "https://itc.edu.kh",
-    "phone": "+855 23 880 370",
-    "email": "contact@itc.edu.kh",
-    "logo_path": "assets/university/itc_logo.png",
-    "cover_image_path": "assets/university/itc_cover.jpg"
-  },
-  {
-    "id": "3",
-    "name": "Royal University of Law and Economics",
-    "short_name": "RULE",
-    "description": "Specializes in law, economics, business administration, and social sciences with a focus on Cambodia's legal and economic development.",
-    "location": "Phnom Penh",
-    "type": "Public",
-    "established_year": 2003,
-    "website": "https://rule.edu.kh",
-    "phone": "+855 23 987 654",
-    "email": "info@rule.edu.kh",
-    "logo_path": "assets/university/rule_logo.png",
-    "cover_image_path": "assets/university/rule_cover.jpg"
-  },
-  {
-    "id": "4",
-    "name": "University of Health Sciences",
-    "short_name": "UHS",
-    "description": "Premier medical and health sciences university in Cambodia, training healthcare professionals for the nation.",
-    "location": "Phnom Penh",
-    "type": "Public",
-    "established_year": 1946,
-    "website": "https://uhs.edu.kh",
-    "phone": "+855 23 426 257",
-    "email": "info@uhs.edu.kh",
-    "logo_path": "assets/university/uhs_logo.png",
-    "cover_image_path": "assets/university/uhs_cover.jpg"
-  },
-  {
-    "id": "5",
-    "name": "Royal University of Fine Arts",
-    "short_name": "RUFA",
-    "description": "Cambodia's leading institution for arts, music, cultural studies, and preserving traditional Khmer arts.",
-    "location": "Phnom Penh",
-    "type": "Public",
-    "established_year": 1965,
-    "website": "https://rufa.edu.kh",
-    "phone": "+855 23 986 876",
-    "email": "info@rufa.edu.kh",
-    "logo_path": "assets/university/rufa_logo.png",
-    "cover_image_path": "assets/university/rufa_cover.jpg"
-  },
-  {
-    "id": "6",
-    "name": "Cambodian University of Specialties",
-    "short_name": "CUS",
-    "description": "Modern private university offering specialized programs in technology, business, and international studies.",
-    "location": "Phnom Penh",
-    "type": "Private",
-    "established_year": 2004,
-    "website": "https://cus.edu.kh",
-    "phone": "+855 23 987 123",
-    "email": "info@cus.edu.kh",
-    "logo_path": "assets/university/cus_logo.png",
-    "cover_image_path": "assets/university/cus_cover.jpg"
-  },
-  {
-    "id": "7",
-    "name": "University of Cambodia",
-    "short_name": "UC",
-    "description": "Private university focused on business, economics, and social sciences with international partnerships.",
-    "location": "Phnom Penh",
-    "type": "Private",
-    "established_year": 2003,
-    "website": "https://uc.edu.kh",
-    "phone": "+855 23 986 555",
-    "email": "info@uc.edu.kh",
-    "logo_path": "assets/university/uc_logo.png",
-    "cover_image_path": "assets/university/uc_cover.jpg"
-  },
-  {
-    "id": "8",
-    "name": "Royal University of Agriculture",
-    "short_name": "RUA",
-    "description": "Specialized in agricultural sciences, environmental studies, and rural development.",
-    "location": "Phnom Penh",
-    "type": "Public",
-    "established_year": 1964,
-    "website": "https://rua.edu.kh",
-    "phone": "+855 23 219 476",
-    "email": "info@rua.edu.kh",
-    "logo_path": "assets/university/rua_logo.png",
-    "cover_image_path": "assets/university/rua_cover.jpg"
-  },
-  {
-    "id": "9",
-    "name": "National University of Management",
-    "short_name": "NUM",
-    "description": "Focuses on management, business administration, and economic development.",
-    "location": "Phnom Penh",
-    "type": "Public",
-    "established_year": 1983,
-    "website": "https://num.edu.kh",
-    "phone": "+855 23 428 555",
-    "email": "info@num.edu.kh",
-    "logo_path": "assets/university/num_logo.png",
-    "cover_image_path": "assets/university/num_cover.jpg"
+    "logo_path": "university/num_logo.png",
+    "cover_image_path": "university/num_cover.jpg"
   },
   {
     "id": "10",
+    "name": "Institute of Technology of Cambodia",
+    "short_name": "ITC",
+    "description": "Leading engineering and technology university in Cambodia, specializing in STEM fields and technological innovation.",
+    "location": "Phnom Penh",
+    "type": "Public",
+    "established_year": 1964,
+    "website": "https://itc.edu.kh",
+    "phone": "+855 23 880 370",
+    "email": "contact@itc.edu.kh",
+    "logo_path": "university/itc_logo.png",
+    "cover_image_path": "university/itc_cover.jpg"
+  },
+  {
+    "id": "11",
+    "name": "Royal University of Law and Economics",
+    "short_name": "RULE",
+    "description": "Specializes in law, economics, business administration, and social sciences with a focus on Cambodia's legal and economic development.",
+    "location": "Phnom Penh",
+    "type": "Public",
+    "established_year": 2003,
+    "website": "https://rule.edu.kh",
+    "phone": "+855 23 987 654",
+    "email": "info@rule.edu.kh",
+    "logo_path": "university/rule_logo.png",
+    "cover_image_path": "university/rule_cover.jpg"
+  },
+  {
+    "id": "12",
+    "name": "University of Health Sciences",
+    "short_name": "UHS",
+    "description": "Premier medical and health sciences university in Cambodia, training healthcare professionals for the nation.",
+    "location": "Phnom Penh",
+    "type": "Public",
+    "established_year": 1946,
+    "website": "https://uhs.edu.kh",
+    "phone": "+855 23 426 257",
+    "email": "info@uhs.edu.kh",
+    "logo_path": "university/uhs_logo.png",
+    "cover_image_path": "assets/university/uhs_cover.jpg"
+  },
+  {
+    "id": "13",
+    "name": "Royal University of Fine Arts",
+    "short_name": "RUFA",
+    "description": "Cambodia's leading institution for arts, music, cultural studies, and preserving traditional Khmer arts.",
+    "location": "Phnom Penh",
+    "type": "Public",
+    "established_year": 1965,
+    "website": "https://rufa.edu.kh",
+    "phone": "+855 23 986 876",
+    "email": "info@rufa.edu.kh",
+    "logo_path": "university/rufa_logo.png",
+    "cover_image_path": "university/rufa_cover.jpg"
+  },
+  {
+    "id": "14",
+    "name": "Cambodian University of Specialties",
+    "short_name": "CUS",
+    "description": "Modern private university offering specialized programs in technology, business, and international studies.",
+    "location": "Phnom Penh",
+    "type": "Private",
+    "established_year": 2004,
+    "website": "https://cus.edu.kh",
+    "phone": "+855 23 987 123",
+    "email": "info@cus.edu.kh",
+    "logo_path": "university/cus_logo.png",
+    "cover_image_path": "university/cus_cover.jpg"
+  },
+  {
+    "id": "15",
+    "name": "University of Cambodia",
+    "short_name": "UC",
+    "description": "Private university focused on business, economics, and social sciences with international partnerships.",
+    "location": "Phnom Penh",
+    "type": "Private",
+    "established_year": 2003,
+    "website": "https://uc.edu.kh",
+    "phone": "+855 23 986 555",
+    "email": "info@uc.edu.kh",
+    "logo_path": "university/uc_logo.png",
+    "cover_image_path": "university/uc_cover.jpg"
+  },
+  {
+    "id": "16",
+    "name": "Royal University of Agriculture",
+    "short_name": "RUA",
+    "description": "Specialized in agricultural sciences, environmental studies, and rural development.",
+    "location": "Phnom Penh",
+    "type": "Public",
+    "established_year": 1964,
+    "website": "https://rua.edu.kh",
+    "phone": "+855 23 219 476",
+    "email": "info@rua.edu.kh",
+    "logo_path": "university/rua_logo.png",
+    "cover_image_path": "university/rua_cover.jpg"
+  },
+  {
+    "id": "17",
+    "name": "National University of Management",
+    "short_name": "NUM",
+    "description": "Focuses on management, business administration, and economic development.",
+    "location": "Phnom Penh",
+    "type": "Public",
+    "established_year": 1983,
+    "website": "https://num.edu.kh",
+    "phone": "+855 23 428 555",
+    "email": "info@num.edu.kh",
+    "logo_path": "university/num_logo.png",
+    "cover_image_path": "university/num_cover.jpg"
+  },
+  {
+    "id": "18",
     "name": "Paññāsāstra University of Cambodia",
     "short_name": "PUC",
     "description": "Buddhist university offering programs in Buddhist studies, philosophy, and traditional arts.",
@@ -248,7 +248,21 @@
     "website": "https://puc.edu.kh",
     "phone": "+855 23 211 750",
     "email": "info@puc.edu.kh",
-    "logo_path": "assets/university/puc_logo.png",
-    "cover_image_path": "assets/university/puc_cover.jpg"
+    "logo_path": "university/puc_logo.png",
+    "cover_image_path": "university/puc_cover.jpg"
+  },
+  {
+    "id": "19",
+    "name": "Cambodia Academy of Digital Technology",
+    "short_name": "CADT",
+    "description": "",
+    "location": "Phnom Penh",
+    "type": "Private",
+    "established_year": 2015,
+    "website": "https://cadt.edu.kh/",
+    "phone": "+855 23 211 750",
+    "email": "info@cadt.edu.kh",
+    "logo_path": "university/cadt_logo.png",
+    "cover_image_path": "university/puc_cover.jpg"
   }
 ]

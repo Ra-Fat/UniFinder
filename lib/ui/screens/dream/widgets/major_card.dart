@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:uni_finder/ui/common/widgets/widget.dart';
 import '../../../../model/major_model.dart';
 import 'package:uni_finder/model/universityMajorDetail.dart';
-import '../../../common/widgets/university_tile.dart';
+import '../../../theme/app_colors.dart';
 
 class MajorCard extends StatefulWidget {
   final Major major;
   final List<UniversityMajorDetail> universityMajors;
+  final bool isPrimary;
 
   const MajorCard({
     super.key,
     required this.major,
     required this.universityMajors,
+    this.isPrimary = false,
   });
 
   @override
@@ -20,77 +24,128 @@ class MajorCard extends StatefulWidget {
 class _MajorCardState extends State<MajorCard> {
   bool isExpanded = false;
 
-  void onExpanded() {
-    setState(() {
-      isExpanded = !isExpanded;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
-    // Filter to get only universities that offer this specific major
     final filtered = widget.universityMajors
-        .where((universityMajor) => universityMajor.major.id == widget.major.id)
+        .where((e) => e.major.id == widget.major.id)
         .toList();
 
-    return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+    return Container(
+      decoration: _cardDecoration(),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          //Collapse
-          InkWell(
-            onTap: () => onExpanded(),
-            borderRadius: BorderRadius.circular(20),
-            child: Padding(
-              padding: const EdgeInsets.all(20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          _buildHeader(filtered.length),
+          if (widget.isPrimary || isExpanded) _buildUniversityList(filtered),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildHeader(int count) {
+    return InkWell(
+      onTap: widget.isPrimary
+          ? null
+          : () => setState(() => isExpanded = !isExpanded),
+      borderRadius: BorderRadius.circular(12),
+      child: Padding(
+        padding: const EdgeInsets.all(12),
+        child: Row(
+          children: [
+            _iconBox(),
+            const SizedBox(width: 12),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Expanded(
-                    child: Text(
-                      widget.major.name,
-                      style: Theme.of(context).textTheme.titleMedium,
+                  Text(
+                    widget.major.name,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.w600,
+                      color: Colors.white,
+                      fontSize: 16,
                     ),
                   ),
-                  Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text(
-                        '${filtered.length} ${filtered.length == 1 ? 'University' : 'Universities'}',
-                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                          color: Colors.grey[600],
-                        ),
-                      ),
-                      const SizedBox(width: 8),
-                      Icon(
-                        isExpanded ? Icons.expand_less : Icons.expand_more,
-                        color: Theme.of(context).colorScheme.primary,
-                      ),
-                    ],
+                  const SizedBox(height: 4),
+                  Text(
+                    '$count ${count == 1 ? 'University' : 'Universities'}',
+                    style: TextStyle(color: Colors.grey[400]),
                   ),
                 ],
               ),
             ),
-          ),
-          //Expand
-          if (isExpanded)
-            Padding(
-              padding: const EdgeInsets.only(left: 20, right: 20, bottom: 20),
-              child: Column(
-                children: filtered.map((universityMajor) {
-                  return Padding(
-                    padding: const EdgeInsets.only(bottom: 8),
-                    child: UniversityTile(
-                      name: universityMajor.university.name,
-                      price: universityMajor.tuitionRange,
-                    ),
-                  );
-                }).toList(),
+            if (!widget.isPrimary)
+              Icon(
+                isExpanded ? Icons.expand_less : Icons.expand_more,
+                color: Colors.grey[400],
               ),
-            ),
-        ],
+          ],
+        ),
       ),
+    );
+  }
+
+  Widget _buildUniversityList(List<UniversityMajorDetail> list) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(16, 0, 16, 5),
+      child: Column(children: list.map(_universityTile).toList()),
+    );
+  }
+
+  Widget _universityTile(UniversityMajorDetail item) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 8),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(8),
+        onTap: () {
+          // Get all majors for this university
+          final universityMajors = widget.universityMajors
+              .where((e) => e.university.id == item.university.id)
+              .toList();
+          
+          context.push('/university', extra: {
+            'university': item.university,
+            'availableMajors': universityMajors,
+          });
+        },
+        child: Container(
+          decoration: BoxDecoration(
+            color: AppColors.cardBackgroundGradientEnd,
+            borderRadius: BorderRadius.circular(8),
+            border: Border.all(color: AppColors.cardBorder),
+          ),
+          padding: const EdgeInsets.all(12),
+          child: Row(
+            children: [
+              _iconBox(size: widget.isPrimary ? 40 : 32),
+              const SizedBox(width: 12),
+              Expanded(child: CustomSecondaryText(text: item.university.name)),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _iconBox({double size = 40}) {
+    return Container(
+      width: size,
+      height: size,
+      decoration: BoxDecoration(
+        color: AppColors.buttonBackground,
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: Icon(Icons.school, size: size / 2, color: Colors.grey[400]),
+    );
+  }
+
+  BoxDecoration _cardDecoration() {
+    return BoxDecoration(
+      color: widget.isPrimary
+          ? AppColors.cardBackgroundGradientStart
+          : AppColors.cardBackground,
+      borderRadius: BorderRadius.circular(12),
+      border: Border.all(color: AppColors.cardBorder),
     );
   }
 }
@@ -107,13 +162,17 @@ class RelatedMajorList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final relatedMajors = majors
-        .map(
-          (major) =>
-              MajorCard(major: major, universityMajors: universityMajors),
-        )
-        .toList();
-
-    return Column(children: relatedMajors);
+    return Column(
+      children: [
+        for (int i = 0; i < majors.length; i++)
+          Padding(
+            padding: EdgeInsets.only(bottom: i < majors.length - 1 ? 12 : 0),
+            child: MajorCard(
+              major: majors[i],
+              universityMajors: universityMajors,
+            ),
+          ),
+      ],
+    );
   }
 }
