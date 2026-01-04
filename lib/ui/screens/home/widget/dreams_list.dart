@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:uni_finder/model/dreams_model.dart';
+import 'package:uni_finder/Domain/model/Dream/dreams_model.dart';
 import 'package:uni_finder/ui/common/constants/app_spacing.dart';
 import 'package:uni_finder/ui/common/constants/app_text_styles.dart';
 import 'dream_card.dart';

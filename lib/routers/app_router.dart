@@ -1,7 +1,7 @@
 import 'package:go_router/go_router.dart';
-import 'package:uni_finder/model/dreams_model.dart';
-import 'package:uni_finder/model/career_model.dart';
-import 'package:uni_finder/model/major_model.dart';
+import 'package:uni_finder/Domain/model/Dream/dreams_model.dart';
+import 'package:uni_finder/Domain/model/Career/career_model.dart';
+import 'package:uni_finder/Domain/model/Major/major_model.dart';
 import 'package:uni_finder/service/dream_service.dart';
 import 'package:uni_finder/service/user_service.dart';
 import 'package:uni_finder/service/career_service.dart';
@@ -15,14 +15,16 @@ import '../ui/screens/welcomes/welcome_screen.dart';
 import '../ui/screens/q&a/mutiple_choice_question.dart';
 import '../ui/screens/dream/dream_screen.dart';
 import '../ui/screens/career/career_detail_screen.dart';
-import '../data/repository/dream_repository.dart';
-import '../data/repository/user_repository.dart';
-import '../data/repository/career_repository.dart';
-import '../data/repository/major_repository.dart';
-import '../data/repository/university_repository.dart';
-import '../data/repository/relationship_repository.dart';
-import '../data/storage/file_storage.dart';
-import '../data/storage/shared_preferences_storage.dart';
+import '../Domain/data/repository/dream_repository.dart';
+import '../Domain/data/repository/user_repository.dart';
+import '../Domain/data/repository/career_repository.dart';
+import '../Domain/data/repository/major_repository.dart';
+import '../Domain/data/repository/university_repository.dart';
+import '../Domain/data/repository/relationship_repository.dart';
+import '../Domain/data/repository/question_repository.dart';
+import '../Domain/data/storage/file_storage.dart';
+import '../Domain/data/storage/shared_preferences_storage.dart';
+import '../service/recommendation_service.dart';
 
 final GoRouter appRouter = GoRouter(
   initialLocation: '/',
@@ -40,10 +42,9 @@ final GoRouter appRouter = GoRouter(
     GoRoute(
       path: '/home',
       builder: (context, state) {
-        final fileStorage = FileStorage('assets/data');
         final prefsStorage = SharedPreferencesStorage();
 
-        final dreamRepository = DreamRepository(fileStorage, prefsStorage);
+        final dreamRepository = DreamRepository(prefsStorage);
         final userRepository = UserRepository(prefsStorage);
 
         final userService = UserService(userRepository);
@@ -57,7 +58,7 @@ final GoRouter appRouter = GoRouter(
             final fileStorage = FileStorage('assets/data');
             final prefsStorage = SharedPreferencesStorage();
 
-            final dreamRepository = DreamRepository(fileStorage, prefsStorage);
+            final dreamRepository = DreamRepository(prefsStorage);
             final careerRepository = CareerRepository(fileStorage);
             final majorRepository = MajorRepository(fileStorage);
             final universityRepository = UniversityRepository(fileStorage);
@@ -77,7 +78,7 @@ final GoRouter appRouter = GoRouter(
 
             // Get dreamId from path parameter
             final dreamId = state.pathParameters['dreamId'] ?? '1';
-            
+
             // Get majorId and dreamName from extra parameter if available
             final extra = state.extra;
             String majorId = dreamId;
@@ -106,7 +107,7 @@ final GoRouter appRouter = GoRouter(
         final fileStorage = FileStorage('assets/data');
         final prefsStorage = SharedPreferencesStorage();
 
-        final dreamRepository = DreamRepository(fileStorage, prefsStorage);
+        final dreamRepository = DreamRepository(prefsStorage);
         final majorRepository = MajorRepository(fileStorage);
         final universityRepository = UniversityRepository(fileStorage);
         final relationshipRepository = RelationshipRepository(fileStorage);
@@ -120,7 +121,7 @@ final GoRouter appRouter = GoRouter(
         );
 
         final extra = state.extra as Map<String, dynamic>;
-        
+
         return CareerDetailScreen(
           career: extra['career'] as Career,
           major: extra['major'] as Major?,
@@ -133,7 +134,31 @@ final GoRouter appRouter = GoRouter(
     ),
     GoRoute(
       path: '/recommendation',
-      builder: (context, state) => const Recommendation(),
+      builder: (context, state) {
+        final fileStorage = FileStorage('assets/data');
+        final prefsStorage = SharedPreferencesStorage();
+
+        final questionRepository = QuestionRepository(
+          fileStorage,
+          prefsStorage,
+        );
+        final majorRepository = MajorRepository(fileStorage);
+        final userRepository = UserRepository(prefsStorage);
+        final dreamRepository = DreamRepository(prefsStorage);
+
+        final recommendationService = RecommendationService(
+          questionRepository,
+          majorRepository,
+        );
+        final userService = UserService(userRepository);
+        final dreamService = DreamService(dreamRepository);
+
+        return Recommendation(
+          recommendationService: recommendationService,
+          userService: userService,
+          dreamService: dreamService,
+        );
+      },
     ),
   ],
 );

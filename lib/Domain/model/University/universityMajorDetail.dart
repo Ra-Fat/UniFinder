@@ -1,6 +1,6 @@
-import 'package:uni_finder/model/major_model.dart';
-import 'package:uni_finder/model/university_major.dart';
-import 'package:uni_finder/model/university_model.dart';
+import 'package:uni_finder/Domain/model/Major/major_model.dart';
+import 'package:uni_finder/Domain/model/University/university_major.dart';
+import 'package:uni_finder/Domain/model/University/university_model.dart';
 
 class UniversityMajorDetail {
   final UniversityMajor universityMajor;

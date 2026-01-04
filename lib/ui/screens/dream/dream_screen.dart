@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:uni_finder/ui/common/constants/app_spacing.dart';
 import 'package:uni_finder/ui/screens/career/career_screen.dart';
-import 'package:uni_finder/model/universityMajorDetail.dart';
-import '../../../model/career_model.dart';
-import '../../../model/major_model.dart';
+import 'package:uni_finder/Domain/model/University/universityMajorDetail.dart';
+import '../../../Domain/model/Career/career_model.dart';
+import '../../../Domain/model/Major/major_model.dart';
 import '../../../service/dream_service.dart';
 import '../../../service/major_service.dart';
 import '../../../service/career_service.dart';
 import '../../../service/university_service.dart';
 import 'widgets/career_card.dart';
 import 'widgets/major_card.dart';
-import '../../theme/app_colors.dart';
+import '../../theme/app_styles.dart';
 import 'widgets/section_header.dart';
 import 'package:uni_finder/ui/common/widgets/compare_modal/compare_modal.dart';
 

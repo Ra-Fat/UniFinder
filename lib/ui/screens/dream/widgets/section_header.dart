@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../model/career_model.dart';
-import '../../../theme/app_colors.dart';
+import '../../../../Domain/model/Career/career_model.dart';
 import '../../../common/widgets/widget.dart';
 
 class SectionHeader extends StatelessWidget {

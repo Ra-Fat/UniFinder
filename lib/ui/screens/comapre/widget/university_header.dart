@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../model/university_model.dart';
+import '../../../../Domain/model/University/university_model.dart';
 import '../../../common/constants/app_colors.dart';
 import '../../../common/constants/app_spacing.dart';
 import '../../../common/constants/app_text_styles.dart';

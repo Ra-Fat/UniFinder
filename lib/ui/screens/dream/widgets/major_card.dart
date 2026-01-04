@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../../../model/major_model.dart';
-import 'package:uni_finder/model/universityMajorDetail.dart';
+import '../../../../Domain/model/Major/major_model.dart';
+import 'package:uni_finder/Domain/model/University/universityMajorDetail.dart';
 import '../../../common/widgets/university_tile.dart';
 
 class MajorCard extends StatefulWidget {

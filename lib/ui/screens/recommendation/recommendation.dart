@@ -1,14 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:uni_finder/main.dart';
 import '../../common/widgets/widget.dart';
-import '../../theme/app_colors.dart';
-import '../../../model/dreams_model.dart';
+import '../../theme/app_styles.dart';
+import '../../../Domain/model/Dream/dreams_model.dart';
 import './major_card.dart';
 import 'package:uuid/uuid.dart';
+import 'package:uni_finder/Domain/model/Major/major_recommendation_model.dart';
+import '../../../service/recommendation_service.dart';
+import '../../../service/user_service.dart';
+import '../../../service/dream_service.dart';
 
 class Recommendation extends StatefulWidget {
-  const Recommendation({super.key});
+  final RecommendationService recommendationService;
+  final UserService userService;
+  final DreamService dreamService;
+
+  const Recommendation({
+    super.key,
+    required this.recommendationService,
+    required this.userService,
+    required this.dreamService,
+  });
 
   @override
   State<Recommendation> createState() => _RecommendationState();
@@ -19,6 +31,38 @@ class _RecommendationState extends State<Recommendation> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _dreamNameController = TextEditingController();
   String? selectedMajorId;
+  List<MajorRecommendation> recommendations = [];
+  bool isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadRecommendations();
+  }
+
+  Future<void> _loadRecommendations() async {
+    try {
+      final user = await widget.userService.getUser();
+      if (user != null) {
+        final recs = await widget.recommendationService.generateRecommendations(
+          user.id ?? '',
+        );
+        setState(() {
+          recommendations = recs;
+          isLoading = false;
+        });
+      } else {
+        setState(() {
+          isLoading = false;
+        });
+      }
+    } catch (err) {
+      debugPrint('Error loading recommendations: $err');
+      setState(() {
+        isLoading = false;
+      });
+    }
+  }
 
   void _selectedDream(int index, String majorId) {
     setState(() {
@@ -39,7 +83,7 @@ class _RecommendationState extends State<Recommendation> {
       final dreamName = _dreamNameController.text.trim();
 
       // get current user
-      final user = await userService.getUser();
+      final user = await widget.userService.getUser();
 
       final newDream = Dream(
         id: const Uuid().v4(), // Generate unique ID
@@ -49,8 +93,10 @@ class _RecommendationState extends State<Recommendation> {
       );
 
       try {
-        await dreamService.saveDream(newDream);
-        debugPrint('✅ Dream saved successfully: ${newDream.title} (ID: ${newDream.id})');
+        await widget.dreamService.saveDream(newDream);
+        debugPrint(
+          'Dream saved successfully: ${newDream.title} (ID: ${newDream.id})',
+        );
 
         if (mounted) {
           Navigator.of(context).pop();
@@ -97,9 +143,7 @@ class _RecommendationState extends State<Recommendation> {
                 children: [
                   CustomPrimaryText(text: "Name Your Dream"),
                   SizedBox(height: 6),
-                  CustomSecondaryText(
-                    text: "Give ur ... dream a memorable name",
-                  ),
+                  CustomSecondaryText(text: "Give your dream a name"),
                   SizedBox(height: 15),
                   TextFormField(
                     controller: _dreamNameController,
@@ -179,27 +223,40 @@ class _RecommendationState extends State<Recommendation> {
       ),
       body: Padding(
         padding: EdgeInsets.all(15),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              MajorCard(
-                majorName: 'Software Engineering',
-                isSelected: selectedCardIndex == 0,
-                description:
-                    'Build innovative applications and systems that shape the digital world',
-                matchScore: 95.0,
-                studyDuration: 4,
-                keySkills: [
-                  'Problem Solving',
-                  'Critical Thinking',
-                  'Collaboration',
-                ],
-                universitiesOffer: 10,
-                onTab: () => _selectedDream(0, '2'),
+        child: isLoading
+            ? Center(child: CircularProgressIndicator())
+            : recommendations.isEmpty
+            ? Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.search_off, size: 64, color: AppColors.disabled),
+                    SizedBox(height: 16),
+                    CustomPrimaryText(text: "No Recommendations Found"),
+                    SizedBox(height: 8),
+                    CustomSecondaryText(text: "Please complete the quiz first"),
+                  ],
+                ),
+              )
+            : SingleChildScrollView(
+                child: Column(
+                  children: List.generate(recommendations.length, (index) {
+                    final rec = recommendations[index];
+                    return MajorCard(
+                      majorName: rec.major.name,
+                      isSelected: selectedCardIndex == index,
+                      description: rec.major.description,
+                      matchScore: double.parse(
+                        rec.matchScore.toStringAsFixed(2),
+                      ),
+                      // studyDuration: rec.major.duration,
+                      keySkills: rec.major.keySkills,
+                      // universitiesOffer: rec.major.universityCount,
+                      onTab: () => _selectedDream(index, rec.major.id ?? ''),
+                    );
+                  }),
+                ),
               ),
-            ],
-          ),
-        ),
       ),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(

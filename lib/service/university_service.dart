@@ -1,9 +1,9 @@
-import '../../data/repository/university_repository.dart';
-import '../../data/repository/relationship_repository.dart';
-import '../../data/repository/major_repository.dart';
-import '../../model/university_model.dart';
-import '../../model/university_major.dart';
-import '../../model/universityMajorDetail.dart';
+import '../Domain/data/repository/university_repository.dart';
+import '../Domain/data/repository/relationship_repository.dart';
+import '../Domain/data/repository/major_repository.dart';
+import '../Domain/model/University/university_model.dart';
+import '../Domain/model/University/university_major.dart';
+import '../Domain/model/University/universityMajorDetail.dart';
 
 class UniversityService {
   final UniversityRepository _universityRepository;

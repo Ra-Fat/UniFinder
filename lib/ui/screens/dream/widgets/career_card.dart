@@ -5,8 +5,8 @@ import 'package:uni_finder/service/major_service.dart';
 import 'package:uni_finder/service/university_service.dart';
 import 'package:uni_finder/ui/common/constants/app_spacing.dart';
 import 'package:uni_finder/ui/common/widgets/skill_chip.dart';
-import '../../../../model/career_model.dart';
-import '../../../../model/major_model.dart';
+import '../../../../Domain/model/Career/career_model.dart';
+import '../../../../Domain/model/Major/major_model.dart';
 
 class CareerCardsList extends StatelessWidget {
   final List<Career> careers;

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../../../../model/career_model.dart';
+import '../../../../Domain/model/Career/career_model.dart';
 // import '../../../common/constants/app_colors.dart';
 import '../../../common/constants/app_spacing.dart';
-import '../../../theme/app_colors.dart';
+import '../../../theme/app_styles.dart';
 import '../../../common/widgets/widget.dart';
 import '../../../common/constants/app_text_styles.dart';
 

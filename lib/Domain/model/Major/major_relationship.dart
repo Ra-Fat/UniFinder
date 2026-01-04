@@ -1,13 +1,13 @@
 class MajorRelationship {
-  final int majorId;
-  final int relatedMajorId;
+  final String majorId;
+  final String relatedMajorId;
 
   MajorRelationship({required this.majorId, required this.relatedMajorId});
 
   factory MajorRelationship.fromMap(Map<String, dynamic> map) {
     return MajorRelationship(
-      majorId: map['major_id'] as int,
-      relatedMajorId: map['related_major_id'] as int,
+      majorId: map['major_id'].toString(),
+      relatedMajorId: map['related_major_id'].toString(),
     );
   }
 

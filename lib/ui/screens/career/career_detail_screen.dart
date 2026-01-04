@@ -1,20 +1,20 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import '../../../model/career_model.dart';
-import '../../../model/major_model.dart';
+import '../../../Domain/model/Career/career_model.dart';
+import '../../../Domain/model/Major/major_model.dart';
 import '../../../service/dream_service.dart';
 import '../../../service/major_service.dart';
 import '../../../service/university_service.dart';
 import 'widgets/career_header.dart';
 import 'widgets/about_this_career_card.dart';
-import '../../theme/app_colors.dart';
+import '../../theme/app_styles.dart';
 import '../../common/widgets/widget.dart';
 import 'widgets/salary_card.dart';
 import 'widgets/skills_card.dart';
 import 'widgets/education_path_card.dart';
 import 'widgets/career_progression_card.dart';
 import 'widgets/universities_card.dart';
-import 'package:uni_finder/model/universityMajorDetail.dart';
+import 'package:uni_finder/Domain/model/University/universityMajorDetail.dart';
 
 class CareerDetailScreen extends StatefulWidget {
   final Career career;

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:uni_finder/model/dreams_model.dart';
+import 'package:uni_finder/Domain/model/Dream/dreams_model.dart';
 import 'package:uni_finder/service/dream_service.dart';
 import 'package:uni_finder/service/user_service.dart';
 // import 'package:uni_finder/ui/common/constants/app_text_styles.dart';
 import 'widget/welcome_header.dart';
 // import '../';
 import 'widget/dreams_list.dart';
-import '../../theme/app_colors.dart';
+import '../../theme/app_styles.dart';
 
 class HomeScreen extends StatefulWidget {
   final DreamService dreamService;

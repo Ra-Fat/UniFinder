@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import '../../../model/question_model.dart';
-import '../../../model/option_model.dart';
+import '../../../Domain/model/Quiz/question_model.dart';
+import '../../../Domain/model/Quiz/option_model.dart';
+import '../../../Domain/model/Quiz/submission_model.dart';
+import '../../../Domain/model/Quiz/answer_model.dart';
 import '../../../main.dart';
-import '../../theme/app_colors.dart';
+import '../../theme/app_styles.dart';
 import '../../common/widgets/widget.dart';
 
 class MutipleChoiceQuestionScreen extends StatefulWidget {
@@ -17,12 +19,13 @@ class MutipleChoiceQuestionScreen extends StatefulWidget {
 class _MutipleChoiceQuestionScreenState
     extends State<MutipleChoiceQuestionScreen> {
   List<Question> questions = [];
-  Map<int, List<Option>> allOptionsPerQuestion = {};
+  Map<String, List<Option>> allOptionsPerQuestion = {};
 
   // keep track of current question show in the screen
   int currentIndex = 0;
   bool isLoading = true;
-  Map<String, int> selectedOptions = {};
+  // Changed: Store selected option ID instead of index
+  Map<String, String> selectedOptions = {};
 
   @override
   void initState() {
@@ -54,14 +57,16 @@ class _MutipleChoiceQuestionScreenState
 
   void _selectOption(int optionIndex) {
     final questionId = questions[currentIndex].id;
+    final currentOptions = allOptionsPerQuestion[questionId] ?? [];
+    final selectedOptionId = currentOptions[optionIndex].id;
 
     setState(() {
-      if (selectedOptions[questionId] == optionIndex) {
+      if (selectedOptions[questionId] == selectedOptionId) {
         // uncheck
         selectedOptions.remove(questionId);
       } else {
-        // check
-        selectedOptions[questionId] = optionIndex;
+        // check - store option ID instead of index
+        selectedOptions[questionId] = selectedOptionId;
       }
     });
   }
@@ -82,8 +87,38 @@ class _MutipleChoiceQuestionScreenState
     }
   }
 
-  void _goToRecommendationScreen() {
-    context.go('/recommendation');
+  Future<void> _goToRecommendationScreen() async {
+    try {
+      // Get current user
+      final user = await userService.getUser();
+      if (user == null) {
+        debugPrint('No user found');
+        return;
+      }
+
+      // Create list of Answer objects from selected options
+      final answers = selectedOptions.entries.map((entry) {
+        return Answer(questionId: entry.key, selectedOptionId: entry.value);
+      }).toList();
+
+      // Create submission
+      final submission = Submission(
+        id: DateTime.now().millisecondsSinceEpoch.toString(),
+        userId: user.id ?? '',
+        answers: answers,
+        completedAt: DateTime.now(),
+      );
+
+      // Save submission
+      await questionService.saveSubmission(submission);
+      debugPrint('Submission saved successfully');
+
+      if (mounted) {
+        context.go('/recommendation');
+      }
+    } catch (err) {
+      debugPrint('Error saving submission: $err');
+    }
   }
 
   @override
@@ -104,9 +139,12 @@ class _MutipleChoiceQuestionScreenState
     }
 
     final currentQuestion = questions[currentIndex];
-    final questionIdInt = int.parse(currentQuestion.id);
-    final currentOptions = allOptionsPerQuestion[questionIdInt] ?? [];
-    final selectedOptionIndex = selectedOptions[currentQuestion.id] ?? -1;
+    final currentOptions = allOptionsPerQuestion[currentQuestion.id] ?? [];
+    // Changed: Find selected option by ID instead of index
+    final selectedOptionId = selectedOptions[currentQuestion.id];
+    final selectedOptionIndex = selectedOptionId != null
+        ? currentOptions.indexWhere((opt) => opt.id == selectedOptionId)
+        : -1;
 
     return Scaffold(
       appBar: AppBar(
@@ -240,6 +278,7 @@ class _MutipleChoiceQuestionScreenState
                       width: 55,
                       height: 50,
                       decoration: BoxDecoration(
+                        // ignore: deprecated_member_use
                         color: AppColors.secondaryBackground.withOpacity(0.5),
                         borderRadius: BorderRadius.circular(16),
                       ),
