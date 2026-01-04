@@ -1,5 +1,5 @@
-import '../../data/repository/major_repository.dart';
-import '../../model/major_model.dart';
+import '../Domain/data/repository/major_repository.dart';
+import '../Domain/model/Major/major_model.dart';
 
 class MajorService {
   final MajorRepository _majorRepository;

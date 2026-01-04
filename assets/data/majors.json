@@ -3,210 +3,130 @@
     "id": "1",
     "name": "Computer Science",
     "category_id": "1",
-    "description": "Study of algorithms, programming, data structures, and software development. Covers theoretical foundations and practical applications of computing."
+    "description": "Study of algorithms, programming, data structures, and software development. Covers theoretical foundations and practical applications of computing.",
+    "key_skills": [
+      "Programming",
+      "Algorithm Design",
+      "Data Structures",
+      "Problem Solving",
+      "Software Development"
+    ]
   },
   {
     "id": "2",
     "name": "Software Engineering",
     "category_id": "1",
-    "description": "Focus on designing, developing, and maintaining software systems using engineering principles and methodologies."
+    "description": "Focus on designing, developing, and maintaining software systems using engineering principles and methodologies.",
+    "key_skills": [
+      "Software Design",
+      "System Architecture",
+      "Testing",
+      "Version Control",
+      "Agile Development"
+    ]
   },
   {
     "id": "3",
-    "name": "Information Technology",
-    "category_id": "1",
-    "description": "Managing and implementing technology solutions for businesses, including networks, databases, and cybersecurity."
+    "name": "Business Administration",
+    "category_id": "2",
+    "description": "Learn management, finance, marketing, and organizational leadership to run successful businesses.",
+    "key_skills": [
+      "Leadership",
+      "Financial Analysis",
+      "Strategic Planning",
+      "Project Management",
+      "Communication"
+    ]
   },
   {
     "id": "4",
-    "name": "Data Science",
-    "category_id": "1",
-    "description": "Analysis of complex data sets using statistical methods, machine learning, and computational techniques."
+    "name": "Economics",
+    "category_id": "2",
+    "description": "Study of economic theory, policy, market analysis, and resource allocation in society.",
+    "key_skills": [
+      "Economic Analysis",
+      "Data Interpretation",
+      "Policy Evaluation",
+      "Market Research",
+      "Critical Thinking"
+    ]
   },
   {
     "id": "5",
-    "name": "Cybersecurity",
-    "category_id": "1",
-    "description": "Protection of digital systems, networks, and data from cyber threats and unauthorized access."
+    "name": "Medicine",
+    "category_id": "5",
+    "description": "Medical training for diagnosing, treating, and preventing diseases and injuries.",
+    "key_skills": [
+      "Clinical Diagnosis",
+      "Patient Care",
+      "Medical Research",
+      "Emergency Response",
+      "Ethical Decision Making"
+    ]
   },
   {
     "id": "6",
-    "name": "Artificial Intelligence",
-    "category_id": "1",
-    "description": "Development of intelligent systems that can perform tasks requiring human-like intelligence and learning."
+    "name": "Law",
+    "category_id": "3",
+    "description": "Study of legal systems, principles, and practices for justice and governance.",
+    "key_skills": [
+      "Legal Research",
+      "Argumentation",
+      "Case Analysis",
+      "Negotiation",
+      "Ethical Reasoning"
+    ]
   },
   {
     "id": "7",
-    "name": "Business Administration",
-    "category_id": "2",
-    "description": "Learn management, finance, marketing, and organizational leadership to run successful businesses."
+    "name": "Civil Engineering",
+    "category_id": "1",
+    "description": "Design, construction, and maintenance of physical infrastructure like roads, bridges, and buildings.",
+    "key_skills": [
+      "Structural Design",
+      "Project Planning",
+      "Technical Drawing",
+      "Risk Assessment",
+      "Quality Control"
+    ]
   },
   {
     "id": "8",
-    "name": "Economics",
-    "category_id": "2",
-    "description": "Study of economic theory, policy, market analysis, and resource allocation in society."
+    "name": "Agriculture",
+    "category_id": "4",
+    "description": "Study of farming, crop production, animal husbandry, and sustainable food systems.",
+    "key_skills": [
+      "Crop Management",
+      "Soil Science",
+      "Sustainable Farming",
+      "Animal Husbandry",
+      "Resource Management"
+    ]
   },
   {
     "id": "9",
-    "name": "Accounting",
-    "category_id": "2",
-    "description": "Financial reporting, auditing, tax preparation, and financial analysis for organizations."
+    "name": "Fine Arts",
+    "category_id": "3",
+    "description": "Creative expression through painting, sculpture, music, and performance arts.",
+    "key_skills": [
+      "Creative Expression",
+      "Artistic Technique",
+      "Visual Communication",
+      "Art History",
+      "Portfolio Development"
+    ]
   },
   {
     "id": "10",
-    "name": "Finance",
-    "category_id": "2",
-    "description": "Management of money, investments, banking, and financial planning for individuals and organizations."
-  },
-  {
-    "id": "11",
-    "name": "Marketing",
-    "category_id": "2",
-    "description": "Promotion of products and services through market research, advertising, and consumer behavior analysis."
-  },
-  {
-    "id": "12",
-    "name": "International Business",
-    "category_id": "2",
-    "description": "Global business operations, international trade, and cross-cultural management practices."
-  },
-  {
-    "id": "13",
-    "name": "Graphic Design",
-    "category_id": "3",
-    "description": "Visual communication through art, typography, digital media, and creative design solutions."
-  },
-  {
-    "id": "14",
-    "name": "Fine Arts",
-    "category_id": "3",
-    "description": "Traditional artistic expression through painting, sculpture, drawing, and studio art practices."
-  },
-  {
-    "id": "15",
-    "name": "Architecture",
-    "category_id": "3",
-    "description": "Design and planning of buildings, structures, and urban environments with aesthetic and functional considerations."
-  },
-  {
-    "id": "16",
-    "name": "Digital Media",
-    "category_id": "3",
-    "description": "Creation and production of digital content including video, animation, and interactive media."
-  },
-  {
-    "id": "17",
-    "name": "Film and Media Studies",
-    "category_id": "3",
-    "description": "Analysis and production of film, television, and digital media content and storytelling."
-  },
-  {
-    "id": "18",
-    "name": "Music",
-    "category_id": "3",
-    "description": "Musical theory, composition, performance, and production across various genres and instruments."
-  },
-  {
-    "id": "19",
-    "name": "Mathematics",
-    "category_id": "4",
-    "description": "Pure and applied mathematics, including algebra, calculus, statistics, and mathematical modeling."
-  },
-  {
-    "id": "20",
-    "name": "Physics",
-    "category_id": "4",
-    "description": "Study of matter, energy, space, and time through theoretical and experimental physics."
-  },
-  {
-    "id": "21",
-    "name": "Chemistry",
-    "category_id": "4",
-    "description": "Chemical processes, reactions, molecular structures, and laboratory analysis techniques."
-  },
-  {
-    "id": "22",
-    "name": "Biology",
-    "category_id": "4",
-    "description": "Study of living organisms, ecosystems, genetics, and biological processes."
-  },
-  {
-    "id": "23",
-    "name": "Environmental Science",
-    "category_id": "4",
-    "description": "Study of environmental systems, sustainability, and solutions to environmental challenges."
-  },
-  {
-    "id": "24",
-    "name": "Statistics",
-    "category_id": "4",
-    "description": "Collection, analysis, interpretation, and presentation of data using statistical methods."
-  },
-  {
-    "id": "25",
-    "name": "Medicine",
-    "category_id": "5",
-    "description": "Comprehensive medical training to become a physician, including diagnosis, treatment, and patient care."
-  },
-  {
-    "id": "26",
-    "name": "Nursing",
-    "category_id": "5",
-    "description": "Patient care, health assessment, medical procedures, and healthcare support services."
-  },
-  {
-    "id": "27",
-    "name": "Pharmacy",
-    "category_id": "5",
-    "description": "Medication management, drug development, pharmacology, and patient medication counseling."
-  },
-  {
-    "id": "28",
-    "name": "Public Health",
-    "category_id": "5",
-    "description": "Population health, disease prevention, health policy, and community health promotion."
-  },
-  {
-    "id": "29",
-    "name": "Dentistry",
-    "category_id": "5",
-    "description": "Oral health care, dental procedures, and treatment of dental and oral diseases."
-  },
-  {
-    "id": "30",
-    "name": "Psychology",
-    "category_id": "5",
-    "description": "Study of human behavior, mental processes, and psychological assessment and therapy."
-  },
-  {
-    "id": "31",
-    "name": "Civil Engineering",
-    "category_id": "1",
-    "description": "Design and construction of infrastructure including roads, bridges, buildings, and water systems."
-  },
-  {
-    "id": "32",
-    "name": "Mechanical Engineering",
-    "category_id": "1",
-    "description": "Design and manufacturing of mechanical systems, machines, and thermal devices."
-  },
-  {
-    "id": "33",
-    "name": "Electrical Engineering",
-    "category_id": "1",
-    "description": "Design and development of electrical systems, electronics, and power distribution."
-  },
-  {
-    "id": "34",
     "name": "Education",
     "category_id": "3",
-    "description": "Teaching methodologies, curriculum development, and educational psychology for various levels."
-  },
-  {
-    "id": "35",
-    "name": "Law",
-    "category_id": "2",
-    "description": "Legal principles, judicial processes, and preparation for legal practice and advocacy."
+    "description": "Training for teaching, curriculum development, and educational leadership.",
+    "key_skills": [
+      "Teaching Methods",
+      "Curriculum Design",
+      "Classroom Management",
+      "Student Assessment",
+      "Educational Technology"
+    ]
   }
 ]

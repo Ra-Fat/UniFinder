@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import '../../../../model/major_model.dart';
+import '../../../../Domain/model/Major/major_model.dart';
 import '../../../common/constants/app_spacing.dart';
 import '../../../common/constants/app_text_styles.dart';
-import '../../../common/widgets/widget.dart';
-import '../../../theme/app_colors.dart';
+import '../../../theme/app_styles.dart';
 
 class EducationPathCard extends StatefulWidget {
   final Major major;

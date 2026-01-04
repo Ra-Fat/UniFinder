@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../model/career_model.dart';
+import '../../../../Domain/model/Career/career_model.dart';
 
 class CareerHeader extends StatelessWidget {
   final Career career;

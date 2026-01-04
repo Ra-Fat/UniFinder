@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:uni_finder/model/university_model.dart';
-import 'package:uni_finder/model/universityMajorDetail.dart';
+import 'package:uni_finder/Domain/model/University/university_model.dart';
+import 'package:uni_finder/Domain/model/University/universityMajorDetail.dart';
 import 'package:uni_finder/ui/common/constants/app_spacing.dart';
 import 'components/university_app_bar.dart';
 import 'components/university_header.dart';
@@ -29,6 +29,7 @@ class UniversityScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                const SizedBox(height: AppSpacing.md),
                 UniversityHeader(university: university),
                 const SizedBox(height: AppSpacing.lg),
                 QuickInfoSection(

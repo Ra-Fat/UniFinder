@@ -1,5 +1,6 @@
 import '../storage/file_storage.dart';
-import '../../model/university_model.dart';
+import '../../model/University/university_model.dart';
+import 'package:flutter/foundation.dart';
 
 class UniversityRepository {
   final FileStorage _fileStorage;
@@ -14,13 +15,13 @@ class UniversityRepository {
           .map((item) => University.fromMap(item as Map<String, dynamic>))
           .toList();
     } catch (err) {
-      print('Error loading universities: $err');
+      debugPrint('Error loading universities: $err');
       return [];
     }
   }
 
   // Get university by ID
-  Future<University?> getUniversityById(int universityId) async {
+  Future<University?> getUniversityById(String universityId) async {
     try {
       final universities = await getUniversitiesData();
       return universities.firstWhere(
@@ -28,21 +29,10 @@ class UniversityRepository {
         orElse: () => throw Exception('University not found: $universityId'),
       );
     } catch (err) {
-      print('Error getting university by ID: $err');
+      debugPrint('Error getting university by ID: $err');
       return null;
     }
   }
 
-  // Search universities by name
-  Future<List<University>> searchUniversities(String query) async {
-    try {
-      final universities = await getUniversitiesData();
-      return universities
-          .where((u) => u.name.toLowerCase().contains(query.toLowerCase()))
-          .toList();
-    } catch (err) {
-      print('Error searching universities: $err');
-      return [];
-    }
-  }
+
 }

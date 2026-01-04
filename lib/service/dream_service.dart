@@ -1,5 +1,5 @@
-import 'package:uni_finder/data/repository/dream_repository.dart';
-import 'package:uni_finder/model/dreams_model.dart';
+import 'package:uni_finder/Domain/data/repository/dream_repository.dart';
+import 'package:uni_finder/Domain/model/Dream/dreams_model.dart';
 
 class DreamService {
   final DreamRepository _dreamRepository;

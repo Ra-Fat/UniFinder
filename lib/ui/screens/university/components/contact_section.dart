@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:uni_finder/model/university_model.dart';
+import 'package:uni_finder/Domain/model/University/university_model.dart';
 import 'package:uni_finder/ui/common/constants/app_spacing.dart';
-import 'package:uni_finder/ui/theme/app_colors.dart';
+import '../../../theme/app_styles.dart';
+import '../../../common/widgets/widget.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ContactSection extends StatelessWidget {
@@ -17,16 +18,12 @@ class ContactSection extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
+      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            'Contact Information',
-            style: textTheme.titleLarge?.copyWith(
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
-            ),
+          CustomPrimaryText(
+          text:   'Contact Information',
           ),
           const SizedBox(height: AppSpacing.md),
           Container(

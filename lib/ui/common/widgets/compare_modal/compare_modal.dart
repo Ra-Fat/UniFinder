@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:uni_finder/ui/common/constants/app_colors.dart';
+import 'package:uni_finder/ui/common/widgets/widget.dart';
 import '../../../../service/dream_service.dart';
 import '../../../../service/major_service.dart';
 import '../../../../service/university_service.dart';
-import '../../../../model/major_model.dart';
-import '../../../../model/university_model.dart';
-import '../../../../model/university_major.dart';
+import '../../../../Domain/model/Major/major_model.dart';
+import '../../../../Domain/model/University/university_model.dart';
+import '../../../../Domain/model/University/university_major.dart';
 import '../../constants/app_spacing.dart';
 import '../../constants/app_text_styles.dart';
 import 'package:uni_finder/ui/screens/comapre/compare_screen.dart';
@@ -223,8 +224,8 @@ class _CompareUniversitiesBottomSheetState
   @override
   Widget build(BuildContext context) {
     return DraggableScrollableSheet(
-      initialChildSize: 0.9, // Modal takes 90% of screen height initially
-      minChildSize: 0.5, // Can be dragged down to 50%
+      initialChildSize: 0.8, // Modal takes 90% of screen height initially
+      minChildSize: 0.4, // Can be dragged down to 50%
       maxChildSize: 0.95, // Can be dragged up to 95%
       builder: (context, scrollController) {
         return Container(
@@ -249,22 +250,16 @@ class _CompareUniversitiesBottomSheetState
               Padding(
                 padding: const EdgeInsets.symmetric(
                   horizontal: AppSpacing.lg,
-                  vertical: AppSpacing.sm,
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      'Compare Universities',
-                      style: AppTextStyles.h2.copyWith(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
+                    CustomPrimaryText(
+                    text:   'Compare Universities',
                     ),
                     IconButton(
                       icon: const Icon(Icons.close),
                       onPressed: () => Navigator.pop(context),
-                      padding: EdgeInsets.zero,
                       constraints: const BoxConstraints(),
                     ),
                   ],
@@ -291,7 +286,7 @@ class _CompareUniversitiesBottomSheetState
                               onClearSearch: clearSearch,
                             ),
 
-                            const SizedBox(height: AppSpacing.xl),
+                            const SizedBox(height: AppSpacing.md),
 
                             // First university selection section
                             UniversitySelectionSection(
@@ -304,7 +299,7 @@ class _CompareUniversitiesBottomSheetState
                               onUniversitySelected: selectFirstUniversity,
                             ),
 
-                            const SizedBox(height: AppSpacing.xl),
+                            const SizedBox(height: AppSpacing.md),
 
                             // Second university selection section
                             UniversitySelectionSection(

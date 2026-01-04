@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:uni_finder/ui/common/widgets/widget.dart';
-import '../../../../model/major_model.dart';
-import 'package:uni_finder/model/universityMajorDetail.dart';
-import '../../../theme/app_colors.dart';
+import 'package:uni_finder/Domain/model/Major/major_model.dart';
+import 'package:uni_finder/Domain/model/University/universityMajorDetail.dart';
+import '../../../theme/app_styles.dart';
 
 class MajorCard extends StatefulWidget {
   final Major major;

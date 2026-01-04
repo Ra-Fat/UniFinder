@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:uni_finder/model/university_model.dart';
+import 'package:uni_finder/Domain/model/University/university_model.dart';
 import 'package:uni_finder/ui/common/constants/app_spacing.dart';
-import 'package:uni_finder/ui/theme/app_colors.dart';
+import '../../../theme/app_styles.dart';
 
 class QuickInfoSection extends StatelessWidget {
   final University university;
@@ -16,7 +16,7 @@ class QuickInfoSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
+      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md),
       child: Row(
         children: [
           Expanded(

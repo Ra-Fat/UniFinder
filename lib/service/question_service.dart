@@ -1,9 +1,8 @@
-import '../../data/repository/question_repository.dart';
-import '../../model/category_model.dart';
-import '../../model/question_model.dart';
-import '../../model/option_model.dart';
-import '../../model/submission_model.dart';
-import '../../model/recommendation_model.dart';
+import '../Domain/data/repository/question_repository.dart';
+import '../Domain/model/Category/category_model.dart';
+import '../Domain/model/Quiz/question_model.dart';
+import '../Domain/model/Quiz/option_model.dart';
+import '../Domain/model/Quiz/submission_model.dart';
 
 class QuestionService {
   final QuestionRepository _questionRepository;
@@ -26,7 +25,7 @@ class QuestionService {
   }
 
   // Get options grouped by question
-  Future<Map<int, List<Option>>> getOptionsByQuestion() async {
+  Future<Map<String, List<Option>>> getOptionsByQuestion() async {
     return await _questionRepository.getOptionsByQuestion();
   }
 
@@ -38,15 +37,5 @@ class QuestionService {
   // Save submission
   Future<void> saveSubmission(Submission submit) async {
     return await _questionRepository.saveSubmission(submit);
-  }
-
-  // Get recommendations
-  Future<List<Recommendation>> getRecommendations() async {
-    return await _questionRepository.getRecommendations();
-  }
-
-  // Save recommendation
-  Future<void> saveRecommendation(Recommendation recommendation) async {
-    return await _questionRepository.saveRecommendation(recommendation);
   }
 }

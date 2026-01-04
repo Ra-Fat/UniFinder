@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../constants/app_spacing.dart';
-import '../../../constants/app_colors.dart';
+import '../../../../common/widgets/widget.dart';
+import '../../../../theme/app_styles.dart';
 
 class CompareButtonsSection extends StatelessWidget {
   final VoidCallback onReset;
@@ -19,7 +20,7 @@ class CompareButtonsSection extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(AppSpacing.lg),
       decoration: BoxDecoration(
-        color: AppColors.cardBackground,
+        color: AppColors.darkBackground,
         boxShadow: [
           BoxShadow(
             color: Colors.black.withAlpha(205),
@@ -32,45 +33,17 @@ class CompareButtonsSection extends StatelessWidget {
         child: Row(
           children: [
             Expanded(
-              child: ElevatedButton(
+              child: CustomizeButton(
+                text: 'Reset',
                 onPressed: onReset,
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.grey[300],
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  elevation: 0,
-                ),
-                child: Text(
-                  'Reset',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.black,
-                  ),
-                ),
+                backgroundColor: Colors.red,
               ),
             ),
             const SizedBox(width: 16),
             Expanded(
-              child: ElevatedButton(
+              child: CustomizeButton(
+                text: 'Compare',
                 onPressed: canCompare ? onCompare : null,
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.primary,
-                  disabledBackgroundColor: Colors.grey[300],
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  elevation: 0,
-                ),
-                child: Text(
-                  'Compare',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                    color: canCompare ? Colors.white : Colors.grey[600],
-                  ),
-                ),
               ),
             ),
           ],

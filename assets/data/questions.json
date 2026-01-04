@@ -6,5 +6,17 @@
   {
     "id": "2",
     "text": "What type of work environment do you prefer?"
+  },
+  {
+    "id": "3",
+    "text": "How do you prefer to solve problems?"
+  },
+  {
+    "id": "4",
+    "text": "What is your preferred work style?"
+  },
+  {
+    "id": "5",
+    "text": "Which subjects did you enjoy most in school?"
   }
 ]

@@ -1,14 +1,11 @@
 import 'package:flutter/rendering.dart';
-
-import '../storage/file_storage.dart';
 import '../storage/shared_preferences_storage.dart';
-import '../../model/dreams_model.dart';
+import '../../model/Dream/dreams_model.dart';
 
 class DreamRepository {
-  final FileStorage _fileStorage;
   final SharedPreferencesStorage _prefsStorage;
 
-  DreamRepository(this._fileStorage, this._prefsStorage);
+  DreamRepository(this._prefsStorage);
 
   Future<List<Dream>> getDreams() async {
     try {

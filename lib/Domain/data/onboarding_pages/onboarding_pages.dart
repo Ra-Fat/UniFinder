@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../ui/screens/welcomes/welcome_screen_components.dart';
+import '../../../ui/screens/welcomes/welcome_screen_components.dart';
 
 final List<Widget> onboardingPages  = [
     WelcomeScreenComponents(

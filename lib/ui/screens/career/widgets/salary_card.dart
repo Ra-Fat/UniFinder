@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../../common/widgets/info_card.dart';
 import '../../../common/constants/app_spacing.dart';
 import '../../../common/widgets/widget.dart';
-import '../../../theme/app_colors.dart';
-import '../../../common/constants/app_text_styles.dart';
+import '../../../theme/app_styles.dart';
 
 class SalaryCard extends StatelessWidget {
   final String salaryRange;

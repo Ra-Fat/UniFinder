@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import '../../../../../model/university_model.dart';
-import '../../../constants/app_spacing.dart';
-import '../../../constants/app_colors.dart';
+import '../../../../../Domain/model/University/university_model.dart';
+import '../../../../theme/app_styles.dart';
+import '../../../../common/constants/app_spacing.dart';
+import '../../../../common/widgets/widget.dart';
 
 class UniversitySelectionSection extends StatelessWidget {
   final String title;
@@ -26,26 +27,20 @@ class UniversitySelectionSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          title,
-          style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
-          ),
-        ),
+        CustomPrimaryText(text: title, fontSize: 14,),
         const SizedBox(height: AppSpacing.sm),
 
         if (!isMajorSelected)
           Container(
             padding: const EdgeInsets.all(16),
+            width: double.infinity,
             decoration: BoxDecoration(
-              color: Colors.grey[100],
+              color: AppColors.cardBackground,
               borderRadius: BorderRadius.circular(12),
             ),
             child: Text(
               'Please select a major first',
-              style: TextStyle(color: Colors.grey[600], fontSize: 14),
+              style: TextStyle(color: AppColors.textSecondary, fontSize: 14),
             ),
           )
         else
@@ -60,14 +55,14 @@ class UniversitySelectionSection extends StatelessWidget {
                   padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
                     color: isDisabled
-                        ? Colors.grey[200]
-                        : (isSelected ? AppColors.primary : Colors.white),
+                        ? AppColors.disabled
+                        : (isSelected ? AppColors.accentBlue : AppColors.cardBackgroundGradientEnd),
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
                       color: isDisabled
                           ? Colors.grey[300]!
                           : (isSelected
-                                ? AppColors.primary
+                                ? AppColors.textPrimary
                                 : Colors.grey[300]!),
                       width: 1.5,
                     ),
@@ -80,18 +75,14 @@ class UniversitySelectionSection extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w500,
-                            color: isDisabled
-                                ? Colors.grey[400]
-                                : (isSelected
-                                      ? AppColors.white
-                                      : Colors.grey[800]),
+                            color: AppColors.textPrimary
                           ),
                         ),
                       ),
                       if (isSelected)
                         const Icon(
                           Icons.check_circle,
-                          color: AppColors.white,
+                          color: AppColors.textPrimary,
                           size: 20,
                         ),
                     ],

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:uni_finder/model/university_model.dart';
-import 'package:uni_finder/ui/theme/app_colors.dart';
+import 'package:uni_finder/Domain/model/University/university_model.dart';
+import '../../../theme/app_styles.dart';
 
 class UniversityAppBar extends StatelessWidget {
   final University university;

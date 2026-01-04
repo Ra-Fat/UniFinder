@@ -1,13 +1,11 @@
 import 'package:flutter/widgets.dart';
-
 import '../storage/file_storage.dart';
 import '../storage/shared_preferences_storage.dart';
 import 'dart:convert';
-import '../../model/category_model.dart';
-import '../../model/question_model.dart';
-import '../../model/option_model.dart';
-import '../../model/submission_model.dart';
-import '../../model/recommendation_model.dart';
+import '../../model/Category/category_model.dart';
+import '../../model/Quiz/question_model.dart';
+import '../../model/Quiz/option_model.dart';
+import '../../model/Quiz/submission_model.dart';
 
 class QuestionRepository {
   final FileStorage _fileStorage;
@@ -23,7 +21,7 @@ class QuestionRepository {
           .map((item) => Category.fromMap(item as Map<String, dynamic>))
           .toList();
     } catch (err) {
-      print('Error loading categories: $err');
+      debugPrint('Error loading categories: $err');
       return [];
     }
   }
@@ -36,7 +34,7 @@ class QuestionRepository {
           .map((item) => Question.fromMap(item as Map<String, dynamic>))
           .toList();
     } catch (err) {
-      print('Error loading Question: $err');
+      debugPrint('Error loading Question: $err');
       return [];
     }
   }
@@ -49,26 +47,26 @@ class QuestionRepository {
           .map((item) => Option.fromMap(item as Map<String, dynamic>))
           .toList();
     } catch (err) {
-      print('Error loading Option: $err');
+      debugPrint('Error loading Option: $err');
       return [];
     }
   }
 
   // get option per question
-  Future<Map<int, List<Option>>> getOptionsByQuestion() async {
+  Future<Map<String, List<Option>>> getOptionsByQuestion() async {
     try {
       final data = await _fileStorage.readJsonData('options.json');
       final options = data
           .map((item) => Option.fromMap(item as Map<String, dynamic>))
           .toList();
 
-      final Map<int, List<Option>> grouped = {};
+      final Map<String, List<Option>> grouped = {};
       for (var option in options) {
-        grouped.putIfAbsent(int.parse(option.questionId), () => []).add(option);
+        grouped.putIfAbsent(option.questionId, () => []).add(option);
       }
       return grouped;
     } catch (e) {
-      print('Error loading options: $e');
+      debugPrint('Error loading options: $e');
       return {};
     }
   }
@@ -101,36 +99,6 @@ class QuestionRepository {
       await _sharedPreferencesStorage.setString('submissions', jsonString);
     } catch (err) {
       debugPrint('Error saving submission: $err');
-      rethrow;
-    }
-  }
-
-  Future<List<Recommendation>> getRecommendations() async {
-    try {
-      final jsonString = await _sharedPreferencesStorage.getString(
-        'recommendations',
-      );
-      if (jsonString == null) return [];
-      final data = jsonDecode(jsonString) as List;
-      return data
-          .map((item) => Recommendation.fromMap(item as Map<String, dynamic>))
-          .toList();
-    } catch (err) {
-      debugPrint('Error loading recommendations: $err');
-      return [];
-    }
-  }
-
-  Future<void> saveRecommendation(Recommendation recommendation) async {
-    try {
-      final recommendations = await getRecommendations();
-      recommendations.add(recommendation);
-      final jsonString = jsonEncode(
-        recommendations.map((r) => r.toMap()).toList(),
-      );
-      await _sharedPreferencesStorage.setString('recommendations', jsonString);
-    } catch (err) {
-      debugPrint('Error saving recommendation: $err');
       rethrow;
     }
   }

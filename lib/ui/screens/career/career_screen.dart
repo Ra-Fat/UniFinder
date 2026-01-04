@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:uni_finder/ui/common/constants/app_spacing.dart';
 import 'package:uni_finder/ui/screens/dream/widgets/career_card.dart';
-import '../../../model/career_model.dart';
-import '../../../model/major_model.dart';
+import '../../../Domain/model/Career/career_model.dart';
+import '../../../Domain/model/Major/major_model.dart';
 import '../../../service/dream_service.dart';
 import '../../../service/major_service.dart';
 import '../../../service/university_service.dart';
+import '../../theme/app_styles.dart';
 
 class CareerScreen extends StatelessWidget {
   final List<Career> careers;
@@ -29,26 +30,34 @@ class CareerScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     return Scaffold(
-      appBar: AppBar(
-        title: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(kToolbarHeight),
+        child: Container(
+          decoration: BoxDecoration(
+            color: AppColors.darkBackground,
+            border: Border(
+              bottom: BorderSide(
+                color: Colors.white.withOpacity(0.1),
+                width: 1.0,
+              ),
+            ),
+          ),
+          child: AppBar(
+            title: Text(
               'Career Opportunities',
               style: textTheme.headlineSmall?.copyWith(
                 fontWeight: FontWeight.bold,
               ),
             ),
-            if (major != null)
-              Text(
-                'For ${major!.name}',
-                style: textTheme.bodySmall?.copyWith(color: Colors.white),
-              ),
-          ],
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+            scrolledUnderElevation: 0,
+            surfaceTintColor: Colors.transparent,
+          ),
         ),
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(AppSpacing.paddingHorizontal),
+        padding: const EdgeInsets.all(15),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

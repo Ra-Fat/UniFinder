@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../../../../../model/major_model.dart';
-import '../../../../common/constants/app_colors.dart';
+import '../../../../../Domain/model/Major/major_model.dart';
+import '../../../../theme/app_styles.dart';
 import '../../../../common/constants/app_spacing.dart';
-import '../../../../common/constants/app_text_styles.dart';
+import '../../../../common/widgets/widget.dart';
 
 class MajorSearchSection extends StatelessWidget {
   final TextEditingController searchController;
@@ -29,30 +29,26 @@ class MajorSearchSection extends StatelessWidget {
         // Title
         Align(
           alignment: Alignment.centerLeft,
-          child: Text(
-            'Search For Majors',
-            style: AppTextStyles.h2.copyWith(
-              fontWeight: FontWeight.bold,
-              color: AppColors.white,
-            ),
+          child: CustomPrimaryText(
+          text:   'Search For Majors',
+          fontSize: 15,
           ),
         ),
-        const SizedBox(height: AppSpacing.sm),
+        const SizedBox(height: AppSpacing.md),
 
         // Search Major Section
         Container(
           decoration: BoxDecoration(
-            color: Colors.white,
             borderRadius: BorderRadius.circular(12),
-            border: Border.all(color: Colors.grey[300]!, width: 1.5),
+            border: Border.all(color: AppColors.buttonBorder, width: 1.5),
           ),
           child: TextField(
             controller: searchController,
-            style: const TextStyle(color: Colors.black),
+            style: const TextStyle(color: Colors.white),
             onChanged: onSearchChanged,
             decoration: InputDecoration(
               hintText: 'Search for a major',
-              hintStyle: const TextStyle(color: Colors.black),
+              hintStyle: const TextStyle(color: Colors.white),
               prefixIcon: const Icon(Icons.search),
               suffixIcon: searchController.text.isNotEmpty
                   ? IconButton(
@@ -78,9 +74,9 @@ class MajorSearchSection extends StatelessWidget {
             margin: const EdgeInsets.only(top: 8),
             constraints: const BoxConstraints(maxHeight: 200),
             decoration: BoxDecoration(
-              color: Colors.white,
+              // color: AppColors.,
               borderRadius: BorderRadius.circular(12),
-              border: Border.all(color: Colors.grey[300]!, width: 1.5),
+              border: Border.all(color: AppColors.buttonBorder, width: 1.5),
             ),
             child: ListView.separated(
               shrinkWrap: true,
@@ -95,7 +91,7 @@ class MajorSearchSection extends StatelessWidget {
                     style: const TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w500,
-                      color: Colors.black,
+                      color: Colors.white,
                     ),
                   ),
                   onTap: () => onMajorSelected(major),

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:go_router/go_router.dart';
-import 'package:uni_finder/model/dreams_model.dart';
+import 'package:uni_finder/Domain/model/Dream/dreams_model.dart';
 // import 'package:uni_finder/ui/common/constants/app_colors.dart';
-import '../../../theme/app_colors.dart';
+import '../../../theme/app_styles.dart';
 import 'package:uni_finder/ui/common/constants/app_spacing.dart';
 import '../../../common/widgets/widget.dart';
 

@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import '../../../common/widgets/skill_chip.dart';
 import '../../../common/constants/app_spacing.dart';
 import '../../../common/constants/app_text_styles.dart';
-import '../../../common/widgets/widget.dart';
-import '../../../theme/app_colors.dart';
+import '../../../theme/app_styles.dart';
 
 class SkillsCard extends StatefulWidget {
   final List<String> skills;

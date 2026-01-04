@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/widgets.dart';
-import '../../model/dreams_model.dart';
-import '../../model/user_model.dart';
+import '../../model/Dream/dreams_model.dart';
+import '../../model/User/user_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPreferencesStorage {
@@ -54,12 +54,12 @@ class SharedPreferencesStorage {
       final prefs = await _getPrefs();
       final dreamsJson = dreams.map((dream) => dream.toMap()).toList();
       final jsonString = jsonEncode(dreamsJson);
-      debugPrint('💾 Saving ${dreams.length} dreams');
-      debugPrint('📝 JSON to save: $jsonString');
+      debugPrint('Saving ${dreams.length} dreams');
+      debugPrint('JSON to save: $jsonString');
       await prefs.setString('userDreams', jsonString);
-      debugPrint('✅ Dreams saved successfully');
+      debugPrint('Dreams saved successfully');
     } catch (e) {
-      debugPrint('❌ Error saving dreams: $e');
+      debugPrint('Error saving dreams: $e');
       rethrow;
     }
   }
@@ -74,7 +74,7 @@ class SharedPreferencesStorage {
         final List<dynamic> dreamsList = jsonDecode(dreamsJson);
 
         final dreams = dreamsList.map((json) {
-          debugPrint('🔍 Processing dream JSON: $json');
+          debugPrint('Processing dream JSON: $json');
           return Dream.fromMap(json);
         }).toList();
 
@@ -96,9 +96,7 @@ class SharedPreferencesStorage {
   // Delete a specific dream by ID
   Future<void> deleteDream(String dreamId) async {
     try {
-      final prefs = await _getPrefs();
       final dreams = await getUserDreams();
-
 
       final updatedDreams = dreams
           .where((dream) => dream.id != dreamId)

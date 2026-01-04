@@ -1,7 +1,7 @@
 import 'package:flutter/rendering.dart';
 
 import '../storage/shared_preferences_storage.dart';
-import '../../model/user_model.dart';
+import '../../model/User/user_model.dart';
 
 class UserRepository {
   final SharedPreferencesStorage _prefsStorage;

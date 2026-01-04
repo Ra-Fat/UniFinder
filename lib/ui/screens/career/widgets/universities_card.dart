@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:uni_finder/model/universityMajorDetail.dart';
+import 'package:uni_finder/Domain/model/University/universityMajorDetail.dart';
 import '../../../common/widgets/university_tile.dart';
 import '../../../common/constants/app_spacing.dart';
 import '../../../common/constants/app_text_styles.dart';
-import '../../../common/widgets/widget.dart';
-import '../../../theme/app_colors.dart';
+import '../../../theme/app_styles.dart';
 
 class UniversitiesCard extends StatefulWidget {
   final List<UniversityMajorDetail> universityMajors;
