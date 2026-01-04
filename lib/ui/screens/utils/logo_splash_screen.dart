@@ -1,7 +1,8 @@
 import 'dart:async';
 import 'package:go_router/go_router.dart';
 import 'package:flutter/material.dart';
-import '../../../main.dart';
+import 'package:provider/provider.dart';
+import '../../../service/user_service.dart';
 
 class LogoSplashScreen extends StatefulWidget {
   const LogoSplashScreen({super.key});
@@ -41,6 +42,7 @@ class _LogoSplashScreenState extends State<LogoSplashScreen>
       Timer(const Duration(seconds: 3), () async {
         // Check if user exists in SharedPreferences
         debugPrint(' Checking for existing user...');
+        final userService = context.read<UserService>();
         final user = await userService.getUser();
         debugPrint(' User found: ${user?.name ?? "NULL"}');
 

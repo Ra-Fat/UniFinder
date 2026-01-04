@@ -13,7 +13,7 @@ class CareerService {
     return await _careerRepository.getCareerData();
   }
 
-  // Get all careers related to a specific major
+  // Get all careers related to a specific majordo
   Future<List<Career>> getCareersForMajor(String majorId) async {
     final allCareers = await _careerRepository.getCareerData();
     return await _relationshipRepository.getCareersByMajor(majorId, allCareers);

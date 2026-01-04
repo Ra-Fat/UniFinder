@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 import '../../../model/question_model.dart';
 import '../../../model/option_model.dart';
-import '../../../main.dart';
+import '../../../service/question_service.dart';
 import '../../theme/app_colors.dart';
 import '../../common/widgets/widget.dart';
 
@@ -33,6 +34,7 @@ class _MutipleChoiceQuestionScreenState
   // Get Question data
   Future<void> _loadQuestions() async {
     try {
+      final questionService = context.read<QuestionService>();
       final fetchQuestions = await questionService.getQuestionData();
       final optionsPerQuestion = await questionService.getOptionsByQuestion();
 

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import '../../../common/widgets/info_card.dart';
-import '../../../common/constants/app_colors.dart';
 import '../../../common/constants/app_spacing.dart';
+import '../../../common/widgets/widget.dart';
+import '../../../theme/app_colors.dart';
 import '../../../common/constants/app_text_styles.dart';
 
 class SalaryCard extends StatelessWidget {
@@ -11,25 +12,31 @@ class SalaryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InfoCard(
-      title: 'Estimated Salary Range',
-      icon: Icons.attach_money,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            salaryRange,
-            style: AppTextStyles.h2.copyWith(
-              color: AppColors.white,
-              fontWeight: FontWeight.bold,
+    return Card(
+      color: AppColors.cardBackground,
+      elevation: 1,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10),
+        side: BorderSide(color: AppColors.cardBorder, width: 1),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(AppSpacing.md),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                Icon(Icons.attach_money, size: 20, color: AppColors.accentBlue,),
+                const SizedBox(width: AppSpacing.sm),
+                CustomPrimaryText(text: 'Estimated Salary Range'),
+              ],
             ),
-          ),
-          const SizedBox(height: AppSpacing.xs),
-          Text(
-            'Varies by experience, company, and location',
-            style: AppTextStyles.bodySmall.copyWith(color: AppColors.textSecondary),
-          ),
-        ],
+            const SizedBox(height: AppSpacing.sm ,),
+            CustomPrimaryText(text: salaryRange, fontSize: 15,),
+            const SizedBox(height: AppSpacing.xs),
+            CustomSecondaryText(text: 'Varies by experience, company, and location', textColor: AppColors.textSecondary,)
+          ],
+        ),
       ),
     );
   }

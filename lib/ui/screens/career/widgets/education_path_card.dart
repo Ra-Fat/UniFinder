@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import '../../../../model/major_model.dart';
-import '../../../common/constants/app_colors.dart';
 import '../../../common/constants/app_spacing.dart';
 import '../../../common/constants/app_text_styles.dart';
+import '../../../common/widgets/widget.dart';
+import '../../../theme/app_colors.dart';
 
 class EducationPathCard extends StatefulWidget {
   final Major major;
@@ -30,13 +31,18 @@ class _EducationPathCardState extends State<EducationPathCard> {
   @override
   Widget build(BuildContext context) {
     return Card(
+      color: AppColors.cardBackground,
       elevation: 1,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(AppSpacing.radiusLg),
+        borderRadius: BorderRadius.circular(10),
+        side: BorderSide(
+          color: AppColors.cardBorder,
+          width: 1,
+        ),
       ),
       child: InkWell(
         onTap: widget.relatedMajors.isNotEmpty ? onExpanded : null,
-        borderRadius: BorderRadius.circular(AppSpacing.radiusLg),
+        borderRadius: BorderRadius.circular(10),
         child: Padding(
           padding: const EdgeInsets.all(AppSpacing.lg),
           child: Column(
@@ -50,14 +56,14 @@ class _EducationPathCardState extends State<EducationPathCard> {
                       Icon(
                         Icons.school_outlined,
                         size: 20,
-                        color: AppColors.primary,
+                        color: AppColors.textPrimary,
                       ),
                       const SizedBox(width: AppSpacing.sm),
                       Text(
                         'Education Path',
                         style: AppTextStyles.h2.copyWith(
                           fontWeight: FontWeight.bold,
-                          color: AppColors.white
+                          color: AppColors.textPrimary
                         ),
                       ),
                     ],
@@ -65,7 +71,7 @@ class _EducationPathCardState extends State<EducationPathCard> {
                   if (widget.relatedMajors.isNotEmpty)
                     Icon(
                       isExpanded ? Icons.expand_less : Icons.expand_more,
-                      color: AppColors.white,
+                      color: AppColors.textPrimary,
                     ),
                 ],
               ),
@@ -73,12 +79,12 @@ class _EducationPathCardState extends State<EducationPathCard> {
               // Primary Major
               Row(
                 children: [
-                  Icon(Icons.star, size: 16, color: AppColors.primary),
+                  Icon(Icons.star, size: 16, color: AppColors.textPrimary),
                   const SizedBox(width: AppSpacing.sm),
                   Text(
                     'Primary: ',
                     style: AppTextStyles.bodyMedium.copyWith(
-                      color: AppColors.white,
+                      color: AppColors.textPrimary,
                     ),
                   ),
                   Flexible(
@@ -86,7 +92,7 @@ class _EducationPathCardState extends State<EducationPathCard> {
                       widget.major.name,
                       style: AppTextStyles.bodyMedium.copyWith(
                         fontWeight: FontWeight.bold,
-                        color: AppColors.white,
+                        color: AppColors.textPrimary,
                       ),
                     ),
                   ),
@@ -98,7 +104,7 @@ class _EducationPathCardState extends State<EducationPathCard> {
                 Text(
                   'Also consider:',
                   style: AppTextStyles.bodySmall.copyWith(
-                    color: AppColors.white,
+                    color: AppColors.textPrimary,
                   ),
                 ),
                 const SizedBox(height: AppSpacing.sm),
@@ -109,11 +115,11 @@ class _EducationPathCardState extends State<EducationPathCard> {
                     return Chip(
                       label: Text(
                         relatedMajor.name,
-                        style: AppTextStyles.bodySmall.copyWith(color: AppColors.black),
+                        style: AppTextStyles.bodySmall.copyWith(color: AppColors.cardBackground),
                       ),
                       labelStyle: AppTextStyles.bodySmall,
                       visualDensity: VisualDensity.compact,
-                      side: BorderSide(color: AppColors.border),
+                      side: BorderSide(color: AppColors.textPrimary),
                       backgroundColor: Colors.white,
                     );
                   }).toList(),

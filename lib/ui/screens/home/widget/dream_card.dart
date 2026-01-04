@@ -52,7 +52,7 @@ class DreamCard extends StatelessWidget {
                 borderColor: AppColors.buttonBorder,
                 backgroundColor: AppColors.buttonBackground,
                 onPressed: () {
-                  context.push('/dream', extra: dream);
+                  context.go('/home/${dream.id}', extra: dream);
                 },
               ),
             ),

@@ -11,6 +11,15 @@ class DreamService {
     return await _dreamRepository.getDreams();
   }
 
+  // Get a single dream by ID
+  Future<Dream?> getDreamById(String dreamId) async {
+    final dreams = await getDreams();
+    return dreams.cast<Dream?>().firstWhere(
+      (dream) => dream?.id == dreamId,
+      orElse: () => null,
+    );
+  }
+
   // Save a new dream
   Future<void> saveDream(Dream dream) async {
     await _dreamRepository.saveDream(dream);

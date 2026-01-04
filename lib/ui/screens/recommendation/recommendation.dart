@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:uni_finder/main.dart';
+import 'package:provider/provider.dart';
+import '../../../service/user_service.dart';
+import '../../../service/dream_service.dart';
 import '../../common/widgets/widget.dart';
 import '../../theme/app_colors.dart';
 import '../../../model/dreams_model.dart';
@@ -39,6 +41,7 @@ class _RecommendationState extends State<Recommendation> {
       final dreamName = _dreamNameController.text.trim();
 
       // get current user
+      final userService = context.read<UserService>();
       final user = await userService.getUser();
 
       final newDream = Dream(
@@ -49,11 +52,11 @@ class _RecommendationState extends State<Recommendation> {
       );
 
       try {
+        final dreamService = context.read<DreamService>();
         await dreamService.saveDream(newDream);
         debugPrint('✅ Dream saved successfully: ${newDream.title} (ID: ${newDream.id})');
 
         if (mounted) {
-          Navigator.of(context).pop();
           _dreamNameController.clear();
           context.go('/home');
         }

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 import 'package:uni_finder/model/user_model.dart';
+import '../../../service/user_service.dart';
 import '../../common/widgets/widget.dart';
-import '../../../main.dart';
 
 class QuestionScreen extends StatefulWidget {
   const QuestionScreen({super.key});
@@ -27,6 +28,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
     if (formKey.currentState!.validate()) {
       final user = User(name: _titleController.text.trim());
       try {
+        final userService = context.read<UserService>();
         await userService.saveUser(user);
         debugPrint('User saved successfully: ${user.name}');
 

@@ -1,4 +1,6 @@
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 import 'package:uni_finder/model/dreams_model.dart';
 import 'package:uni_finder/service/dream_service.dart';
 import 'package:uni_finder/service/user_service.dart';
@@ -12,14 +14,9 @@ import '../ui/screens/utils/logo_splash_screen.dart';
 import '../ui/screens/welcomes/welcome_screen.dart';
 import '../ui/screens/q&a/mutiple_choice_question.dart';
 import '../ui/screens/dream/dream_screen.dart';
-import '../data/repository/dream_repository.dart';
-import '../data/repository/user_repository.dart';
-import '../data/repository/career_repository.dart';
-import '../data/repository/major_repository.dart';
-import '../data/repository/university_repository.dart';
-import '../data/repository/relationship_repository.dart';
-import '../data/storage/file_storage.dart';
-import '../data/storage/shared_preferences_storage.dart';
+import '../ui/screens/career/career_detail_screen.dart';
+import '../model/career_model.dart';
+import '../model/major_model.dart';
 
 final GoRouter appRouter = GoRouter(
   initialLocation: '/',
@@ -35,66 +32,86 @@ final GoRouter appRouter = GoRouter(
       builder: (context, state) => const MutipleChoiceQuestionScreen(),
     ),
     GoRoute(
-      path: '/dream',
-      builder: (context, state) {
-        final fileStorage = FileStorage('assets/data');
-        final prefsStorage = SharedPreferencesStorage();
-
-        final dreamRepository = DreamRepository(fileStorage, prefsStorage);
-        final careerRepository = CareerRepository(fileStorage);
-        final majorRepository = MajorRepository(fileStorage);
-        final universityRepository = UniversityRepository(fileStorage);
-        final relationshipRepository = RelationshipRepository(fileStorage);
-
-        final careerService = CareerService(
-          careerRepository,
-          relationshipRepository,
-        );
-        final majorService = MajorService(majorRepository);
-        final universityService = UniversityService(
-          universityRepository,
-          relationshipRepository,
-          majorRepository,
-        );
-        final dreamService = DreamService(dreamRepository);
-
-        // Get majorId and dreamName from extra parameter if available
-        final extra = state.extra;
-        String majorId = '1'; // Default value
-        String? dreamName;
-
-        if (extra != null && extra is Dream) {
-          majorId = extra.majorId;
-          dreamName = extra.title;
-        }
-
-        return DreamDetail(
-          majorId: majorId,
-          dreamName: dreamName,
-          dreamService: dreamService,
-          majorService: majorService,
-          careerService: careerService,
-          universityService: universityService,
-        );
-      },
-    ),
-    GoRoute(
       path: '/home',
       builder: (context, state) {
-        final fileStorage = FileStorage('assets/data');
-        final prefsStorage = SharedPreferencesStorage();
-
-        final dreamRepository = DreamRepository(fileStorage, prefsStorage);
-        final userRepository = UserRepository(prefsStorage);
-
-        final userService = UserService(userRepository);
-        final dreamService = DreamService(dreamRepository);
+        final dreamService = context.read<DreamService>();
+        final userService = context.read<UserService>();
         return HomeScreen(dreamService: dreamService, userService: userService);
       },
+      routes: [
+        GoRoute(
+          path: ':dreamId',
+          builder: (context, state) {
+            final dreamService = context.read<DreamService>();
+            final majorService = context.read<MajorService>();
+            final careerService = context.read<CareerService>();
+            final universityService = context.read<UniversityService>();
+
+            final dreamId = state.pathParameters['dreamId']!;
+            final extra = state.extra;
+
+            // If dream object passed via extra, use it immediately (fast)
+            if (extra != null && extra is Dream) {
+              return DreamDetail(
+                majorId: extra.majorId,
+                dreamName: extra.title,
+                dreamService: dreamService,
+                majorService: majorService,
+                careerService: careerService,
+                universityService: universityService,
+              );
+            }
+
+            // Otherwise fetch by ID (slower, for refresh/direct URL access)
+            return FutureBuilder<Dream?>(
+              future: dreamService.getDreamById(dreamId),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Scaffold(
+                    body: Center(child: CircularProgressIndicator()),
+                  );
+                }
+
+                final dream = snapshot.data;
+                String majorId = dream?.majorId ?? '1';
+                String? dreamName = dream?.title;
+
+                return DreamDetail(
+                  majorId: majorId,
+                  dreamName: dreamName,
+                  dreamService: dreamService,
+                  majorService: majorService,
+                  careerService: careerService,
+                  universityService: universityService,
+                );
+              },
+            );
+          },
+        ),
+      ],
     ),
     GoRoute(
       path: '/recommendation',
       builder: (context, state) => const Recommendation(),
+    ),
+    GoRoute(
+      path: '/career',
+      builder: (context, state) {
+        final dreamService = context.read<DreamService>();
+        final majorService = context.read<MajorService>();
+        final universityService = context.read<UniversityService>();
+
+        final extra = state.extra as Map<String, dynamic>;
+        
+        return CareerDetailScreen(
+          career: extra['career'] as Career,
+          major: extra['major'] as Major?,
+          relatedMajors: extra['relatedMajors'] as List<Major>?,
+          dreamService: dreamService,
+          majorService: majorService,
+          universityService: universityService,
+        );
+      },
     ),
   ],
 );

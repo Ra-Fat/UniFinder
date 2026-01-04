@@ -2,6 +2,7 @@
   {
     "id": "1",
     "name": "Software Developer",
+    "imagePath": "career/software.jpg",
     "description": "Design, develop, and maintain software applications for various platforms including web, mobile, and desktop. Work with programming languages, frameworks, and tools to create efficient and scalable solutions.",
     "short_description": "Build software applications.",
     "salary_range": "$70,000 - $150,000 / year",
@@ -21,6 +22,7 @@
   {
     "id": "2",
     "name": "Web Developer",
+    "imagePath": "career/web.jpg",
     "description": "Create and maintain websites and web applications using modern technologies. Work on both frontend and backend development, ensuring responsive design and optimal user experience.",
     "short_description": "Build and maintain web applications.",
     "salary_range": "$65,000 - $130,000 / year",
@@ -41,6 +43,7 @@
   {
     "id": "3",
     "name": "Data Scientist",
+    "imagePath": "career/data.jpg",
     "description": "Analyze complex data sets to help organizations make data-driven decisions. Use statistical methods, machine learning algorithms, and data visualization to extract meaningful insights.",
     "short_description": "Extract insights from data.",
     "salary_range": "$80,000 - $160,000 / year",
@@ -61,6 +64,7 @@
   {
     "id": "4",
     "name": "Mobile App Developer",
+    "imagePath": "career/mobile.jpg",
     "description": "Develop applications for mobile devices including iOS and Android platforms. Create user-friendly interfaces and ensure optimal performance across different devices.",
     "short_description": "Build mobile applications.",
     "salary_range": "$75,000 - $140,000 / year",
@@ -74,6 +78,7 @@
   {
     "id": "5",
     "name": "Cybersecurity Analyst",
+    "imagePath": "career/cyber.webp",
     "description": "Protect organizations from digital threats by implementing security measures, monitoring systems, and responding to security incidents.",
     "short_description": "Protect systems from cyber threats.",
     "salary_range": "$85,000 - $155,000 / year",
@@ -92,6 +97,7 @@
   {
     "id": "6",
     "name": "Database Administrator",
+    "imagePath": "career/database.jpg",
     "description": "Manage and maintain database systems, ensuring data integrity, security, and optimal performance. Design database structures and optimize queries.",
     "short_description": "Manage database systems.",
     "salary_range": "$75,000 - $135,000 / year",
@@ -110,6 +116,7 @@
   {
     "id": "7",
     "name": "DevOps Engineer",
+    "imagePath": "career/devops.jpg",
     "description": "Bridge the gap between development and operations teams by automating deployment processes, managing infrastructure, and ensuring reliable software delivery.",
     "short_description": "Automate software deployment and infrastructure.",
     "salary_range": "$90,000 - $160,000 / year",
@@ -123,6 +130,7 @@
   {
     "id": "8",
     "name": "AI/ML Engineer",
+    "imagePath": "career/ai.jpg",
     "description": "Design and implement artificial intelligence and machine learning systems. Work on developing algorithms, training models, and deploying AI solutions.",
     "short_description": "Build AI and machine learning systems.",
     "salary_range": "$95,000 - $175,000 / year",
@@ -142,6 +150,7 @@
   {
     "id": "9",
     "name": "UI/UX Designer",
+    "imagePath": "career/uxui.webp",
     "description": "Design user interfaces and enhance user experience for digital products. Conduct user research, create wireframes, and ensure intuitive design solutions.",
     "short_description": "Create intuitive user experiences.",
     "salary_range": "$65,000 - $135,000 / year",
@@ -161,6 +170,7 @@
   {
     "id": "10",
     "name": "Business Analyst",
+    "imagePath": "career/business.jpg",
     "description": "Analyze business needs and translate them into technical requirements. Bridge communication between business stakeholders and technical teams.",
     "short_description": "Analyze business requirements.",
     "salary_range": "$70,000 - $125,000 / year",
@@ -179,6 +189,7 @@
   {
     "id": "11",
     "name": "Research Scientist",
+    "imagePath": "career/research.webp",
     "description": "Conduct scientific research and experiments in various fields including physics, chemistry, biology, and computer science. Publish findings and advance knowledge.",
     "short_description": "Conduct scientific research.",
     "salary_range": "$60,000 - $140,000 / year",
@@ -197,6 +208,7 @@
   {
     "id": "12",
     "name": "Civil Engineer",
+    "imagePath": "career/civil.webp",
     "description": "Design, plan, and supervise construction projects including roads, bridges, buildings, and infrastructure. Ensure safety and compliance with regulations.",
     "short_description": "Design infrastructure projects.",
     "salary_range": "$70,000 - $130,000 / year",
@@ -215,6 +227,7 @@
   {
     "id": "13",
     "name": "Doctor",
+    "imagePath": "career/doctor.jpg",
     "description": "Diagnose and treat medical conditions, provide preventive care, and promote overall health and wellness for patients across all age groups.",
     "short_description": "Provide medical care and treatment.",
     "salary_range": "$150,000 - $300,000 / year",
@@ -233,6 +246,7 @@
   {
     "id": "14",
     "name": "Nurse",
+    "imagePath": "career/nurse.jpg",
     "description": "Provide comprehensive patient care in various healthcare settings. Administer medications, monitor patient conditions, and support recovery processes.",
     "short_description": "Provide patient care and support.",
     "salary_range": "$60,000 - $100,000 / year",
@@ -251,6 +265,7 @@
   {
     "id": "15",
     "name": "Pharmacist",
+    "imagePath": "career/pharmacist.webp",
     "description": "Dispense medications, counsel patients on proper usage, and ensure safe and effective drug therapy. Manage pharmacy operations and inventory.",
     "short_description": "Manage medications and patient counseling.",
     "salary_range": "$110,000 - $140,000 / year",
@@ -269,6 +284,7 @@
   {
     "id": "16",
     "name": "Marketing Manager",
+    "imagePath": "career/marketing.jpg",
     "description": "Develop and execute marketing strategies to promote products and services. Manage campaigns, analyze market trends, and drive brand growth.",
     "short_description": "Develop marketing strategies.",
     "salary_range": "$80,000 - $150,000 / year",
@@ -287,6 +303,7 @@
   {
     "id": "17",
     "name": "Financial Analyst",
+    "imagePath": "career/finance.jpg",
     "description": "Analyze financial data to help organizations make investment decisions. Prepare reports, forecast trends, and evaluate financial performance.",
     "short_description": "Analyze financial data and investments.",
     "salary_range": "$65,000 - $120,000 / year",
@@ -305,6 +322,7 @@
   {
     "id": "18",
     "name": "Teacher/Educator",
+    "imagePath": "career/teacher.jpg",
     "description": "Educate and inspire students at various levels. Develop curriculum, assess learning, and create engaging learning environments.",
     "short_description": "Educate and mentor students.",
     "salary_range": "$45,000 - $85,000 / year",
@@ -323,6 +341,7 @@
   {
     "id": "19",
     "name": "Graphic Designer",
+    "imagePath": "career/designer.webp",
     "description": "Create visual content for print and digital media. Design logos, websites, advertisements, and marketing materials using creative software tools.",
     "short_description": "Create visual designs and graphics.",
     "salary_range": "$50,000 - $90,000 / year",
@@ -341,6 +360,7 @@
   {
     "id": "20",
     "name": "Project Manager",
+    "imagePath": "career/projectmanager.webp",
     "description": "Plan, execute, and oversee projects from initiation to completion. Coordinate teams, manage resources, and ensure project success within budget and timeline.",
     "short_description": "Manage project execution and delivery.",
     "salary_range": "$85,000 - $140,000 / year",

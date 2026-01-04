@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:uni_finder/ui/common/constants/app_colors.dart';
 import '../../../common/constants/app_spacing.dart';
 import '../../../common/constants/app_text_styles.dart';
+import '../../../common/widgets/widget.dart';
+import '../../../theme/app_colors.dart';
 
 class CareerProgressionCard extends StatefulWidget {
   final Map<String, String> progression;
@@ -26,13 +27,18 @@ class _CareerProgressionCardState extends State<CareerProgressionCard> {
     final entries = widget.progression.entries.toList();
 
     return Card(
+      color: AppColors.cardBackground,
       elevation: 1,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(AppSpacing.radiusLg),
+        borderRadius: BorderRadius.circular(10),
+        side: BorderSide(
+          color: AppColors.cardBorder,
+          width: 1,
+        ),
       ),
       child: InkWell(
         onTap: onExpanded,
-        borderRadius: BorderRadius.circular(AppSpacing.radiusLg),
+        borderRadius: BorderRadius.circular(10),
         child: Padding(
           padding: const EdgeInsets.all(AppSpacing.lg),
           child: Column(
@@ -43,15 +49,9 @@ class _CareerProgressionCardState extends State<CareerProgressionCard> {
                 children: [
                   Row(
                     children: [
-                      Icon(Icons.trending_up, size: 20, color: AppColors.primary),
+                      Icon(Icons.trending_up, size: 20, color: AppColors.primaryBlue),
                       const SizedBox(width: AppSpacing.sm),
-                      Text(
-                        'Career Progression',
-                        style: AppTextStyles.h2.copyWith(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                      ),
+                      CustomPrimaryText(text: 'Career Progression')
                     ],
                   ),
                   Row(
@@ -83,7 +83,7 @@ class _CareerProgressionCardState extends State<CareerProgressionCard> {
                         entry.key,
                         style: AppTextStyles.bodyMedium.copyWith(
                           fontWeight: FontWeight.bold,
-                          color: AppColors.white
+                          color: AppColors.textPrimary
                         ),
                       ),
                       subtitle: Text(entry.value),
