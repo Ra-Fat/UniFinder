@@ -36,7 +36,7 @@ class UniversityHeader extends StatelessWidget {
               university.name,
               style: AppTextStyles.h2.copyWith(
                 fontSize: 14,
-                color: Colors.white,
+                color: AppColors.textPrimary,
               ),
               textAlign: TextAlign.center,
               maxLines: 2,

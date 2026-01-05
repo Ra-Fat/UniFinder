@@ -1,3 +1,6 @@
+import 'components/app_bar.dart';
+import 'components/bottom_bar.dart';
+import 'components/option_card.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../../Domain/model/Quiz/question_model.dart';
@@ -147,47 +150,9 @@ class _MutipleChoiceQuestionScreenState
         : -1;
 
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: AppColors.darkBackground,
-        elevation: 0,
-        title: Row(
-          children: [
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      CustomSecondaryText(
-                        text:
-                            'Question ${currentIndex + 1} of ${questions.length}',
-                        fontSize: 14,
-                      ),
-                      CustomSecondaryText(
-                        text:
-                            '${((currentIndex + 1) / questions.length * 100).round()}%',
-                        textColor: Colors.blue,
-                        fontSize: 14,
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 8),
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
-                    child: LinearProgressIndicator(
-                      value: (currentIndex + 1) / questions.length,
-                      backgroundColor: AppColors.secondaryBackground,
-                      valueColor: AlwaysStoppedAnimation<Color>(Colors.blue),
-                      minHeight: 6,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-        toolbarHeight: 70,
+      appBar: QuestionAppBar(
+        currentIndex: currentIndex,
+        totalQuestions: questions.length,
       ),
       body: Padding(
         padding: EdgeInsets.all(15),
@@ -205,104 +170,23 @@ class _MutipleChoiceQuestionScreenState
               ...List.generate(currentOptions.length, (index) {
                 final option = currentOptions[index];
                 final isSelected = selectedOptionIndex == index;
-
-                return MouseRegion(
-                  cursor: SystemMouseCursors.click,
-                  child: GestureDetector(
-                    onTap: () => _selectOption(index),
-                    child: Container(
-                      width: double.infinity,
-                      margin: const EdgeInsets.symmetric(vertical: 6),
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 16,
-                        vertical: 14,
-                      ),
-                      decoration: BoxDecoration(
-                        color: isSelected
-                            ? AppColors.primaryBlue
-                            : AppColors.secondaryBackground,
-                        borderRadius: BorderRadius.circular(14),
-                        border: Border.all(
-                          color: isSelected
-                              ? AppColors.accentBlue
-                              : AppColors.tertiaryBackground,
-                          width: 1.5,
-                        ),
-                      ),
-                      child: Row(
-                        children: [
-                          Expanded(
-                            child: Text(
-                              option.text,
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ),
-                          Checkbox(
-                            value: isSelected,
-                            onChanged: (_) => _selectOption(index),
-                            activeColor: Colors.blue,
-                            checkColor: Colors.white,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
+                return OptionCard(
+                  text: option.text,
+                  isSelected: isSelected,
+                  onTap: () => _selectOption(index),
+                  onChanged: (_) => _selectOption(index),
                 );
               }),
           ],
         ),
       ),
-      bottomNavigationBar: Container(
-        decoration: BoxDecoration(
-          color: AppColors.darkBackground,
-          border: Border(
-            top: BorderSide(color: AppColors.secondaryBackground, width: 1),
-          ),
-        ),
-        padding: EdgeInsets.all(15),
-        child: SafeArea(
-          child: currentIndex == questions.length - 1
-              ? CustomizeButton(
-                  text: 'Generate',
-                  onPressed: selectedOptionIndex != -1
-                      ? _goToRecommendationScreen
-                      : null,
-                )
-              : Row(
-                  children: [
-                    Container(
-                      width: 55,
-                      height: 50,
-                      decoration: BoxDecoration(
-                        // ignore: deprecated_member_use
-                        color: AppColors.secondaryBackground.withOpacity(0.5),
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                      child: IconButton(
-                        onPressed: currentIndex == 0 ? null : _goPrevQuestion,
-                        icon: Icon(
-                          Icons.chevron_left,
-                          color: Colors.white,
-                          size: 28,
-                        ),
-                      ),
-                    ),
-                    SizedBox(width: 12),
-                    Expanded(
-                      child: CustomizeButton(
-                        text: 'Next',
-                        onPressed: selectedOptionIndex != -1
-                            ? _goNextQuestion
-                            : null,
-                      ),
-                    ),
-                  ],
-                ),
-        ),
+      bottomNavigationBar: BottomBar(
+        currentIndex: currentIndex,
+        totalQuestions: questions.length,
+        selectedOptionIndex: selectedOptionIndex,
+        onPrev: _goPrevQuestion,
+        onNext: _goNextQuestion,
+        onGenerate: _goToRecommendationScreen,
       ),
     );
   }

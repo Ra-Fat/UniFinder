@@ -35,7 +35,7 @@ class AboutSection extends StatelessWidget {
             child: Text(
               university.description,
               style: textTheme.bodyMedium?.copyWith(
-                color: Colors.grey[300],
+                color: AppColors.textSecondary,
                 height: 1.5,
               ),
             ),

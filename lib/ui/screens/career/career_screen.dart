@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:uni_finder/ui/common/constants/app_spacing.dart';
-import 'package:uni_finder/ui/common/widgets/widget.dart';
-import 'package:uni_finder/ui/screens/dream/widgets/career_card.dart';
+import 'package:uni_finder/ui/common/widgets/appbar_widget.dart';
+import 'package:uni_finder/ui/screens/dream/components/career_card.dart';
 import '../../../Domain/model/Career/career_model.dart';
 import '../../../Domain/model/Major/major_model.dart';
 import '../../../service/dream_service.dart';
 import '../../../service/major_service.dart';
 import '../../../service/university_service.dart';
-import '../../theme/app_styles.dart';
 
 class CareerScreen extends StatelessWidget {
   final List<Career> careers;
@@ -39,34 +37,10 @@ class CareerScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
     final screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(kToolbarHeight),
-        child: Container(
-          decoration: BoxDecoration(
-            color: AppColors.darkBackground,
-            border: Border(
-              bottom: BorderSide(
-                color: Colors.white.withOpacity(0.1),
-                width: 1.0,
-              ),
-            ),
-          ),
-          child: AppBar(
-            title: CustomPrimaryText(
-             text:  'Career Opportunities',
-              
-            ),
-            backgroundColor: Colors.transparent,
-            elevation: 0,
-            scrolledUnderElevation: 0,
-            surfaceTintColor: Colors.transparent,
-          ),
-        ),
-      ),
+      appBar: const GlobalAppBar(title: 'Career Opportunities'),
       body: Padding(
         padding: const EdgeInsets.all(15),
         child: GridView.builder(

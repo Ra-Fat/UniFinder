@@ -4,10 +4,11 @@ import '../../../Domain/model/Major/major_model.dart';
 import '../../../Domain/model/University/university_major.dart';
 import '../../common/constants/app_spacing.dart';
 import '../../common/constants/app_text_styles.dart';
-import 'widget/university_header.dart';
-import 'widget/info_row.dart';
-import 'widget/price_bar.dart';
-import 'widget/contact_row.dart';
+import 'components/university_header.dart';
+import 'components/info_row.dart';
+import 'components/price_bar.dart';
+import 'components/contact_row.dart';
+import 'components/app_bar.dart';
 import '../../theme/app_styles.dart';
 import '../../common/widgets/widget.dart';
 
@@ -35,27 +36,7 @@ class _CompareScreenState extends State<CompareScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(kToolbarHeight),
-        child: Container(
-          decoration: BoxDecoration(
-            color: AppColors.darkBackground,
-            border: Border(
-              bottom: BorderSide(
-                color: Colors.white.withOpacity(0.1),
-                width: 1.0,
-              ),
-            ),
-          ),
-          child: AppBar(
-            title: CustomPrimaryText(text: 'Compare Universities'),
-            backgroundColor: Colors.transparent,
-            elevation: 0,
-            scrolledUnderElevation: 0,
-            surfaceTintColor: Colors.transparent,
-          ),
-        ),
-      ),
+      appBar: const CompareAppBar(),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -65,12 +46,12 @@ class _CompareScreenState extends State<CompareScreen> {
               padding: const EdgeInsets.all(AppSpacing.md),
               child: Column(
                 children: [
-                  const Icon(Icons.school, color: Colors.white, size: 32),
+                  const Icon(Icons.school, color: AppColors.textPrimary, size: 32),
                   const SizedBox(height: 8),
                   Text(
                     widget.selectedMajor.name,
                     style: AppTextStyles.h2.copyWith(
-                      color: Colors.white,
+                      color: AppColors.textPrimary,
                       fontSize: 18,
                     ),
                     textAlign: TextAlign.center,
@@ -83,7 +64,7 @@ class _CompareScreenState extends State<CompareScreen> {
             Row(
               children: [
                 UniversityHeader(university: widget.university1),
-                Container(width: 1, height: 140, color: Colors.grey[300]),
+                Container(width: 1, height: 140, color: AppColors.textSecondary),
                 UniversityHeader(university: widget.university2),
               ],
             ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../theme/app_styles.dart';
-import '../../common/widgets/widget.dart';
-import './components/major_card_helpers.dart';
+import '../../../theme/app_styles.dart';
+import '../../../common/widgets/widget.dart';
+import 'major_card_helpers.dart';
 
 class MajorCard extends StatelessWidget {
   final String majorName;
@@ -117,13 +117,9 @@ class MajorCard extends StatelessWidget {
                         textColor: AppColors.textSecondary,
                       ),
                       SizedBox(height: 15),
-                      Text(
-                        "Key Skills You'll Develop",
-                        style: TextStyle(
-                          color: Color(0xFFCBD5E1),
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                        ),
+                      CustomSecondaryText(
+                        text: "Key Skills You'll Develop",
+                        textColor: AppColors.textSecondary,
                       ),
                       SizedBox(height: 12),
                       Wrap(

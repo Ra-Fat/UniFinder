@@ -11,7 +11,6 @@ class UniversityHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md),
@@ -27,7 +26,7 @@ class UniversityHeader extends StatelessWidget {
                 university.logoPath,
                 fit: BoxFit.contain,
                 errorBuilder: (context, error, stackTrace) {
-                  return Icon(Icons.school, size: 40, color: Colors.grey[400]);
+                  return Icon(Icons.school, size: 40, color: AppColors.textSecondary);
                 },
               ),
             ),
@@ -37,20 +36,13 @@ class UniversityHeader extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Text(
-                //   university.name,
-                //   style: textTheme.headlineSmall?.copyWith(
-                //     fontWeight: FontWeight.bold,
-                //     color: Colors.white,
-                //   ),
-                // ),
                 CustomPrimaryText(text: university.name),
                 if (university.shortName != null)
                   CustomSecondaryText(text: university.shortName!),
                 const SizedBox(height: 8),
                 Row(
                   children: [
-                    Icon(Icons.location_on, size: 16, color: Colors.grey[400]),
+                    Icon(Icons.location_on, size: 16, color: AppColors.textSecondary),
                     const SizedBox(width: 4),
                     Expanded(
                       child: CustomSecondaryText(text: university.location),

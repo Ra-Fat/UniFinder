@@ -1,20 +1,16 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import '../../../Domain/model/Career/career_model.dart';
 import '../../../Domain/model/Major/major_model.dart';
 import '../../../service/dream_service.dart';
 import '../../../service/major_service.dart';
 import '../../../service/university_service.dart';
-import 'widgets/career_header.dart';
-import 'widgets/about_this_career_card.dart';
-import '../../theme/app_styles.dart';
-import '../../common/widgets/widget.dart';
-import 'widgets/salary_card.dart';
-import 'widgets/skills_card.dart';
-import 'widgets/education_path_card.dart';
-import 'widgets/career_progression_card.dart';
-import '../career/widgets/quick_fact.dart';
-import 'widgets/universities_card.dart';
+import 'components/career_header.dart';
+import 'components/about_this_career_card.dart';
+import 'components/salary_card.dart';
+import 'components/skills_card.dart';
+import 'components/career_progression_card.dart';
+import 'components/quick_fact.dart';
+import '../../common/widgets/appbar_widget.dart';
 import 'package:uni_finder/Domain/model/University/universityMajorDetail.dart';
 
 class CareerDetailScreen extends StatefulWidget {
@@ -78,32 +74,8 @@ class _CareerDetailScreenState extends State<CareerDetailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(kToolbarHeight),
-        child: ClipRRect(
-          child: BackdropFilter(
-            filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-            child: Container(
-              decoration: BoxDecoration(
-                color: AppColors.darkBackground.withOpacity(0.7),
-                border: Border(
-                  bottom: BorderSide(
-                    color: Colors.white.withOpacity(0.1),
-                    width: 1.0,
-                  ),
-                ),
-              ),
-              child: AppBar(
-                title: CustomPrimaryText(text: widget.career.name),
-                backgroundColor: Colors.transparent,
-                elevation: 0,
-                scrolledUnderElevation: 0,
-                surfaceTintColor: Colors.transparent,
-              ),
-            ),
-          ),
-        ),
-      ),
+
+      appBar:  GlobalAppBar(title: widget.career.name,),
 
       body: FutureBuilder<(Major?, List<Major>, List<UniversityMajorDetail>)>(
         future: _careerDataFuture,

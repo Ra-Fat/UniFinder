@@ -8,11 +8,12 @@ import '../../../service/dream_service.dart';
 import '../../../service/major_service.dart';
 import '../../../service/career_service.dart';
 import '../../../service/university_service.dart';
-import 'widgets/career_card.dart';
-import 'widgets/major_card.dart';
+import 'components/career_card.dart';
+import 'components/major_card.dart';
+import 'components/app_bar.dart';
 import '../../theme/app_styles.dart';
 import '../../common/widgets/widget.dart';
-import 'widgets/section_header.dart';
+import 'components/section_header.dart';
 import 'package:uni_finder/ui/common/widgets/compare_modal/compare_modal.dart';
 
 class DreamDetail extends StatefulWidget {
@@ -83,48 +84,17 @@ class _DreamDetailState extends State<DreamDetail> {
     final textTheme = Theme.of(context).textTheme;
 
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(kToolbarHeight),
-        child: Container(
-          decoration: BoxDecoration(
-            color: AppColors.darkBackground,
-            border: Border(
-              bottom: BorderSide(
-                color: Colors.white.withOpacity(0.1),
-                width: 1.0,
-              ),
-            ),
-          ),
-          child: AppBar(
-            title: Text(
-              widget.dreamName ?? 'Dream Details',
-              style: textTheme.headlineSmall?.copyWith(
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            actions: [
-              Padding(
-                padding: const EdgeInsets.only(right: 8.0),
-                child: IconButton(
-                  icon: const Icon(Icons.filter_list),
-                  tooltip: 'Compare',
-                  onPressed: () {
-                    CompareUniversitiesBottomSheet.show(
-                      context,
-                      widget.dreamService,
-                      widget.majorService,
-                      widget.universityService,
-                    );
-                  },
-                ),
-              ),
-            ],
-            backgroundColor: Colors.transparent,
-            elevation: 0,
-            scrolledUnderElevation: 0,
-            surfaceTintColor: Colors.transparent,
-          ),
-        ),
+      appBar: DreamAppBar(
+        title: widget.dreamName ?? 'Dream Details',
+        titleStyle: textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold),
+        onCompare: () {
+          CompareUniversitiesBottomSheet.show(
+            context,
+            widget.dreamService,
+            widget.majorService,
+            widget.universityService,
+          );
+        },
       ),
       body:
           FutureBuilder<

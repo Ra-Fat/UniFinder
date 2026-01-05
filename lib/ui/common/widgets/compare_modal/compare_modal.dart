@@ -8,7 +8,6 @@ import '../../../../Domain/model/Major/major_model.dart';
 import '../../../../Domain/model/University/university_model.dart';
 import '../../../../Domain/model/University/university_major.dart';
 import '../../constants/app_spacing.dart';
-import '../../constants/app_text_styles.dart';
 import 'package:uni_finder/ui/screens/comapre/compare_screen.dart';
 import 'compare_modal_widget/major_search_section.dart';
 import 'compare_modal_widget/university_selection_section.dart';

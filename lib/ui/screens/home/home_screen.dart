@@ -4,9 +4,9 @@ import 'package:uni_finder/Domain/model/Dream/dreams_model.dart';
 import 'package:uni_finder/service/dream_service.dart';
 import 'package:uni_finder/service/user_service.dart';
 // import 'package:uni_finder/ui/common/constants/app_text_styles.dart';
-import 'widget/welcome_header.dart';
+import 'components/welcome_header.dart';
 // import '../';
-import 'widget/dreams_list.dart';
+import 'components/dreams_list.dart';
 import '../../theme/app_styles.dart';
 
 class HomeScreen extends StatefulWidget {

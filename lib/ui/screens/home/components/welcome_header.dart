@@ -4,7 +4,7 @@ import 'package:uni_finder/ui/common/constants/app_colors.dart';
 import 'package:uni_finder/ui/common/constants/app_spacing.dart';
 import 'package:uni_finder/ui/common/constants/app_text_styles.dart';
 import '../../../common/widgets/widget.dart';
-import './search_field.dart';
+import 'search_field.dart';
 
 class WelcomeHeader extends StatelessWidget {
   final String userName;

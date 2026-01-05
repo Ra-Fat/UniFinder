@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class WelcomeScreenComponents extends StatelessWidget {
   final String title;
   final String description;
