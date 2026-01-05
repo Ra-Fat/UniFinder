@@ -26,7 +26,7 @@ class SalaryCard extends StatelessWidget {
               children: [
                 Icon(Icons.attach_money, size: 20, color: AppColors.accentBlue,),
                 const SizedBox(width: AppSpacing.sm),
-                CustomPrimaryText(text: 'Estimated Salary Range'),
+                CustomPrimaryText(text: 'Estimated Salary Range' ,fontSize: 15,),
               ],
             ),
             const SizedBox(height: AppSpacing.sm ,),

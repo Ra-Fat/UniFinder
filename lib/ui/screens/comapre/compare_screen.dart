@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import '../../../Domain/model/University/university_model.dart';
 import '../../../Domain/model/Major/major_model.dart';
 import '../../../Domain/model/University/university_major.dart';
-import '../../common/constants/app_colors.dart';
 import '../../common/constants/app_spacing.dart';
 import '../../common/constants/app_text_styles.dart';
 import 'widget/university_header.dart';
 import 'widget/info_row.dart';
 import 'widget/price_bar.dart';
 import 'widget/contact_row.dart';
+import '../../theme/app_styles.dart';
+import '../../common/widgets/widget.dart';
 
 class CompareScreen extends StatefulWidget {
   final University university1;
@@ -34,16 +35,26 @@ class _CompareScreenState extends State<CompareScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.background,
-      appBar: AppBar(
-        backgroundColor: AppColors.background,
-        foregroundColor: Colors.white,
-        title: const Text(
-          'Compare Universities',
-          style: TextStyle(fontWeight: FontWeight.bold),
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(kToolbarHeight),
+        child: Container(
+          decoration: BoxDecoration(
+            color: AppColors.darkBackground,
+            border: Border(
+              bottom: BorderSide(
+                color: Colors.white.withOpacity(0.1),
+                width: 1.0,
+              ),
+            ),
+          ),
+          child: AppBar(
+            title: CustomPrimaryText(text: 'Compare Universities'),
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+            scrolledUnderElevation: 0,
+            surfaceTintColor: Colors.transparent,
+          ),
         ),
-        centerTitle: true,
-        elevation: 0,
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -52,7 +63,6 @@ class _CompareScreenState extends State<CompareScreen> {
             Container(
               width: double.infinity,
               padding: const EdgeInsets.all(AppSpacing.md),
-              color: AppColors.background,
               child: Column(
                 children: [
                   const Icon(Icons.school, color: Colors.white, size: 32),
@@ -70,15 +80,12 @@ class _CompareScreenState extends State<CompareScreen> {
             ),
 
             // University Headers
-            Container(
-              color: AppColors.background,
-              child: Row(
-                children: [
-                  UniversityHeader(university: widget.university1),
-                  Container(width: 1, height: 140, color: Colors.grey[300]),
-                  UniversityHeader(university: widget.university2),
-                ],
-              ),
+            Row(
+              children: [
+                UniversityHeader(university: widget.university1),
+                Container(width: 1, height: 140, color: Colors.grey[300]),
+                UniversityHeader(university: widget.university2),
+              ],
             ),
 
             const SizedBox(height: 8),
@@ -102,7 +109,7 @@ class _CompareScreenState extends State<CompareScreen> {
               margin: const EdgeInsets.symmetric(horizontal: AppSpacing.md),
               padding: const EdgeInsets.all(AppSpacing.md),
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: AppColors.cardBackground,
                 borderRadius: BorderRadius.circular(12),
                 boxShadow: [
                   BoxShadow(
@@ -119,14 +126,11 @@ class _CompareScreenState extends State<CompareScreen> {
                     children: [
                       const Icon(
                         Icons.attach_money,
-                        color: AppColors.primary,
+                        color: AppColors.accentBlue,
                         size: 24,
                       ),
                       const SizedBox(width: 8),
-                      Text(
-                        'Cost Comparison',
-                        style: AppTextStyles.h2.copyWith(fontSize: 18),
-                      ),
+                      CustomPrimaryText(text: 'Cost Comparison', fontSize: 16,)
                     ],
                   ),
                   const SizedBox(height: AppSpacing.lg),

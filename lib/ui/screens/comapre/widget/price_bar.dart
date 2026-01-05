@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../../../theme/app_styles.dart';
+import '../../../common/widgets/widget.dart';
 import '../../../common/constants/app_text_styles.dart';
 import 'dart:math' as math;
 
@@ -24,13 +26,7 @@ class PriceBar extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          label,
-          style: AppTextStyles.bodyMedium.copyWith(
-            fontWeight: FontWeight.w600,
-            fontSize: 13,
-          ),
-        ),
+        CustomSecondaryText(text: label, fontSize: 13,),
         const SizedBox(height: 12),
         Row(
           children: [

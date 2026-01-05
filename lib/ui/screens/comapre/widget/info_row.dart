@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import '../../../common/constants/app_spacing.dart';
 import '../../../common/constants/app_text_styles.dart';
+import '../../../theme/app_styles.dart';
+import '../../../common/widgets/widget.dart';
 
 class InfoRow extends StatelessWidget {
   final String label;
@@ -23,20 +25,13 @@ class InfoRow extends StatelessWidget {
       ),
       padding: const EdgeInsets.all(AppSpacing.md),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColors.cardBackground,
         borderRadius: BorderRadius.circular(8),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            label,
-            style: AppTextStyles.bodySmall.copyWith(
-              fontSize: 12,
-              fontWeight: FontWeight.w600,
-              color: Colors.grey[600],
-            ),
-          ),
+          CustomSecondaryText(text: label , fontSize: 12,),
           const SizedBox(height: 8),
           Row(
             children: [
@@ -45,6 +40,7 @@ class InfoRow extends StatelessWidget {
                   value1,
                   style: AppTextStyles.bodyMedium.copyWith(
                     fontWeight: FontWeight.w600,
+                    color: AppColors.textPrimary
                   ),
                   textAlign: TextAlign.center,
                 ),
@@ -55,6 +51,7 @@ class InfoRow extends StatelessWidget {
                   value2,
                   style: AppTextStyles.bodyMedium.copyWith(
                     fontWeight: FontWeight.w600,
+                    color: AppColors.textPrimary
                   ),
                   textAlign: TextAlign.center,
                 ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:uni_finder/ui/common/widgets/widget.dart';
 import '../../../common/widgets/skill_chip.dart';
 import '../../../common/constants/app_spacing.dart';
 import '../../../common/constants/app_text_styles.dart';
@@ -38,7 +39,7 @@ class _SkillsCardState extends State<SkillsCard> {
         onTap: onExpanded,
         borderRadius: BorderRadius.circular(10),
         child: Padding(
-          padding: const EdgeInsets.all(AppSpacing.lg),
+          padding: const EdgeInsets.all(AppSpacing.md),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -53,30 +54,20 @@ class _SkillsCardState extends State<SkillsCard> {
                         color: AppColors.textPrimary,
                       ),
                       const SizedBox(width: AppSpacing.sm),
-                      Text(
-                        'Required Skills',
-                        style: AppTextStyles.h2.copyWith(
-                          fontWeight: FontWeight.bold,
-                          color: AppColors.textPrimary
-                        ),
+                      CustomPrimaryText(
+                       text:  'Required Skills',
+                       fontSize: 15,
                       ),
                     ],
                   ),
                   Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      if (widget.skills.length > 3)
-                        Text(
-                          '${widget.skills.length}',
-                          style: AppTextStyles.bodySmall.copyWith(
-                            color: AppColors.textPrimary,
-                          ),
-                        ),
                       if (widget.skills.length > 3) const SizedBox(width: AppSpacing.sm),
                       if (widget.skills.length > 3)
                         Icon(
                           isExpanded ? Icons.expand_less : Icons.expand_more,
-                          color: AppColors.accentBlue,
+                          color: AppColors.textPrimary,
                         ),
                     ],
                   ),

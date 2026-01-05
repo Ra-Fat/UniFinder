@@ -69,6 +69,12 @@ class _HomeScreenState extends State<HomeScreen> {
         .toList();
   }
 
+  void _handleDreamDeleted(String dreamId) {
+    setState(() {
+      _dreams.removeWhere((dream) => dream.id == dreamId);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -100,19 +106,25 @@ class _HomeScreenState extends State<HomeScreen> {
                 dreams: _filteredDreams,
                 isLoading: _isLoading,
                 searchQuery: _searchQuery,
+                dreamService: widget.dreamService,
+                onDreamDeleted: _handleDreamDeleted,
               ),
             ],
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          context.push('/questions');
-        },
-        backgroundColor: AppColors.primaryBlue,
-        shape: const CircleBorder(),
-        child: const Icon(Icons.add, color: AppColors.textPrimary),
+      floatingActionButton: Tooltip(
+        message: 'Add new dream',
+        waitDuration: const Duration(milliseconds: 300),
+        child: FloatingActionButton(
+          onPressed: () {
+            context.push('/questions');
+          },
+          backgroundColor: AppColors.primaryBlue,
+          shape: const CircleBorder(),
+          child: const Icon(Icons.add, color: AppColors.textPrimary),
+        ),
       ),
-    );
+   );
   }
 }

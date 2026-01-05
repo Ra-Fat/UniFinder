@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:uni_finder/ui/common/constants/app_spacing.dart';
+import 'package:uni_finder/ui/common/widgets/widget.dart';
 import 'package:uni_finder/ui/screens/dream/widgets/career_card.dart';
 import '../../../Domain/model/Career/career_model.dart';
 import '../../../Domain/model/Major/major_model.dart';
@@ -26,9 +27,21 @@ class CareerScreen extends StatelessWidget {
     required this.universityService,
   });
 
+  int _getCrossAxisCount(double width) {
+    if (width >= 1200) {
+      return 4; // large screen
+    } else if (width >= 900) {
+      return 3; // medium screen
+    } else {
+      return 2; // mobile
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(kToolbarHeight),
@@ -43,11 +56,9 @@ class CareerScreen extends StatelessWidget {
             ),
           ),
           child: AppBar(
-            title: Text(
-              'Career Opportunities',
-              style: textTheme.headlineSmall?.copyWith(
-                fontWeight: FontWeight.bold,
-              ),
+            title: CustomPrimaryText(
+             text:  'Career Opportunities',
+              
             ),
             backgroundColor: Colors.transparent,
             elevation: 0,
@@ -56,34 +67,28 @@ class CareerScreen extends StatelessWidget {
           ),
         ),
       ),
-      body: SingleChildScrollView(
+      body: Padding(
         padding: const EdgeInsets.all(15),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Wrap(
-              spacing: 12,
-              runSpacing: 12,
-              children: careers.map((career) {
-                final screenWidth = MediaQuery.of(context).size.width;
-                final cardWidth =
-                    (screenWidth - (AppSpacing.paddingHorizontal * 2) - 12) / 2;
+        child: GridView.builder(
+          itemCount: careers.length,
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: _getCrossAxisCount(screenWidth),
+            crossAxisSpacing: 12,
+            mainAxisSpacing: 12,
+            mainAxisExtent: 265, 
+          ),
+          itemBuilder: (context, index) {
+            final career = careers[index];
 
-                return SizedBox(
-                  width: cardWidth,
-                  child: CareerCard(
-                    career: career,
-                    width: cardWidth,
-                    major: major,
-                    relatedMajors: relatedMajors,
-                    dreamService: dreamService,
-                    majorService: majorService,
-                    universityService: universityService,
-                  ),
-                );
-              }).toList(),
-            ),
-          ],
+            return CareerCard(
+              career: career,
+              major: major,
+              relatedMajors: relatedMajors,
+              dreamService: dreamService,
+              majorService: majorService,
+              universityService: universityService,
+            );
+          },
         ),
       ),
     );

@@ -13,6 +13,7 @@ import 'widgets/salary_card.dart';
 import 'widgets/skills_card.dart';
 import 'widgets/education_path_card.dart';
 import 'widgets/career_progression_card.dart';
+import '../career/widgets/quick_fact.dart';
 import 'widgets/universities_card.dart';
 import 'package:uni_finder/Domain/model/University/universityMajorDetail.dart';
 
@@ -125,35 +126,24 @@ class _CareerDetailScreenState extends State<CareerDetailScreen> {
               children: [
                 CareerHeader(career: widget.career),
                 Padding(
-                  // padding: const EdgeInsets.all(AppSpacing.paddingHorizontal),
                   padding: EdgeInsets.all(15),
                   child: Column(
                     children: [
+                      QuickFactSection(career: widget.career),
+                      SizedBox(height: 7),
                       AboutThisCareerCard(career: widget.career),
+                      SizedBox(height: 7),
 
                       SalaryCard(
                         salaryRange: widget.career.salaryRange ?? 'N/A',
                       ),
+                      SizedBox(height: 7),
 
                       SkillsCard(skills: widget.career.skills ?? []),
-
-                      if (major != null && relatedMajors.isNotEmpty)
-                        EducationPathCard(
-                          major: major,
-                          relatedMajors: relatedMajors,
-                        ),
-
+                      SizedBox(height: 7,),
                       if (widget.career.careerProgression != null)
                         CareerProgressionCard(
                           progression: widget.career.careerProgression!,
-                        ),
-
-                      if (universities.isNotEmpty &&
-                          major != null &&
-                          major.id != null)
-                        UniversitiesCard(
-                          universityMajors: universities,
-                          majorId: major.id!,
                         ),
                     ],
                   ),

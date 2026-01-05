@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import '../../../common/constants/app_colors.dart';
 import '../../../common/constants/app_spacing.dart';
 import '../../../common/constants/app_text_styles.dart';
+import '../../../theme/app_styles.dart';
+import '../../../common/widgets/widget.dart';
 
 class ContactRow extends StatelessWidget {
   final IconData icon;
@@ -24,19 +25,19 @@ class ContactRow extends StatelessWidget {
       ),
       padding: const EdgeInsets.all(AppSpacing.md),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColors.cardBackground,
         borderRadius: BorderRadius.circular(8),
       ),
       child: Row(
         children: [
-          Icon(icon, size: 16, color: AppColors.primary),
+          Icon(icon, size: 16, color: AppColors.accentBlue),
           const SizedBox(width: 8),
           Expanded(
             child: Text(
               value1,
               style: AppTextStyles.bodySmall.copyWith(
                 fontSize: 11,
-                color: AppColors.primary,
+                color: AppColors.textSecondary,
               ),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
@@ -53,7 +54,7 @@ class ContactRow extends StatelessWidget {
               value2,
               style: AppTextStyles.bodySmall.copyWith(
                 fontSize: 11,
-                color: AppColors.primary,
+                color: AppColors.accentBlue,
               ),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,

@@ -31,10 +31,7 @@ class _CareerProgressionCardState extends State<CareerProgressionCard> {
       elevation: 1,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10),
-        side: BorderSide(
-          color: AppColors.cardBorder,
-          width: 1,
-        ),
+        side: BorderSide(color: AppColors.cardBorder, width: 1),
       ),
       child: InkWell(
         onTap: onExpanded,
@@ -49,26 +46,19 @@ class _CareerProgressionCardState extends State<CareerProgressionCard> {
                 children: [
                   Row(
                     children: [
-                      Icon(Icons.trending_up, size: 20, color: AppColors.primaryBlue),
+                      Icon(
+                        Icons.trending_up,
+                        size: 20,
+                        color: AppColors.primaryBlue,
+                      ),
                       const SizedBox(width: AppSpacing.sm),
-                      CustomPrimaryText(text: 'Career Progression')
+                      CustomPrimaryText(text: 'Career Progression', fontSize: 15,),
                     ],
                   ),
-                  Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text(
-                        '${entries.length}',
-                        style: AppTextStyles.bodySmall.copyWith(
-                          color: Colors.white,
-                        ),
-                      ),
-                      const SizedBox(width: AppSpacing.sm),
-                      Icon(
-                        isExpanded ? Icons.expand_less : Icons.expand_more,
-                        color: Colors.white,
-                      ),
-                    ],
+
+                  Icon(
+                    isExpanded ? Icons.expand_less : Icons.expand_more,
+                    color: Colors.white,
                   ),
                 ],
               ),
@@ -83,7 +73,7 @@ class _CareerProgressionCardState extends State<CareerProgressionCard> {
                         entry.key,
                         style: AppTextStyles.bodyMedium.copyWith(
                           fontWeight: FontWeight.bold,
-                          color: AppColors.textPrimary
+                          color: AppColors.textPrimary,
                         ),
                       ),
                       subtitle: Text(entry.value),

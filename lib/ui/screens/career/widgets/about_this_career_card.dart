@@ -59,7 +59,8 @@ class _AboutThisCareerCardState extends State<AboutThisCareerCard> {
                       ),
                       const SizedBox(width: AppSpacing.sm),
                       CustomPrimaryText(
-                        text: 'About This Career'
+                        text: 'About This Career',
+                        fontSize: 16,
                       ),
                     ],
                   ),

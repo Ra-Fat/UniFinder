@@ -9,8 +9,9 @@ import '../../../common/widgets/widget.dart';
 
 class DreamCard extends StatelessWidget {
   final Dream dream;
+  final void Function(DismissDirection)? onDismissed;
 
-  const DreamCard({super.key, required this.dream});
+  const DreamCard({super.key, required this.dream, this.onDismissed});
 
   static final DateFormat _dateFormatter = DateFormat('MMM dd, yyyy');
 
@@ -19,44 +20,53 @@ class DreamCard extends StatelessWidget {
     final String formattedDate = _dateFormatter.format(dream.createdAt);
     final String displayTitle = dream.title ?? 'Untitled Dream';
 
-    return Card(
-      color: AppColors.cardBackground,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(AppSpacing.radiusLg),
-        side: BorderSide(
-          color: AppColors.cardBorder,
-          width: 1,
+    return Dismissible(
+      key: Key('dream_${dream.id}'),
+      direction: DismissDirection.endToStart,
+      background: Container(
+        alignment: Alignment.centerRight,
+        decoration: BoxDecoration(
+          color: Colors.red,
+          borderRadius: BorderRadius.circular(AppSpacing.radiusLg),
         ),
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: const Icon(Icons.delete, color: Colors.white),
       ),
-      child: Padding(
-        padding: const EdgeInsets.all(AppSpacing.md),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(bottom: 2.0),
-              child: CustomPrimaryText(text: displayTitle),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(bottom: AppSpacing.md),
-              child: CustomSecondaryText(
-                text: 'Created: $formattedDate',
+      onDismissed: onDismissed,
+      child: Card(
+        color: AppColors.cardBackground,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(AppSpacing.radiusLg),
+          side: BorderSide(color: AppColors.cardBorder, width: 1),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(AppSpacing.md),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(bottom: 2.0),
+                child: CustomPrimaryText(text: displayTitle),
               ),
-            ),
-            SizedBox(
-              width: double.infinity,
-              child: CustomizeButton(
-                text: 'View Detail', 
-                icon: Icons.arrow_forward,
-                borderWidth: 1,
-                borderColor: AppColors.buttonBorder,
-                backgroundColor: AppColors.buttonBackground,
-                onPressed: () {
-                  context.go('/home/${dream.id}', extra: dream);
-                },
+              Padding(
+                padding: const EdgeInsets.only(bottom: AppSpacing.md),
+                child: CustomSecondaryText(text: 'Created: $formattedDate'),
               ),
-            ),
-          ],
+              SizedBox(
+                width: double.infinity,
+                child: CustomizeButton(
+                  text: 'View Detail',
+                  icon: Icons.arrow_forward,
+                  borderWidth: 1,
+                  borderColor: AppColors.buttonBorder,
+                  backgroundColor: AppColors.buttonBackground,
+                  onPressed: () {
+                    context.go('/home/${dream.id}', extra: dream);
+                  },
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -20,7 +20,7 @@ class SkillChips extends StatelessWidget {
       runSpacing: 6,
       children: displayedSkills.map((skill) {
         return Container(
-          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
           decoration: BoxDecoration(
             color: AppColors.buttonBackground,
             borderRadius: BorderRadius.circular(20),
@@ -28,7 +28,7 @@ class SkillChips extends StatelessWidget {
           child: Text(
             skill,
             style: TextStyle(
-              fontSize: 11,
+              fontSize: 10,
               color: Colors.grey[300],
               fontWeight: FontWeight.w500,
             ),

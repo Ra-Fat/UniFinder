@@ -17,22 +17,18 @@ class UniversityHeader extends StatelessWidget {
         color: AppColors.background,
         child: Column(
           children: [
-            // Logo placeholder
-            Container(
+            SizedBox(
               width: 80,
               height: 80,
-              decoration: BoxDecoration(
-                color: AppColors.primary.withAlpha(150),
+              child: ClipRRect(
                 borderRadius: BorderRadius.circular(12),
-                border: Border.all(
-                  color: AppColors.primary.withAlpha(150),
-                  width: 2,
+                child: Image.asset(
+                  university.logoPath,
+                  fit: BoxFit.contain,
+                  errorBuilder: (context, error, stackTrace) {
+                    return Icon(Icons.account_balance, size: 40, color: AppColors.primary.withAlpha(150));
+                  },
                 ),
-              ),
-              child: const Icon(
-                Icons.account_balance,
-                size: 40,
-                color: AppColors.primary,
               ),
             ),
             const SizedBox(height: 12),
