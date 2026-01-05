@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../theme/app_styles.dart';
+import '../Theme/app_styles.dart';
 
 class CustomizeButton extends StatelessWidget {
   final String text;
@@ -38,9 +38,7 @@ class CustomizeButton extends StatelessWidget {
         height: height,
         child: TextButton(
           onPressed: onPressed,
-          style: TextButton.styleFrom(
-            alignment: Alignment.center,
-          ),
+          style: TextButton.styleFrom(alignment: Alignment.center),
           child: Text(
             text,
             style: TextStyle(
@@ -74,16 +72,18 @@ class CustomizeButton extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
           children: [
-            
-            Text(
-              text,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: fontSize,
-                color: textColor ?? AppColors.textPrimary,
+            Flexible(
+              child: Text(
+                text,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: fontSize,
+                  color: textColor ?? AppColors.textPrimary,
+                ),
+                overflow: TextOverflow.ellipsis,
               ),
             ),
-            SizedBox(width: 10,),
+            SizedBox(width: 10),
             if (icon != null) ...[
               Icon(icon, color: textColor ?? AppColors.textPrimary),
               SizedBox(width: 8),
@@ -95,8 +95,6 @@ class CustomizeButton extends StatelessWidget {
   }
 }
 
-
-
 class CustomSecondaryText extends StatelessWidget {
   final String text;
   final double? fontSize;
@@ -106,7 +104,7 @@ class CustomSecondaryText extends StatelessWidget {
     super.key,
     required this.text,
     this.fontSize = 13,
-    this.textColor
+    this.textColor,
   });
 
   @override
@@ -115,22 +113,22 @@ class CustomSecondaryText extends StatelessWidget {
       text,
       style: TextStyle(
         fontSize: fontSize,
-        color: textColor ?? AppColors.textSecondary
+        color: textColor ?? AppColors.textSecondary,
       ),
     );
   }
 }
-
 
 class CustomPrimaryText extends StatelessWidget {
   final String text;
   final double? fontSize;
   final Color? textColor;
 
-  const CustomPrimaryText({super.key,
+  const CustomPrimaryText({
+    super.key,
     required this.text,
     this.fontSize = 20,
-    this.textColor
+    this.textColor,
   });
 
   @override
@@ -140,7 +138,7 @@ class CustomPrimaryText extends StatelessWidget {
       style: TextStyle(
         fontSize: fontSize,
         fontWeight: FontWeight.bold,
-        color: textColor ?? AppColors.textPrimary
+        color: textColor ?? AppColors.textPrimary,
       ),
     );
   }

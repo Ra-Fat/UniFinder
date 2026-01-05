@@ -1,10 +1,10 @@
 
 import 'package:flutter/material.dart';
 import '../../../common/widgets/widget.dart';
-import '../../../theme/app_styles.dart';
+import '../../../common/Theme/app_styles.dart';
 
 class RecommendationAppBar extends StatelessWidget implements PreferredSizeWidget {
-	const RecommendationAppBar({Key? key}) : super(key: key);
+	const RecommendationAppBar({super.key});
 
 	@override
 	Widget build(BuildContext context) {

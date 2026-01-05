@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:uni_finder/Domain/model/University/university_model.dart';
-import 'package:uni_finder/ui/common/constants/app_spacing.dart';
-import '../../../theme/app_styles.dart';
+import 'package:uni_finder/ui/common/Theme/app_spacing.dart';
+import '../../../common/Theme/app_styles.dart';
 import '../../../common/widgets/widget.dart';
 import 'package:url_launcher/url_launcher.dart';
 

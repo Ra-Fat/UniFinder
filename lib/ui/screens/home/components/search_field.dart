@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:uni_finder/ui/common/constants/app_colors.dart';
-import 'package:uni_finder/ui/common/constants/app_spacing.dart';
+import 'package:uni_finder/ui/common/Theme/app_colors.dart';
+import 'package:uni_finder/ui/common/Theme/app_spacing.dart';
 
 class SearchField extends StatelessWidget {
   final TextEditingController controller;

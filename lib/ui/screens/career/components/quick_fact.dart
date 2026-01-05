@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../../Domain/model/Career/career_model.dart';
-import '../../../theme/app_styles.dart';
+import '../../../common/Theme/app_styles.dart';
 
 class QuickFactSection extends StatelessWidget {
 	final Career career;

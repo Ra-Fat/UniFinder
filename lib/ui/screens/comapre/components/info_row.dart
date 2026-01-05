@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../../common/constants/app_spacing.dart';
-import '../../../common/constants/app_text_styles.dart';
-import '../../../theme/app_styles.dart';
+import '../../../common/Theme/app_spacing.dart';
+import '../../../common/Theme/app_text_styles.dart';
+import '../../../common/Theme/app_styles.dart';
 import '../../../common/widgets/widget.dart';
 
 class InfoRow extends StatelessWidget {

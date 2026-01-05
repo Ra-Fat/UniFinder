@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:uni_finder/ui/common/constants/app_colors.dart';
+import 'package:uni_finder/ui/common/Theme/app_colors.dart';
 import 'package:uni_finder/ui/common/widgets/widget.dart';
 import '../../../../service/dream_service.dart';
 import '../../../../service/major_service.dart';
@@ -7,7 +7,7 @@ import '../../../../service/university_service.dart';
 import '../../../../Domain/model/Major/major_model.dart';
 import '../../../../Domain/model/University/university_model.dart';
 import '../../../../Domain/model/University/university_major.dart';
-import '../../constants/app_spacing.dart';
+import '../../Theme/app_spacing.dart';
 import 'package:uni_finder/ui/screens/comapre/compare_screen.dart';
 import 'compare_modal_widget/major_search_section.dart';
 import 'compare_modal_widget/university_selection_section.dart';
@@ -100,7 +100,7 @@ class _CompareUniversitiesBottomSheetState
     });
   }
 
-  /// Loads all necessary data for the comparison
+  // Loads all necessary data for the comparison
   Future<void> loadData() async {
     final loadedMajors = await widget.majorService.getMajorsData();
     final allUniversities = await widget.universityService
@@ -317,7 +317,7 @@ class _CompareUniversitiesBottomSheetState
                       ),
               ),
 
-              // Bottom action buttons (Reset and Compare)
+              // Bottom action buttons
               CompareButtonsSection(
                 onReset: handleReset,
                 onCompare: handleCompare,

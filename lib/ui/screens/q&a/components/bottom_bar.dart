@@ -1,4 +1,4 @@
-import '../../../theme/app_styles.dart';
+import '../../../common/Theme/app_styles.dart';
 import 'package:flutter/material.dart';
 import '../../../common/widgets/widget.dart';
 
@@ -11,14 +11,14 @@ class BottomBar extends StatelessWidget {
 	final VoidCallback? onGenerate;
 
 	const BottomBar({
-		Key? key,
+		super.key,
 		required this.currentIndex,
 		required this.totalQuestions,
 		required this.selectedOptionIndex,
 		this.onPrev,
 		this.onNext,
 		this.onGenerate,
-	}) : super(key: key);
+	});
 
 	@override
 	Widget build(BuildContext context) {

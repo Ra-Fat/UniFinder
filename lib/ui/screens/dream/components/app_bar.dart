@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import '../../../theme/app_styles.dart';
+import '../../../common/Theme/app_styles.dart';
 
 class DreamAppBar extends StatelessWidget implements PreferredSizeWidget {
 	final String? title;
@@ -8,11 +8,11 @@ class DreamAppBar extends StatelessWidget implements PreferredSizeWidget {
 	final VoidCallback? onCompare;
 
 	const DreamAppBar({
-		Key? key,
+		super.key,
 		this.title,
 		this.titleStyle,
 		this.onCompare,
-	}) : super(key: key);
+	});
 
 	@override
 	Widget build(BuildContext context) {

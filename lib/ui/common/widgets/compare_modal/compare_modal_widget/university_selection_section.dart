@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../../../Domain/model/University/university_model.dart';
-import '../../../../theme/app_styles.dart';
-import '../../../../common/constants/app_spacing.dart';
+import '../../../Theme/app_styles.dart';
+import '../../../Theme/app_spacing.dart';
 import '../../../../common/widgets/widget.dart';
 
 class UniversitySelectionSection extends StatelessWidget {

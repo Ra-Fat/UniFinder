@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import '../../../theme/app_styles.dart';
+import '../../../common/Theme/app_styles.dart';
 
 class OptionCard extends StatelessWidget {
 	final String text;
@@ -9,12 +9,12 @@ class OptionCard extends StatelessWidget {
 	final ValueChanged<bool?>? onChanged;
 
 	const OptionCard({
-		Key? key,
+		super.key,
 		required this.text,
 		required this.isSelected,
 		required this.onTap,
 		this.onChanged,
-	}) : super(key: key);
+	});
 
 	@override
 	Widget build(BuildContext context) {

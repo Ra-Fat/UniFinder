@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:ui';
-import '../../theme/app_styles.dart';
+import '../Theme/app_styles.dart';
 
 class SkillChips extends StatelessWidget {
   const SkillChips({super.key, required this.skills, this.maxSkillDisplay});

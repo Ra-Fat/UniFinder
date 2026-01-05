@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:uni_finder/Domain/model/University/universityMajorDetail.dart';
-import '../../../theme/app_styles.dart';
+import '../../../common/Theme/app_styles.dart';
 
 
 class MajorItem extends StatelessWidget {
@@ -46,7 +46,7 @@ class MajorItem extends StatelessWidget {
                   detail.degreeType,
                   style: const TextStyle(
                     fontSize: 12,
-                    color: AppColors.primaryBlue,
+                    color: AppColors.accentBlue,
                     fontWeight: FontWeight.w600,
                   ),
                 ),

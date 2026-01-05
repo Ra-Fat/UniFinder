@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../theme/app_styles.dart';
 import '../../../common/widgets/widget.dart';
-import '../../../common/constants/app_text_styles.dart';
 import 'dart:math' as math;
 
 class PriceBar extends StatelessWidget {

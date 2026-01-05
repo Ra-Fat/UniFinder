@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import '../../../theme/app_styles.dart';
+import '../../../common/Theme/app_styles.dart';
 import '../../../common/widgets/widget.dart';
 
 class CompareAppBar extends StatelessWidget implements PreferredSizeWidget {
-	const CompareAppBar({Key? key}) : super(key: key);
+	const CompareAppBar({super.key});
 
 	@override
 	Widget build(BuildContext context) {

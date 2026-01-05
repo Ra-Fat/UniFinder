@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import '../../../common/widgets/widget.dart';
-import '../../../theme/app_styles.dart';
+import '../../../common/Theme/app_styles.dart';
 
 typedef OnSaveDream = Future<void> Function(String dreamName);
 
 class InputNameDialog extends StatefulWidget {
 	final OnSaveDream onSave;
 
-	const InputNameDialog({Key? key, required this.onSave}) : super(key: key);
+	const InputNameDialog({super.key, required this.onSave});
 
 	@override
 	State<InputNameDialog> createState() => _InputNameDialogState();

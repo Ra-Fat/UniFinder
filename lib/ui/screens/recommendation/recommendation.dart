@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../common/widgets/widget.dart';
-import '../../theme/app_styles.dart';
+import '../../common/Theme/app_styles.dart';
 import '../../../Domain/model/Dream/dreams_model.dart';
 import 'components/major_card.dart';
 import 'components/input_name_dialog.dart';
@@ -139,9 +139,7 @@ class _RecommendationState extends State<Recommendation> {
                       matchScore: double.parse(
                         rec.matchScore.toStringAsFixed(2),
                       ),
-                      // studyDuration: rec.major.duration,
                       keySkills: rec.major.keySkills,
-                      // universitiesOffer: rec.major.universityCount,
                       onTab: () => _selectedDream(index, rec.major.id ?? ''),
                     );
                   }),

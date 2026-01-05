@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import '../../../../Domain/model/Career/career_model.dart';
 // import '../../../common/constants/app_colors.dart';
-import '../../../common/constants/app_spacing.dart';
-import '../../../theme/app_styles.dart';
+import '../../../common/Theme/app_spacing.dart';
+import '../../../common/Theme/app_styles.dart';
 import '../../../common/widgets/widget.dart';
-import '../../../common/constants/app_text_styles.dart';
+import '../../../common/Theme/app_text_styles.dart';
 
 class AboutThisCareerCard extends StatefulWidget {
   final Career career;

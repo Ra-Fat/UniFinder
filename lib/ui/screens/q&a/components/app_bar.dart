@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import '../../../common/widgets/widget.dart';
-import '../../../theme/app_styles.dart';
+import '../../../common/Theme/app_styles.dart';
 
 class QuestionAppBar extends StatelessWidget implements PreferredSizeWidget {
   final int currentIndex;
   final int totalQuestions;
-  const QuestionAppBar({Key? key, required this.currentIndex, required this.totalQuestions}) : super(key: key);
+  const QuestionAppBar({super.key, required this.currentIndex, required this.totalQuestions});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class QuestionAppBar extends StatelessWidget implements PreferredSizeWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     CustomSecondaryText(
-                      text: 'Question ${currentIndex + 1} of ${totalQuestions}',
+                      text: 'Question ${currentIndex + 1} of $totalQuestions',
                       fontSize: 14,
                     ),
                     CustomSecondaryText(

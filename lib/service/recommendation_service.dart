@@ -65,7 +65,6 @@ class RecommendationService {
           MajorRecommendation(
             major: major,
             matchScore: matchScore,
-            primaryCategory: major.categoryId,
           ),
         );
       }

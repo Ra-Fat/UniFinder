@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../theme/app_styles.dart';
+import '../../../common/Theme/app_styles.dart';
 import '../../../common/widgets/widget.dart';
 import 'major_card_helpers.dart';
 

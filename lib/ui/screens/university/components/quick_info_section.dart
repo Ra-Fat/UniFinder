@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:uni_finder/Domain/model/University/university_model.dart';
-import 'package:uni_finder/ui/common/constants/app_spacing.dart';
+import 'package:uni_finder/ui/common/Theme/app_spacing.dart';
 import './info_card.dart';
 
 class QuickInfoSection extends StatelessWidget {

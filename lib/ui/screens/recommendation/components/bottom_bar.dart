@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../theme/app_styles.dart';
+import '../../../common/Theme/app_styles.dart';
 import '../../../common/widgets/widget.dart';
 
 class RecommendationBottomBar extends StatelessWidget {
@@ -7,10 +7,10 @@ class RecommendationBottomBar extends StatelessWidget {
 	final VoidCallback? onPressed;
 
 	const RecommendationBottomBar({
-		Key? key,
+		super.key,
 		required this.enabled,
 		required this.onPressed,
-	}) : super(key: key);
+	});
 
 	@override
 	Widget build(BuildContext context) {

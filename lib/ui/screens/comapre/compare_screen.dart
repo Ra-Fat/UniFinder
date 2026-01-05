@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import '../../../Domain/model/University/university_model.dart';
 import '../../../Domain/model/Major/major_model.dart';
 import '../../../Domain/model/University/university_major.dart';
-import '../../common/constants/app_spacing.dart';
-import '../../common/constants/app_text_styles.dart';
+import '../../common/Theme/app_spacing.dart';
+import '../../common/Theme/app_text_styles.dart';
 import 'components/university_header.dart';
 import 'components/info_row.dart';
 import 'components/price_bar.dart';
 import 'components/contact_row.dart';
 import 'components/app_bar.dart';
-import '../../theme/app_styles.dart';
+import '../../common/Theme/app_styles.dart';
 import '../../common/widgets/widget.dart';
 
 class CompareScreen extends StatefulWidget {

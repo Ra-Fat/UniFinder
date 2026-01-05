@@ -1,11 +1,11 @@
 
 import 'package:flutter/material.dart';
 import '../widgets/widget.dart';
-import '../../theme/app_styles.dart';
+import '../Theme/app_styles.dart';
 
 class GlobalAppBar extends StatelessWidget implements PreferredSizeWidget {
 	final String title;
-	const GlobalAppBar({Key? key, required this.title}) : super(key: key);
+	const GlobalAppBar({super.key, required this.title});
 
 	@override
 	Widget build(BuildContext context) {

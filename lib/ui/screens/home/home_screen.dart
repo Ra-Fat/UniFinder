@@ -7,7 +7,7 @@ import 'package:uni_finder/service/user_service.dart';
 import 'components/welcome_header.dart';
 // import '../';
 import 'components/dreams_list.dart';
-import '../../theme/app_styles.dart';
+import '../../common/Theme/app_styles.dart';
 
 class HomeScreen extends StatefulWidget {
   final DreamService dreamService;

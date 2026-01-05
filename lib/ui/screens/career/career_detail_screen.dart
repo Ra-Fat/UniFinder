@@ -88,9 +88,6 @@ class _CareerDetailScreenState extends State<CareerDetailScreen> {
           if (snapshot.hasError) {
             return Center(child: Text('Error: ${snapshot.error}'));
           }
-          // Extract data from the future result
-          final (major, relatedMajors, universities) =
-              snapshot.data ?? (null, <Major>[], <UniversityMajorDetail>[]);
 
           return SingleChildScrollView(
             child: Column(

@@ -8,7 +8,6 @@ import '../../../Domain/model/Quiz/option_model.dart';
 import '../../../Domain/model/Quiz/submission_model.dart';
 import '../../../Domain/model/Quiz/answer_model.dart';
 import '../../../main.dart';
-import '../../theme/app_styles.dart';
 import '../../common/widgets/widget.dart';
 
 class MutipleChoiceQuestionScreen extends StatefulWidget {
@@ -68,7 +67,7 @@ class _MutipleChoiceQuestionScreenState
         // uncheck
         selectedOptions.remove(questionId);
       } else {
-        // check - store option ID instead of index
+        // check
         selectedOptions[questionId] = selectedOptionId;
       }
     });

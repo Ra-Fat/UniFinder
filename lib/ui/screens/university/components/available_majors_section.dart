@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:uni_finder/Domain/model/University/universityMajorDetail.dart';
-import 'package:uni_finder/ui/common/constants/app_spacing.dart';
+import 'package:uni_finder/ui/common/Theme/app_spacing.dart';
 import '../../../common/widgets/widget.dart';
 import './major_item.dart';
 
