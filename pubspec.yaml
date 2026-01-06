@@ -69,9 +69,8 @@ flutter:
   assets:
     - assets/panels/
     - assets/logo/
-    # - assets/majors/
-    # - assets/university/
-    # - assets/career/
+    - assets/university/
+    - assets/career/
     - assets/data/
 
   fonts:

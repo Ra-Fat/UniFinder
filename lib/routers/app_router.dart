@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import '../main.dart' as globals;
 
 // Models
 import 'package:uni_finder/Domain/model/Dream/dreams_model.dart';
@@ -7,27 +8,6 @@ import 'package:uni_finder/Domain/model/Career/career_model.dart';
 import 'package:uni_finder/Domain/model/Major/major_model.dart';
 import 'package:uni_finder/Domain/model/University/university_model.dart';
 import 'package:uni_finder/Domain/model/University/universityMajorDetail.dart';
-
-// Repositories
-import 'package:uni_finder/Domain/data/repository/dream_repository.dart';
-import 'package:uni_finder/Domain/data/repository/user_repository.dart';
-import 'package:uni_finder/Domain/data/repository/career_repository.dart';
-import 'package:uni_finder/Domain/data/repository/major_repository.dart';
-import 'package:uni_finder/Domain/data/repository/university_repository.dart';
-import 'package:uni_finder/Domain/data/repository/relationship_repository.dart';
-import 'package:uni_finder/Domain/data/repository/question_repository.dart';
-
-// Storage
-import 'package:uni_finder/Domain/data/storage/file_storage.dart';
-import 'package:uni_finder/Domain/data/storage/shared_preferences_storage.dart';
-
-// Services
-import 'package:uni_finder/service/dream_service.dart';
-import 'package:uni_finder/service/user_service.dart';
-import 'package:uni_finder/service/career_service.dart';
-import 'package:uni_finder/service/major_service.dart';
-import 'package:uni_finder/service/university_service.dart';
-import 'package:uni_finder/service/recommendation_service.dart';
 
 // Screens
 import 'package:uni_finder/ui/screens/home/home_screen.dart';
@@ -56,40 +36,15 @@ final GoRouter appRouter = GoRouter(
     GoRoute(
       path: '/home',
       builder: (context, state) {
-        final prefsStorage = SharedPreferencesStorage();
-
-        final dreamRepository = DreamRepository(prefsStorage);
-        final userRepository = UserRepository(prefsStorage);
-
-        final userService = UserService(userRepository);
-        final dreamService = DreamService(dreamRepository);
-        return HomeScreen(dreamService: dreamService, userService: userService);
+        return HomeScreen(
+          dreamService: globals.dreamService,
+          userService: globals.userService,
+        );
       },
       routes: [
         GoRoute(
           path: ':dreamId',
           builder: (context, state) {
-            final fileStorage = FileStorage('assets/data');
-            final prefsStorage = SharedPreferencesStorage();
-
-            final dreamRepository = DreamRepository(prefsStorage);
-            final careerRepository = CareerRepository(fileStorage);
-            final majorRepository = MajorRepository(fileStorage);
-            final universityRepository = UniversityRepository(fileStorage);
-            final relationshipRepository = RelationshipRepository(fileStorage);
-
-            final dreamService = DreamService(dreamRepository);
-            final majorService = MajorService(majorRepository);
-            final careerService = CareerService(
-              careerRepository,
-              relationshipRepository,
-            );
-            final universityService = UniversityService(
-              universityRepository,
-              relationshipRepository,
-              majorRepository,
-            );
-
             final dreamId = state.pathParameters['dreamId']!;
             final extra = state.extra;
 
@@ -97,17 +52,17 @@ final GoRouter appRouter = GoRouter(
             if (extra != null && extra is Dream) {
               return DreamDetail(
                 majorId: extra.majorId,
-                dreamName: extra.title,
-                dreamService: dreamService,
-                majorService: majorService,
-                careerService: careerService,
-                universityService: universityService,
+                dream: extra,
+                dreamService: globals.dreamService,
+                majorService: globals.majorService,
+                careerService: globals.careerService,
+                universityService: globals.universityService,
               );
             }
 
-            // Otherwise fetch by ID (slower, for refresh/direct URL access)
+            // Otherwise fetch by ID
             return FutureBuilder<Dream?>(
-              future: dreamService.getDreamById(dreamId),
+              future: globals.dreamService.getDreamById(dreamId),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return const Scaffold(
@@ -116,16 +71,20 @@ final GoRouter appRouter = GoRouter(
                 }
 
                 final dream = snapshot.data;
-                String majorId = dream?.majorId ?? '1';
-                String? dreamName = dream?.title;
+
+                if (dream == null) {
+                  return const Scaffold(
+                    body: Center(child: Text('Dream not found')),
+                  );
+                }
 
                 return DreamDetail(
-                  majorId: majorId,
-                  dreamName: dreamName,
-                  dreamService: dreamService,
-                  majorService: majorService,
-                  careerService: careerService,
-                  universityService: universityService,
+                  majorId: dream.majorId,
+                  dream: dream,
+                  dreamService: globals.dreamService,
+                  majorService: globals.majorService,
+                  careerService: globals.careerService,
+                  universityService: globals.universityService,
                 );
               },
             );
@@ -136,31 +95,15 @@ final GoRouter appRouter = GoRouter(
     GoRoute(
       path: '/career',
       builder: (context, state) {
-        final fileStorage = FileStorage('assets/data');
-        final prefsStorage = SharedPreferencesStorage();
-
-        final dreamRepository = DreamRepository(prefsStorage);
-        final majorRepository = MajorRepository(fileStorage);
-        final universityRepository = UniversityRepository(fileStorage);
-        final relationshipRepository = RelationshipRepository(fileStorage);
-
-        final dreamService = DreamService(dreamRepository);
-        final majorService = MajorService(majorRepository);
-        final universityService = UniversityService(
-          universityRepository,
-          relationshipRepository,
-          majorRepository,
-        );
-
         final extra = state.extra as Map<String, dynamic>;
 
         return CareerDetailScreen(
           career: extra['career'] as Career,
           major: extra['major'] as Major?,
           relatedMajors: extra['relatedMajors'] as List<Major>?,
-          dreamService: dreamService,
-          majorService: majorService,
-          universityService: universityService,
+          dreamService: globals.dreamService,
+          majorService: globals.majorService,
+          universityService: globals.universityService,
         );
       },
     ),
@@ -168,38 +111,21 @@ final GoRouter appRouter = GoRouter(
       path: '/university',
       builder: (context, state) {
         final extra = state.extra as Map<String, dynamic>;
-        
+
         return UniversityScreen(
           university: extra['university'] as University,
-          availableMajors: extra['availableMajors'] as List<UniversityMajorDetail>,
+          availableMajors:
+              extra['availableMajors'] as List<UniversityMajorDetail>,
         );
       },
     ),
     GoRoute(
       path: '/recommendation',
       builder: (context, state) {
-        final fileStorage = FileStorage('assets/data');
-        final prefsStorage = SharedPreferencesStorage();
-
-        final questionRepository = QuestionRepository(
-          fileStorage,
-          prefsStorage,
-        );
-        final majorRepository = MajorRepository(fileStorage);
-        final userRepository = UserRepository(prefsStorage);
-        final dreamRepository = DreamRepository(prefsStorage);
-
-        final recommendationService = RecommendationService(
-          questionRepository,
-          majorRepository,
-        );
-        final userService = UserService(userRepository);
-        final dreamService = DreamService(dreamRepository);
-
         return Recommendation(
-          recommendationService: recommendationService,
-          userService: userService,
-          dreamService: dreamService,
+          recommendationService: globals.recommendationService,
+          userService: globals.userService,
+          dreamService: globals.dreamService,
         );
       },
     ),

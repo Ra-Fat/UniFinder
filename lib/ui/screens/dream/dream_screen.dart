@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:uni_finder/Domain/model/Dream/dreams_model.dart';
 import 'package:uni_finder/ui/common/Theme/app_spacing.dart';
 import 'package:uni_finder/ui/screens/career/career_screen.dart';
 import 'package:uni_finder/Domain/model/University/universityMajorDetail.dart';
@@ -18,7 +19,7 @@ import 'package:uni_finder/ui/common/widgets/compare_modal/compare_modal.dart';
 
 class DreamDetail extends StatefulWidget {
   final String majorId;
-  final String? dreamName;
+  final Dream dream;
   final DreamService dreamService;
   final MajorService majorService;
   final CareerService careerService;
@@ -27,7 +28,7 @@ class DreamDetail extends StatefulWidget {
   const DreamDetail({
     super.key,
     required this.majorId,
-    this.dreamName,
+    required this.dream,
     required this.dreamService,
     required this.majorService,
     required this.careerService,
@@ -85,7 +86,7 @@ class _DreamDetailState extends State<DreamDetail> {
 
     return Scaffold(
       appBar: DreamAppBar(
-        title: widget.dreamName ?? 'Dream Details',
+        title: widget.dream.title ?? 'Dream Details',
         titleStyle: textTheme.headlineSmall?.copyWith(
           fontWeight: FontWeight.bold,
         ),

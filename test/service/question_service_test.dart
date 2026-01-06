@@ -1,9 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:uni_finder/service/question_service.dart';
-import 'package:uni_finder/Domain/model/Category/category_model.dart';
-import 'package:uni_finder/Domain/model/Quiz/question_model.dart';
-import 'package:uni_finder/Domain/model/Quiz/option_model.dart';
 import 'package:uni_finder/Domain/model/Quiz/submission_model.dart';
 import 'package:uni_finder/Domain/model/Quiz/answer_model.dart';
 import '../test_utils/mock_repositories.mocks.dart';
