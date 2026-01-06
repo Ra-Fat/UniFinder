@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../ui/common/Theme/app_styles.dart';
+import '../routers/app_router.dart';
 
 class App extends StatefulWidget {
   const App({super.key});
@@ -10,6 +12,12 @@ class App extends StatefulWidget {
 class _AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return MaterialApp.router(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData.dark().copyWith(
+        scaffoldBackgroundColor: AppColors.darkBackground,
+      ),
+      routerConfig: appRouter,
+    );
   }
 }

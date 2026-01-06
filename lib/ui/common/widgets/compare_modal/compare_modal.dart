@@ -1,0 +1,343 @@
+import 'package:flutter/material.dart';
+import 'package:uni_finder/ui/common/widgets/widget.dart';
+import '../../../../service/dream_service.dart';
+import '../../../../service/major_service.dart';
+import '../../../../service/university_service.dart';
+import '../../../../Domain/model/Major/major_model.dart';
+import '../../../../Domain/model/University/university_model.dart';
+import '../../../../Domain/model/University/university_major.dart';
+import '../../Theme/app_spacing.dart';
+import 'package:uni_finder/ui/screens/comapre/compare_screen.dart';
+// import removed: major_search_section.dart
+import 'compare_modal_widget/university_selection_section.dart';
+import 'compare_modal_widget/compare_buttons_section.dart';
+import '../../Theme/app_styles.dart';
+
+
+class CompareUniversitiesBottomSheet extends StatefulWidget {
+  final DreamService dreamService;
+  final MajorService majorService;
+  final UniversityService universityService;
+  final String majorId; // Pass user's selected majorId
+
+  const CompareUniversitiesBottomSheet({
+    super.key,
+    required this.dreamService,
+    required this.majorService,
+    required this.universityService,
+    required this.majorId,
+  });
+
+  // Shows the comparison modal as a bottom sheet
+  // Requires all three services to load majors, universities, and relationships
+  static Future<void> show(
+    BuildContext context,
+    DreamService dreamService,
+    MajorService majorService,
+    UniversityService universityService,
+    String majorId,
+  ) {
+    return showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (context) => CompareUniversitiesBottomSheet(
+        dreamService: dreamService,
+        majorService: majorService,
+        universityService: universityService,
+        majorId: majorId,
+      ),
+    );
+  }
+
+  @override
+  State<CompareUniversitiesBottomSheet> createState() =>
+      _CompareUniversitiesBottomSheetState();
+}
+
+class _CompareUniversitiesBottomSheetState
+    extends State<CompareUniversitiesBottomSheet> {
+  // Selected IDs for the comparison
+  String? selectedMajorId;
+  String? university1Id;
+  String? university2Id;
+
+  // Data lists loaded from services
+  List<Major> majors = [];
+  List<Major> selectableMajors = [];
+  List<University> availableUniversities = [];
+  List<UniversityMajor> universityMajorRelations = [];
+
+  // UI state
+  bool isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    loadData(); // Load all required data when modal opens
+  }
+
+  // No search controller or search logic needed
+
+  // Loads all necessary data for the comparison
+  Future<void> loadData() async {
+    final loadedMajors = await widget.majorService.getMajorsData();
+    final userMajor = loadedMajors.firstWhere(
+      (m) => m.id == widget.majorId,
+      orElse: () => loadedMajors.first,
+    );
+    List<Major> relatedMajors = [];
+    relatedMajors = await widget.majorService.getRelatedMajorsForPrimary(userMajor.id!);
+    
+    final allUniversities = await widget.universityService.getUniversitiesData();
+    final relations = await widget.universityService.getUniversityMajorsData();
+
+    setState(() {
+      majors = loadedMajors;
+      selectableMajors = [ userMajor, ...relatedMajors];
+      availableUniversities = allUniversities;
+      universityMajorRelations = relations;
+      filteredUniversities = allUniversities;
+      isLoading = false;
+    });
+  }
+
+  // Processes the comparison when user clicks compare button
+  // Finds the selected universities and major, gets their relationship data,
+  // then navigates to the detailed comparison screen
+  void handleCompare() async {
+    if (selectedMajorId != null &&
+        university1Id != null &&
+        university2Id != null) {
+      // Get the selected universities
+      final uni1 = filteredUniversities.firstWhere(
+        (u) => u.id == university1Id,
+      );
+      final uni2 = filteredUniversities.firstWhere(
+        (u) => u.id == university2Id,
+      );
+
+      // Get the major
+      final major = majors.firstWhere((m) => m.id == selectedMajorId);
+
+      // Get the university-major relations (contains tuition, requirements, etc.)
+      final uniMajor1 = universityMajorRelations.firstWhere(
+        (um) =>
+            um.universityId == university1Id && um.majorId == selectedMajorId,
+      );
+      final uniMajor2 = universityMajorRelations.firstWhere(
+        (um) =>
+            um.universityId == university2Id && um.majorId == selectedMajorId,
+      );
+
+      Navigator.pop(context); // Close the modal
+
+      // Navigate to comparison screen with all selected data
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => CompareScreen(
+            university1: uni1,
+            university2: uni2,
+            selectedMajor: major,
+            universityMajor1: uniMajor1,
+            universityMajor2: uniMajor2,
+          ),
+        ),
+      );
+    }
+  }
+
+  List<University> filteredUniversities = [];
+
+  // Called when user selects a major from search results
+  // Filters universities to only show those that offer the selected major
+  // Resets university selections since major changed
+  void selectMajor(Major major) async {
+    final universities = await widget.universityService.getUniversitiesForMajor(
+      major.id!,
+    );
+    setState(() {
+      selectedMajorId = major.id;
+      university1Id = null;
+      university2Id = null;
+      filteredUniversities = universities;
+    });
+  }
+
+  // Selects the first university for comparison
+  void selectFirstUniversity(String universityId) {
+    setState(() {
+      university1Id = universityId;
+    });
+  }
+
+  // Selects the second university for comparison
+  void selectSecondUniversity(String universityId) {
+    setState(() {
+      university2Id = universityId;
+    });
+  }
+
+  // Resets all selections back to initial state
+  void resetSelections() {
+    setState(() {
+      selectedMajorId = null;
+      university1Id = null;
+      university2Id = null;
+      filteredUniversities = availableUniversities;
+    });
+  }
+
+  void handleReset() {
+    resetSelections();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return DraggableScrollableSheet(
+      initialChildSize: 0.8, // Modal takes 90% of screen height initially
+      minChildSize: 0.4, // Can be dragged down to 50%
+      maxChildSize: 0.95, // Can be dragged up to 95%
+      builder: (context, scrollController) {
+        return Container(
+          decoration: BoxDecoration(
+            color: AppColors.cardBackgroundGradientEnd,
+            borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
+          ),
+          child: Column(
+            children: [
+              // Drag Handle 
+              Container(
+                width: 40,
+                height: 4,
+                margin: const EdgeInsets.symmetric(vertical: 12),
+                decoration: BoxDecoration(
+                  color: Colors.grey[300],
+                  borderRadius: BorderRadius.circular(2),
+                ),
+              ),
+
+              // Header with title and close button
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: AppSpacing.lg,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    CustomPrimaryText(
+                    text:   'Compare Universities',
+                    ),
+                    IconButton(
+                      icon: const Icon(Icons.close),
+                      onPressed: () => Navigator.pop(context),
+                      constraints: const BoxConstraints(),
+                    ),
+                  ],
+                ),
+              ),
+
+              // Main content area
+              Expanded(
+                child: isLoading
+                    ? const Center(child: CircularProgressIndicator())
+                    : SingleChildScrollView(
+                        controller: scrollController,
+                        padding: const EdgeInsets.all(AppSpacing.lg),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            // Dropdown for selecting a major
+                            Align(
+                              alignment: Alignment.centerLeft,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  CustomPrimaryText(text: 'Select Major', fontSize: 15,),
+                                  const SizedBox(height: AppSpacing.md),
+                                  Container(
+                                    width: double.infinity,
+                                    decoration: BoxDecoration(
+                                      color: AppColors.cardBackground,
+                                      borderRadius: BorderRadius.circular(12),
+                                      border: Border.all(color: AppColors.buttonBorder, width: 1.5),
+                                    ),
+                                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 2),
+                                    child: DropdownButtonHideUnderline(
+                                      child: DropdownButton<String>(
+                                        value: selectedMajorId,
+                                        isExpanded: true,
+                                        dropdownColor: AppColors.cardBackground,
+                                        hint: const Text('Choose a major'),
+                                        items: selectableMajors.map((major) {
+                                          return DropdownMenuItem<String>(
+                                            value: major.id,
+                                            child: Container(
+                                              padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 5),
+                                              child: Text(
+                                                major.name,
+                                                style: const TextStyle(fontWeight: FontWeight.w500 , fontSize: 13),
+                                              ),
+                                            ),
+                                          );
+                                        }).toList(),
+                                        onChanged: (value) {
+                                          final major = selectableMajors.firstWhere((m) => m.id == value);
+                                          selectMajor(major);
+                                        },
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+
+                            const SizedBox(height: AppSpacing.md),
+
+                            // First university selection section
+                            UniversitySelectionSection(
+                              title: 'First University',
+                              universities: filteredUniversities,
+                              selectedUniversityId: university1Id,
+                              disabledUniversityId:
+                                  university2Id, // Can't select same as second
+                              isMajorSelected: selectedMajorId != null,
+                              onUniversitySelected: selectFirstUniversity,
+                            ),
+
+                            const SizedBox(height: AppSpacing.md),
+
+                            // Second university selection section
+                            UniversitySelectionSection(
+                              title: 'Second University',
+                              universities: filteredUniversities,
+                              selectedUniversityId: university2Id,
+                              disabledUniversityId:
+                                  university1Id, // Can't select same as first
+                              isMajorSelected: selectedMajorId != null,
+                              onUniversitySelected: selectSecondUniversity,
+                            ),
+
+                            const SizedBox(height: AppSpacing.xl),
+                          ],
+                        ),
+                      ),
+              ),
+
+              // Bottom action buttons
+              CompareButtonsSection(
+                onReset: handleReset,
+                onCompare: handleCompare,
+                canCompare:
+                    selectedMajorId != null && // All three must be selected
+                    university1Id != null &&
+                    university2Id != null,
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+}
