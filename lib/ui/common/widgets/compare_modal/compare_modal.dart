@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:uni_finder/ui/common/Theme/app_colors.dart';
 import 'package:uni_finder/ui/common/widgets/widget.dart';
 import '../../../../service/dream_service.dart';
 import '../../../../service/major_service.dart';
@@ -9,20 +8,24 @@ import '../../../../Domain/model/University/university_model.dart';
 import '../../../../Domain/model/University/university_major.dart';
 import '../../Theme/app_spacing.dart';
 import 'package:uni_finder/ui/screens/comapre/compare_screen.dart';
-import 'compare_modal_widget/major_search_section.dart';
+// import removed: major_search_section.dart
 import 'compare_modal_widget/university_selection_section.dart';
 import 'compare_modal_widget/compare_buttons_section.dart';
+import '../../Theme/app_styles.dart';
+
 
 class CompareUniversitiesBottomSheet extends StatefulWidget {
   final DreamService dreamService;
   final MajorService majorService;
   final UniversityService universityService;
+  final String majorId; // Pass user's selected majorId
 
   const CompareUniversitiesBottomSheet({
     super.key,
     required this.dreamService,
     required this.majorService,
     required this.universityService,
+    required this.majorId,
   });
 
   // Shows the comparison modal as a bottom sheet
@@ -32,6 +35,7 @@ class CompareUniversitiesBottomSheet extends StatefulWidget {
     DreamService dreamService,
     MajorService majorService,
     UniversityService universityService,
+    String majorId,
   ) {
     return showModalBottomSheet(
       context: context,
@@ -41,6 +45,7 @@ class CompareUniversitiesBottomSheet extends StatefulWidget {
         dreamService: dreamService,
         majorService: majorService,
         universityService: universityService,
+        majorId: majorId,
       ),
     );
   }
@@ -59,14 +64,12 @@ class _CompareUniversitiesBottomSheetState
 
   // Data lists loaded from services
   List<Major> majors = [];
-  List<Major> filteredMajors = [];
+  List<Major> selectableMajors = [];
   List<University> availableUniversities = [];
   List<UniversityMajor> universityMajorRelations = [];
 
   // UI state
-  final TextEditingController _searchController = TextEditingController();
   bool isLoading = true;
-  bool showMajorResults = false;
 
   @override
   void initState() {
@@ -74,46 +77,28 @@ class _CompareUniversitiesBottomSheetState
     loadData(); // Load all required data when modal opens
   }
 
-  @override
-  void dispose() {
-    _searchController.dispose();
-    super.dispose();
-  }
-
-  // Shows search results when user types, hides when search is empty
-  // Handles search input changes and filters majors accordingly
-  void onSearchChanged() {
-    setState(() {
-      if (_searchController.text.isEmpty) {
-        filteredMajors = majors;
-        showMajorResults = false;
-      } else {
-        filteredMajors = majors
-            .where(
-              (major) => major.name.toLowerCase().contains(
-                _searchController.text.toLowerCase(),
-              ),
-            )
-            .toList();
-        showMajorResults = true;
-      }
-    });
-  }
+  // No search controller or search logic needed
 
   // Loads all necessary data for the comparison
   Future<void> loadData() async {
     final loadedMajors = await widget.majorService.getMajorsData();
-    final allUniversities = await widget.universityService
-        .getUniversitiesData();
+    final userMajor = loadedMajors.firstWhere(
+      (m) => m.id == widget.majorId,
+      orElse: () => loadedMajors.first,
+    );
+    List<Major> relatedMajors = [];
+    if (userMajor != null) {
+      relatedMajors = await widget.majorService.getRelatedMajorsForPrimary(userMajor.id!);
+    }
+    final allUniversities = await widget.universityService.getUniversitiesData();
     final relations = await widget.universityService.getUniversityMajorsData();
 
     setState(() {
       majors = loadedMajors;
-      filteredMajors = loadedMajors;
+      selectableMajors = [if (userMajor != null) userMajor, ...relatedMajors];
       availableUniversities = allUniversities;
       universityMajorRelations = relations;
-      filteredUniversities =
-          allUniversities; // Initialize with all universities
+      filteredUniversities = allUniversities;
       isLoading = false;
     });
   }
@@ -175,11 +160,9 @@ class _CompareUniversitiesBottomSheetState
     );
     setState(() {
       selectedMajorId = major.id;
-      _searchController.text = major.name;
-      university1Id = null; // Reset selections
+      university1Id = null;
       university2Id = null;
       filteredUniversities = universities;
-      showMajorResults = false;
     });
   }
 
@@ -203,21 +186,12 @@ class _CompareUniversitiesBottomSheetState
       selectedMajorId = null;
       university1Id = null;
       university2Id = null;
-      _searchController.clear();
-      filteredMajors = majors;
-      showMajorResults = false;
+      filteredUniversities = availableUniversities;
     });
   }
 
   void handleReset() {
     resetSelections();
-  }
-
-  void clearSearch() {
-    _searchController.clear();
-    setState(() {
-      showMajorResults = false;
-    });
   }
 
   @override
@@ -229,7 +203,7 @@ class _CompareUniversitiesBottomSheetState
       builder: (context, scrollController) {
         return Container(
           decoration: BoxDecoration(
-            color: AppColors.background,
+            color: AppColors.cardBackgroundGradientEnd,
             borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
           ),
           child: Column(
@@ -275,14 +249,49 @@ class _CompareUniversitiesBottomSheetState
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            // Search section for selecting a major
-                            MajorSearchSection(
-                              searchController: _searchController,
-                              filteredMajors: filteredMajors,
-                              showMajorResults: showMajorResults,
-                              onSearchChanged: (value) => onSearchChanged(),
-                              onMajorSelected: selectMajor,
-                              onClearSearch: clearSearch,
+                            // Dropdown for selecting a major
+                            Align(
+                              alignment: Alignment.centerLeft,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  CustomPrimaryText(text: 'Select Major', fontSize: 15,),
+                                  const SizedBox(height: AppSpacing.md),
+                                  Container(
+                                    width: double.infinity,
+                                    decoration: BoxDecoration(
+                                      color: AppColors.cardBackground,
+                                      borderRadius: BorderRadius.circular(12),
+                                      border: Border.all(color: AppColors.buttonBorder, width: 1.5),
+                                    ),
+                                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 2),
+                                    child: DropdownButtonHideUnderline(
+                                      child: DropdownButton<String>(
+                                        value: selectedMajorId,
+                                        isExpanded: true,
+                                        dropdownColor: AppColors.cardBackground,
+                                        hint: const Text('Choose a major'),
+                                        items: selectableMajors.map((major) {
+                                          return DropdownMenuItem<String>(
+                                            value: major.id,
+                                            child: Container(
+                                              padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 5),
+                                              child: Text(
+                                                major.name,
+                                                style: const TextStyle(fontWeight: FontWeight.w500 , fontSize: 13),
+                                              ),
+                                            ),
+                                          );
+                                        }).toList(),
+                                        onChanged: (value) {
+                                          final major = selectableMajors.firstWhere((m) => m.id == value);
+                                          selectMajor(major);
+                                        },
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
 
                             const SizedBox(height: AppSpacing.md),

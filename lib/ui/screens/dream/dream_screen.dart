@@ -86,13 +86,16 @@ class _DreamDetailState extends State<DreamDetail> {
     return Scaffold(
       appBar: DreamAppBar(
         title: widget.dreamName ?? 'Dream Details',
-        titleStyle: textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold),
+        titleStyle: textTheme.headlineSmall?.copyWith(
+          fontWeight: FontWeight.bold,
+        ),
         onCompare: () {
           CompareUniversitiesBottomSheet.show(
             context,
             widget.dreamService,
             widget.majorService,
             widget.universityService,
+            widget.majorId,
           );
         },
       ),
@@ -185,14 +188,20 @@ class _DreamDetailState extends State<DreamDetail> {
                       ],
                     ),
                     const SizedBox(height: AppSpacing.md),
-                    MajorCard(major: major, universityMajors: universityMajors, isPrimary: true,),
-                    const SizedBox(height: AppSpacing.paddingHorizontal),
-                    Text(
-                      'Related Majors',
-                      style: textTheme.labelLarge?.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
+                    MajorCard(
+                      major: major,
+                      universityMajors: universityMajors,
+                      isPrimary: true,
                     ),
+                    const SizedBox(height: AppSpacing.paddingHorizontal),
+                    if (relatedMajors.isNotEmpty && universityMajors.isNotEmpty)
+                      Text(
+                        'Related Majors',
+                        style: textTheme.labelLarge?.copyWith(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+
                     const SizedBox(height: AppSpacing.md),
                     RelatedMajorList(
                       majors: relatedMajors,

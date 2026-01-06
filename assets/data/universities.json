@@ -255,14 +255,14 @@
     "id": "19",
     "name": "Cambodia Academy of Digital Technology",
     "short_name": "CADT",
-    "description": "",
+    "description": "Cambodia Academy of Digital Technology (CADT) is a technology-focused institution in Phnom Penh specializing in digital skills, innovation, and research.",
     "location": "Phnom Penh",
-    "type": "Private",
+    "type": "Public",
     "established_year": 2015,
     "website": "https://cadt.edu.kh/",
     "phone": "+855 23 211 750",
     "email": "info@cadt.edu.kh",
-    "logo_path": "university/cadt_logo.png",
-    "cover_image_path": "university/puc_cover.jpg"
+    "logo_path": "university/cadt_logo.jpg",
+    "cover_image_path": "university/cadt_cover.webp"
   }
 ]

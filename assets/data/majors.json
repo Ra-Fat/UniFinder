@@ -27,58 +27,19 @@
   },
   {
     "id": "3",
-    "name": "Business Administration",
-    "category_id": "2",
-    "description": "Learn management, finance, marketing, and organizational leadership to run successful businesses.",
+    "name": "Information Technology",
+    "category_id": "1",
+    "description": "Focus on managing and supporting computer systems, networks, and information security in organizations.",
     "key_skills": [
-      "Leadership",
-      "Financial Analysis",
-      "Strategic Planning",
-      "Project Management",
-      "Communication"
+      "Network Administration",
+      "System Support",
+      "Cybersecurity",
+      "Database Management",
+      "IT Infrastructure"
     ]
   },
   {
     "id": "4",
-    "name": "Economics",
-    "category_id": "2",
-    "description": "Study of economic theory, policy, market analysis, and resource allocation in society.",
-    "key_skills": [
-      "Economic Analysis",
-      "Data Interpretation",
-      "Policy Evaluation",
-      "Market Research",
-      "Critical Thinking"
-    ]
-  },
-  {
-    "id": "5",
-    "name": "Medicine",
-    "category_id": "5",
-    "description": "Medical training for diagnosing, treating, and preventing diseases and injuries.",
-    "key_skills": [
-      "Clinical Diagnosis",
-      "Patient Care",
-      "Medical Research",
-      "Emergency Response",
-      "Ethical Decision Making"
-    ]
-  },
-  {
-    "id": "6",
-    "name": "Law",
-    "category_id": "3",
-    "description": "Study of legal systems, principles, and practices for justice and governance.",
-    "key_skills": [
-      "Legal Research",
-      "Argumentation",
-      "Case Analysis",
-      "Negotiation",
-      "Ethical Reasoning"
-    ]
-  },
-  {
-    "id": "7",
     "name": "Civil Engineering",
     "category_id": "1",
     "description": "Design, construction, and maintenance of physical infrastructure like roads, bridges, and buildings.",
@@ -91,20 +52,124 @@
     ]
   },
   {
-    "id": "8",
-    "name": "Agriculture",
-    "category_id": "4",
-    "description": "Study of farming, crop production, animal husbandry, and sustainable food systems.",
+    "id": "5",
+    "name": "Architecture",
+    "category_id": "1",
+    "description": "Design of buildings and structures, combining aesthetics, functionality, and engineering principles.",
     "key_skills": [
-      "Crop Management",
-      "Soil Science",
-      "Sustainable Farming",
-      "Animal Husbandry",
-      "Resource Management"
+      "Architectural Design",
+      "3D Modeling",
+      "Building Codes",
+      "Sustainability",
+      "Construction Technology"
+    ]
+  },
+  {
+    "id": "6",
+    "name": "Electrical Engineering",
+    "category_id": "1",
+    "description": "Study of electrical systems, electronics, and power distribution for various applications.",
+    "key_skills": [
+      "Circuit Design",
+      "Electrical Systems",
+      "Power Distribution",
+      "Electronics",
+      "Control Systems"
+    ]
+  },
+  {
+    "id": "7",
+    "name": "Business Administration",
+    "category_id": "2",
+    "description": "Learn management, finance, marketing, and organizational leadership to run successful businesses.",
+    "key_skills": [
+      "Leadership",
+      "Financial Analysis",
+      "Strategic Planning",
+      "Project Management",
+      "Communication"
+    ]
+  },
+  {
+    "id": "8",
+    "name": "Economics",
+    "category_id": "2",
+    "description": "Study of economic theory, policy, market analysis, and resource allocation in society.",
+    "key_skills": [
+      "Economic Analysis",
+      "Data Interpretation",
+      "Policy Evaluation",
+      "Market Research",
+      "Critical Thinking"
     ]
   },
   {
     "id": "9",
+    "name": "Accounting",
+    "category_id": "2",
+    "description": "Study of financial record-keeping, auditing, taxation, and financial reporting for organizations.",
+    "key_skills": [
+      "Financial Accounting",
+      "Tax Law",
+      "Auditing",
+      "Financial Reporting",
+      "Cost Analysis"
+    ]
+  },
+  {
+    "id": "10",
+    "name": "Marketing",
+    "category_id": "2",
+    "description": "Learn strategies for promoting products and services, consumer behavior, branding, and market research.",
+    "key_skills": [
+      "Market Research",
+      "Brand Management",
+      "Digital Marketing",
+      "Consumer Behavior",
+      "Campaign Strategy"
+    ]
+  },
+  {
+    "id": "11",
+    "name": "Finance",
+    "category_id": "2",
+    "description": "Study of investment management, financial markets, corporate finance, and financial planning.",
+    "key_skills": [
+      "Financial Analysis",
+      "Investment Strategy",
+      "Risk Management",
+      "Portfolio Management",
+      "Financial Modeling"
+    ]
+  },
+  {
+    "id": "12",
+    "name": "Human Resources Management",
+    "category_id": "2",
+    "description": "Management of recruitment, employee relations, training, and organizational development.",
+    "key_skills": [
+      "Recruitment",
+      "Employee Relations",
+      "Training & Development",
+      "Labor Law",
+      "Organizational Behavior"
+    ]
+  },
+  {
+    "id": "13",
+    "name": "Law",
+    "category_id": "3",
+    "description": "Study of legal systems, principles, and practices for justice and governance.",
+    "key_skills": [
+      "Legal Research",
+      "Argumentation",
+      "Case Analysis",
+      "Negotiation",
+      "Ethical Reasoning"
+    ]
+  },
+  {
+    "id": "14",
     "name": "Fine Arts",
     "category_id": "3",
     "description": "Creative expression through painting, sculpture, music, and performance arts.",
@@ -117,7 +182,20 @@
     ]
   },
   {
-    "id": "10",
+    "id": "15",
+    "name": "Graphic Design",
+    "category_id": "3",
+    "description": "Visual communication through typography, imagery, and layout for print and digital media.",
+    "key_skills": [
+      "Adobe Creative Suite",
+      "Typography",
+      "Layout Design",
+      "Color Theory",
+      "Brand Identity"
+    ]
+  },
+  {
+    "id": "16",
     "name": "Education",
     "category_id": "3",
     "description": "Training for teaching, curriculum development, and educational leadership.",
@@ -127,6 +205,149 @@
       "Classroom Management",
       "Student Assessment",
       "Educational Technology"
+    ]
+  },
+  {
+    "id": "17",
+    "name": "Communications",
+    "category_id": "3",
+    "description": "Study of media, journalism, public relations, and effective communication strategies.",
+    "key_skills": [
+      "Writing",
+      "Media Production",
+      "Public Relations",
+      "Content Strategy",
+      "Digital Media"
+    ]
+  },
+  {
+    "id": "18",
+    "name": "Culinary Arts",
+    "category_id": "3",
+    "description": "Professional training in cooking techniques, food preparation, menu planning, and kitchen management.",
+    "key_skills": [
+      "Culinary Techniques",
+      "Food Safety",
+      "Menu Development",
+      "Kitchen Management",
+      "Food Presentation"
+    ]
+  },
+  {
+    "id": "19",
+    "name": "Agriculture",
+    "category_id": "4",
+    "description": "Study of farming, crop production, animal husbandry, and sustainable food systems.",
+    "key_skills": [
+      "Crop Management",
+      "Soil Science",
+      "Sustainable Farming",
+      "Animal Husbandry",
+      "Resource Management"
+    ]
+  },
+  {
+    "id": "20",
+    "name": "Mathematics",
+    "category_id": "4",
+    "description": "Study of mathematical theory, analysis, statistics, and computational methods.",
+    "key_skills": [
+      "Mathematical Analysis",
+      "Statistics",
+      "Problem Solving",
+      "Computational Methods",
+      "Abstract Reasoning"
+    ]
+  },
+  {
+    "id": "21",
+    "name": "Physics",
+    "category_id": "4",
+    "description": "Study of matter, energy, and the fundamental laws governing the physical universe.",
+    "key_skills": [
+      "Scientific Method",
+      "Experimental Design",
+      "Data Analysis",
+      "Mathematical Modeling",
+      "Research Skills"
+    ]
+  },
+  {
+    "id": "22",
+    "name": "Chemistry",
+    "category_id": "4",
+    "description": "Study of matter, chemical reactions, and molecular structures in various applications.",
+    "key_skills": [
+      "Laboratory Skills",
+      "Chemical Analysis",
+      "Molecular Structure",
+      "Research Methods",
+      "Safety Protocols"
+    ]
+  },
+  {
+    "id": "23",
+    "name": "Biology",
+    "category_id": "4",
+    "description": "Study of living organisms, ecosystems, genetics, and life processes.",
+    "key_skills": [
+      "Scientific Research",
+      "Laboratory Techniques",
+      "Data Analysis",
+      "Genetics",
+      "Ecology"
+    ]
+  },
+  {
+    "id": "24",
+    "name": "Medicine",
+    "category_id": "5",
+    "description": "Medical training for diagnosing, treating, and preventing diseases and injuries.",
+    "key_skills": [
+      "Clinical Diagnosis",
+      "Patient Care",
+      "Medical Research",
+      "Emergency Response",
+      "Ethical Decision Making"
+    ]
+  },
+  {
+    "id": "25",
+    "name": "Nursing",
+    "category_id": "5",
+    "description": "Healthcare training focused on patient care, medication administration, and clinical support.",
+    "key_skills": [
+      "Patient Care",
+      "Clinical Procedures",
+      "Medication Management",
+      "Health Assessment",
+      "Emergency Care"
+    ]
+  },
+  {
+    "id": "26",
+    "name": "Pharmacy",
+    "category_id": "5",
+    "description": "Study of medications, drug therapy, pharmacology, and pharmaceutical care.",
+    "key_skills": [
+      "Pharmacology",
+      "Drug Interactions",
+      "Patient Counseling",
+      "Pharmaceutical Chemistry",
+      "Clinical Practice"
+    ]
+  },
+  {
+    "id": "27",
+    "name": "Public Health",
+    "category_id": "5",
+    "description": "Focus on disease prevention, health promotion, and improving community health outcomes.",
+    "key_skills": [
+      "Epidemiology",
+      "Health Policy",
+      "Disease Prevention",
+      "Community Health",
+      "Health Education"
     ]
   }
 ]
