@@ -87,15 +87,14 @@ class _CompareUniversitiesBottomSheetState
       orElse: () => loadedMajors.first,
     );
     List<Major> relatedMajors = [];
-    if (userMajor != null) {
-      relatedMajors = await widget.majorService.getRelatedMajorsForPrimary(userMajor.id!);
-    }
+    relatedMajors = await widget.majorService.getRelatedMajorsForPrimary(userMajor.id!);
+    
     final allUniversities = await widget.universityService.getUniversitiesData();
     final relations = await widget.universityService.getUniversityMajorsData();
 
     setState(() {
       majors = loadedMajors;
-      selectableMajors = [if (userMajor != null) userMajor, ...relatedMajors];
+      selectableMajors = [ userMajor, ...relatedMajors];
       availableUniversities = allUniversities;
       universityMajorRelations = relations;
       filteredUniversities = allUniversities;

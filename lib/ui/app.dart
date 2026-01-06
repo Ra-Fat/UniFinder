@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-// import './screens/welcomes/welcome_screen.dart';
-// import '../ui/screens/q&a/question_screen.dart';
-// import './screens/utils/logo_splash_screen.dart';
+import '../ui/common/Theme/app_styles.dart';
 import '../routers/app_router.dart';
 
 class App extends StatefulWidget {
@@ -17,7 +15,7 @@ class _AppState extends State<App> {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark().copyWith(
-        scaffoldBackgroundColor: Color(0xFF0f172a),
+        scaffoldBackgroundColor: AppColors.darkBackground,
       ),
       routerConfig: appRouter,
     );
