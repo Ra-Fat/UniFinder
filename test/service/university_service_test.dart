@@ -1,10 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:uni_finder/service/university_service.dart';
-import 'package:uni_finder/Domain/model/University/university_model.dart';
 import 'package:uni_finder/Domain/model/University/university_major.dart';
-import 'package:uni_finder/Domain/model/University/universityMajorDetail.dart';
-import 'package:uni_finder/Domain/model/Major/major_model.dart';
 import '../test_utils/mock_repositories.mocks.dart';
 import '../test_utils/test_data.dart';
 

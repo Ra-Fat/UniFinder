@@ -77,7 +77,6 @@ class _CompareUniversitiesBottomSheetState
     loadData(); // Load all required data when modal opens
   }
 
-  // No search controller or search logic needed
 
   // Loads all necessary data for the comparison
   Future<void> loadData() async {

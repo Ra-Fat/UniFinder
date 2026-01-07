@@ -10,52 +10,57 @@ import 'Domain/data/repository/user_repository.dart';
 import './service/question_service.dart';
 import './service/user_service.dart';
 import './service/dream_service.dart';
+import './service/career_service.dart';
+import './service/major_service.dart';
+import './service/university_service.dart';
 import 'package:uni_finder/service/recommendation_service.dart';
 import 'package:uni_finder/Domain/data/repository/major_repository.dart';
+import 'package:uni_finder/Domain/data/repository/career_repository.dart';
+import 'package:uni_finder/Domain/data/repository/university_repository.dart';
+import 'package:uni_finder/Domain/data/repository/relationship_repository.dart';
 
-// Global service instances
 late QuestionService questionService;
 late UserService userService;
 late DreamService dreamService;
+late CareerService careerService;
+late MajorService majorService;
+late UniversityService universityService;
 late final RecommendationService recommendationService;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final prefsStorage = SharedPreferencesStorage();
-  // Initialize services
-  if (kIsWeb) {
-    final storage = FileStorage('');
 
-    // question repo
-    final questionRepository = QuestionRepository(storage, prefsStorage);
-    questionService = QuestionService(questionRepository);
+  final storagePath = kIsWeb
+      ? ''
+      : '${(await getApplicationDocumentsDirectory()).path}/data';
+  final storage = FileStorage(storagePath);
 
-    // user repo
-    final userRepository = UserRepository(prefsStorage);
-    userService = UserService(userRepository);
+  final questionRepository = QuestionRepository(storage, prefsStorage);
+  questionService = QuestionService(questionRepository);
 
-    // dream repo
-    final dreamRepository = DreamRepository(prefsStorage);
-    dreamService = DreamService(dreamRepository);
-  } else {
-    // Get app directory for Android/iOS/Desktop
-    final directory = await getApplicationDocumentsDirectory();
-    final storage = FileStorage('${directory.path}/data');
-    final questionRepository = QuestionRepository(storage, prefsStorage);
-    questionService = QuestionService(questionRepository);
+  final userRepository = UserRepository(prefsStorage);
+  userService = UserService(userRepository);
 
-    final userRepository = UserRepository(prefsStorage);
-    userService = UserService(userRepository);
+  final dreamRepository = DreamRepository(prefsStorage);
+  dreamService = DreamService(dreamRepository);
 
-    final dreamRepository = DreamRepository(prefsStorage);
-    dreamService = DreamService(dreamRepository);
+  final majorRepository = MajorRepository(storage);
+  final careerRepository = CareerRepository(storage);
+  final universityRepository = UniversityRepository(storage);
+  final relationshipRepository = RelationshipRepository(storage);
 
-    final majorRepository = MajorRepository(storage);
-    recommendationService = RecommendationService(
-      questionRepository,
-      majorRepository,
-    );
-  }
+  majorService = MajorService(majorRepository);
+  careerService = CareerService(careerRepository, relationshipRepository);
+  universityService = UniversityService(
+    universityRepository,
+    relationshipRepository,
+    majorRepository,
+  );
+  recommendationService = RecommendationService(
+    questionRepository,
+    majorRepository,
+  );
 
   runApp(const App());
 }

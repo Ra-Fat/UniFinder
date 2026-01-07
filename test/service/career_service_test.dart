@@ -1,7 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:uni_finder/service/career_service.dart';
-import 'package:uni_finder/Domain/model/Career/career_model.dart';
 import '../test_utils/mock_repositories.mocks.dart';
 import '../test_utils/test_data.dart';
 
