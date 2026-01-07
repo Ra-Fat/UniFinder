@@ -1,0 +1,51 @@
+[
+  { "id": "1", "question_id": "1", "text": "Technology and engineering fields", "category_id": "1", "score": 10 },
+  { "id": "2", "question_id": "1", "text": "Business and economics fields", "category_id": "2", "score": 10 },
+  { "id": "3", "question_id": "1", "text": "Arts and humanities fields", "category_id": "3", "score": 10 },
+  { "id": "4", "question_id": "1", "text": "Health and medical fields", "category_id": "5", "score": 10 },
+
+  { "id": "5", "question_id": "2", "text": "Office or corporate environment", "category_id": "2", "score": 9 },
+  { "id": "6", "question_id": "2", "text": "Laboratory or scientific research environment", "category_id": "4", "score": 9 },
+  { "id": "7", "question_id": "2", "text": "Hospital, clinic, or healthcare environment", "category_id": "5", "score": 9 },
+  { "id": "8", "question_id": "2", "text": "Technical or engineering workspace", "category_id": "1", "score": 9 },
+
+  { "id": "9", "question_id": "3", "text": "Logical and technical analysis", "category_id": "1", "score": 9 },
+  { "id": "10", "question_id": "3", "text": "Creative thinking and expression", "category_id": "3", "score": 9 },
+  { "id": "11", "question_id": "3", "text": "Scientific research and experimentation", "category_id": "4", "score": 9 },
+  { "id": "12", "question_id": "3", "text": "Understanding people and practical solutions", "category_id": "5", "score": 9 },
+
+  { "id": "13", "question_id": "4", "text": "Designing, writing, or creating content", "category_id": "3", "score": 9 },
+  { "id": "14", "question_id": "4", "text": "Managing, organizing, or leading activities", "category_id": "2", "score": 9 },
+  { "id": "15", "question_id": "4", "text": "Building systems or technical solutions", "category_id": "1", "score": 9 },
+  { "id": "16", "question_id": "4", "text": "Caring for or assisting others directly", "category_id": "5", "score": 9 },
+
+  { "id": "17", "question_id": "5", "text": "Mathematics and science subjects", "category_id": "4", "score": 10 },
+  { "id": "18", "question_id": "5", "text": "Business, economics, or accounting", "category_id": "2", "score": 10 },
+  { "id": "19", "question_id": "5", "text": "Art, literature, or history", "category_id": "3", "score": 10 },
+  { "id": "20", "question_id": "5", "text": "Biology, health, or life sciences", "category_id": "5", "score": 10 },
+
+  { "id": "21", "question_id": "6", "text": "Technology and engineering subjects", "category_id": "1", "score": 10 },
+  { "id": "22", "question_id": "6", "text": "Science and mathematics subjects", "category_id": "4", "score": 10 },
+  { "id": "23", "question_id": "6", "text": "Communication or business subjects", "category_id": "2", "score": 10 },
+  { "id": "24", "question_id": "6", "text": "Health or medical-related subjects", "category_id": "5", "score": 10 },
+
+  { "id": "25", "question_id": "7", "text": "Very comfortable using advanced technology", "category_id": "1", "score": 9 },
+  { "id": "26", "question_id": "7", "text": "Comfortable using digital tools for business tasks", "category_id": "2", "score": 9 },
+  { "id": "27", "question_id": "7", "text": "Use technology mainly for creative purposes", "category_id": "3", "score": 9 },
+  { "id": "28", "question_id": "7", "text": "Use technology mainly for medical or practical needs", "category_id": "5", "score": 9 },
+
+  { "id": "29", "question_id": "8", "text": "Improving people’s health and wellbeing", "category_id": "5", "score": 10 },
+  { "id": "30", "question_id": "8", "text": "Advancing knowledge through science and research", "category_id": "4", "score": 10 },
+  { "id": "31", "question_id": "8", "text": "Creating innovative technology solutions", "category_id": "1", "score": 10 },
+  { "id": "32", "question_id": "8", "text": "Influencing society through business or culture", "category_id": "2", "score": 10 },
+
+  { "id": "33", "question_id": "9", "text": "Making a positive difference in people’s lives", "category_id": "5", "score": 10 },
+  { "id": "34", "question_id": "9", "text": "Career stability and financial success", "category_id": "2", "score": 10 },
+  { "id": "35", "question_id": "9", "text": "Innovation, discovery, and problem solving", "category_id": "4", "score": 10 },
+  { "id": "36", "question_id": "9", "text": "Creativity and self-expression", "category_id": "3", "score": 10 },
+
+  { "id": "37", "question_id": "10", "text": "Diagnosing, treating, or supporting patients", "category_id": "5", "score": 10 },
+  { "id": "38", "question_id": "10", "text": "Analyzing data or conducting experiments", "category_id": "4", "score": 10 },
+  { "id": "39", "question_id": "10", "text": "Developing software or technical systems", "category_id": "1", "score": 10 },
+  { "id": "40", "question_id": "10", "text": "Planning strategies or managing organizations", "category_id": "2", "score": 10 }
+]

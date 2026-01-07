@@ -1,0 +1,579 @@
+[
+  {
+    "id": "1",
+    "name": "Software Developer",
+    "imagePath": "career/software.jpg",
+    "description": "Design, develop, and maintain software applications for various platforms including web, mobile, and desktop. Work with programming languages, frameworks, and tools to create efficient and scalable solutions.",
+    "short_description": "Build software applications.",
+    "salary_range": "$800 - $3,000 / month",
+    "skills": [
+      "Programming",
+      "Problem Solving",
+      "Algorithms",
+      "Testing",
+      "Version Control"
+    ],
+    "career_progression": {
+      "Entry": "Junior Developer - Learn coding practices, fix bugs, implement basic features",
+      "Mid": "Software Engineer - Design features, mentor juniors, lead small projects",
+      "Senior": "Senior/Lead Engineer - Architecture decisions, lead teams, strategic planning"
+    }
+  },
+  {
+    "id": "2",
+    "name": "Web Developer",
+    "imagePath": "career/web.jpg",
+    "description": "Create and maintain websites and web applications using modern technologies. Work on both frontend and backend development, ensuring responsive design and optimal user experience.",
+    "short_description": "Build and maintain web applications.",
+    "salary_range": "$700 - $2,500 / month",
+    "skills": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "React",
+      "Node.js",
+      "Responsive Design"
+    ],
+    "career_progression": {
+      "Entry": "Junior Web Developer - Build pages, implement designs, fix bugs",
+      "Mid": "Web Developer - Full-stack development, lead features",
+      "Senior": "Senior Web Developer - Architecture, performance optimization, mentoring"
+    }
+  },
+  {
+    "id": "3",
+    "name": "Data Scientist",
+    "imagePath": "career/data.jpg",
+    "description": "Analyze complex data sets to help organizations make data-driven decisions. Use statistical methods, machine learning algorithms, and data visualization to extract meaningful insights.",
+    "short_description": "Extract insights from data.",
+    "salary_range": "$1,000 - $3,500 / month",
+    "skills": [
+      "Statistics",
+      "Machine Learning",
+      "Python",
+      "R",
+      "SQL",
+      "Data Visualization"
+    ],
+    "career_progression": {
+      "Entry": "Data Analyst - Clean data, create reports, basic analysis",
+      "Mid": "Data Scientist - Build ML models, advanced analytics, insights",
+      "Senior": "Lead Data Scientist - Strategy, mentor team, data initiatives"
+    }
+  },
+  {
+    "id": "4",
+    "name": "Mobile App Developer",
+    "imagePath": "career/mobile.jpg",
+    "description": "Develop applications for mobile devices including iOS and Android platforms. Create user-friendly interfaces and ensure optimal performance across different devices.",
+    "short_description": "Build mobile applications.",
+    "salary_range": "$800 - $2,800 / month",
+    "skills": ["Flutter", "React Native", "Swift", "Kotlin", "UI/UX Design"],
+    "career_progression": {
+      "Entry": "Junior Mobile Developer - Implement features, fix bugs, learn platform specifics",
+      "Mid": "Mobile Developer - Lead app development, optimize performance",
+      "Senior": "Senior Mobile Developer - Architecture decisions, cross-platform solutions"
+    }
+  },
+  {
+    "id": "5",
+    "name": "Cybersecurity Analyst",
+    "imagePath": "career/cyber.webp",
+    "description": "Protect organizations from digital threats by implementing security measures, monitoring systems, and responding to security incidents.",
+    "short_description": "Protect systems from cyber threats.",
+    "salary_range": "$900 - $3,000 / month",
+    "skills": [
+      "Network Security",
+      "Ethical Hacking",
+      "Risk Assessment",
+      "Incident Response"
+    ],
+    "career_progression": {
+      "Entry": "Security Analyst - Monitor systems, basic threat detection",
+      "Mid": "Cybersecurity Analyst - Implement security measures, incident response",
+      "Senior": "Senior Security Analyst - Security strategy, lead security team"
+    }
+  },
+  {
+    "id": "6",
+    "name": "Database Administrator",
+    "imagePath": "career/database.jpg",
+    "description": "Manage and maintain database systems, ensuring data integrity, security, and optimal performance. Design database structures and optimize queries.",
+    "short_description": "Manage database systems.",
+    "salary_range": "$700 - $2,500 / month",
+    "skills": [
+      "SQL",
+      "Database Design",
+      "Performance Tuning",
+      "Backup & Recovery"
+    ],
+    "career_progression": {
+      "Entry": "Junior DBA - Basic maintenance, query optimization",
+      "Mid": "Database Administrator - System design, advanced optimization",
+      "Senior": "Senior DBA - Architecture, disaster recovery planning"
+    }
+  },
+  {
+    "id": "7",
+    "name": "DevOps Engineer",
+    "imagePath": "career/devops.jpg",
+    "description": "Bridge the gap between development and operations teams by automating deployment processes, managing infrastructure, and ensuring reliable software delivery.",
+    "short_description": "Automate software deployment and infrastructure.",
+    "salary_range": "$1,000 - $3,500 / month",
+    "skills": ["CI/CD", "Docker", "Kubernetes", "Cloud Platforms", "Scripting"],
+    "career_progression": {
+      "Entry": "DevOps Engineer - Automate basic processes, deployment",
+      "Mid": "Senior DevOps Engineer - Infrastructure design, monitoring",
+      "Senior": "DevOps Lead - Strategy, team leadership, architecture"
+    }
+  },
+  {
+    "id": "8",
+    "name": "AI/ML Engineer",
+    "imagePath": "career/ai.jpg",
+    "description": "Design and implement artificial intelligence and machine learning systems. Work on developing algorithms, training models, and deploying AI solutions.",
+    "short_description": "Build AI and machine learning systems.",
+    "salary_range": "$1,200 - $4,000 / month",
+    "skills": [
+      "Machine Learning",
+      "Deep Learning",
+      "Python",
+      "TensorFlow",
+      "Computer Vision"
+    ],
+    "career_progression": {
+      "Entry": "ML Engineer - Implement models, data preprocessing",
+      "Mid": "AI/ML Engineer - Design systems, optimize models",
+      "Senior": "Senior AI Engineer - Research, lead AI initiatives"
+    }
+  },
+  {
+    "id": "9",
+    "name": "UI/UX Designer",
+    "imagePath": "career/uxui.webp",
+    "description": "Design user interfaces and enhance user experience for digital products. Conduct user research, create wireframes, and ensure intuitive design solutions.",
+    "short_description": "Create intuitive user experiences.",
+    "salary_range": "$600 - $2,200 / month",
+    "skills": [
+      "User Research",
+      "Wireframing",
+      "Prototyping",
+      "Figma",
+      "Design Systems"
+    ],
+    "career_progression": {
+      "Entry": "Junior Designer - Create mockups, assist research",
+      "Mid": "UI/UX Designer - Lead design projects, user research",
+      "Senior": "Lead Designer - Design strategy, mentor team"
+    }
+  },
+  {
+    "id": "10",
+    "name": "Business Analyst",
+    "imagePath": "career/business.jpg",
+    "description": "Analyze business needs and translate them into technical requirements. Bridge communication between business stakeholders and technical teams.",
+    "short_description": "Analyze business requirements.",
+    "salary_range": "$700 - $2,500 / month",
+    "skills": [
+      "Requirements Gathering",
+      "Process Analysis",
+      "Data Analysis",
+      "Communication"
+    ],
+    "career_progression": {
+      "Entry": "Business Analyst - Gather requirements, create documentation",
+      "Mid": "Senior Business Analyst - Lead projects, stakeholder management",
+      "Senior": "Business Analysis Manager - Strategy, team leadership"
+    }
+  },
+  {
+    "id": "11",
+    "name": "Research Scientist",
+    "imagePath": "career/research.webp",
+    "description": "Conduct scientific research and experiments in various fields including physics, chemistry, biology, and computer science. Publish findings and advance knowledge.",
+    "short_description": "Conduct scientific research.",
+    "salary_range": "$500 - $2,000 / month",
+    "skills": [
+      "Research Methods",
+      "Data Analysis",
+      "Scientific Writing",
+      "Laboratory Skills"
+    ],
+    "career_progression": {
+      "Entry": "Research Assistant - Conduct experiments, data collection",
+      "Mid": "Research Scientist - Lead research projects, publish papers",
+      "Senior": "Principal Scientist - Research strategy, team leadership"
+    }
+  },
+  {
+    "id": "12",
+    "name": "Civil Engineer",
+    "imagePath": "career/civil.webp",
+    "description": "Design, plan, and supervise construction projects including roads, bridges, buildings, and infrastructure. Ensure safety and compliance with regulations.",
+    "short_description": "Design infrastructure projects.",
+    "salary_range": "$600 - $2,500 / month",
+    "skills": [
+      "Structural Analysis",
+      "Project Management",
+      "CAD Software",
+      "Regulations"
+    ],
+    "career_progression": {
+      "Entry": "Junior Engineer - Design calculations, site inspections",
+      "Mid": "Civil Engineer - Lead projects, client management",
+      "Senior": "Senior Civil Engineer - Complex projects, team leadership"
+    }
+  },
+  {
+    "id": "13",
+    "name": "Doctor",
+    "imagePath": "career/doctor.jpg",
+    "description": "Diagnose and treat medical conditions, provide preventive care, and promote overall health and wellness for patients across all age groups.",
+    "short_description": "Provide medical care and treatment.",
+    "salary_range": "$1,500 - $5,000 / month",
+    "skills": [
+      "Diagnosis",
+      "Patient Care",
+      "Medical Knowledge",
+      "Communication"
+    ],
+    "career_progression": {
+      "Entry": "Resident Doctor - Clinical training, supervised practice",
+      "Mid": "Attending Physician - Independent practice, specialization",
+      "Senior": "Chief of Department - Leadership, medical direction"
+    }
+  },
+  {
+    "id": "14",
+    "name": "Nurse",
+    "imagePath": "career/nurse.jpg",
+    "description": "Provide comprehensive patient care in various healthcare settings. Administer medications, monitor patient conditions, and support recovery processes.",
+    "short_description": "Provide patient care and support.",
+    "salary_range": "$400 - $1,500 / month",
+    "skills": [
+      "Patient Care",
+      "Medication Administration",
+      "Vital Signs",
+      "Communication"
+    ],
+    "career_progression": {
+      "Entry": "Staff Nurse - Basic patient care, learn procedures",
+      "Mid": "Registered Nurse - Specialized care, leadership",
+      "Senior": "Nurse Manager - Team supervision, quality improvement"
+    }
+  },
+  {
+    "id": "15",
+    "name": "Pharmacist",
+    "imagePath": "career/pharmacist.webp",
+    "description": "Dispense medications, counsel patients on proper usage, and ensure safe and effective drug therapy. Manage pharmacy operations and inventory.",
+    "short_description": "Manage medications and patient counseling.",
+    "salary_range": "$800 - $2,000 / month",
+    "skills": [
+      "Pharmacology",
+      "Patient Counseling",
+      "Drug Interactions",
+      "Inventory Management"
+    ],
+    "career_progression": {
+      "Entry": "Staff Pharmacist - Dispensing, basic counseling",
+      "Mid": "Clinical Pharmacist - Patient care, drug therapy management",
+      "Senior": "Pharmacy Manager - Operations, team leadership"
+    }
+  },
+  {
+    "id": "16",
+    "name": "Marketing Manager",
+    "imagePath": "career/marketing.jpg",
+    "description": "Develop and execute marketing strategies to promote products and services. Manage campaigns, analyze market trends, and drive brand growth.",
+    "short_description": "Develop marketing strategies.",
+    "salary_range": "$700 - $2,800 / month",
+    "skills": [
+      "Market Research",
+      "Campaign Management",
+      "Digital Marketing",
+      "Analytics"
+    ],
+    "career_progression": {
+      "Entry": "Marketing Coordinator - Campaign execution, market research",
+      "Mid": "Marketing Manager - Strategy development, team management",
+      "Senior": "Senior Marketing Manager - Brand strategy, cross-functional leadership"
+    }
+  },
+  {
+    "id": "17",
+    "name": "Financial Analyst",
+    "imagePath": "career/finance.jpg",
+    "description": "Analyze financial data to help organizations make investment decisions. Prepare reports, forecast trends, and evaluate financial performance.",
+    "short_description": "Analyze financial data and investments.",
+    "salary_range": "$600 - $2,500 / month",
+    "skills": [
+      "Financial Modeling",
+      "Data Analysis",
+      "Excel",
+      "Financial Reporting"
+    ],
+    "career_progression": {
+      "Entry": "Junior Analyst - Data collection, basic analysis",
+      "Mid": "Financial Analyst - Complex modeling, investment recommendations",
+      "Senior": "Senior Financial Analyst - Strategy, portfolio management"
+    }
+  },
+  {
+    "id": "18",
+    "name": "Teacher/Educator",
+    "imagePath": "career/teacher.jpg",
+    "description": "Educate and inspire students at various levels. Develop curriculum, assess learning, and create engaging learning environments.",
+    "short_description": "Educate and mentor students.",
+    "salary_range": "$250 - $1,200 / month",
+    "skills": [
+      "Teaching",
+      "Curriculum Development",
+      "Assessment",
+      "Communication"
+    ],
+    "career_progression": {
+      "Entry": "Teacher - Classroom instruction, lesson planning",
+      "Mid": "Senior Teacher - Curriculum development, mentoring",
+      "Senior": "Department Head - Leadership, educational strategy"
+    }
+  },
+  {
+    "id": "19",
+    "name": "Graphic Designer",
+    "imagePath": "career/designer.webp",
+    "description": "Create visual content for print and digital media. Design logos, websites, advertisements, and marketing materials using creative software tools.",
+    "short_description": "Create visual designs and graphics.",
+    "salary_range": "$400 - $1,800 / month",
+    "skills": [
+      "Adobe Creative Suite",
+      "Typography",
+      "Color Theory",
+      "Branding"
+    ],
+    "career_progression": {
+      "Entry": "Junior Designer - Basic designs, assist projects",
+      "Mid": "Graphic Designer - Lead projects, client management",
+      "Senior": "Senior Designer - Creative direction, team leadership"
+    }
+  },
+  {
+    "id": "20",
+    "name": "Project Manager",
+    "imagePath": "career/projectmanager.webp",
+    "description": "Plan, execute, and oversee projects from initiation to completion. Coordinate teams, manage resources, and ensure project success within budget and timeline.",
+    "short_description": "Manage project execution and delivery.",
+    "salary_range": "$800 - $3,000 / month",
+    "skills": [
+      "Project Planning",
+      "Team Management",
+      "Risk Management",
+      "Communication"
+    ],
+    "career_progression": {
+      "Entry": "Project Coordinator - Support project execution",
+      "Mid": "Project Manager - Lead projects, stakeholder management",
+      "Senior": "Senior Project Manager - Complex projects, program management"
+    }
+  },
+  {
+    "id": "21",
+    "name": "Lawyer/Attorney",
+    "imagePath": "career/temp.jpg",
+    "description": "Represent clients in legal matters, provide legal advice, draft legal documents, and advocate in court proceedings. Specialize in areas such as corporate law, criminal law, or family law.",
+    "short_description": "Provide legal representation and counsel.",
+    "salary_range": "$800 - $3,500 / month",
+    "skills": [
+      "Legal Research",
+      "Case Analysis",
+      "Negotiation",
+      "Litigation",
+      "Contract Drafting"
+    ],
+    "career_progression": {
+      "Entry": "Associate Attorney - Legal research, case preparation, client meetings",
+      "Mid": "Attorney - Handle cases independently, client representation",
+      "Senior": "Partner/Senior Counsel - Firm management, complex litigation, mentoring"
+    }
+  },
+  {
+    "id": "22",
+    "name": "Corporate Lawyer",
+    "imagePath": "career/temp.jpg",
+    "description": "Advise corporations on legal rights, responsibilities, and obligations. Handle mergers, acquisitions, compliance, and corporate governance matters.",
+    "short_description": "Handle corporate legal matters.",
+    "salary_range": "$1,000 - $4,000 / month",
+    "skills": [
+      "Corporate Law",
+      "Contract Negotiation",
+      "Compliance",
+      "M&A",
+      "Risk Management"
+    ],
+    "career_progression": {
+      "Entry": "Junior Corporate Lawyer - Document review, contract drafting",
+      "Mid": "Corporate Lawyer - Lead transactions, client advisory",
+      "Senior": "General Counsel - Strategic legal direction, executive leadership"
+    }
+  },
+  {
+    "id": "23",
+    "name": "Accountant",
+    "imagePath": "career/temp.jpg",
+    "description": "Manage financial records, prepare tax returns, conduct audits, and ensure compliance with financial regulations. Provide financial advice to individuals and organizations.",
+    "short_description": "Manage financial records and compliance.",
+    "salary_range": "$500 - $2,000 / month",
+    "skills": [
+      "Financial Accounting",
+      "Tax Preparation",
+      "Auditing",
+      "QuickBooks",
+      "Financial Reporting"
+    ],
+    "career_progression": {
+      "Entry": "Staff Accountant - Bookkeeping, journal entries, reconciliations",
+      "Mid": "Senior Accountant - Financial statements, tax planning, audits",
+      "Senior": "Accounting Manager - Team leadership, financial strategy, compliance oversight"
+    }
+  },
+  {
+    "id": "24",
+    "name": "Human Resources Manager",
+    "imagePath": "career/temp.jpg",
+    "description": "Manage recruitment, employee relations, training and development, and organizational culture. Ensure compliance with labor laws and maintain positive workplace environment.",
+    "short_description": "Manage human resources and talent.",
+    "salary_range": "$600 - $2,500 / month",
+    "skills": [
+      "Recruitment",
+      "Employee Relations",
+      "HR Policies",
+      "Training & Development",
+      "Conflict Resolution"
+    ],
+    "career_progression": {
+      "Entry": "HR Coordinator - Recruitment support, onboarding, documentation",
+      "Mid": "HR Manager - Full HR operations, policy implementation",
+      "Senior": "HR Director - Strategic planning, organizational development"
+    }
+  },
+  {
+    "id": "25",
+    "name": "Content Writer",
+    "imagePath": "career/temp.jpg",
+    "description": "Create engaging written content for websites, blogs, social media, and marketing materials. Research topics and adapt writing style to target audiences.",
+    "short_description": "Create written content for various platforms.",
+    "salary_range": "$300 - $1,500 / month",
+    "skills": [
+      "Writing",
+      "SEO",
+      "Content Strategy",
+      "Research",
+      "Copywriting"
+    ],
+    "career_progression": {
+      "Entry": "Junior Writer - Blog posts, social media content",
+      "Mid": "Content Writer - Strategy development, lead content projects",
+      "Senior": "Senior Content Strategist - Content direction, team management"
+    }
+  },
+  {
+    "id": "26",
+    "name": "Architect",
+    "imagePath": "career/temp.jpg",
+    "description": "Design buildings and structures, create detailed plans, and oversee construction projects. Balance aesthetics, functionality, and safety in architectural designs.",
+    "short_description": "Design buildings and structures.",
+    "salary_range": "$700 - $3,000 / month",
+    "skills": [
+      "AutoCAD",
+      "3D Modeling",
+      "Building Codes",
+      "Design Principles",
+      "Project Management"
+    ],
+    "career_progression": {
+      "Entry": "Junior Architect - Drafting, 3D modeling, assist senior architects",
+      "Mid": "Architect - Lead design projects, client consultations",
+      "Senior": "Principal Architect - Major projects, firm management, design innovation"
+    }
+  },
+  {
+    "id": "27",
+    "name": "Chef/Cook",
+    "imagePath": "career/temp.jpg",
+    "description": "Prepare and cook meals in restaurants, hotels, or catering services. Create menus, manage kitchen operations, and ensure food quality and safety standards.",
+    "short_description": "Prepare and create culinary dishes.",
+    "salary_range": "$300 - $1,800 / month",
+    "skills": [
+      "Culinary Techniques",
+      "Menu Planning",
+      "Food Safety",
+      "Kitchen Management",
+      "Creativity"
+    ],
+    "career_progression": {
+      "Entry": "Line Cook - Prep work, basic cooking, station management",
+      "Mid": "Sous Chef - Kitchen operations, menu development",
+      "Senior": "Head Chef/Executive Chef - Full kitchen leadership, culinary direction"
+    }
+  },
+  {
+    "id": "28",
+    "name": "Electrician",
+    "imagePath": "career/temp.jpg",
+    "description": "Install, maintain, and repair electrical systems in residential, commercial, and industrial settings. Ensure electrical safety and compliance with regulations.",
+    "short_description": "Install and repair electrical systems.",
+    "salary_range": "$400 - $1,500 / month",
+    "skills": [
+      "Electrical Systems",
+      "Wiring",
+      "Troubleshooting",
+      "Safety Standards",
+      "Blueprint Reading"
+    ],
+    "career_progression": {
+      "Entry": "Apprentice Electrician - Learn trade, assist installations",
+      "Mid": "Journeyman Electrician - Independent work, complex installations",
+      "Senior": "Master Electrician - Supervise projects, train others, own business"
+    }
+  },
+  {
+    "id": "29",
+    "name": "Agricultural Specialist",
+    "imagePath": "career/temp.jpg",
+    "description": "Provide expertise in crop production, soil management, and sustainable farming practices. Advise farmers on improving yield and implementing modern agricultural techniques.",
+    "short_description": "Advise on farming and crop production.",
+    "salary_range": "$400 - $1,800 / month",
+    "skills": [
+      "Agronomy",
+      "Soil Science",
+      "Pest Management",
+      "Sustainable Farming",
+      "Agricultural Technology"
+    ],
+    "career_progression": {
+      "Entry": "Agricultural Technician - Field assistance, data collection",
+      "Mid": "Agricultural Specialist - Consulting, project management",
+      "Senior": "Senior Agricultural Consultant - Policy development, large-scale projects"
+    }
+  },
+  {
+    "id": "30",
+    "name": "Photographer",
+    "imagePath": "career/temp.jpg",
+    "description": "Capture professional photographs for events, portraits, commercial projects, and artistic purposes. Edit images and manage client relationships.",
+    "short_description": "Capture professional photographs.",
+    "salary_range": "$300 - $2,000 / month",
+    "skills": [
+      "Photography",
+      "Photo Editing",
+      "Lighting",
+      "Composition",
+      "Adobe Lightroom"
+    ],
+    "career_progression": {
+      "Entry": "Assistant Photographer - Assist shoots, basic editing",
+      "Mid": "Photographer - Independent shoots, client management",
+      "Senior": "Senior Photographer - Studio ownership, specialized work, mentor others"
+    }
+  }
+]

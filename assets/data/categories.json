@@ -1,0 +1,22 @@
+[
+  {
+    "id": "1",
+    "name": "Technology & Engineering"
+  },
+  {
+    "id": "2",
+    "name": "Business & Economics"
+  },
+  {
+    "id": "3",
+    "name": "Arts & Humanities"
+  },
+  {
+    "id": "4",
+    "name": "Science & Mathematics"
+  },
+  {
+    "id": "5",
+    "name": "Health & Medicine"
+  }
+]
