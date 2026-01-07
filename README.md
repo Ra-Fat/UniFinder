@@ -1,8 +1,9 @@
 🎓 Phnom Penh University Finder (Offline App)
 =============================================
 
-A **Flutter mobile application** that helps students — especially those living in **rural areas of Cambodia** — find **universities in Phnom Penh** based on their favorite **major**.  
-The app works **100% offline**, using only **local JSON files** without any backend or API.
+A **Flutter mobile application** that helps students — especially those living in **rural areas of Cambodia** — find their best-fit **university majors** and plan their academic futures — **100% offline**, using only **local JSON files** without any backend or API.
+
+Students answer a series of research-based questions to identify majors that suit them best. They can create multiple "dreams," each linked to one selected major. Inside each dream, students explore universities in Phnom Penh offering that major, browse related majors, compare universities, and view future career options associated with their chosen majors.
 
 ---
 
